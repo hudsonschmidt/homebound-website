@@ -359,7 +359,38 @@
 
                 <div class="faq-item">
                     <h4>What is the safety score?</h4>
-                    <p>Your safety score is a 0-100 rating computed from your trip history. It's based on three factors: your on-time rate (40%), check-in rate (30%), and trip completion rate (30%). Scores are graded from A+ (90-100) down to F (below 50). The score helps you track your safety habits over time.</p>
+                    <p>Your safety score is a 0-100 rating computed from your trip history. It's based on three factors:</p>
+                    <ul>
+                        <li><strong>On-time rate (40%):</strong> Did you check out before your ETA plus grace period expired?</li>
+                        <li><strong>Check-in rate (30%):</strong> Did you check in during trips where you enabled check-in reminders?</li>
+                        <li><strong>Contact coverage (30%):</strong> How many safety contacts did you assign to your trips?</li>
+                    </ul>
+                    <p>Scores are graded as: A+ (90-100), A (80-89), B (70-79), C (60-69), D (50-59), F (below 50).</p>
+                </div>
+
+                <div class="faq-item">
+                    <h4>How does check-in rate work?</h4>
+                    <p>Check-in rate only applies to trips where you enabled check-in reminders (set a check-in interval). If you don't use check-in reminders, this factor doesn't affect your score negatively.</p>
+                    <p>When you do enable check-in reminders:</p>
+                    <ul>
+                        <li>Checking in at least once during your trip gives you full credit for that trip</li>
+                        <li>Skipping all check-ins on a trip where you enabled reminders counts as 0% for that trip</li>
+                        <li>Your overall check-in rate is the average across all trips with reminders enabled</li>
+                    </ul>
+                    <p><strong>Trip length tiers:</strong> To keep scoring fair, trip length is capped based on duration:</p>
+                    <ul>
+                        <li>Under 1 hour: capped at 60 minutes</li>
+                        <li>1-4 hours: capped at 120 minutes</li>
+                        <li>4-8 hours: capped at 240 minutes</li>
+                        <li>8+ hours: capped at 480 minutes</li>
+                    </ul>
+                    <p><strong>Formula:</strong> rate = (check-ins ÷ capped length) × 1200, maxing out at 100%.</p>
+                    <p><strong>Examples:</strong></p>
+                    <ul>
+                        <li>6-hour hike (240 min cap), 3 check-ins: (3 ÷ 240) × 1200 = 15 → caps at 100%</li>
+                        <li>2-hour trip (120 min cap), 1 check-in: (1 ÷ 120) × 1200 = 10 → caps at 100%</li>
+                        <li>2-hour trip (120 min cap), 0 check-ins: (0 ÷ 120) × 1200 = 0%</li>
+                    </ul>
                 </div>
 
                 <div class="faq-item">
