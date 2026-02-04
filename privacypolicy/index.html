@@ -22,7 +22,7 @@
 
     <main class="legal-document">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last Updated: January 28, 2026</p>
+        <p class="last-updated">Last Updated: February 4, 2026</p>
 
         <p>Hudson Schmidt ("we," "us," or "our") operates the Homebound mobile application (the "App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App.</p>
 
@@ -39,8 +39,10 @@
             <li><strong>First and last name</strong> (for personalization and to share with emergency contacts)</li>
             <li><strong>Age</strong> (to verify you meet the minimum age requirement for your region)</li>
             <li><strong>Apple ID identifier</strong> (if you sign in with Apple)</li>
-            <li><strong>Notification preferences</strong> (trip reminders, check-in alerts)</li>
+            <li><strong>Notification preferences</strong> (trip reminders, check-in alerts, friend activity notifications)</li>
             <li><strong>Friend visibility settings</strong> (controls what friends can see about you)</li>
+            <li><strong>Activity Feed preferences</strong> (trip publishing mode, visibility scope, location privacy defaults)</li>
+            <li><strong>App version</strong> (for compatibility and troubleshooting)</li>
         </ul>
 
         <h3>1.2 Trip & Safety Plan Data</h3>
@@ -56,8 +58,11 @@
             <li>Quiet hours settings</li>
             <li>Live location sharing preference</li>
             <li>Custom notification messages</li>
+            <li>Weather conditions at trip start and completion (temperature, feels like, conditions, precipitation probability, wind speed, UV index, humidity)</li>
+            <li>Activity feed publishing preferences for the trip (visibility scope, location privacy, participant visibility)</li>
         </ul>
         <p><strong>Group Trips:</strong> When you create or join a group trip, we also collect participant lists, roles, invitation timestamps, group checkout settings, and each participant's check-in status.</p>
+        <p><strong>Quick Trips:</strong> If you use the Quick Trips feature, we store your preset configurations (activity type, default location, duration, grace period) locally on your device and sync them to your account for cross-device access.</p>
 
         <h3>1.3 Emergency Contact Information</h3>
         <p>You may add emergency contacts to your account:</p>
@@ -116,6 +121,31 @@
         <h3>1.8 Social & Friend Data</h3>
         <p>If you use social features, we collect friend connections, friend requests, invite links, visibility preferences, and achievements visible to friends.</p>
 
+        <h3>1.9 Activity Feed Data</h3>
+        <p>When you or your friends complete trips, we collect and may share (based on privacy settings):</p>
+        <ul>
+            <li><strong>Completed trip details:</strong> Trip title, activity type, duration, completion timestamp</li>
+            <li><strong>Location information:</strong> Subject to your location privacy setting (exact location, generalized city/region, or hidden)</li>
+            <li><strong>Weather data:</strong> Conditions at trip start and end</li>
+            <li><strong>Engagement data:</strong> Likes and comments on your trips, including commenter identities and comment content (max 500 characters)</li>
+            <li><strong>Group trip participant information:</strong> Participant names and photos (or count only, based on your visibility setting)</li>
+        </ul>
+
+        <p><strong>Activity Feed Privacy Controls:</strong></p>
+        <ul>
+            <li><strong>Publishing Mode:</strong> Choose 'auto' (always share completed trips), 'ask' (choose per trip), or 'never' (never share)</li>
+            <li><strong>Visibility Scope:</strong> Share with 'friends' only or 'global' (all Homebound users)</li>
+            <li><strong>Location Privacy:</strong> Show exact location, generalize to city/region (default), or hide entirely</li>
+            <li><strong>Participant Visibility:</strong> For group trips, show all participants or display only "with X others"</li>
+        </ul>
+
+        <h3>1.10 Comments and Reactions</h3>
+        <p>When you comment on or like trips in the Activity Feed:</p>
+        <ul>
+            <li><strong>Comments:</strong> We store comment content, your user ID, and timestamps. Comments are visible to the trip owner and others who can view the trip.</li>
+            <li><strong>Likes:</strong> We store which trips you've liked. Like counts are visible to others; individual likes may be visible to the trip owner.</li>
+        </ul>
+
         <hr>
 
         <h2>2. How We Use Your Information</h2>
@@ -143,7 +173,17 @@
         <h3>3.1 Emergency Contacts</h3>
         <p>When you add emergency contacts to a trip, they will receive emails about trip creation, trip start, check-in updates (including your location), trip completion, and overdue alerts. If you enable live location sharing, they can view your real-time position.</p>
 
-        <h3>3.2 Third-Party Service Providers</h3>
+        <h3>3.2 Activity Feed Sharing</h3>
+        <p>When you complete a trip with Activity Feed sharing enabled:</p>
+        <ul>
+            <li><strong>Friends:</strong> Your friends on Homebound can see your completed trip details, subject to your privacy settings</li>
+            <li><strong>Global Users:</strong> If you choose 'global' visibility, all Homebound users can see your trip</li>
+            <li><strong>Engagement:</strong> Friends (or all users for global trips) can like and comment on your trips</li>
+            <li><strong>Weather & Duration:</strong> Trip weather conditions and duration are visible in the feed</li>
+            <li><strong>Location:</strong> Your location is shared based on your location privacy setting (exact, generalized, or hidden)</li>
+        </ul>
+
+        <h3>3.3 Third-Party Service Providers</h3>
         <table>
             <tr>
                 <th>Service</th>
@@ -162,8 +202,8 @@
             </tr>
             <tr>
                 <td><strong>OpenStreetMap/Nominatim</strong></td>
-                <td>Convert coordinates to place names</td>
-                <td>Location coordinates only</td>
+                <td>Convert coordinates to place names (reverse geocoding)</td>
+                <td>Location coordinates only (no user identifiers)</td>
             </tr>
             <tr>
                 <td><strong>Apple Sign In</strong></td>
@@ -175,9 +215,14 @@
                 <td>Subscription verification</td>
                 <td>Transaction IDs, product IDs</td>
             </tr>
+            <tr>
+                <td><strong>Open-Meteo</strong></td>
+                <td>Weather data</td>
+                <td>Location coordinates only (no user identifiers)</td>
+            </tr>
         </table>
 
-        <h3>3.3 What We Do NOT Do</h3>
+        <h3>3.4 What We Do NOT Do</h3>
         <ul>
             <li>Sell your personal information</li>
             <li>Share your data with advertisers</li>
@@ -185,7 +230,7 @@
             <li>Share your information with data brokers</li>
         </ul>
 
-        <h3>3.4 Legal Requirements</h3>
+        <h3>3.5 Legal Requirements</h3>
         <p>We may disclose your information if required by law, such as in response to a subpoena or court order, or if we believe disclosure is necessary to protect our rights, your safety, or the safety of others.</p>
 
         <hr>
@@ -239,14 +284,41 @@
                 <td>Notification Logs</td>
                 <td>Until account deletion</td>
             </tr>
+            <tr>
+                <td>Activity Feed Comments</td>
+                <td>Until deleted by author or account deletion</td>
+            </tr>
+            <tr>
+                <td>Activity Feed Likes</td>
+                <td>Until removed or account deletion</td>
+            </tr>
+            <tr>
+                <td>Weather Data</td>
+                <td>Stored with trip until trip or account deletion</td>
+            </tr>
+            <tr>
+                <td>Quick Trip Presets</td>
+                <td>Until deleted or account deletion</td>
+            </tr>
         </table>
 
         <h3>Account Deletion</h3>
-        <p>You can delete your account at any time through Settings > Account > Delete Account. When you delete your account, we permanently and immediately delete all your data, including your profile, trips, contacts, devices, friendships, location history, and achievements. This deletion is irreversible.</p>
+        <p>You can delete your account at any time through Settings > Account > Delete Account. When you request deletion:</p>
+        <ul>
+            <li>Your account enters a <strong>30-day grace period</strong> during which you can cancel the deletion request</li>
+            <li>After 30 days, we permanently delete all your data, including your profile, trips, contacts, devices, friendships, location history, achievements, Activity Feed comments and likes, and Quick Trip presets</li>
+            <li>This deletion is irreversible after the grace period</li>
+        </ul>
         <p><strong>Note:</strong> You must cancel any active Homebound+ subscription separately through the App Store.</p>
 
         <h3>Local Data</h3>
-        <p>The App caches some data locally on your device. You can clear this via Settings > Resources > Clear Cache.</p>
+        <p>The App stores some data locally on your device, including:</p>
+        <ul>
+            <li>Saved locations (names, addresses, coordinates)</li>
+            <li>Quick Trip presets</li>
+            <li>Cached trip data</li>
+        </ul>
+        <p>You can clear cached data via Settings > Resources > Clear Cache. Saved locations and Quick Trip presets can be managed in their respective settings screens.</p>
 
         <hr>
 
@@ -258,7 +330,7 @@
             <li><strong>Access</strong> your data through the App</li>
             <li><strong>Update</strong> your profile information at any time</li>
             <li><strong>Delete</strong> your account and all associated data</li>
-            <li><strong>Export</strong> your data via Settings > Privacy > Export Data</li>
+            <li><strong>Export</strong> your data via Settings > Privacy > Export Data (includes profile, all trips with weather data, contacts, and statistics)</li>
             <li><strong>Opt out</strong> of non-essential communications</li>
         </ul>
 
@@ -329,7 +401,7 @@
             </tr>
             <tr>
                 <td>United Kingdom</td>
-                <td><strong>13 years old</strong> (per UK GDPR)</td>
+                <td><strong>13 years old</strong> (per UK GDPR/Age Appropriate Design Code)</td>
             </tr>
             <tr>
                 <td>Canada, Australia, New Zealand</td>
@@ -381,8 +453,18 @@
                 <td>Push notifications</td>
                 <td>United States</td>
             </tr>
+            <tr>
+                <td><strong>OpenStreetMap Foundation</strong></td>
+                <td>Geocoding (location name lookup)</td>
+                <td>European Union</td>
+            </tr>
+            <tr>
+                <td><strong>Open-Meteo</strong></td>
+                <td>Weather data</td>
+                <td>European Union</td>
+            </tr>
         </table>
-        <p>All sub-processors are contractually obligated to handle your data in accordance with applicable data protection laws.</p>
+        <p>All sub-processors are contractually obligated to handle your data in accordance with applicable data protection laws. Note that OpenStreetMap/Nominatim and Open-Meteo only receive anonymous location coordinates without any user identifiers.</p>
 
         <hr>
 
@@ -406,7 +488,7 @@
 
         <hr>
 
-        <p><em>This Privacy Policy is effective as of January 28, 2026.</em></p>
+        <p><em>This Privacy Policy is effective as of February 4, 2026.</em></p>
     </main>
 
     <footer>
