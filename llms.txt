@@ -1,0 +1,75 @@
+# Homebound
+
+> Homebound is a personal safety app for outdoor adventurers. Create trip plans with expected return times, add safety contacts, and if you don't check out on schedule, your contacts are automatically notified with your trip details and location.
+
+Homebound is available on iOS via the [App Store](https://apps.apple.com/us/app/homebound-check-in/id6754800989).
+
+## What Homebound Does
+
+Homebound works as a dead man's switch for outdoor activities. Users create a trip with an activity type, destination, expected return time, and grace period. They assign safety contacts who receive notifications at key moments: when the trip starts, when the user checks in, when they check out safely, and critically, when they go overdue. If the user doesn't mark themselves safe by their ETA plus grace period, contacts are automatically alerted with full trip details and last known location.
+
+## Who It's For
+
+- Solo hikers, climbers, skiers, mountain bikers, kayakers, surfers, divers, and anyone doing outdoor activities alone
+- College students walking home at night or going to parties
+- Parents tracking kids on field trips
+- Anyone going somewhere and wanting someone to know their plan and expected return time
+- Groups of up to 20 people doing outdoor activities together
+
+## Key Features
+
+- **Trip Plans**: Create trips with activity type, location, start time, ETA, grace period, and notes
+- **Safety Contacts**: Add up to 2 contacts per trip (5 with Homebound+) who receive email notifications automatically
+- **Automatic Overdue Alerts**: If you don't check out by ETA + grace period, contacts get your trip details and last known location
+- **Group Trips**: Plan adventures with up to 20 participants with flexible checkout modes
+- **Live Location Sharing**: Share real-time GPS position with safety contacts during active trips
+- **Live Activity & Dynamic Island**: See trip countdown on lock screen and Dynamic Island; check in without unlocking
+- **Friends**: Connect with other Homebound users, see each other's active trips, request check-in updates
+- **Safety Score**: 0-100 score based on on-time rate, check-in rate, and contact coverage (computed on-device)
+- **Weekly Recap**: Summary of adventure hours, trip count, and safety habits
+- **Achievements**: 40+ badges and milestones across categories like streaks, night adventures, and more
+- **Trip Map**: Interactive map of all past adventures
+- **Trip History & Search**: Browse and search past trips (30 days free, unlimited with Homebound+)
+- **Widgets**: Home screen widgets for quick trip access
+- **Custom Notification Messages**: Personalize the messages your contacts receive
+- **Trip Saving**: Save up to 10 trip templates for quick reuse
+- **Data Export**: Export your trips, contacts, and profile data anytime
+- **Check-In Reminders**: Set intervals to remind you to check in during trips
+- **ETA Extension**: Add up to 4 hours to your return time with one tap if running late
+
+## Pricing
+
+All core safety features are free. Homebound+ is a premium subscription that increases limits:
+
+- **Free**: Up to 2 safety contacts per trip, 30 days of trip history, all other features included
+- **Homebound+**: Up to 5 safety contacts per trip, unlimited trip history, Family Sharing on annual plan
+
+## Privacy
+
+- Location is only collected when users explicitly choose to share it (setting trip location, checking in, or live sharing)
+- No background location tracking outside of active trips with live location enabled
+- Safety score and weekly recap are computed entirely on-device
+- No data sold to advertisers
+- Full account deletion available in settings
+- Contact: privacy@homeboundapp.com
+
+## Platform
+
+- iOS only (iPhone)
+- Requires internet for check-in, checkout, and notifications
+- Works partially offline (cached trip details viewable without service)
+
+## Important Note
+
+Homebound is not a replacement for calling 911 or emergency services. It is a supplementary safety tool that notifies personal contacts. In an emergency, always call emergency services first.
+
+## Links
+
+- [Homepage](https://www.homeboundapp.com)
+- [Help Center](https://www.homeboundapp.com/help)
+- [Privacy Policy](https://www.homeboundapp.com/privacypolicy)
+- [Terms of Service](https://www.homeboundapp.com/termsofservice)
+- [App Store](https://apps.apple.com/us/app/homebound-check-in/id6754800989)
+- [Feature Requests](https://homebound.canny.io/feature-requests)
+- [Bug Reports](https://homebound.canny.io/bugs)
+- [Contact Support](mailto:support@homeboundapp.com)
