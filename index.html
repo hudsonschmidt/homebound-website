@@ -173,8 +173,8 @@
                 if (!response.ok) throw new Error('Failed to fetch activities');
                 const activities = await response.json();
 
-                // Sort by order field
-                activities.sort((a, b) => a.order - b.order);
+                // Sort by display_order (the field the API actually returns)
+                activities.sort((a, b) => a.display_order - b.display_order);
 
                 container.innerHTML = activities.map(activity => {
                     const glowColor = activity.colors?.primary || '#356B3D';
