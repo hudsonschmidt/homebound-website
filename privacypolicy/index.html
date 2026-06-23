@@ -22,7 +22,7 @@
 
     <main class="legal-document">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last Updated: February 4, 2026</p>
+        <p class="last-updated">Last Updated: June 23, 2026</p>
 
         <p>Hudson Schmidt ("we," "us," or "our") operates the Homebound mobile application (the "App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App.</p>
 
@@ -38,14 +38,16 @@
             <li><strong>Email address</strong> (required for authentication)</li>
             <li><strong>First and last name</strong> (for personalization and to share with emergency contacts)</li>
             <li><strong>Age</strong> (to verify you meet the minimum age requirement for your region)</li>
+            <li><strong>Profile photo</strong> (optional, only if you choose to add one)</li>
             <li><strong>Apple ID identifier</strong> (if you sign in with Apple)</li>
             <li><strong>Notification preferences</strong> (trip reminders, check-in alerts, friend activity notifications)</li>
-            <li><strong>Friend visibility settings</strong> (controls what friends can see about you)</li>
+            <li><strong>Friend visibility settings</strong> (controls what friends can see about you, such as your check-in locations, live location, notes, achievements, age, and trip statistics)</li>
             <li><strong>Activity Feed preferences</strong> (trip publishing mode, visibility scope, location privacy defaults)</li>
+            <li><strong>Privacy and consent records</strong> (your consent timestamp and version, locale, and App Store region, used for compliance and to apply the correct minimum-age and regional rules)</li>
             <li><strong>App version</strong> (for compatibility and troubleshooting)</li>
         </ul>
 
-        <h3>1.2 Trip & Safety Plan Data</h3>
+        <h3>1.2 Trip &amp; Safety Plan Data</h3>
         <p>When you create a trip or safety plan, we collect:</p>
         <ul>
             <li>Trip title and activity type</li>
@@ -53,55 +55,75 @@
             <li>Grace period preferences</li>
             <li>Location information (starting location and optional destination)</li>
             <li>Optional notes about your trip</li>
+            <li>Optional trip difficulty grade</li>
             <li>Timezone information</li>
             <li>Check-in interval preferences</li>
             <li>Quiet hours settings</li>
             <li>Live location sharing preference</li>
-            <li>Custom notification messages</li>
+            <li>Custom notification messages (for trip start and overdue alerts)</li>
             <li>Weather conditions at trip start and completion (temperature, feels like, conditions, precipitation probability, wind speed, UV index, humidity)</li>
             <li>Activity feed publishing preferences for the trip (visibility scope, location privacy, participant visibility)</li>
         </ul>
-        <p><strong>Group Trips:</strong> When you create or join a group trip, we also collect participant lists, roles, invitation timestamps, group checkout settings, and each participant's check-in status.</p>
-        <p><strong>Quick Trips:</strong> If you use the Quick Trips feature, we store your preset configurations (activity type, default location, duration, grace period) locally on your device and sync them to your account for cross-device access.</p>
+        <p><strong>Check-ins:</strong> When you check in during a trip, we record the time and, if available, your coordinates at check-in.</p>
+        <p><strong>SOS:</strong> If you trigger an SOS during an active trip, we collect the time it was triggered, your location coordinates at that moment, and any optional message you include (up to 500 characters).</p>
+        <p><strong>Group Trips:</strong> When you create or join a group trip, we also collect participant lists, roles, invitation timestamps, group checkout settings, each participant's check-in status, each participant's location-sharing choices, and&mdash;if individual finish ("I'm home") is enabled&mdash;each participant's arrival status.</p>
+        <p><strong>Quick Trips:</strong> If you use the Quick Trips feature, we store your preset configurations (name, activity type, default location, duration, grace period, and selected contacts) <strong>locally on your device only</strong>. Quick Trip presets are not uploaded to our servers.</p>
 
         <h3>1.3 Emergency Contact Information</h3>
         <p>You may add emergency contacts to your account:</p>
         <ul>
             <li>Contact names</li>
             <li>Contact email addresses</li>
-            <li>Contact groups for organization</li>
+            <li>Optional contact groups for organization</li>
         </ul>
-        <p>You can also add friends (other Homebound users) as safety contacts for your trips.</p>
-        <p><strong>Note:</strong> We only store the information you provide. We do not access your device's contact list.</p>
+        <p>You can also add friends (other Homebound users) as safety contacts for your trips; friends receive push notifications instead of emails.</p>
+        <p><strong>Note:</strong> We only store the information you provide. We do <strong>not</strong> access your device's contact list, and we do <strong>not</strong> collect phone numbers for your contacts.</p>
 
         <h3>1.4 Location Data</h3>
-        <p><strong>Trip Locations:</strong> We collect location data when you set a trip location using the map, use your current location for a trip, or check in during a trip.</p>
 
-        <p><strong>Live Location Sharing (Optional):</strong> If you enable Live Location Sharing for a trip, we collect real-time location data including coordinates, altitude, accuracy, speed, and timestamps.</p>
+        <p>Location is the most sensitive data we handle. We collect it only as described below.</p>
 
-        <p>Live Location Sharing is:</p>
+        <p><strong>Trip Locations:</strong> We collect location data when you set a trip's starting location or destination using the map, use your current location for a trip, or check in during a trip. Your check-in events may include the coordinates where you checked in.</p>
+
+        <p><strong>Trip Live Location Sharing (Optional):</strong> If you enable Live Location Sharing for a trip, we collect real-time location data&mdash;including coordinates, altitude, accuracy, speed, and timestamps&mdash;while the trip is active, forming a temporary location trail used for safety. This trail is shared only with the safety contacts on that trip (subject to your friend-sharing settings) and is used to help locate you if you become overdue.</p>
+
+        <p>Trip Live Location Sharing is:</p>
         <ul>
-            <li><strong>Completely optional</strong> &mdash; you must explicitly enable it for each trip</li>
+            <li><strong>Optional</strong> &mdash; you must explicitly enable it for a trip</li>
             <li><strong>User-controlled</strong> &mdash; you can disable it at any time</li>
-            <li><strong>Limited sharing</strong> &mdash; only shared with safety contacts you choose for that trip</li>
-            <li><strong>Never sold</strong> &mdash; we do not sell or share your location data with advertisers or data brokers</li>
+            <li><strong>Limited sharing</strong> &mdash; only shared with the safety contacts you choose for that trip</li>
         </ul>
+
+        <p><strong>Circles &amp; On-Demand Location Sharing (Optional):</strong> Separately from trips, you can create named "Circles" of your friends (for example, "Family" or "Climbing crew") and choose to share your current location with a Circle. This feature works like a live map of the people you've chosen:</p>
+        <ul>
+            <li><strong>You choose exactly who can see you.</strong> Sharing is one-directional&mdash;adding a friend to your Circle, or being added to theirs, does not automatically share your location back.</li>
+            <li><strong>Time-boxed.</strong> Each share lasts for a duration you choose (from 1 hour up to a maximum of 1 week) and then <strong>automatically expires</strong>. There is no indefinite sharing.</li>
+            <li><strong>Current location only, no trail.</strong> For Circle sharing we store only your most recent location fix (coordinates, altitude, accuracy, speed, and the time of the update)&mdash;not a continuous history.</li>
+            <li><strong>On-demand.</strong> To save battery, your device generally provides a fresh location only when it moves or when someone in your Circle is actively looking at the map. To support this, our servers may send a silent background notification to your device asking it to upload a single current location.</li>
+            <li><strong>Revocable.</strong> You can stop sharing, remove a friend from a Circle, or delete a Circle at any time, which immediately ends access. While you are sharing, the App displays a persistent banner so you always know.</li>
+        </ul>
+
+        <p><strong>Background Location &amp; Permissions:</strong> To support live and Circle location sharing, the App may request <strong>"Always"</strong> location access and use background location, including significant-location-change and visit monitoring and the silent background notification described above. You can also use the App with <strong>"While Using the App"</strong> (foreground-only) access, in which case live and Circle sharing update only while the App is open. You can change or revoke location permissions at any time in your device's Settings.</p>
+
+        <p><strong>Place Search (Discover):</strong> When you use the Discover feature to find nearby places for your activities, your approximate location coordinates are sent to third-party place-search and weather providers (see Section 3.3) to return relevant results. These queries contain location coordinates only&mdash;no name, email, or account identifier&mdash;and the results are not stored against your account.</p>
+
+        <p><strong>Location Access Logging:</strong> When another user (such as a group-trip participant) views your location in the App, we log that access (who viewed, what was viewed, and when) so we can maintain an audit trail and protect against misuse.</p>
 
         <p><strong>What We Do NOT Do:</strong></p>
         <ul>
             <li>Sell your location data</li>
-            <li>Share your location with advertisers</li>
-            <li>Track your location when you're not on an active trip with live location enabled</li>
-            <li>Access your location without your explicit permission</li>
+            <li>Share your location with advertisers or data brokers</li>
+            <li>Track your location when you are not on an active trip with live location enabled or actively sharing with a Circle</li>
+            <li>Access your location without your permission</li>
         </ul>
 
         <h3>1.5 Device Information</h3>
-        <p>To send push notifications, we collect:</p>
+        <p>To send push notifications and Live Activities, we collect:</p>
         <ul>
             <li>Device push notification token</li>
             <li>Device platform (iOS)</li>
-            <li>App bundle identifier and environment</li>
-            <li>Live Activity tokens (for lock screen widgets)</li>
+            <li>App environment (development or production)</li>
+            <li>Live Activity tokens (for lock screen widgets, including when you watch a friend's trip)</li>
             <li>Last activity timestamp</li>
         </ul>
 
@@ -110,50 +132,56 @@
         <ul>
             <li>Timestamps of account creation and last login</li>
             <li>Trip creation and completion timestamps</li>
-            <li>Check-in and check-out events</li>
-            <li>ETA extension events</li>
-            <li>Notification delivery logs (for troubleshooting)</li>
+            <li>Check-in, check-out, and ETA extension events</li>
+            <li>SOS events</li>
+            <li>Location-access logs (when your location is viewed by others)</li>
+            <li>Notification delivery logs (for troubleshooting and to confirm safety alerts were sent)</li>
         </ul>
 
         <h3>1.7 Subscription Information</h3>
-        <p>If you subscribe to Homebound+, we collect App Store transaction identifiers, product purchased, purchase and expiration dates, subscription status, auto-renewal status, and family sharing status. This information is processed through Apple's App Store.</p>
+        <p>If you subscribe to Homebound+, we collect App Store transaction identifiers, the product purchased, purchase and expiration dates, subscription status, auto-renewal status, free-trial status, any promotional or offer codes used, and family-sharing status. This information is processed through Apple's App Store.</p>
 
-        <h3>1.8 Social & Friend Data</h3>
-        <p>If you use social features, we collect friend connections, friend requests, invite links, visibility preferences, and achievements visible to friends.</p>
+        <h3>1.8 Social &amp; Friend Data</h3>
+        <p>If you use social features, we collect friend connections, friend requests, invite links, Circles and Circle membership, visibility preferences, and achievements visible to friends.</p>
 
         <h3>1.9 Activity Feed Data</h3>
         <p>When you or your friends complete trips, we collect and may share (based on privacy settings):</p>
         <ul>
-            <li><strong>Completed trip details:</strong> Trip title, activity type, duration, completion timestamp</li>
-            <li><strong>Location information:</strong> Subject to your location privacy setting (exact location, generalized city/region, or hidden)</li>
-            <li><strong>Weather data:</strong> Conditions at trip start and end</li>
-            <li><strong>Engagement data:</strong> Likes and comments on your trips, including commenter identities and comment content (max 500 characters)</li>
-            <li><strong>Group trip participant information:</strong> Participant names and photos (or count only, based on your visibility setting)</li>
+            <li><strong>Completed trip details</strong>: Trip title, activity type, duration, completion timestamp</li>
+            <li><strong>Location information</strong>: Subject to your location privacy setting (exact location, generalized city/region, or hidden)</li>
+            <li><strong>Weather data</strong>: Conditions at trip start and end</li>
+            <li><strong>Engagement data</strong>: Reactions and comments on trips, including the identity of the person reacting or commenting and comment content (max 500 characters); comments may include @mentions of friends, who are notified</li>
+            <li><strong>Group trip participant information</strong>: Participant names and photos (or count only, based on your visibility setting)</li>
         </ul>
 
         <p><strong>Activity Feed Privacy Controls:</strong></p>
         <ul>
-            <li><strong>Publishing Mode:</strong> Choose 'auto' (always share completed trips), 'ask' (choose per trip), or 'never' (never share)</li>
-            <li><strong>Visibility Scope:</strong> Share with 'friends' only or 'global' (all Homebound users)</li>
-            <li><strong>Location Privacy:</strong> Show exact location, generalize to city/region (default), or hide entirely</li>
-            <li><strong>Participant Visibility:</strong> For group trips, show all participants or display only "with X others"</li>
+            <li><strong>Publishing Mode</strong>: Choose 'auto' (always share completed trips), 'ask' (choose per trip &mdash; the default), or 'never' (never share)</li>
+            <li><strong>Visibility Scope</strong>: Share with 'friends' only or 'global' (all Homebound users)</li>
+            <li><strong>Location Privacy</strong>: Show exact location, generalize to city/region (default), or hide entirely</li>
+            <li><strong>Participant Visibility</strong>: For group trips, show all participants or display only "with X others"</li>
         </ul>
 
         <h3>1.10 Comments and Reactions</h3>
-        <p>When you comment on or like trips in the Activity Feed:</p>
+        <p>When you comment on or react to trips and check-ins in the Activity Feed:</p>
         <ul>
-            <li><strong>Comments:</strong> We store comment content, your user ID, and timestamps. Comments are visible to the trip owner and others who can view the trip.</li>
-            <li><strong>Likes:</strong> We store which trips you've liked. Like counts are visible to others; individual likes may be visible to the trip owner.</li>
+            <li><strong>Comments</strong>: We store comment content, your user ID, timestamps, and any @mentions. Comments are visible to the trip owner and others who can view the trip.</li>
+            <li><strong>Reactions</strong>: We store your reactions (such as emoji) to trips, check-ins, and comments. Reaction counts are visible to others; individual reactions may be visible to the trip owner.</li>
         </ul>
+
+        <h3>1.11 Feedback</h3>
+        <p>If you choose to submit feedback, feature requests, or bug reports through our in-app feedback link, that content&mdash;and any contact details you include&mdash;is handled by our feedback provider (see Section 3.3). Submitting feedback is entirely optional.</p>
 
         <hr>
 
         <h2>2. How We Use Your Information</h2>
 
         <p>We use the information we collect to:</p>
+
         <ul>
-            <li><strong>Provide the Service:</strong> Create and manage your safety plans, send notifications to you and your emergency contacts</li>
-            <li><strong>Send Safety Notifications:</strong> Alert you about trip status, remind you to check in, and notify your emergency contacts if you're overdue</li>
+            <li><strong>Provide the Service:</strong> Create and manage your safety plans, group trips, Circles, and the Discover and Activity Feed features</li>
+            <li><strong>Send Safety Notifications:</strong> Alert you about trip status, remind you to check in, deliver SOS alerts, and notify your emergency contacts if you're overdue</li>
+            <li><strong>Enable Location Sharing:</strong> Share your live trip location with your safety contacts and your current location with the Circles you choose</li>
             <li><strong>Authenticate Your Account:</strong> Verify your identity via magic link codes or Apple Sign In</li>
             <li><strong>Improve the App:</strong> Understand how the service is used and make improvements</li>
             <li><strong>Communicate with You:</strong> Send service-related emails (magic link codes, trip notifications)</li>
@@ -163,7 +191,7 @@
         <ul>
             <li><strong>Contract Performance:</strong> Providing the Homebound safety service you signed up for</li>
             <li><strong>Legitimate Interest:</strong> Sending safety-critical notifications and maintaining service security</li>
-            <li><strong>Consent:</strong> Optional features like live location sharing and marketing communications (if you opt in)</li>
+            <li><strong>Consent:</strong> Optional features such as live trip location sharing and Circle location sharing</li>
         </ul>
 
         <hr>
@@ -171,16 +199,25 @@
         <h2>3. Information Sharing</h2>
 
         <h3>3.1 Emergency Contacts</h3>
-        <p>When you add emergency contacts to a trip, they will receive emails about trip creation, trip start, check-in updates (including your location), trip completion, and overdue alerts. If you enable live location sharing, they can view your real-time position.</p>
+        <p>When you add emergency contacts to a trip, they will receive emails about trip creation, trip start, check-in updates, ETA extensions, trip completion, overdue alerts, and SOS alerts.</p>
+
+        <p>Some of these emails include your location:</p>
+        <ul>
+            <li><strong>Check-in emails</strong> include the name of your check-in location and your exact coordinates at check-in.</li>
+            <li><strong>SOS emails</strong> include your exact coordinates and a link to view them on a map.</li>
+            <li>Each email also includes a <strong>secure tracking link</strong> to a web page that shows the trip's status, ETA countdown, your first name, and the trip's timeline and last known location. Anyone who has this link can view that page without logging in, so treat it as sensitive.</li>
+        </ul>
+
+        <p>If you enable Trip Live Location Sharing, your designated safety contacts who are Homebound users can also view your real-time position in the App. If you share with a Circle, the friends in that Circle can view your current location on a map while your share is active.</p>
 
         <h3>3.2 Activity Feed Sharing</h3>
         <p>When you complete a trip with Activity Feed sharing enabled:</p>
         <ul>
-            <li><strong>Friends:</strong> Your friends on Homebound can see your completed trip details, subject to your privacy settings</li>
-            <li><strong>Global Users:</strong> If you choose 'global' visibility, all Homebound users can see your trip</li>
-            <li><strong>Engagement:</strong> Friends (or all users for global trips) can like and comment on your trips</li>
-            <li><strong>Weather & Duration:</strong> Trip weather conditions and duration are visible in the feed</li>
-            <li><strong>Location:</strong> Your location is shared based on your location privacy setting (exact, generalized, or hidden)</li>
+            <li><strong>Friends</strong>: Your friends on Homebound can see your completed trip details, subject to your privacy settings</li>
+            <li><strong>Global Users</strong>: If you choose 'global' visibility, all Homebound users can see your trip</li>
+            <li><strong>Engagement</strong>: Friends (or all users for global trips) can react to and comment on your trips</li>
+            <li><strong>Weather &amp; Duration</strong>: Trip weather conditions and duration are visible in the feed</li>
+            <li><strong>Location</strong>: Your location is shared based on your location privacy setting (exact, generalized, or hidden)</li>
         </ul>
 
         <h3>3.3 Third-Party Service Providers</h3>
@@ -192,35 +229,57 @@
             </tr>
             <tr>
                 <td><strong>Resend</strong></td>
-                <td>Email delivery</td>
-                <td>Email addresses, names, trip details</td>
+                <td>Email delivery to you and your contacts</td>
+                <td>Email addresses, names, trip details, and&mdash;where applicable&mdash;your check-in or SOS location</td>
             </tr>
             <tr>
-                <td><strong>Apple Push Notification Service</strong></td>
-                <td>Push notifications</td>
+                <td><strong>Apple Push Notification service</strong></td>
+                <td>Push notifications and Live Activities</td>
                 <td>Device tokens, notification content</td>
             </tr>
             <tr>
-                <td><strong>OpenStreetMap/Nominatim</strong></td>
+                <td><strong>Apple &mdash; Sign in with Apple</strong></td>
+                <td>Authentication (optional)</td>
+                <td>Apple user identifier</td>
+            </tr>
+            <tr>
+                <td><strong>Apple &mdash; App Store &amp; App Store Server API</strong></td>
+                <td>Process and verify Homebound+ subscriptions</td>
+                <td>Transaction identifiers, product identifiers, subscription status</td>
+            </tr>
+            <tr>
+                <td><strong>Apple &mdash; Maps (MapKit)</strong></td>
+                <td>Display maps and search for places</td>
+                <td>Map search text and device location</td>
+            </tr>
+            <tr>
+                <td><strong>Supabase</strong></td>
+                <td>Database hosting, real-time updates, and profile-photo storage</td>
+                <td>App data you create; profile photos; real-time updates delivered to the App</td>
+            </tr>
+            <tr>
+                <td><strong>Tomorrow.io</strong></td>
+                <td>Weather conditions</td>
+                <td>Location coordinates only (no user identifiers)</td>
+            </tr>
+            <tr>
+                <td><strong>OpenStreetMap / Nominatim</strong></td>
                 <td>Convert coordinates to place names (reverse geocoding)</td>
                 <td>Location coordinates only (no user identifiers)</td>
             </tr>
             <tr>
-                <td><strong>Apple Sign In</strong></td>
-                <td>Authentication (optional)</td>
-                <td>Apple user ID</td>
+                <td><strong>Place-search providers (Discover feature):</strong> OpenStreetMap/Overpass, Geoapify, Recreation.gov, U.S. National Park Service, U.S. Geological Survey, U.S. Forest Service, U.S. Bureau of Land Management, NOAA, and OpenBeta</td>
+                <td>Find nearby places for your activities</td>
+                <td>Approximate search coordinates only (no user identifiers)</td>
             </tr>
             <tr>
-                <td><strong>App Store Server API</strong></td>
-                <td>Subscription verification</td>
-                <td>Transaction IDs, product IDs</td>
-            </tr>
-            <tr>
-                <td><strong>Open-Meteo</strong></td>
-                <td>Weather data</td>
-                <td>Location coordinates only (no user identifiers)</td>
+                <td><strong>Canny</strong></td>
+                <td>Feedback and feature requests (only if you choose to submit them)</td>
+                <td>The content and any contact details you submit</td>
             </tr>
         </table>
+
+        <p>If an emergency contact opens a map link contained in a location or SOS email, that link will open in their device's map service (such as Apple Maps or Google Maps). We do not control those services or what they do with the link.</p>
 
         <h3>3.4 What We Do NOT Do</h3>
         <ul>
@@ -238,13 +297,16 @@
         <h2>4. Data Security</h2>
 
         <p>We implement appropriate security measures to protect your information:</p>
+
         <ul>
             <li><strong>Encryption in Transit:</strong> All data transmitted between the App and our servers uses HTTPS/TLS encryption</li>
             <li><strong>Secure Authentication:</strong> JWT tokens with cryptographic signatures</li>
-            <li><strong>Secure Storage:</strong> Sensitive data stored in iOS Keychain with <code>kSecAttrAccessibleAfterFirstUnlock</code> protection</li>
+            <li><strong>Secure Storage:</strong> Sensitive data is stored in the iOS Keychain with <code>kSecAttrAccessibleAfterFirstUnlockThisDeviceOnly</code> protection (kept on your device, not synced to iCloud)</li>
             <li><strong>Access Controls:</strong> Authentication required for all personal data access</li>
+            <li><strong>Location Access Logging:</strong> We log when your location is viewed by others to maintain an audit trail</li>
             <li><strong>No Passwords Stored:</strong> We use magic link authentication, so no passwords are stored</li>
         </ul>
+
         <p>While we strive to protect your personal information, no method of electronic transmission or storage is 100% secure. We cannot guarantee absolute security.</p>
 
         <hr>
@@ -261,20 +323,36 @@
                 <td>Until you delete your account</td>
             </tr>
             <tr>
+                <td>Profile Photo</td>
+                <td>Until you remove it or delete your account</td>
+            </tr>
+            <tr>
                 <td>Trip Data</td>
                 <td>Until you delete the trip or your account</td>
             </tr>
             <tr>
-                <td>Location Data</td>
+                <td>Location Data (trip)</td>
                 <td>Until trip completion or account deletion</td>
             </tr>
             <tr>
-                <td>Live Location History</td>
-                <td>Deleted when trip completes</td>
+                <td>Trip Live Location Trail</td>
+                <td>Automatically deleted after the trip ends (within approximately 7 days)</td>
+            </tr>
+            <tr>
+                <td>Circle / Current Location</td>
+                <td>Most recent location only; automatically deleted approximately 24 hours after your last update or when you stop sharing</td>
+            </tr>
+            <tr>
+                <td>Location Shares</td>
+                <td>Until they expire (a duration you choose, up to 1 week) or you end them</td>
+            </tr>
+            <tr>
+                <td>SOS Data</td>
+                <td>Until trip or account deletion</td>
             </tr>
             <tr>
                 <td>Login Tokens</td>
-                <td>15 minutes (automatically expire)</td>
+                <td>Automatically expire shortly after issuance</td>
             </tr>
             <tr>
                 <td>Device Tokens</td>
@@ -289,7 +367,7 @@
                 <td>Until deleted by author or account deletion</td>
             </tr>
             <tr>
-                <td>Activity Feed Likes</td>
+                <td>Activity Feed Reactions</td>
                 <td>Until removed or account deletion</td>
             </tr>
             <tr>
@@ -297,8 +375,12 @@
                 <td>Stored with trip until trip or account deletion</td>
             </tr>
             <tr>
+                <td>Place-Search Results (Discover)</td>
+                <td>Cached briefly by geographic area; not linked to your account</td>
+            </tr>
+            <tr>
                 <td>Quick Trip Presets</td>
-                <td>Until deleted or account deletion</td>
+                <td>Stored locally on your device only</td>
             </tr>
         </table>
 
@@ -306,19 +388,15 @@
         <p>You can delete your account at any time through Settings > Account > Delete Account. When you request deletion:</p>
         <ul>
             <li>Your account enters a <strong>30-day grace period</strong> during which you can cancel the deletion request</li>
-            <li>After 30 days, we permanently delete all your data, including your profile, trips, contacts, devices, friendships, location history, achievements, Activity Feed comments and likes, and Quick Trip presets</li>
+            <li>After 30 days, we permanently delete all your data, including your profile, profile photo, trips, contacts, devices, friendships, Circles, location history, achievements, Activity Feed comments and reactions, and Quick Trip presets</li>
             <li>This deletion is irreversible after the grace period</li>
         </ul>
         <p><strong>Note:</strong> You must cancel any active Homebound+ subscription separately through the App Store.</p>
 
         <h3>Local Data</h3>
-        <p>The App stores some data locally on your device, including:</p>
-        <ul>
-            <li>Saved locations (names, addresses, coordinates)</li>
-            <li>Quick Trip presets</li>
-            <li>Cached trip data</li>
-        </ul>
-        <p>You can clear cached data via Settings > Resources > Clear Cache. Saved locations and Quick Trip presets can be managed in their respective settings screens.</p>
+        <p>To work reliably and support offline use, the App keeps a cache on your device. This may include your trips, emergency contacts, friends and group participants (including the last location a participant has chosen to share), saved locations, Quick Trip presets, weather, and actions or location updates waiting to sync, as well as records of pending in-app purchases. Saved locations and Quick Trip presets are stored on your device only and are not uploaded to our servers.</p>
+
+        <p>You can clear cached data via Settings > Resources > Clear Cache, and signing out clears locally stored data. Saved locations and Quick Trip presets can be managed in their respective settings screens.</p>
 
         <hr>
 
@@ -330,7 +408,7 @@
             <li><strong>Access</strong> your data through the App</li>
             <li><strong>Update</strong> your profile information at any time</li>
             <li><strong>Delete</strong> your account and all associated data</li>
-            <li><strong>Export</strong> your data via Settings > Privacy > Export Data (includes profile, all trips with weather data, contacts, and statistics)</li>
+            <li><strong>Export</strong> your data via Settings > Privacy > Export Data (includes your profile, trips with weather data, contacts, friendships, devices, and settings)</li>
             <li><strong>Opt out</strong> of non-essential communications</li>
         </ul>
 
@@ -340,7 +418,7 @@
             <li><strong>Right to Access:</strong> Request a copy of your personal data. Use our Export Data feature or contact us.</li>
             <li><strong>Right to Rectification:</strong> Request correction of inaccurate data. You can update your profile directly in the App.</li>
             <li><strong>Right to Erasure:</strong> Request deletion of your data. Use Delete Account in the App or contact us.</li>
-            <li><strong>Right to Restrict Processing:</strong> Request that we pause non-essential processing while we address your concerns. Safety-critical notifications (overdue alerts) will continue as a legitimate interest.</li>
+            <li><strong>Right to Restrict Processing:</strong> Request that we pause non-essential processing while we address your concerns. Safety-critical notifications (overdue and SOS alerts) will continue as a legitimate interest.</li>
             <li><strong>Right to Data Portability:</strong> Receive your data in a machine-readable format via our Export feature.</li>
             <li><strong>Right to Object:</strong> Object to processing based on legitimate interests by contacting us.</li>
             <li><strong>Right to Withdraw Consent:</strong> Withdraw consent at any time through your account settings. This does not affect prior processing.</li>
@@ -444,27 +522,52 @@
                 <td>United States</td>
             </tr>
             <tr>
+                <td><strong>Supabase</strong></td>
+                <td>Database hosting, real-time sync, and image storage</td>
+                <td>United States</td>
+            </tr>
+            <tr>
                 <td><strong>Resend</strong></td>
                 <td>Email delivery</td>
                 <td>United States</td>
             </tr>
             <tr>
                 <td><strong>Apple Inc.</strong></td>
-                <td>Push notifications</td>
+                <td>Push notifications, Sign in with Apple, subscription processing, and maps</td>
+                <td>United States</td>
+            </tr>
+            <tr>
+                <td><strong>Tomorrow.io</strong></td>
+                <td>Weather data</td>
                 <td>United States</td>
             </tr>
             <tr>
                 <td><strong>OpenStreetMap Foundation</strong></td>
-                <td>Geocoding (location name lookup)</td>
+                <td>Geocoding (location name lookup) and place data</td>
+                <td>United Kingdom / European Union</td>
+            </tr>
+            <tr>
+                <td><strong>Geoapify</strong></td>
+                <td>Place search (Discover)</td>
                 <td>European Union</td>
             </tr>
             <tr>
-                <td><strong>Open-Meteo</strong></td>
-                <td>Weather data</td>
-                <td>European Union</td>
+                <td><strong>U.S. recreation &amp; mapping data providers</strong> (Recreation.gov, U.S. National Park Service, U.S. Geological Survey, U.S. Forest Service, U.S. Bureau of Land Management, NOAA)</td>
+                <td>Place data (Discover)</td>
+                <td>United States</td>
+            </tr>
+            <tr>
+                <td><strong>OpenBeta</strong></td>
+                <td>Climbing-area data (Discover)</td>
+                <td>United States</td>
+            </tr>
+            <tr>
+                <td><strong>Canny</strong></td>
+                <td>Feedback portal</td>
+                <td>United States</td>
             </tr>
         </table>
-        <p>All sub-processors are contractually obligated to handle your data in accordance with applicable data protection laws. Note that OpenStreetMap/Nominatim and Open-Meteo only receive anonymous location coordinates without any user identifiers.</p>
+        <p>All sub-processors are contractually obligated to handle your data in accordance with applicable data protection laws. Note that the geocoding, weather, and place-search providers only receive location coordinates without any user identifiers.</p>
 
         <hr>
 
@@ -488,7 +591,7 @@
 
         <hr>
 
-        <p><em>This Privacy Policy is effective as of February 4, 2026.</em></p>
+        <p><em>This Privacy Policy is effective as of June 23, 2026.</em></p>
     </main>
 
     <footer>
