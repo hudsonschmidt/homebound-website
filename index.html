@@ -188,12 +188,21 @@
                 // Sort by display_order (the field the API actually returns)
                 activities.sort((a, b) => a.display_order - b.display_order);
 
+                // SECURITY: escape API-sourced strings before injecting into innerHTML,
+                // and validate the color before placing it in an inline style. Activities
+                // are system-seeded today, but this prevents stored-XSS / CSS-injection if
+                // that endpoint ever serves user-influenced data (defense-in-depth).
+                const escapeHtml = (s) => String(s ?? '').replace(/[&<>"']/g, c => ({
+                    '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;', "'": '&#39;'
+                }[c]));
+                const safeHexColor = (c) => /^#[0-9A-Fa-f]{3,8}$/.test(c) ? c : '#356B3D';
+
                 container.innerHTML = activities.map(activity => {
-                    const glowColor = activity.colors?.primary || '#356B3D';
+                    const glowColor = safeHexColor(activity.colors?.primary || '#356B3D');
                     return `
                         <div class="activity" style="--glow-color: ${glowColor};">
-                            <span class="activity-icon">${activity.icon}</span>
-                            <span>${activity.name}</span>
+                            <span class="activity-icon">${escapeHtml(activity.icon)}</span>
+                            <span>${escapeHtml(activity.name)}</span>
                         </div>
                     `;
                 }).join('');
