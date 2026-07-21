@@ -4,788 +4,957 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Help Center - Homebound</title>
-    <meta name="description" content="Get help with Homebound - FAQs, contact information, and support resources.">
-    <link rel="stylesheet" href="../styles.css">
+    <meta name="description" content="Get help with Homebound - search FAQs, browse by topic, and get in touch with our team.">
     <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
     <style>
-        .help-hero {
-            text-align: center;
-            padding: 4rem 2rem;
-            padding-top: 8rem;
-            background: linear-gradient(135deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
-        }
-        .help-hero h1 {
-            font-size: 2.5rem;
-            margin-bottom: 0.5rem;
-        }
-        .help-hero p {
-            color: var(--text-secondary);
-            font-size: 1.1rem;
-        }
-        .help-content {
-            max-width: var(--max-width);
-            margin: 0 auto;
-            padding: 2rem;
-        }
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 1rem;
-            margin: 2rem 0;
-        }
-        .contact-card {
-            background: var(--bg-card);
-            border: 1px solid var(--glass-border);
-            border-radius: var(--radius-md);
-            padding: 1.75rem;
-            text-align: center;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            gap: 0.5rem;
-            transition: transform 0.2s, box-shadow 0.2s;
-        }
-        .contact-card:hover {
-            transform: translateY(-4px);
-            box-shadow:
-                0 24px 60px color-mix(in srgb, var(--brand-color) 18%, transparent),
-                0 10px 24px color-mix(in srgb, var(--brand-color) 12%, transparent);
-        }
-        .contact-card-icon {
-            width: 44px;
-            height: 44px;
-            border-radius: 12px;
-            background: linear-gradient(145deg, var(--brand-color), var(--brand-light));
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.25rem;
-            margin-bottom: 0.25rem;
-        }
-        .contact-card h3 {
-            margin: 0;
-            font-size: 1rem;
-            color: var(--text-primary);
-        }
-        .contact-card p {
-            color: var(--text-secondary);
-            font-size: 0.85rem;
-            margin: 0;
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
             line-height: 1.5;
+            color: #26221A;
+            background: #F6F1E6;
+            -webkit-font-smoothing: antialiased;
         }
-        .contact-card a.contact-link {
-            color: var(--brand-color);
+        a { color: #356B3D; }
+        a:hover { color: #24492A; }
+        input { font-family: inherit; }
+        input:focus { outline: none; }
+        button { font-family: inherit; background: none; border: none; cursor: pointer; }
+
+        nav {
+            position: sticky;
+            top: 16px;
+            z-index: 100;
+            width: calc(100% - 32px);
+            max-width: 760px;
+            margin: 16px auto -64px;
+            padding: 10px 12px 10px 20px;
+            background: rgba(253, 251, 245, 0.85);
+            backdrop-filter: blur(14px) saturate(160%);
+            -webkit-backdrop-filter: blur(14px) saturate(160%);
+            border-radius: 100px;
+            border: 1px solid rgba(38, 34, 26, 0.08);
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.05);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .nav-brand {
+            display: flex;
+            align-items: center;
+            gap: 9px;
             text-decoration: none;
+            color: #26221A;
+        }
+        .nav-brand img { width: 26px; height: 26px; border-radius: 6.5px; }
+        .nav-brand span { font-family: 'Bricolage Grotesque', system-ui, sans-serif; font-size: 1.02rem; font-weight: 700; letter-spacing: -0.01em; }
+        .nav-links { display: flex; align-items: center; gap: 1.3rem; }
+        .nav-links .current { color: #26221A; font-size: 0.88rem; font-weight: 600; }
+        .nav-links a:not(.nav-cta) {
+            color: #5c554a;
+            text-decoration: none;
+            font-size: 0.88rem;
+            font-weight: 500;
+        }
+        .nav-links a:not(.nav-cta):hover { color: #26221A; }
+        .nav-cta {
+            background: #B87333;
+            color: #fff !important;
+            padding: 8px 16px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 0.84rem;
             font-weight: 600;
+            transition: background 0.2s;
+        }
+        .nav-cta:hover { background: #9c5f27; }
+
+        .hero {
+            text-align: center;
+            padding: 130px 24px 34px;
+            position: relative;
+            overflow: hidden;
+        }
+        .hero-sun {
+            position: absolute;
+            top: 84px;
+            right: 13%;
+            width: 52px;
+            height: 52px;
+            border-radius: 50%;
+            background: #E9A83A;
+            box-shadow: 0 0 44px rgba(233, 168, 58, 0.5);
+            pointer-events: none;
+        }
+        .spark { position: absolute; color: #C9A227; pointer-events: none; }
+        .hero h1 {
+            font-family: 'Bricolage Grotesque', system-ui, sans-serif;
+            font-size: clamp(2rem, 4.4vw, 2.9rem);
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            color: #24492A;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        .hero p { color: #5c554a; font-size: 1.02rem; margin-bottom: 26px; position: relative; }
+        .search-wrap { max-width: 560px; margin: 0 auto; position: relative; }
+        .search-wrap input {
+            width: 100%;
+            padding: 16px 22px 16px 48px;
+            border-radius: 100px;
+            border: 1.5px solid rgba(38, 34, 26, 0.14);
+            background: #FDFBF5;
+            font-size: 1rem;
+            color: #26221A;
+            box-shadow: 0 10px 34px rgba(53, 107, 61, 0.12);
+        }
+        .search-wrap input:focus { border-color: rgba(53, 107, 61, 0.5); }
+        .search-icon {
+            position: absolute;
+            left: 20px;
+            top: 50%;
+            transform: translateY(-50%);
+            color: #8a8274;
+            font-size: 1rem;
+            pointer-events: none;
+        }
+        .chips {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin-top: 16px;
+            position: relative;
+        }
+        .chip {
+            font-size: 0.8rem;
+            font-weight: 550;
+            color: #356B3D;
+            background: rgba(53, 107, 61, 0.08);
+            border: 1px solid rgba(53, 107, 61, 0.18);
+            border-radius: 100px;
+            padding: 6px 13px;
+        }
+        .chip:hover { background: rgba(53, 107, 61, 0.14); }
+
+        .layout {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 10px 24px 40px;
+            display: grid;
+            grid-template-columns: 230px 1fr;
+            gap: 26px;
+            align-items: start;
+        }
+        .cats {
+            position: sticky;
+            top: 96px;
+            background: #FDFBF5;
+            border: 1.5px solid rgba(38, 34, 26, 0.09);
+            border-radius: 18px;
+            padding: 10px;
+            max-height: calc(100vh - 120px);
+            overflow: auto;
+        }
+        .cat-btn {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 8px;
+            width: 100%;
+            text-align: left;
+            padding: 8px 12px;
+            border-radius: 10px;
+            font-size: 0.86rem;
+            font-weight: 500;
+            color: #5c554a;
+        }
+        .cat-btn:hover { background: rgba(53, 107, 61, 0.07); }
+        .cat-btn.active { font-weight: 650; color: #24492A; background: rgba(53, 107, 61, 0.1); }
+        .cat-btn .count { font-size: 0.72rem; color: #8a8274; font-weight: 500; }
+
+        .faq-group { margin-bottom: 26px; }
+        .group-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: #B87333;
+            margin: 4px 0 10px 4px;
+        }
+        .group-card {
+            background: #FDFBF5;
+            border: 1.5px solid rgba(38, 34, 26, 0.09);
+            border-radius: 18px;
+            overflow: hidden;
+        }
+        .faq-item { border-top: 1px solid rgba(38, 34, 26, 0.06); }
+        .faq-item:first-child { border-top: none; }
+        .faq-q {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 14px;
+            width: 100%;
+            text-align: left;
+            padding: 15px 20px;
+        }
+        .faq-q:hover { background: rgba(53, 107, 61, 0.05); }
+        .faq-q .q-text { font-size: 0.95rem; font-weight: 600; color: #26221A; }
+        .faq-q .chev {
+            color: #8a8274;
             font-size: 0.85rem;
-            margin-top: auto;
-            padding-top: 0.5rem;
+            flex: none;
+            transition: transform 0.2s;
         }
-        .contact-card a.contact-link:hover {
-            text-decoration: underline;
+        .faq-q[aria-expanded="true"] .chev { transform: rotate(180deg); }
+        .faq-a {
+            padding: 0 20px 18px;
+            font-size: 0.92rem;
+            color: #5c554a;
+            line-height: 1.65;
+            max-width: 640px;
         }
-        @media (max-width: 600px) {
-            .contact-grid {
-                grid-template-columns: 1fr;
-            }
+        .faq-a p { margin-bottom: 0.6rem; }
+        .faq-a p:last-child { margin-bottom: 0; }
+        .faq-a ul { margin: 0.4rem 0 0.6rem; padding-left: 1.4rem; }
+        .faq-a li { margin-bottom: 0.25rem; }
+
+        .no-results {
+            background: #FDFBF5;
+            border: 1.5px solid rgba(38, 34, 26, 0.09);
+            border-radius: 18px;
+            padding: 40px;
+            text-align: center;
         }
-        .faq-section {
-            margin: 3rem 0;
+        .no-results .nr-title { font-size: 1.05rem; font-weight: 650; margin-bottom: 6px; }
+        .no-results .nr-sub { font-size: 0.9rem; color: #5c554a; }
+
+        .contact-band { max-width: 1000px; margin: 0 auto; padding: 10px 24px 90px; }
+        .contact-card {
+            background: linear-gradient(135deg, #1c3320, #356B3D);
+            border-radius: 24px;
+            padding: 36px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 24px;
+            flex-wrap: wrap;
         }
-        .faq-section h2 {
-            font-size: 1.75rem;
-            margin-bottom: 1.5rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid var(--border-color);
-        }
-        .faq-category {
-            margin-bottom: 2.5rem;
-        }
-        .faq-category h3 {
-            font-size: 1.25rem;
-            color: var(--brand-color);
-            margin-bottom: 1rem;
-        }
-        .faq-item {
-            margin-bottom: 1.5rem;
-            padding-bottom: 1.5rem;
-            border-bottom: 1px solid var(--border-color);
-        }
-        .faq-item:last-child {
-            border-bottom: none;
-        }
-        .faq-item h4 {
-            color: var(--text-primary);
-            font-size: 1.1rem;
-            margin-bottom: 0.5rem;
-        }
-        .faq-item p {
-            color: var(--text-secondary);
-            line-height: 1.7;
-        }
-        .faq-item ul {
-            color: var(--text-secondary);
-            line-height: 1.7;
-            margin-top: 0.5rem;
-            padding-left: 1.5rem;
-        }
-        .quick-links {
-            background: var(--bg-secondary);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin: 2rem 0;
-        }
-        .quick-links h3 {
-            margin-bottom: 1rem;
-        }
-        .quick-links ul {
-            list-style: none;
-            padding: 0;
-        }
-        .quick-links li {
-            margin-bottom: 0.75rem;
-        }
-        .quick-links a {
-            color: var(--brand-color);
+        .contact-card .cc-title { font-size: 1.25rem; font-weight: 700; color: #fff; margin-bottom: 4px; }
+        .contact-card .cc-sub { font-size: 0.92rem; color: rgba(255, 255, 255, 0.75); }
+        .contact-card .cc-sub a { color: #fff; }
+        .contact-actions { display: flex; gap: 10px; flex-wrap: wrap; }
+        .btn-light {
+            background: #fff;
+            color: #24492A !important;
+            padding: 11px 22px;
+            border-radius: 100px;
             text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 650;
         }
-        .quick-links a:hover {
-            text-decoration: underline;
+        .btn-light:hover { opacity: 0.9; }
+        .btn-ghost {
+            border: 1px solid rgba(255, 255, 255, 0.4);
+            color: #fff !important;
+            padding: 11px 22px;
+            border-radius: 100px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 650;
+        }
+        .btn-ghost:hover { background: rgba(255, 255, 255, 0.1); }
+
+        .footer-ridge { height: 100px; position: relative; }
+        .footer-ridge div {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            height: 90px;
+            background: #1E3323;
+            clip-path: polygon(0 100%, 0 70%, 12% 30%, 25% 65%, 40% 22%, 55% 60%, 70% 28%, 84% 58%, 100% 38%, 100% 100%);
+        }
+        footer {
+            background: #1E3323;
+            padding: 30px 24px 40px;
+            text-align: center;
+        }
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 24px;
+            margin-bottom: 14px;
+            flex-wrap: wrap;
+        }
+        .footer-links a { color: rgba(246, 241, 230, 0.75); text-decoration: none; font-size: 0.88rem; }
+        .footer-links a:hover { color: #F6F1E6; }
+        .copyright { color: rgba(246, 241, 230, 0.55); font-size: 0.85rem; }
+
+        @media (prefers-reduced-motion: reduce) {
+            * { transition: none !important; }
+        }
+        @media (max-width: 820px) {
+            .layout { grid-template-columns: 1fr; }
+            .cats {
+                position: static;
+                max-height: none;
+                display: flex;
+                gap: 4px;
+                overflow-x: auto;
+                padding: 8px;
+                -webkit-overflow-scrolling: touch;
+            }
+            .cat-btn { width: auto; white-space: nowrap; flex: none; }
+            .cat-btn .count { display: none; }
+        }
+        @media (max-width: 560px) {
+            .nav-links .nav-hide-sm { display: none; }
+            .hero { padding-top: 110px; }
         }
     </style>
 </head>
 <body>
     <nav>
-        <div class="container">
-            <a href="/" class="logo">Homebound</a>
-            <ul class="nav-links">
-                <li><a href="/help">Help</a></li>
-                <li><a href="/privacypolicy">Privacy</a></li>
-                <li><a href="/termsofservice">Terms</a></li>
-            </ul>
+        <a href="/" class="nav-brand">
+            <img src="../logo.png" alt="">
+            <span>Homebound</span>
+        </a>
+        <div class="nav-links">
+            <span class="current">Help</span>
+            <a href="/privacypolicy" class="nav-hide-sm">Privacy</a>
+            <a href="/termsofservice" class="nav-hide-sm">Terms</a>
+            <a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989" class="nav-cta">Download</a>
         </div>
     </nav>
 
-    <section class="help-hero">
-        <h1>Help Center</h1>
-        <p>Find answers to common questions and get in touch with our team.</p>
+    <section class="hero">
+        <div class="hero-sun" aria-hidden="true"></div>
+        <div class="spark" style="top:120px;left:16%;font-size:13px" aria-hidden="true">✦</div>
+        <div class="spark" style="top:180px;left:24%;font-size:9px" aria-hidden="true">✦</div>
+        <div class="spark" style="top:200px;right:22%;font-size:10px" aria-hidden="true">✦</div>
+        <h1>How can we help?</h1>
+        <p>Search <span id="totalCount">81</span> answers, or browse by topic.</p>
+        <div class="search-wrap">
+            <input type="search" id="faqSearch" placeholder='Try "grace period", "SOS", or "battery"…' aria-label="Search help answers">
+            <span class="search-icon" aria-hidden="true">⌕</span>
+        </div>
+        <div class="chips">
+            <button class="chip" data-term="miss a check-in">Do missed check-ins alert anyone?</button>
+            <button class="chip" data-term="download the app">Do contacts need the app?</button>
+            <button class="chip" data-term="SOS contact 911">Does SOS call 911?</button>
+            <button class="chip" data-term="grace period">What's a grace period?</button>
+        </div>
     </section>
 
-    <main class="help-content">
-        <!-- Contact Cards -->
-        <section>
-            <h2 style="font-size: 1.75rem; margin-bottom: 1rem;">Contact Us</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-card-icon">💌</div>
-                    <h3>General Support</h3>
-                    <p>Questions about using Homebound? We're here to help.</p>
-                    <a class="contact-link" href="mailto:support@homeboundapp.com">support@homeboundapp.com</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">🔒</div>
-                    <h3>Privacy Inquiries</h3>
-                    <p>Questions about your data or privacy rights.</p>
-                    <a class="contact-link" href="mailto:privacy@homeboundapp.com">privacy@homeboundapp.com</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">⚖️</div>
-                    <h3>Legal</h3>
-                    <p>Legal questions or formal inquiries.</p>
-                    <a class="contact-link" href="mailto:legal@homeboundapp.com">legal@homeboundapp.com</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-card-icon">💭</div>
-                    <h3>Feedback</h3>
-                    <p>Share ideas or report issues.</p>
-                    <a class="contact-link" href="mailto:feedback@homeboundapp.com">feedback@homeboundapp.com</a>
-                </div>
+    <section class="layout">
+        <aside class="cats" id="cats" aria-label="Help topics"></aside>
+        <div class="faq-col" id="faqCol">
+            <div class="no-results" id="noResults" hidden>
+                <div class="nr-title">No matches for "<span id="nrQuery"></span>"</div>
+                <div class="nr-sub">Try a different word, or email <a href="mailto:support@homeboundapp.com">support@homeboundapp.com</a>. A human reads every message.</div>
             </div>
-        </section>
 
-        <!-- Quick Links -->
-        <div class="quick-links">
-            <h3>Quick Links</h3>
-            <ul>
-                <li><a href="https://homebound.canny.io/feature-requests" target="_blank">Request a Feature</a></li>
-                <li><a href="https://homebound.canny.io/bugs" target="_blank">Report a Bug</a></li>
-                <li><a href="/privacypolicy">Privacy Policy</a></li>
-                <li><a href="/termsofservice">Terms of Service</a></li>
-            </ul>
+            <section class="faq-group" data-cat="Getting Started">
+                <h2 class="group-label">Getting Started</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is Homebound?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>A personal safety app: create trip plans with an expected return time, add safety contacts, and if you don't check out on time your contacts are automatically notified with your trip details and location.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I sign in or create an account?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Passwordless sign-in: <strong>Continue with Email</strong> for a one-time code, or <strong>Continue with Apple</strong>. Your account is created the first time you sign in. Your safety contacts never need an account.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What can I use Homebound for?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Anything where someone should know where you're going and when you'll be back: hikes, walks home at night, kids' field trips, nights out, even grocery runs.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I create a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Tap "+" on the home screen: set your activity, location, start time and ETA, a grace period, and your safety contacts (2 free, 5 with Homebound+). Add notes like your route or gear.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What happens if I don't check out on time?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>After your ETA plus grace period, Homebound automatically notifies your safety contacts with your activity, location, notes, and last known position.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is a grace period?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Extra time after your ETA before alerts fire. Example: an ETA of 5:00 PM plus a 30-minute grace period means contacts are notified at 5:30 PM. It prevents false alarms, and you can customize it per trip.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Is Homebound a replacement for calling 911?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p><strong>No.</strong> Homebound notifies your personal contacts. It does not contact emergency services. In an emergency, always call 911 first.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are custom notification messages?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Write your own trip-start and overdue messages instead of the generic text. Available to all users.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I save a trip for reuse?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Save any trip as a template (up to 10). It remembers your activity, location, contacts, and settings.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are Quick Trips?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>One-tap presets for routine outings: your daily run, the climbing gym, the walk home. Homebound pre-fills everything and detects your location. Free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I save places I go often?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Save Home, Work, or the trailhead under Settings &gt; Saved Locations and pick them when creating trips.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Check-ins & Reminders">
+                <h2 class="group-label">Check-ins &amp; Reminders</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What's the difference between checking in and checking out?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>A check-in is an optional progress update. Checking out ends your trip and tells everyone you're safe. That's the one that matters: miss it and your contacts are alerted.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are check-in reminders?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Optional nudges to check in at an interval you choose. They're just for you; contacts never see them. Free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">If I miss a check-in, are my contacts alerted?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p><strong>No.</strong> Missed check-ins alert no one; contacts are only notified if you miss your checkout (ETA plus grace period). This is the part people most often get backwards.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I set quiet hours so reminders don't wake me?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, per trip: turn on "notification hours" (default 8 AM–10 PM). Emergency alerts always come through.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Safety Contacts">
+                <h2 class="group-label">Safety Contacts</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I add safety contacts?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Contacts tab → add a name and email. Free users: 2 contacts per trip; Homebound+: 5.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are contact groups?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Save a set of contacts under one name, like "Hiking buddies" or "Family", and add them all to a trip at once. Free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Do my contacts need to download the app?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>No. Contacts get email notifications, no app or account needed. If they do have Homebound, add them as friends for live-trip features.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What notifications do my contacts receive?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Emails when you start, check in, finish, go overdue, extend your ETA, send an SOS, or cancel. Each email includes a "Follow This Trip" link that opens in any browser.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use friends as safety contacts?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Friends get the same notifications, plus in-app trip details and live location (if enabled).</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can my contacts follow my trip live without the app?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Every email includes a live web page: trip status, ETA countdown, last check-in on a map, and a timeline. It refreshes on its own.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Emergency SOS">
+                <h2 class="group-label">Emergency SOS</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the SOS button?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>A red one-tap button on every active trip that immediately alerts all your safety contacts, no waiting for your ETA. Free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I send an SOS?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Open your active trip, tap SOS, confirm, and optionally add a message. The confirmation step prevents accidental triggers.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What do my contacts receive when I send an SOS?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>An urgent alert with your name, your optional message, and your last known location. Friends get a push notification; email contacts get an email.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Does SOS contact 911?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>No. SOS alerts your personal contacts only. In immediate danger, call 911 first, then use SOS to loop in your people.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Friends & Social">
+                <h2 class="group-label">Friends &amp; Social</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I add friends?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Friends tab → "Add Friend": share your reusable invite link or have them scan your QR code.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What can my friends see?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>You control it per item under Settings &gt; Friends: check-in locations, live location, trip notes, achievements, and profile details.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can friends request updates from me?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>If enabled, friends can request a check-in during your active trip; you check in with one tap. They can also "Watch Live."</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I remove a friend?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Friends tab → their profile → remove. They lose access to your trips.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the activity feed?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Finished trips can appear in a shared feed with a map snapshot, duration, and stats. Optional and free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What gets shared when I finish a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>You're in control. After you complete a trip, Homebound can offer to publish it to the feed — you can set this to always ask, publish automatically, or never. When you publish, you choose how precise the location is (show it, generalize it, or hide it) and whether participants are visible. Nothing is posted unless you've chosen to share it.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I comment on or react to friends' trips?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. On a feed post you can leave a comment, react with an emoji, and @mention friends. These features are free.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Live Location Sharing">
+                <h2 class="group-label">Live Location Sharing</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is live location sharing?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Live location sharing lets your friends and group-trip participants see your real-time position during an active trip, updated continuously on a map in their app. (Email contacts instead see your most recent check-in location through the "Follow This Trip" link.) It's completely optional and is enabled per trip.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I enable live location?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>When creating a trip, toggle "Share Live Location" to enable it for that specific trip. You can also set a default under Settings &gt; Privacy &gt; "Allow Live Location." Live location only activates once you start the trip (when it becomes active) — it won't run for a trip that's still scheduled for later.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Does live location drain my battery?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Live location sharing does use more battery than normal since it requires continuous GPS access. We recommend starting your trip with a full battery or bringing a portable charger for longer adventures. You can disable live location at any time to conserve battery.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How accurate is live location?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Accuracy depends on your device's GPS capabilities and environmental conditions. In open areas with clear sky view, accuracy is typically within a few meters. In canyons, dense forests, or indoors, accuracy may be reduced. Live location should be treated as an approximate guide, not a precise tracking system.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Circles">
+                <h2 class="group-label">Circles</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are Circles?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>A Circle is a named group of friends you choose to share your live location with — for example "Family" or "Roommates." You decide exactly who's in each Circle and when to share. Circles are free; you can create up to 20, with up to 50 people each.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How are Circles different from trip live location and contact groups?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Trip live location is tied to a specific trip and your safety contacts. A Circle is separate from trips entirely — it's ongoing location sharing with friends you pick, on your schedule, whether or not you're on a trip. Both are also different from <em>contact groups</em>, which are simply a way to add several saved safety contacts to a trip at once.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I start and stop sharing to a Circle?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Open the Circles tab, create a Circle, name it, and add friends. Then start sharing for a set duration — 1 hour, 4 hours, 8 hours, 1 day, 3 days, or 1 week. While you're sharing, a banner with a "Stop" button stays visible so you can end it at any time.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Discover">
+                <h2 class="group-label">Discover</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the Discover tab?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Discover suggests interesting places near you based on your current location and the weather. Tap a suggestion to open directions in Apple Maps. It needs location access and an internet connection, and it's free. Discover doesn't create a trip for you — it's just for finding somewhere to go.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What does Discover suggest?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Discover covers ten activities: hiking, running, climbing, biking, camping, surfing, skiing, snowboarding, bars &amp; breweries, and nearby concerts. Some are seasonal — for example, ski and snowboard spots show in winter and surfing in the warmer months — so what you see changes with the time of year and conditions.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why does it say "Nothing nearby"?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>If Homebound can't find good matches for an activity near you, it says "Nothing nearby" rather than show low-quality or irrelevant results. That usually just means there aren't strong options close by right now, or the activity is out of season. If the whole tab is empty, make sure location access is enabled.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Does Homebound show weather?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. You'll see current conditions for your destination when creating a trip and on completed trip details. You can also save Favorite Locations in the Weather view to check conditions and get alerts when the weather looks great for the activities you choose.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Safety Insights & Score">
+                <h2 class="group-label">Safety Insights &amp; Score</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the safety score?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Your safety score is a 0-100 rating computed from your trip history. It's based on three factors:</p>
+                            <ul>
+                                <li><strong>On-time rate (40%):</strong> Did you check out before your ETA plus grace period expired?</li>
+                                <li><strong>Check-in rate (30%):</strong> Did you check in during trips where you enabled check-in reminders?</li>
+                                <li><strong>Contact coverage (30%):</strong> How many safety contacts did you assign to your trips?</li>
+                            </ul>
+                            <p>Scores are graded as: A+ (90-100), A (80-89), B (70-79), C (60-69), D (50-59), F (below 50).</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How does check-in rate work?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Check-in rate only applies to trips where you enabled check-in reminders (set a check-in interval). If you don't use check-in reminders, this factor doesn't affect your score negatively.</p>
+                            <p>When you do enable check-in reminders:</p>
+                            <ul>
+                                <li>Checking in at least once during your trip gives you full credit for that trip</li>
+                                <li>Skipping all check-ins on a trip where you enabled reminders counts as 0% for that trip</li>
+                                <li>Your overall check-in rate is the average across all trips with reminders enabled</li>
+                            </ul>
+                            <p><strong>Trip length tiers:</strong> To keep scoring fair, trip length is capped based on duration:</p>
+                            <ul>
+                                <li>Under 1 hour: capped at 60 minutes</li>
+                                <li>1-4 hours: capped at 120 minutes</li>
+                                <li>4-8 hours: capped at 240 minutes</li>
+                                <li>8+ hours: capped at 480 minutes</li>
+                            </ul>
+                            <p><strong>Formula:</strong> rate = (check-ins ÷ capped length) × 1200, maxing out at 100%.</p>
+                            <p><strong>Examples:</strong></p>
+                            <ul>
+                                <li>6-hour hike (240 min cap), 3 check-ins: (3 ÷ 240) × 1200 = 15 → caps at 100%</li>
+                                <li>2-hour trip (120 min cap), 1 check-in: (1 ÷ 120) × 1200 = 10 → caps at 100%</li>
+                                <li>2-hour trip (120 min cap), 0 check-ins: (0 ÷ 120) × 1200 = 0%</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the weekly recap?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>The weekly recap summarizes your adventure activity for the current week. It shows your trip count, total adventure hours, whether all trips were completed safely, any overdue incidents, and your busiest day of the week.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Is my safety data sent to your servers?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>No. Your safety score and weekly recap are computed entirely on your device using trip data already stored locally. No additional data is collected, transmitted, or stored on our servers for these features.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How can I improve my safety score?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Check out on time before your ETA plus grace period expires, check in regularly during trips that have check-in intervals set, and complete your trips rather than cancelling them. Consistent safe habits will raise your score over time.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Group Trips">
+                <h2 class="group-label">Group Trips</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are group trips?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Group trips let you create a single trip with multiple participants — perfect for group hikes, ski trips, or dive excursions. Everyone can check in, and each participant's location can be shared with the group. You choose how the trip ends: anyone can mark it complete ("I'm Safe," the default), a majority vote is required ("Vote to End"), or only the owner can end it. Participants can also finish individually — tap "I'm home" when you're back, and the trip completes automatically once everyone is home.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How many participants can join a group trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>A group trip supports up to 20 participants, including the trip owner.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I invite someone to a group trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>When creating a trip, add participants by searching for friends who use Homebound. They'll receive an invitation notification and can accept to join your trip.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I add people after the trip starts?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. The trip owner — or any participant, if the owner allows it — can tap "Add" on an active group trip to invite more friends.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I leave a group trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. If you're a participant (not the owner), you can leave an active group trip from the trip menu. The trip continues for everyone else.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What does "Watching N people" mean?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>If you're a safety contact for several people on the same group trip, Homebound combines them into one "Watching N people" card in your Friends tab, so you can follow everyone at once instead of seeing separate cards.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Are group trips free?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Group trips are available to all users regardless of subscription status.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Achievements & History">
+                <h2 class="group-label">Achievements &amp; History</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are achievements?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Achievements are badges you earn by completing trips and reaching milestones. There are 40 achievements across five categories — Total Trips, Adventure Time, Activities, Locations, and Time Patterns (which includes night-owl and weekend badges). View your badges from the Home tab.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How long is my trip history available?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Free users can access the last 30 days of trip history. Homebound+ subscribers get unlimited access to their full trip history.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I search my trip history?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. The History tab includes a search function to find past trips by name, activity type, or location.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I share a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. From a completed trip you can create a share card — a clean image summary you can post as a story or square, or send to friends. This is separate from the live "Follow This Trip" link your contacts receive during an active trip.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Widgets & Live Activity">
+                <h2 class="group-label">Widgets &amp; Live Activity</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What widgets are available?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Homebound offers home screen widgets that give you quick access to your trips. You can start trips and check in without opening the app. To add a widget, long-press your home screen and tap the "+" button to find Homebound widgets.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is Live Activity?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Live Activity shows your active trip status on your iPhone's lock screen and in the Dynamic Island. You can see your countdown timer, trip name, and quickly check in or mark yourself safe without unlocking your phone.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Are widgets and Live Activity free?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Both widgets and Live Activity are available to all users at no cost.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Homebound+ (Premium)">
+                <h2 class="group-label">Homebound+ (Premium)</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is Homebound+?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Homebound+ is our premium subscription that increases certain limits. With Homebound+, you get up to 5 safety contacts per trip (vs. 2 free), unlimited trip history (vs. 30 days free), and Family Sharing support on the annual plan. All core features — including Emergency SOS, group trips, Circles, the Discover tab, custom messages, contact groups, Live Activity, Trip Map, widgets, achievements, safety insights, and data export — are available to all users for free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What features are free?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>All core safety features are free, including:</p>
+                            <ul>
+                                <li>Trip creation with any activity type</li>
+                                <li>Up to 2 safety contacts per trip</li>
+                                <li>Emergency SOS</li>
+                                <li>Group trips with multiple participants</li>
+                                <li>Custom notification messages</li>
+                                <li>Contact groups</li>
+                                <li>Live location sharing and the "Follow This Trip" link</li>
+                                <li>Circles (location sharing with friend groups)</li>
+                                <li>Quick Trips</li>
+                                <li>The Discover tab</li>
+                                <li>Activity feed (comments and reactions)</li>
+                                <li>Live Activity and Dynamic Island</li>
+                                <li>Trip Map, widgets, and achievements</li>
+                                <li>Safety score and weekly insights</li>
+                                <li>Data export</li>
+                                <li>30 days of trip history</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I subscribe to Homebound+?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Go to Settings &gt; Homebound+ to view subscription options. We offer monthly and annual plans. The annual plan includes Family Sharing through Apple. Subscriptions are processed through the App Store and can be managed in your Apple ID account settings.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I cancel my subscription?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>To cancel Homebound+, go to your iPhone's Settings &gt; Apple ID &gt; Subscriptions &gt; Homebound and tap "Cancel Subscription." You'll retain access to premium features until the end of your current billing period. We cannot process cancellations directly.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I get a refund?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Refunds are handled by Apple since they process all payments. To request a refund, visit reportaproblem.apple.com or contact Apple Support. We don't have the ability to issue refunds directly.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Does Homebound+ support Family Sharing?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, the annual Homebound+ plan supports Apple Family Sharing. The family organizer can share the subscription with up to 5 family members. Family Sharing is not available on the monthly plan.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Privacy & Data">
+                <h2 class="group-label">Privacy &amp; Data</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Does Homebound track my location continuously?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>No. We only collect location data when you explicitly choose to share it: when setting a trip location, checking in with location enabled, or using live location sharing. We do not track your location in the background when you're not on an active trip with live location enabled.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What data does Homebound collect?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>We collect only what's necessary: your email, name, age, trip details, safety contacts, and location (when you choose to share it). If you use social features, we store your friend connections and visibility preferences. We don't sell your data or share it with advertisers. See our <a href="/privacypolicy">Privacy Policy</a> for complete details.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I delete my account?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Go to Settings &gt; Account and tap "Delete Account" at the bottom. This permanently deletes all your data including your profile, trips, contacts, friends, location history, and any other information. This action cannot be undone. Note: If you have an active Homebound+ subscription, you must cancel it separately through the App Store.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I export my data?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, all users can export their data. Go to Settings &gt; Privacy &gt; "Export My Data" to download a copy of your trips, contacts, and profile information.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Troubleshooting">
+                <h2 class="group-label">Troubleshooting</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">I'm not receiving notifications</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Make sure notifications are enabled for Homebound in your iPhone's Settings &gt; Notifications &gt; Homebound. In the app, check Settings &gt; Notifications to confirm "Trip Reminders" and "Check-in Alerts" are on. Also note that a trip's "notification hours" can quiet reminders outside its set window, and Do Not Disturb or Focus modes can block alerts — though emergency (overdue) alerts are designed to break through regardless. If your safety contacts aren't receiving emails, have them check their spam/junk folder.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Which notifications can I turn on or off?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Open Settings &gt; Notifications in the app. You can toggle "Trip Reminders" (alerts before a trip starts and as you approach your ETA) and "Check-in Alerts" (reminders to check in during a trip). Emergency notifications — the critical alerts for when you're overdue — are always on and can't be turned off, so a safety alert is never missed.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">My location isn't accurate</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Location accuracy depends on GPS signal strength. Try moving to an area with clear sky view. Make sure Location Services are enabled for Homebound in Settings &gt; Privacy &amp; Security &gt; Location Services. If using live location, note that accuracy may vary in areas with poor GPS coverage like canyons or dense forests.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use Homebound offline?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, partially. Your trip details are cached locally so you can view them without cell service. However, you need an internet connection to check in, check out, or send notifications to contacts. If you're going somewhere without service, consider setting your ETA for when you expect to be back in coverage.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">I accidentally triggered an overdue alert</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Check out as soon as possible to stop further notifications. Your contacts will receive an update that you've marked yourself safe. For future trips, consider setting a longer grace period to account for potential delays.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I extend my ETA during a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>If your trip is taking longer than expected, open the active trip and tap "Extend ETA." You can add additional time (up to 4 hours) to your expected return. Your safety contacts will be notified of the updated ETA so they know not to worry.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I clear the app cache?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Go to Settings &gt; Resources and tap "Clear Cache." This removes locally cached data like trip details stored for offline access. Your account data on our servers is not affected.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I report a bug?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Go to Settings &gt; Help Make Homebound Better &gt; Report a Bug, or visit our bug tracker at <a href="https://homebound.canny.io/bugs" target="_blank" rel="noopener">homebound.canny.io/bugs</a>. You can also email us at <a href="mailto:feedback@homeboundapp.com">feedback@homeboundapp.com</a>. We appreciate every report!</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I request a feature?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Visit our feature request board at <a href="https://homebound.canny.io/feature-requests" target="_blank" rel="noopener">homebound.canny.io/feature-requests</a> to submit and vote on feature ideas. You can also email <a href="mailto:feedback@homeboundapp.com">feedback@homeboundapp.com</a>.</p></div>
+                    </div>
+                </div>
+            </section>
         </div>
+    </section>
 
-        <!-- FAQ Section -->
-        <section class="faq-section">
-            <h2>Frequently Asked Questions</h2>
-
-            <!-- Getting Started -->
-            <div class="faq-category">
-                <h3>Getting Started</h3>
-
-                <div class="faq-item">
-                    <h4>What is Homebound?</h4>
-                    <p>Homebound is a personal safety app for outdoor adventurers. Create trip plans with your expected return time, add safety contacts, and if you don't check out on time, your contacts are automatically notified with your trip details and location. It's a simple safety net that gives you freedom to explore while giving loved ones peace of mind.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I sign in or create an account?</h4>
-                    <p>Homebound uses passwordless sign-in. Choose <strong>Continue with Email</strong> to get a one-time code sent to your inbox, or <strong>Continue with Apple</strong> to use your Apple ID. Your account is created automatically the first time you sign in — there's no password to remember. Your safety contacts never need to sign in or download the app.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What can I use Homebound for?</h4>
-                    <p>Anything you want! The idea for this app originally was to encourage more people to explore our beautiful Earth, staying safe while doing so. But throughout development, this app has turned into something bigger. Homebound can be used in any situation where you want someone to know where you're going and when you expect to be back/there. For example, college students walking back to their dorms at night, parents tracking kids on field trips, going out to bars with friends, or college students going out to frats/parties. Even just letting a roommate know when you'll be back from grocery shopping. The idea of Homebound is to help you come up with a plan and share it with someone you trust, so that if something goes wrong, they have the information they need to help you.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I create a trip?</h4>
-                    <p>Tap the "+" button on the home screen to create a new trip. You'll set your activity type (hiking, climbing, skiing, etc.), add your location, set your start time and expected return time (ETA), choose a grace period, and select your safety contacts (up to 2 on the free plan, or 5 with Homebound+). You can also add notes with important details like your planned route or gear you're carrying.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What happens if I don't check out on time?</h4>
-                    <p>If you don't check out by your ETA plus your grace period, Homebound automatically sends notifications to your safety contacts. They'll receive your trip details including activity type, location, notes, and your last known position. This ensures someone knows to check on you if something goes wrong.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What is a grace period?</h4>
-                    <p>The grace period is extra time added after your ETA before alerts are sent. For example, if your ETA is 5:00 PM with a 30-minute grace period, contacts won't be notified until 5:30 PM. This prevents false alarms for minor delays like traffic or taking a longer break. You can customize the grace period for each trip.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Is Homebound a replacement for calling 911?</h4>
-                    <p><strong>No.</strong> Homebound is a supplementary safety tool that notifies your personal contacts. It does not contact emergency services or dispatch help. In an emergency, always call 911 (or your local emergency number) first. Homebound is meant to work alongside proper safety planning, not replace it.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What are custom notification messages?</h4>
-                    <p>Custom messages let you personalize the notifications your contacts receive. Instead of generic text, you can write your own trip start message and overdue alert message. This is useful for adding personal touches or specific instructions for your contacts. Custom messages are available to all users.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I save a trip for reuse?</h4>
-                    <p>After creating a trip, you can save it as a template. Templates remember your activity, location, contacts, and settings so you can recreate a trip in seconds. You can save up to 10 templates. (This is different from Quick Trips — see below.)</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What are Quick Trips?</h4>
-                    <p>Quick Trips are one-tap presets pinned to your home screen for routine outings — your daily run, the climbing gym, the walk home. Tap one and Homebound pre-fills the activity, duration, grace period, and contacts, detects your current location, and lets you start in a couple of taps. Set them up under Quick Trips → Manage. You can also back up and restore your Quick Trips from Settings. Quick Trips are free.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I save places I go often?</h4>
-                    <p>Yes. Save places you visit regularly — Home, Work, the trailhead — under Settings &gt; Saved Locations, then pick them when creating a trip instead of searching each time.</p>
-                </div>
+    <section class="contact-band">
+        <div class="contact-card">
+            <div>
+                <div class="cc-title">Still need help?</div>
+                <div class="cc-sub">We usually reply within a day. Privacy questions go to <a href="mailto:privacy@homeboundapp.com">privacy@homeboundapp.com</a>, everything else to support.</div>
             </div>
-
-            <!-- Check-ins & Reminders -->
-            <div class="faq-category">
-                <h3>Check-ins & Reminders</h3>
-
-                <div class="faq-item">
-                    <h4>What's the difference between checking in and checking out?</h4>
-                    <p>A check-in is an optional progress update during a trip — it lets your contacts know you're okay and can include your current location. Checking out is the single action that ends your trip and tells everyone you're safe. The one that matters for safety is checkout: if you don't check out by your ETA plus grace period, your contacts are alerted.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What are check-in reminders?</h4>
-                    <p>When creating a trip you can set a reminder frequency, and Homebound will nudge you to check in at that interval during the trip. Reminders are free, and they're just for you — a gentle prompt, not something your contacts see.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>If I miss a check-in, are my contacts alerted?</h4>
-                    <p><strong>No.</strong> Missing a periodic check-in doesn't alert anyone — it's only a reminder for you. Your contacts are notified only if you miss your <em>checkout</em> (your ETA plus grace period). This is the part people most often get backwards.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I set quiet hours so reminders don't wake me?</h4>
-                    <p>Yes, per trip. When creating a trip you can turn on "notification hours" (default 8 AM–10 PM) so reminders only arrive during that window. Emergency alerts — like going overdue — always come through, regardless of notification hours.</p>
-                </div>
+            <div class="contact-actions">
+                <a href="mailto:support@homeboundapp.com" class="btn-light">Email support</a>
+                <a href="mailto:feedback@homeboundapp.com" class="btn-ghost">Send feedback</a>
             </div>
+        </div>
+    </section>
 
-            <!-- Safety Contacts -->
-            <div class="faq-category">
-                <h3>Safety Contacts</h3>
-
-                <div class="faq-item">
-                    <h4>How do I add safety contacts?</h4>
-                    <p>Go to the Contacts tab to add people you trust. Enter their name and email address. Once added, you can select them as safety contacts when creating trips. Free users can add up to 2 contacts per trip, while Homebound+ subscribers can add up to 5.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What are contact groups?</h4>
-                    <p>Contact groups let you save a set of safety contacts under one name — like "Hiking buddies" or "Family" — and add them all to a trip at once, instead of picking each person every time. Manage them from "Manage Groups" in the Friends tab. Contact groups are free.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Do my contacts need to download the app?</h4>
-                    <p>No. Your safety contacts receive notifications via email. They don't need to download Homebound or create an account. However, if they do have Homebound, you can add them as friends for additional features like seeing each other's active trips.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What notifications do my contacts receive?</h4>
-                    <p>Your safety contacts receive emails when:</p>
-                    <ul>
-                        <li>You start a trip (with trip details and your location)</li>
-                        <li>You check in during a trip (with your current location if enabled)</li>
-                        <li>You complete a trip safely</li>
-                        <li>You go overdue (haven't checked out by ETA + grace period)</li>
-                        <li>You extend your ETA</li>
-                        <li>You send an emergency SOS (see the Emergency SOS section)</li>
-                        <li>You cancel a planned trip</li>
-                    </ul>
-                    <p>Every one of these emails also includes a "Follow This Trip" link they can open in any browser — no app required.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I use friends as safety contacts?</h4>
-                    <p>Yes! If you've connected with other Homebound users as friends, you can add them as safety contacts for your trips. They'll receive the same notifications as regular contacts, plus they can view your trip details and live location (if enabled) directly in their app.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can my contacts follow my trip live without the app?</h4>
-                    <p>Yes. Every email your contacts receive includes a "Follow This Trip" link that opens a live web page — no app or account needed. It shows your trip status, a countdown to your ETA, your most recent check-in location on a map, and a timeline of events (start, check-ins, ETA extensions, checkout). The page refreshes on its own, so contacts can keep an eye on your progress right from their browser.</p>
-                </div>
-            </div>
-
-            <!-- Emergency SOS -->
-            <div class="faq-category">
-                <h3>Emergency SOS</h3>
-
-                <div class="faq-item">
-                    <h4>What is the SOS button?</h4>
-                    <p>When you're on an active trip, the trip card shows a red <strong>SOS</strong> button. It's a one-tap way to immediately alert all of your safety contacts that you need help — without waiting for your ETA to pass. SOS is free and available on every active trip.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I send an SOS?</h4>
-                    <p>Open your active trip and tap <strong>SOS</strong>, then confirm on the "Send Emergency SOS" screen. You can add a short optional message — for example, what's wrong or what you need. Because it alerts everyone right away, it's behind a confirmation step so you can't trigger it by accident. SOS is only available while a trip is active or overdue.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What do my contacts receive when I send an SOS?</h4>
-                    <p>Your safety contacts get an urgent alert — a push notification for friends and group-trip participants, and an email for email contacts — with your name, your optional message, and your last known location. The alert makes clear that this is an emergency, not a routine update.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Does SOS contact 911?</h4>
-                    <p><strong>No.</strong> Like the rest of Homebound, SOS notifies your personal contacts — it does not contact emergency services or dispatch help. If you're in immediate danger, call 911 (or your local emergency number) first, then use SOS to loop in the people who can help. Note: once an SOS has been sent it can't be recalled, so your contacts may follow up to check on you.</p>
-                </div>
-            </div>
-
-            <!-- Friends & Social -->
-            <div class="faq-category">
-                <h3>Friends & Social</h3>
-
-                <div class="faq-item">
-                    <h4>How do I add friends?</h4>
-                    <p>Go to the Friends tab and tap "Add Friend." You can share your personal invite link — it's reusable, and you can regenerate it anytime — or have someone scan your QR code in person. When they open the link or scan the code, they'll be prompted to accept. Adding a friend always happens through your link or QR code; there's no separate request inbox.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What can my friends see?</h4>
-                    <p>You control what friends can see under Settings &gt; Friends. You can share or hide each of these individually:</p>
-                    <ul>
-                        <li>Check-in locations</li>
-                        <li>Live location during trips</li>
-                        <li>Trip notes</li>
-                        <li>Your achievements</li>
-                        <li>Profile details: age, total trips, adventure time, and favorite activity</li>
-                    </ul>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can friends request updates from me?</h4>
-                    <p>If you enable "Allow update requests" (Settings &gt; Friends), friends can send you a request to check in during an active trip. You'll get a notification and can check in with one tap. Friends can also tap "Watch Live" to follow your active trip from their own lock screen. This is useful when someone is worried and wants confirmation you're okay.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I remove a friend?</h4>
-                    <p>Go to the Friends tab, find the friend you want to remove, and tap on their profile. You'll see an option to remove them. Once removed, they won't be able to see your trips or add you as a safety contact.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What is the activity feed?</h4>
-                    <p>When you and your friends finish trips, they can appear in a shared activity feed — with a map snapshot, duration, check-ins, weather, and an optional difficulty grade. You can switch between your Friends feed and a Global feed and sort by newest, most liked, or most discussed. It's an optional, social layer on top of the safety features, and it's free.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What gets shared when I finish a trip?</h4>
-                    <p>You're in control. After you complete a trip, Homebound can offer to publish it to the feed — you can set this to always ask, publish automatically, or never. When you publish, you choose how precise the location is (show it, generalize it, or hide it) and whether participants are visible. Nothing is posted unless you've chosen to share it.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I comment on or react to friends' trips?</h4>
-                    <p>Yes. On a feed post you can leave a comment, react with an emoji, and @mention friends. These features are free.</p>
-                </div>
-            </div>
-
-            <!-- Live Location -->
-            <div class="faq-category">
-                <h3>Live Location Sharing</h3>
-
-                <div class="faq-item">
-                    <h4>What is live location sharing?</h4>
-                    <p>Live location sharing lets your friends and group-trip participants see your real-time position during an active trip, updated continuously on a map in their app. (Email contacts instead see your most recent check-in location through the "Follow This Trip" link.) It's completely optional and is enabled per trip.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I enable live location?</h4>
-                    <p>When creating a trip, toggle "Share Live Location" to enable it for that specific trip. You can also set a default under Settings &gt; Privacy &gt; "Allow Live Location." Live location only activates once you start the trip (when it becomes active) — it won't run for a trip that's still scheduled for later.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Does live location drain my battery?</h4>
-                    <p>Live location sharing does use more battery than normal since it requires continuous GPS access. We recommend starting your trip with a full battery or bringing a portable charger for longer adventures. You can disable live location at any time to conserve battery.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How accurate is live location?</h4>
-                    <p>Accuracy depends on your device's GPS capabilities and environmental conditions. In open areas with clear sky view, accuracy is typically within a few meters. In canyons, dense forests, or indoors, accuracy may be reduced. Live location should be treated as an approximate guide, not a precise tracking system.</p>
-                </div>
-            </div>
-
-            <!-- Circles -->
-            <div class="faq-category">
-                <h3>Circles</h3>
-
-                <div class="faq-item">
-                    <h4>What are Circles?</h4>
-                    <p>A Circle is a named group of friends you choose to share your live location with — for example "Family" or "Roommates." You decide exactly who's in each Circle and when to share. Circles are free; you can create up to 20, with up to 50 people each.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How are Circles different from trip live location and contact groups?</h4>
-                    <p>Trip live location is tied to a specific trip and your safety contacts. A Circle is separate from trips entirely — it's ongoing location sharing with friends you pick, on your schedule, whether or not you're on a trip. Both are also different from <em>contact groups</em>, which are simply a way to add several saved safety contacts to a trip at once.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I start and stop sharing to a Circle?</h4>
-                    <p>Open the Circles tab, create a Circle, name it, and add friends. Then start sharing for a set duration — 1 hour, 4 hours, 8 hours, 1 day, 3 days, or 1 week. While you're sharing, a banner with a "Stop" button stays visible so you can end it at any time.</p>
-                </div>
-            </div>
-
-            <!-- Discover -->
-            <div class="faq-category">
-                <h3>Discover</h3>
-
-                <div class="faq-item">
-                    <h4>What is the Discover tab?</h4>
-                    <p>Discover suggests interesting places near you based on your current location and the weather. Tap a suggestion to open directions in Apple Maps. It needs location access and an internet connection, and it's free. Discover doesn't create a trip for you — it's just for finding somewhere to go.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What does Discover suggest?</h4>
-                    <p>Discover covers ten activities: hiking, running, climbing, biking, camping, surfing, skiing, snowboarding, bars &amp; breweries, and nearby concerts. Some are seasonal — for example, ski and snowboard spots show in winter and surfing in the warmer months — so what you see changes with the time of year and conditions.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Why does it say "Nothing nearby"?</h4>
-                    <p>If Homebound can't find good matches for an activity near you, it says "Nothing nearby" rather than show low-quality or irrelevant results. That usually just means there aren't strong options close by right now, or the activity is out of season. If the whole tab is empty, make sure location access is enabled.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Does Homebound show weather?</h4>
-                    <p>Yes. You'll see current conditions for your destination when creating a trip and on completed trip details. You can also save Favorite Locations in the Weather view to check conditions and get alerts when the weather looks great for the activities you choose.</p>
-                </div>
-            </div>
-
-            <!-- Safety Insights -->
-            <div class="faq-category">
-                <h3>Safety Insights & Score</h3>
-
-                <div class="faq-item">
-                    <h4>What is the safety score?</h4>
-                    <p>Your safety score is a 0-100 rating computed from your trip history. It's based on three factors:</p>
-                    <ul>
-                        <li><strong>On-time rate (40%):</strong> Did you check out before your ETA plus grace period expired?</li>
-                        <li><strong>Check-in rate (30%):</strong> Did you check in during trips where you enabled check-in reminders?</li>
-                        <li><strong>Contact coverage (30%):</strong> How many safety contacts did you assign to your trips?</li>
-                    </ul>
-                    <p>Scores are graded as: A+ (90-100), A (80-89), B (70-79), C (60-69), D (50-59), F (below 50).</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How does check-in rate work?</h4>
-                    <p>Check-in rate only applies to trips where you enabled check-in reminders (set a check-in interval). If you don't use check-in reminders, this factor doesn't affect your score negatively.</p>
-                    <p>When you do enable check-in reminders:</p>
-                    <ul>
-                        <li>Checking in at least once during your trip gives you full credit for that trip</li>
-                        <li>Skipping all check-ins on a trip where you enabled reminders counts as 0% for that trip</li>
-                        <li>Your overall check-in rate is the average across all trips with reminders enabled</li>
-                    </ul>
-                    <p><strong>Trip length tiers:</strong> To keep scoring fair, trip length is capped based on duration:</p>
-                    <ul>
-                        <li>Under 1 hour: capped at 60 minutes</li>
-                        <li>1-4 hours: capped at 120 minutes</li>
-                        <li>4-8 hours: capped at 240 minutes</li>
-                        <li>8+ hours: capped at 480 minutes</li>
-                    </ul>
-                    <p><strong>Formula:</strong> rate = (check-ins ÷ capped length) × 1200, maxing out at 100%.</p>
-                    <p><strong>Examples:</strong></p>
-                    <ul>
-                        <li>6-hour hike (240 min cap), 3 check-ins: (3 ÷ 240) × 1200 = 15 → caps at 100%</li>
-                        <li>2-hour trip (120 min cap), 1 check-in: (1 ÷ 120) × 1200 = 10 → caps at 100%</li>
-                        <li>2-hour trip (120 min cap), 0 check-ins: (0 ÷ 120) × 1200 = 0%</li>
-                    </ul>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What is the weekly recap?</h4>
-                    <p>The weekly recap summarizes your adventure activity for the current week. It shows your trip count, total adventure hours, whether all trips were completed safely, any overdue incidents, and your busiest day of the week.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Is my safety data sent to your servers?</h4>
-                    <p>No. Your safety score and weekly recap are computed entirely on your device using trip data already stored locally. No additional data is collected, transmitted, or stored on our servers for these features.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How can I improve my safety score?</h4>
-                    <p>Check out on time before your ETA plus grace period expires, check in regularly during trips that have check-in intervals set, and complete your trips rather than cancelling them. Consistent safe habits will raise your score over time.</p>
-                </div>
-            </div>
-
-            <!-- Group Trips -->
-            <div class="faq-category">
-                <h3>Group Trips</h3>
-
-                <div class="faq-item">
-                    <h4>What are group trips?</h4>
-                    <p>Group trips let you create a single trip with multiple participants — perfect for group hikes, ski trips, or dive excursions. Everyone can check in, and each participant's location can be shared with the group. You choose how the trip ends: anyone can mark it complete ("I'm Safe," the default), a majority vote is required ("Vote to End"), or only the owner can end it. Participants can also finish individually — tap "I'm home" when you're back, and the trip completes automatically once everyone is home.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How many participants can join a group trip?</h4>
-                    <p>A group trip supports up to 20 participants, including the trip owner.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I invite someone to a group trip?</h4>
-                    <p>When creating a trip, add participants by searching for friends who use Homebound. They'll receive an invitation notification and can accept to join your trip.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I add people after the trip starts?</h4>
-                    <p>Yes. The trip owner — or any participant, if the owner allows it — can tap "Add" on an active group trip to invite more friends.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I leave a group trip?</h4>
-                    <p>Yes. If you're a participant (not the owner), you can leave an active group trip from the trip menu. The trip continues for everyone else.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What does "Watching N people" mean?</h4>
-                    <p>If you're a safety contact for several people on the same group trip, Homebound combines them into one "Watching N people" card in your Friends tab, so you can follow everyone at once instead of seeing separate cards.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Are group trips free?</h4>
-                    <p>Yes. Group trips are available to all users regardless of subscription status.</p>
-                </div>
-            </div>
-
-            <!-- Achievements & History -->
-            <div class="faq-category">
-                <h3>Achievements & History</h3>
-
-                <div class="faq-item">
-                    <h4>What are achievements?</h4>
-                    <p>Achievements are badges you earn by completing trips and reaching milestones. There are 40 achievements across five categories — Total Trips, Adventure Time, Activities, Locations, and Time Patterns (which includes night-owl and weekend badges). View your badges from the Home tab.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How long is my trip history available?</h4>
-                    <p>Free users can access the last 30 days of trip history. Homebound+ subscribers get unlimited access to their full trip history.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I search my trip history?</h4>
-                    <p>Yes. The History tab includes a search function to find past trips by name, activity type, or location.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I share a trip?</h4>
-                    <p>Yes. From a completed trip you can create a share card — a clean image summary you can post as a story or square, or send to friends. This is separate from the live "Follow This Trip" link your contacts receive during an active trip.</p>
-                </div>
-            </div>
-
-            <!-- Widgets & Live Activity -->
-            <div class="faq-category">
-                <h3>Widgets & Live Activity</h3>
-
-                <div class="faq-item">
-                    <h4>What widgets are available?</h4>
-                    <p>Homebound offers home screen widgets that give you quick access to your trips. You can start trips and check in without opening the app. To add a widget, long-press your home screen and tap the "+" button to find Homebound widgets.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What is Live Activity?</h4>
-                    <p>Live Activity shows your active trip status on your iPhone's lock screen and in the Dynamic Island. You can see your countdown timer, trip name, and quickly check in or mark yourself safe without unlocking your phone.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Are widgets and Live Activity free?</h4>
-                    <p>Yes. Both widgets and Live Activity are available to all users at no cost.</p>
-                </div>
-            </div>
-
-            <!-- Homebound+ -->
-            <div class="faq-category">
-                <h3>Homebound+ (Premium)</h3>
-
-                <div class="faq-item">
-                    <h4>What is Homebound+?</h4>
-                    <p>Homebound+ is our premium subscription that increases certain limits. With Homebound+, you get up to 5 safety contacts per trip (vs. 2 free), unlimited trip history (vs. 30 days free), and Family Sharing support on the annual plan. All core features — including Emergency SOS, group trips, Circles, the Discover tab, custom messages, contact groups, Live Activity, Trip Map, widgets, achievements, safety insights, and data export — are available to all users for free.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What features are free?</h4>
-                    <p>All core safety features are free, including:</p>
-                    <ul>
-                        <li>Trip creation with any activity type</li>
-                        <li>Up to 2 safety contacts per trip</li>
-                        <li>Emergency SOS</li>
-                        <li>Group trips with multiple participants</li>
-                        <li>Custom notification messages</li>
-                        <li>Contact groups</li>
-                        <li>Live location sharing and the "Follow This Trip" link</li>
-                        <li>Circles (location sharing with friend groups)</li>
-                        <li>Quick Trips</li>
-                        <li>The Discover tab</li>
-                        <li>Activity feed (comments and reactions)</li>
-                        <li>Live Activity and Dynamic Island</li>
-                        <li>Trip Map, widgets, and achievements</li>
-                        <li>Safety score and weekly insights</li>
-                        <li>Data export</li>
-                        <li>30 days of trip history</li>
-                    </ul>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I subscribe to Homebound+?</h4>
-                    <p>Go to Settings > Homebound+ to view subscription options. We offer monthly and annual plans. The annual plan includes Family Sharing through Apple. Subscriptions are processed through the App Store and can be managed in your Apple ID account settings.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I cancel my subscription?</h4>
-                    <p>To cancel Homebound+, go to your iPhone's Settings > Apple ID > Subscriptions > Homebound and tap "Cancel Subscription." You'll retain access to premium features until the end of your current billing period. We cannot process cancellations directly.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I get a refund?</h4>
-                    <p>Refunds are handled by Apple since they process all payments. To request a refund, visit reportaproblem.apple.com or contact Apple Support. We don't have the ability to issue refunds directly.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Does Homebound+ support Family Sharing?</h4>
-                    <p>Yes, the annual Homebound+ plan supports Apple Family Sharing. The family organizer can share the subscription with up to 5 family members. Family Sharing is not available on the monthly plan.</p>
-                </div>
-            </div>
-
-            <!-- Privacy & Data -->
-            <div class="faq-category">
-                <h3>Privacy & Data</h3>
-
-                <div class="faq-item">
-                    <h4>Does Homebound track my location continuously?</h4>
-                    <p>No. We only collect location data when you explicitly choose to share it: when setting a trip location, checking in with location enabled, or using live location sharing. We do not track your location in the background when you're not on an active trip with live location enabled.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>What data does Homebound collect?</h4>
-                    <p>We collect only what's necessary: your email, name, age, trip details, safety contacts, and location (when you choose to share it). If you use social features, we store your friend connections and visibility preferences. We don't sell your data or share it with advertisers. See our <a href="/privacypolicy">Privacy Policy</a> for complete details.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I delete my account?</h4>
-                    <p>Go to Settings > Account and tap "Delete Account" at the bottom. This permanently deletes all your data including your profile, trips, contacts, friends, location history, and any other information. This action cannot be undone. Note: If you have an active Homebound+ subscription, you must cancel it separately through the App Store.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I export my data?</h4>
-                    <p>Yes, all users can export their data. Go to Settings &gt; Privacy &gt; "Export My Data" to download a copy of your trips, contacts, and profile information.</p>
-                </div>
-            </div>
-
-            <!-- Troubleshooting -->
-            <div class="faq-category">
-                <h3>Troubleshooting</h3>
-
-                <div class="faq-item">
-                    <h4>I'm not receiving notifications</h4>
-                    <p>Make sure notifications are enabled for Homebound in your iPhone's Settings > Notifications > Homebound. In the app, check Settings &gt; Notifications to confirm "Trip Reminders" and "Check-in Alerts" are on. Also note that a trip's "notification hours" can quiet reminders outside its set window, and Do Not Disturb or Focus modes can block alerts — though emergency (overdue) alerts are designed to break through regardless. If your safety contacts aren't receiving emails, have them check their spam/junk folder.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Which notifications can I turn on or off?</h4>
-                    <p>Open Settings &gt; Notifications in the app. You can toggle "Trip Reminders" (alerts before a trip starts and as you approach your ETA) and "Check-in Alerts" (reminders to check in during a trip). Emergency notifications — the critical alerts for when you're overdue — are always on and can't be turned off, so a safety alert is never missed.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>My location isn't accurate</h4>
-                    <p>Location accuracy depends on GPS signal strength. Try moving to an area with clear sky view. Make sure Location Services are enabled for Homebound in Settings > Privacy & Security > Location Services. If using live location, note that accuracy may vary in areas with poor GPS coverage like canyons or dense forests.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>Can I use Homebound offline?</h4>
-                    <p>Yes, partially. Your trip details are cached locally so you can view them without cell service. However, you need an internet connection to check in, check out, or send notifications to contacts. If you're going somewhere without service, consider setting your ETA for when you expect to be back in coverage.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>I accidentally triggered an overdue alert</h4>
-                    <p>Check out as soon as possible to stop further notifications. Your contacts will receive an update that you've marked yourself safe. For future trips, consider setting a longer grace period to account for potential delays.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I extend my ETA during a trip?</h4>
-                    <p>If your trip is taking longer than expected, open the active trip and tap "Extend ETA." You can add additional time (up to 4 hours) to your expected return. Your safety contacts will be notified of the updated ETA so they know not to worry.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I clear the app cache?</h4>
-                    <p>Go to Settings > Resources and tap "Clear Cache." This removes locally cached data like trip details stored for offline access. Your account data on our servers is not affected.</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I report a bug?</h4>
-                    <p>Go to Settings > Help Make Homebound Better > Report a Bug, or visit our bug tracker at <a href="https://homebound.canny.io/bugs" target="_blank">homebound.canny.io/bugs</a>. You can also email us at <a href="mailto:feedback@homeboundapp.com">feedback@homeboundapp.com</a>. We appreciate every report!</p>
-                </div>
-
-                <div class="faq-item">
-                    <h4>How do I request a feature?</h4>
-                    <p>Visit our feature request board at <a href="https://homebound.canny.io/feature-requests" target="_blank">homebound.canny.io/feature-requests</a> to submit and vote on feature ideas. You can also email <a href="mailto:feedback@homeboundapp.com">feedback@homeboundapp.com</a>.</p>
-                </div>
-            </div>
-
-        </section>
-
-        <!-- Still need help -->
-        <section style="text-align: center; padding: 3rem 0; background: var(--bg-secondary); border-radius: 12px; margin-top: 2rem;">
-            <h2 style="margin-bottom: 0.5rem;">Still need help?</h2>
-            <p style="color: var(--text-secondary); margin-bottom: 1.5rem;">We're here for you. Reach out and we'll get back to you as soon as possible.</p>
-            <a href="mailto:support@homeboundapp.com" class="cta-button" style="display: inline-block; background: var(--brand-color); color: white; padding: 0.75rem 1.5rem; border-radius: 8px; text-decoration: none; font-weight: 600;">
-                Contact Support
-            </a>
-        </section>
-    </main>
-
+    <div class="footer-ridge" aria-hidden="true"><div></div></div>
     <footer>
-        <div class="container">
-            <div class="footer-links">
-                <a href="/help">Help Center</a>
-                <a href="/privacypolicy">Privacy Policy</a>
-                <a href="/termsofservice">Terms of Service</a>
-                <a href="mailto:support@homeboundapp.com">Contact</a>
-            </div>
-            <div class="footer-social">
-                <a href="https://instagram.com/homebound.app" target="_blank" rel="noopener" aria-label="Homebound on Instagram" title="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
-                <a href="https://www.threads.net/@homebound.app" target="_blank" rel="noopener" aria-label="Homebound on Threads" title="Threads"><svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
-                <a href="https://www.linkedin.com/company/130883897" target="_blank" rel="noopener" aria-label="Homebound on LinkedIn" title="LinkedIn"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a>
-            </div>
-            <p class="copyright">&copy; 2026 Hudson Schmidt. All rights reserved.</p>
+        <div class="footer-links">
+            <a href="/privacypolicy">Privacy Policy</a>
+            <a href="/termsofservice">Terms of Service</a>
+            <a href="mailto:support@homeboundapp.com">Contact</a>
         </div>
+        <p class="copyright">&copy; 2026 Hudson Schmidt. All rights reserved.</p>
     </footer>
+
+    <script>
+        (function () {
+            const searchInput = document.getElementById('faqSearch');
+            const catsEl = document.getElementById('cats');
+            const noResults = document.getElementById('noResults');
+            const nrQuery = document.getElementById('nrQuery');
+            const groups = Array.from(document.querySelectorAll('.faq-group'));
+
+            const items = [];
+            groups.forEach(group => {
+                group.querySelectorAll('.faq-item').forEach(item => {
+                    const btn = item.querySelector('.faq-q');
+                    const answer = item.querySelector('.faq-a');
+                    const id = 'faq-a-' + items.length;
+                    answer.id = id;
+                    btn.setAttribute('aria-controls', id);
+                    const entry = {
+                        item, btn, answer, group,
+                        qText: btn.querySelector('.q-text').textContent.toLowerCase(),
+                        aText: answer.textContent.toLowerCase(),
+                        manualOpen: false
+                    };
+                    btn.addEventListener('click', () => {
+                        entry.manualOpen = !isOpen(entry);
+                        setOpen(entry, entry.manualOpen);
+                    });
+                    items.push(entry);
+                });
+            });
+
+            document.getElementById('totalCount').textContent = items.length;
+
+            let activeCat = 'All';
+            let query = '';
+
+            function isOpen(entry) {
+                return entry.btn.getAttribute('aria-expanded') === 'true';
+            }
+            function setOpen(entry, open) {
+                entry.btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+                entry.answer.hidden = !open;
+            }
+
+            const catNames = ['All', ...groups.map(g => g.dataset.cat)];
+            catNames.forEach(name => {
+                const count = name === 'All'
+                    ? items.length
+                    : items.filter(e => e.group.dataset.cat === name).length;
+                const btn = document.createElement('button');
+                btn.className = 'cat-btn' + (name === 'All' ? ' active' : '');
+                btn.innerHTML = '<span></span><span class="count"></span>';
+                btn.firstChild.textContent = name;
+                btn.lastChild.textContent = count;
+                btn.addEventListener('click', () => {
+                    activeCat = name;
+                    query = '';
+                    searchInput.value = '';
+                    render();
+                });
+                catsEl.appendChild(btn);
+            });
+
+            function render() {
+                catsEl.querySelectorAll('.cat-btn').forEach(btn => {
+                    const isActive = btn.firstChild.textContent === activeCat;
+                    btn.classList.toggle('active', isActive);
+                    if (isActive) btn.setAttribute('aria-current', 'true');
+                    else btn.removeAttribute('aria-current');
+                });
+
+                let anyVisible = false;
+                groups.forEach(group => {
+                    const inCat = activeCat === 'All' || group.dataset.cat === activeCat;
+                    let groupVisible = 0;
+                    items.filter(e => e.group === group).forEach(entry => {
+                        const match = !query || entry.qText.includes(query) || entry.aText.includes(query);
+                        const visible = inCat && match;
+                        entry.item.hidden = !visible;
+                        if (visible) groupVisible++;
+                        setOpen(entry, entry.manualOpen || (!!query && visible && entry.qText.includes(query)));
+                    });
+                    group.hidden = !inCat || groupVisible === 0;
+                    if (!group.hidden) anyVisible = true;
+                });
+
+                noResults.hidden = anyVisible;
+                nrQuery.textContent = searchInput.value.trim();
+            }
+
+            searchInput.addEventListener('input', () => {
+                query = searchInput.value.trim().toLowerCase();
+                if (query) activeCat = 'All';
+                render();
+            });
+
+            document.querySelectorAll('.chip').forEach(chip => {
+                chip.addEventListener('click', () => {
+                    searchInput.value = chip.dataset.term;
+                    query = chip.dataset.term.toLowerCase();
+                    activeCat = 'All';
+                    render();
+                    searchInput.focus();
+                });
+            });
+
+            render();
+        })();
+    </script>
 </body>
 </html>
