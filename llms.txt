@@ -25,29 +25,33 @@ Homebound works as a dead man's switch for outdoor activities. Users create a tr
 - **Alerts That Reach You**: Safety notifications break through Focus and Do Not Disturb and appear on CarPlay, so important alerts are never missed
 - **Group Trips**: Plan adventures with up to 20 participants; each person checks in and finishes individually (everyone is notified as each member gets home), people can be added after a trip starts, and watched members appear together on one live map
 - **Live Location Sharing**: Share real-time GPS position with safety contacts during active trips
-- **Circles**: Share your live location with a chosen group of friends for a set duration—a day, 3 days, or a week—independent of any trip, and stop anytime
+- **Circles**: Share your live location with a chosen group of friends for a set duration—1 hour, 4 hours, 8 hours, a day, 3 days, or a week—independent of any trip, and stop anytime
 - **Live Map**: See the friends and trip participants who are sharing with you, live, on one map
+- **Apple Watch App**: Check in, extend your ETA, finish a trip, or send an SOS from your wrist—working directly over the watch's own connection when the phone is out of range. Watch face complications show a live countdown, and the watch schedules its own haptic ETA and grace-period alerts so they fire with no signal at all
 - **Live Activity & Dynamic Island**: See trip countdown on lock screen and Dynamic Island; check in without unlocking
+- **Siri & Shortcuts**: Start a Quick Trip by voice ("Start my walk home in Homebound") or from the Shortcuts app, a Home Screen button, or an automation
 - **Friends**: Connect with other Homebound users, see each other's active trips, request check-in updates
+- **Profile Photos**: Add a photo from your camera or library; uploads are re-encoded and stripped of all metadata, including GPS coordinates
 - **Safety Score**: 0-100 score based on on-time rate, check-in rate, and contact coverage (computed on-device)
 - **Weekly Recap**: Summary of adventure hours, trip count, and safety habits
-- **Achievements**: 40+ badges and milestones across categories like streaks, night adventures, and more
+- **Achievements**: 40 badges across five categories—total trips, adventure time, activities, locations, and time patterns
 - **Trip Map**: Interactive map of all past adventures
-- **Discover**: Find nearby places and activities with current conditions, from trailheads and climbing spots to concerts
+- **Discover**: Find nearby places and activities with current conditions across ten activities, from trailheads and climbing spots to concerts (concert cards show date, time, price, and venue, and open the ticket page)
 - **Trip History & Search**: Browse and search past trips (30 days free, unlimited with Homebound+)
-- **Widgets**: Home screen widgets for quick trip access
-- **Custom Notification Messages**: Personalize the messages your contacts receive
-- **Trip Saving**: Save up to 10 trip templates for quick reuse
+- **Widgets**: Home Screen and Lock Screen widgets showing trip status and countdown; the medium widget adds Check In and Check Out buttons
+- **Quick Trips**: One-tap presets for routine outings (5 free, 10 with Homebound+); destination presets can set their own return time from a live travel estimate
+- **Reporting & Blocking**: Report a post, comment, or person, and block anyone; blocked users are managed in Settings > Privacy
+- **Referrals (Give 7, Get 7)**: Invite a friend and you each get 7 days of Homebound+ once they finish their first trip
 - **Data Export**: Export your trips, contacts, and profile data anytime
 - **Check-In Reminders**: Set intervals to remind you to check in during trips
 - **ETA Extension**: Add up to 4 hours to your return time with one tap if running late
 
 ## Pricing
 
-All core safety features are free. Homebound+ is a premium subscription that increases limits:
+The whole safety loop is free—trips, overdue alerts, SOS, group trips, Circles, live location, the Apple Watch app, Discover, widgets, Live Activity, Trip Map, achievements, safety score, and data export. Homebound+ raises limits and adds a few conveniences:
 
-- **Free**: Up to 2 safety contacts per trip, 30 days of trip history, all other features included
-- **Homebound+**: Up to 5 safety contacts per trip, unlimited trip history, Family Sharing on annual plan
+- **Free**: 2 safety contacts per trip, 30 days of trip history, 5 Quick Trips, 1 pinned favorite activity, 2 adventure stats, preset check-in intervals (15/30/60/120 min)
+- **Homebound+**: 5 safety contacts per trip, unlimited trip history, 10 Quick Trips, 3 pinned favorite activities, all 8 adventure stats, any check-in interval, custom notification messages, contact groups, Family Sharing on the annual plan
 
 ## Privacy
 
@@ -60,9 +64,9 @@ All core safety features are free. Homebound+ is a premium subscription that inc
 
 ## Platform
 
-- iOS only (iPhone)
-- Requires internet for check-in, checkout, and notifications
-- Trips can be created offline and activate automatically once you reconnect; cached trip details are viewable without service
+- iPhone, plus a companion Apple Watch app
+- Actions taken offline—creating or starting a trip, checking in, extending, checking out, SOS—are queued locally and sent automatically once you reconnect; cached trip details are viewable without service
+- Contacts are only notified when a queued action actually sends, so an overdue alert can still fire if you check out in a dead zone and stay offline past your ETA plus grace period
 
 ## Important Note
 

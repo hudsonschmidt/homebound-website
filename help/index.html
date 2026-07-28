@@ -338,14 +338,14 @@
         <div class="spark" style="top:180px;left:24%;font-size:9px" aria-hidden="true">✦</div>
         <div class="spark" style="top:200px;right:22%;font-size:10px" aria-hidden="true">✦</div>
         <h1>How can we help?</h1>
-        <p>Search <span id="totalCount">81</span> answers, or browse by topic.</p>
+        <p>Search <span id="totalCount">99</span> answers, or browse by topic.</p>
         <div class="search-wrap">
-            <input type="search" id="faqSearch" placeholder='Try "grace period", "SOS", or "battery"…' aria-label="Search help answers">
+            <input type="search" id="faqSearch" placeholder='Try "grace period", "Apple Watch", or "Siri"…' aria-label="Search help answers">
             <span class="search-icon" aria-hidden="true">⌕</span>
         </div>
         <div class="chips">
             <button class="chip" data-term="miss a check-in">Do missed check-ins alert anyone?</button>
-            <button class="chip" data-term="download the app">Do contacts need the app?</button>
+            <button class="chip" data-term="Apple Watch">What can the watch do?</button>
             <button class="chip" data-term="SOS contact 911">Does SOS call 911?</button>
             <button class="chip" data-term="grace period">What's a grace period?</button>
         </div>
@@ -376,7 +376,15 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I create a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Tap "+" on the home screen: set your activity, location, start time and ETA, a grace period, and your safety contacts (2 free, 5 with Homebound+). Add notes like your route or gear.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>Start from the Home tab. You get three ways to go:</p>
+                            <ul>
+                                <li><strong>A Quick Trip</strong> — tap one of your saved presets and you're off in a single tap.</li>
+                                <li><strong>Plan a trip (Solo or Group)</strong> — the full planner: activity, location, start time and ETA, grace period, notes, and safety contacts.</li>
+                                <li><strong>One-time trip</strong> — a fast setup for something you won't do again, without saving a preset.</li>
+                            </ul>
+                            <p>Free accounts can assign 2 safety contacts per trip; Homebound+ allows 5.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What happens if I don't check out on time?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -392,19 +400,19 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What are custom notification messages?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Write your own trip-start and overdue messages instead of the generic text. Available to all users.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I save a trip for reuse?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Save any trip as a template (up to 10). It remembers your activity, location, contacts, and settings.</p></div>
-                    </div>
-                    <div class="faq-item">
-                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are Quick Trips?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>One-tap presets for routine outings: your daily run, the climbing gym, the walk home. Homebound pre-fills everything and detects your location. Free.</p></div>
+                        <div class="faq-a" hidden><p>Write your own trip-start and overdue messages instead of the standard text. Custom messages are a Homebound+ feature.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I save places I go often?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>Yes. Save Home, Work, or the trailhead under Settings &gt; Saved Locations and pick them when creating trips.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I choose which activities appear first?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Settings &gt; Customization has a Favorite Activities list — pin the activities you use most and drag them into the order you want, and they appear that way every time you create a trip. Free accounts can pin 1 activity; Homebound+ raises that to 3.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I add a profile photo?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Tap your avatar on your profile or in Settings &gt; Account, then take a photo or choose one from your library and crop it. Friends see it across the app. Homebound re-encodes every upload and strips all metadata first — including any GPS coordinates the original photo carried — and you can remove the photo from the same menu at any time.</p></div>
                     </div>
                 </div>
             </section>
@@ -436,11 +444,11 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I add safety contacts?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Contacts tab → add a name and email. Free users: 2 contacts per trip; Homebound+: 5.</p></div>
+                        <div class="faq-a" hidden><p>Go to Settings &gt; Emergency Contacts and add a name and email, or add one while you're creating a trip. Free accounts: 2 contacts per trip; Homebound+: 5.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What are contact groups?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Save a set of contacts under one name, like "Hiking buddies" or "Family", and add them all to a trip at once. Free.</p></div>
+                        <div class="faq-a" hidden><p>Save a set of contacts under one name, like "Hiking buddies" or "Family", and add them all to a trip at once. Contact groups are a Homebound+ feature.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Do my contacts need to download the app?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -448,7 +456,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What notifications do my contacts receive?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Emails when you start, check in, finish, go overdue, extend your ETA, send an SOS, or cancel. Each email includes a "Follow This Trip" link that opens in any browser.</p></div>
+                        <div class="faq-a" hidden><p>Emails when you start a trip, check in, finish, go overdue, are marked safe after being overdue, extend your ETA, send an SOS, or cancel. On group trips they're also told as each person gets home. Every email includes a "Follow This Trip" link that opens in any browser.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use friends as safety contacts?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -483,6 +491,67 @@
                 </div>
             </section>
 
+            <section class="faq-group" data-cat="Quick Trips, Siri &amp; Shortcuts">
+                <h2 class="group-label">Quick Trips, Siri &amp; Shortcuts</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What are Quick Trips?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>One-tap presets for routine outings: your daily run, the climbing gym, the walk home. A Quick Trip remembers the activity, location or destination, duration, grace period, safety contacts, and whether to share your live location — so starting it takes a single tap from the Home tab. Free accounts get 5 Quick Trips; Homebound+ raises that to 10.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I create or edit a Quick Trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Open the trip starter from the Home tab and tap "+ New Quick Trip", or tap an existing preset's edit control to change it. You can turn presets off without deleting them, and reorder them however you like.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can a Quick Trip work out its own return time?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, for Quick Trips that head to a destination. Turn on the estimated travel time option and Homebound builds the trip length from a live route between wherever you are when you start and where you're going, along with a matching grace period. You'll see the estimate before you go. It works for walking, hiking, driving, and biking; for other activities — or when no route can be found — the preset falls back to the duration you saved.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can Siri start a trip for me?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Say something like "Start my walk home in Homebound" and Siri starts that Quick Trip. Your Quick Trips also show up in the Shortcuts app under a "Start Quick Trip" action, so you can put one on your Home Screen or fire it from an automation. Homebound comes to the foreground while it starts — it needs a live location fix to open the trip.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why doesn't my Quick Trip appear in Siri or Shortcuts?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Only Quick Trips that already have at least one safety contact or friend saved on them can be started by voice or shortcut — there's no step in a voice start for choosing who should be watching, so someone has to be set in advance. Open the Quick Trip in Homebound, add a contact, and it will show up. A preset that's switched off, or one you've deleted, won't appear either.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Apple Watch">
+                <h2 class="group-label">Apple Watch</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What can I do from my Apple Watch?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>The watch app shows your active trip and its countdown, and puts the actions that matter on your wrist:</p>
+                            <ul>
+                                <li>Check in</li>
+                                <li>Extend your ETA (30 minutes up to 4 hours)</li>
+                                <li>Finish the trip — or tap "I'm home" on a group trip that uses individual finish</li>
+                                <li>Send an SOS</li>
+                            </ul>
+                            <p>It's a companion to the iPhone app rather than a standalone one: you sign in and create trips on your phone, and the watch handles what happens once a trip is running. An SOS sent from the watch goes out without a typed message.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Do I need my iPhone with me?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Not for the actions above. Your phone syncs the trip and a signing token to the watch, so as long as the watch itself has a connection — cellular or Wi-Fi — check in, extend, finish, and SOS go straight to Homebound with the phone nowhere nearby. You do need your iPhone to sign in the first time, to create trips, and to keep the watch's trip data current. If the watch has nothing synced, it'll ask you to open Homebound on your phone.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I put Homebound on my watch face?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. Homebound offers complications in the circular, rectangular, inline, and corner styles, showing your trip status and a live countdown. Adding one also helps the watch refresh in the background more often. If the watch hasn't heard from your phone in roughly half a day, the complication switches to a quiet "sync" state instead of showing a stale countdown — a safety complication shouldn't imply it's current when it isn't.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Will my watch alert me when my return time is close?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, and it works with no signal at all. When a trip syncs, the watch schedules its own haptic alerts for your ETA and for the end of your grace period, so they fire even deep in the backcountry. Checking in, extending, or finishing moves or clears them. The alerts include a "Check In" button so you can respond straight from the notification. They need notification permission for Homebound on the watch — if that's off, the app says so on the trip screen rather than letting a safety alert fail quietly.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can the watch keep sharing my live location?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>If your phone is streaming live location on a trip and then goes out of range, the watch offers — once per trip — to carry the stream, sending a position on its background refresh cadence (roughly every 15 minutes, though watchOS decides the actual timing; a Homebound complication on your face helps). The phone stays in charge whenever it's reachable. Watch updates are less frequent than the phone's, and the trip screen shows when the last position actually landed rather than promising a schedule.</p></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="faq-group" data-cat="Friends & Social">
                 <h2 class="group-label">Friends &amp; Social</h2>
                 <div class="group-card">
@@ -492,7 +561,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What can my friends see?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>You control it per item under Settings &gt; Friends: check-in locations, live location, trip notes, achievements, and profile details.</p></div>
+                        <div class="faq-a" hidden><p>You control it item by item under Settings &gt; Friends: check-in locations, trip notes, and whether friends can request an update from you during a trip, plus which profile stats are visible (total trips, adventure time, favorite activity, achievements). Live location has its own switch under Settings &gt; Privacy.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can friends request updates from me?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -508,7 +577,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What gets shared when I finish a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>You're in control. After you complete a trip, Homebound can offer to publish it to the feed — you can set this to always ask, publish automatically, or never. When you publish, you choose how precise the location is (show it, generalize it, or hide it) and whether participants are visible. Nothing is posted unless you've chosen to share it.</p></div>
+                        <div class="faq-a" hidden><p>Nothing, unless you choose to share it. A finished trip stays private until you open it and tap "Share with Friends" — there's no automatic publishing. Before you share you pick how the location appears (Show, Generalize, or Hide), and on a group trip whether to list the participants or show only a count. You can un-publish a shared trip at any time.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I comment on or react to friends' trips?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -552,7 +621,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I start and stop sharing to a Circle?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Open the Circles tab, create a Circle, name it, and add friends. Then start sharing for a set duration — 1 hour, 4 hours, 8 hours, 1 day, 3 days, or 1 week. While you're sharing, a banner with a "Stop" button stays visible so you can end it at any time.</p></div>
+                        <div class="faq-a" hidden><p>Open the Map tab and tap the people icon at the top right — that's where Circles lives. Create a Circle, name it, and add friends. Then pick how long to share for — 1 hour, 4 hours, 8 hours, 1 day, 3 days, or 1 week — and tap "Share My Location." While you're sharing, a bar with a "Stop" button sits above the tab bar wherever you are in the app, so you can end it at any time. You can also stop from inside the Circle itself.</p></div>
                     </div>
                 </div>
             </section>
@@ -562,7 +631,11 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is the Discover tab?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Discover suggests interesting places near you based on your current location and the weather. Tap a suggestion to open directions in Apple Maps. It needs location access and an internet connection, and it's free. Discover doesn't create a trip for you — it's just for finding somewhere to go.</p></div>
+                        <div class="faq-a" hidden><p>Discover suggests interesting places near you based on your current location and the weather. It needs location access and an internet connection, and it's free. Discover doesn't create a trip for you — it's just for finding somewhere to go.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What happens when I tap a suggestion?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>For places — trailheads, crags, campgrounds, breweries — tapping opens directions in Apple Maps. Concerts work differently: the card shows the date, start time, price, and venue, and tapping takes you to the event page to get tickets rather than to directions.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What does Discover suggest?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -589,9 +662,10 @@
                             <ul>
                                 <li><strong>On-time rate (40%):</strong> Did you check out before your ETA plus grace period expired?</li>
                                 <li><strong>Check-in rate (30%):</strong> Did you check in during trips where you enabled check-in reminders?</li>
-                                <li><strong>Contact coverage (30%):</strong> How many safety contacts did you assign to your trips?</li>
+                                <li><strong>Contact coverage (30%):</strong> How many safety contacts did you assign to your trips? 0 contacts scores 0%, 1 scores 33%, 2 scores 67%, and 3 or more scores 100%. Email contacts and friends both count.</li>
                             </ul>
                             <p>Scores are graded as: A+ (90-100), A (80-89), B (70-79), C (60-69), D (50-59), F (below 50).</p>
+                            <p>Only completed trips count. Cancelled trips are left out of the calculation entirely, and trips still in progress don't count until they're finished.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -630,7 +704,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How can I improve my safety score?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Check out on time before your ETA plus grace period expires, check in regularly during trips that have check-in intervals set, and complete your trips rather than cancelling them. Consistent safe habits will raise your score over time.</p></div>
+                        <div class="faq-a" hidden><p>Three things move it: check out before your ETA plus grace period expires; check in at least once on trips where you've set a check-in interval; and add more safety contacts, since three or more earns full coverage credit. Cancelling a trip doesn't hurt your score — cancelled trips are excluded — but it doesn't help it either. Consistent habits raise the score over time.</p></div>
                     </div>
                 </div>
             </section>
@@ -640,7 +714,16 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What are group trips?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Group trips let you create a single trip with multiple participants — perfect for group hikes, ski trips, or dive excursions. Everyone can check in, and each participant's location can be shared with the group. You choose how the trip ends: anyone can mark it complete ("I'm Safe," the default), a majority vote is required ("Vote to End"), or only the owner can end it. Participants can also finish individually — tap "I'm home" when you're back, and the trip completes automatically once everyone is home.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>Group trips let you create a single trip with multiple participants — group hikes, ski trips, dive excursions. Everyone can check in, and each participant's location can be shared with the group.</p>
+                            <p>When you create the trip you choose who can end it:</p>
+                            <ul>
+                                <li><strong>Anyone</strong> (the default) — any participant can end the trip for everyone.</li>
+                                <li><strong>Vote</strong> — a share of participants has to agree first. You set the threshold anywhere from 50% to 100%.</li>
+                                <li><strong>Only Me</strong> — only you, the trip leader, can end it.</li>
+                            </ul>
+                            <p>You can also switch on <strong>individual finish</strong>: each person taps "I'm home" as they arrive, everyone gets told, and the trip ends on its own once the last person is back.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How many participants can join a group trip?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -682,7 +765,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I search my trip history?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes. The History tab includes a search function to find past trips by name, activity type, or location.</p></div>
+                        <div class="faq-a" hidden><p>Yes. The History tab has a search field that matches trip names and locations, plus a separate filter for activity type.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I share a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -696,7 +779,7 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What widgets are available?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Homebound offers home screen widgets that give you quick access to your trips. You can start trips and check in without opening the app. To add a widget, long-press your home screen and tap the "+" button to find Homebound widgets.</p></div>
+                        <div class="faq-a" hidden><p>Home Screen widgets show your active trip's status and countdown, and the medium "Trip Control" widget adds Check In and Check Out buttons you can tap without opening the app. There are Lock Screen widgets too: Trip Status, Trip Countdown, and Trip Details. To add one, long-press your Home Screen or Lock Screen and look for Homebound. Trips are created in the app, not from a widget — though Siri and the Shortcuts app can start a Quick Trip for you.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is Live Activity?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -714,27 +797,41 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is Homebound+?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Homebound+ is our premium subscription that increases certain limits. With Homebound+, you get up to 5 safety contacts per trip (vs. 2 free), unlimited trip history (vs. 30 days free), and Family Sharing support on the annual plan. All core features — including Emergency SOS, group trips, Circles, the Discover tab, custom messages, contact groups, Live Activity, Trip Map, widgets, achievements, safety insights, and data export — are available to all users for free.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>Homebound+ is our premium subscription. The safety loop itself stays free — Homebound+ raises limits and unlocks a few conveniences:</p>
+                            <ul>
+                                <li><strong>Safety contacts per trip:</strong> 5 (free: 2)</li>
+                                <li><strong>Trip history:</strong> unlimited (free: last 30 days)</li>
+                                <li><strong>Quick Trips:</strong> 10 (free: 5)</li>
+                                <li><strong>Pinned favorite activities:</strong> 3 (free: 1)</li>
+                                <li><strong>Adventure stats:</strong> all 8 (free: 2)</li>
+                                <li><strong>Check-in reminders:</strong> any interval you like (free: the 15, 30, 60, and 120-minute presets)</li>
+                                <li><strong>Custom notification messages</strong></li>
+                                <li><strong>Contact groups</strong></li>
+                                <li><strong>Family Sharing</strong> on the annual plan</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What features are free?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden>
-                            <p>All core safety features are free, including:</p>
+                            <p>Every part of the safety loop is free, including:</p>
                             <ul>
                                 <li>Trip creation with any activity type</li>
-                                <li>Up to 2 safety contacts per trip</li>
+                                <li>2 safety contacts per trip</li>
+                                <li>Automatic overdue alerts</li>
                                 <li>Emergency SOS</li>
-                                <li>Group trips with multiple participants</li>
-                                <li>Custom notification messages</li>
-                                <li>Contact groups</li>
+                                <li>Group trips with up to 20 participants</li>
                                 <li>Live location sharing and the "Follow This Trip" link</li>
                                 <li>Circles (location sharing with friend groups)</li>
-                                <li>Quick Trips</li>
+                                <li>5 Quick Trips, plus Siri and Shortcuts</li>
+                                <li>The Apple Watch app and its complications</li>
                                 <li>The Discover tab</li>
                                 <li>Activity feed (comments and reactions)</li>
                                 <li>Live Activity and Dynamic Island</li>
                                 <li>Trip Map, widgets, and achievements</li>
                                 <li>Safety score and weekly insights</li>
+                                <li>Reporting and blocking</li>
                                 <li>Data export</li>
                                 <li>30 days of trip history</li>
                             </ul>
@@ -759,12 +856,60 @@
                 </div>
             </section>
 
+            <section class="faq-group" data-cat="Give 7, Get 7">
+                <h2 class="group-label">Give 7, Get 7</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is Give 7, Get 7?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Invite someone new to Homebound with your invite link. When they join through it and finish their first trip, you each get 7 days of Homebound+. Your dashboard is in Settings under "Give 7, Get 7."</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What has to happen for a referral to count?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Three things:</p>
+                            <ul>
+                                <li>Your friend has to be new — their account must be created within 72 hours of accepting your invite.</li>
+                                <li>They have to complete their first qualifying trip: their own trip finishing, or marking themselves home as a participant on a group trip.</li>
+                                <li>That trip must have been active for at least 30 minutes.</li>
+                            </ul>
+                            <p>Each person can qualify once. Until they finish that trip, they show as "pending first trip" on your dashboard.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Is there a limit to what I can earn?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>You can earn up to 90 days of Homebound+ per rolling 365 days from referrals. Days you earn are banked rather than burned: they only start counting down when you don't already have paid coverage, so subscribing while you have credit doesn't waste it — the unused whole days go back into the bank. Your dashboard shows your balance and how much of the yearly limit you've used.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Where do I find my invite link?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Settings &gt; Give 7, Get 7 has your link plus a copy button, your referral list, and your balance. It's the same reusable friend invite link and QR code you'd use to add someone as a friend — anyone who joins through it and qualifies counts.</p></div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Reporting &amp; Blocking">
+                <h2 class="group-label">Reporting &amp; Blocking</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I report a post, a comment, or a person?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>On someone else's feed post, open the "…" menu and choose Report Post. On a comment, use the comment's menu and choose Report Comment. To report a person, open their profile from the Friends tab and choose Report. You pick a reason — spam, harassment or bullying, inappropriate content, impersonation, or something else — and can add details. Reports are reviewed within 24 hours.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I block someone?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Open their profile from the Friends tab and choose Block. Blocking ends the friendship, hides their content from you and yours from them, and stops them from adding you as a friend again.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I see or undo my blocks?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Settings &gt; Privacy &gt; Blocked Users lists everyone you've blocked and lets you unblock them. Unblocking doesn't restore the friendship — if you want to be friends again, one of you has to send a new invite.</p></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="faq-group" data-cat="Privacy & Data">
                 <h2 class="group-label">Privacy &amp; Data</h2>
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Does Homebound track my location continuously?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>No. We only collect location data when you explicitly choose to share it: when setting a trip location, checking in with location enabled, or using live location sharing. We do not track your location in the background when you're not on an active trip with live location enabled.</p></div>
+                        <div class="faq-a" hidden><p>No. We only collect location data when you explicitly choose to share it: setting a trip location, checking in with location enabled, sharing live location during an active trip, or sharing to a Circle. Outside of those, there's no background location tracking — and you can stop live sharing at any time.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What data does Homebound collect?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -798,7 +943,10 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use Homebound offline?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes, partially. Your trip details are cached locally so you can view them without cell service. However, you need an internet connection to check in, check out, or send notifications to contacts. If you're going somewhere without service, consider setting your ETA for when you expect to be back in coverage.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>Mostly, yes. Trip details are cached on your device so you can view them with no service, and actions you take offline — creating a trip, starting it, checking in, extending your ETA, checking out, even an SOS — are queued and sent automatically the moment you're back online.</p>
+                            <p>The catch is that your contacts only hear about something once it actually sends. If you check out in a dead zone and don't regain signal before your ETA plus grace period, the overdue alert still goes out; your contacts get the "marked safe" update when you reconnect. For trips into no-service areas, set your ETA for when you expect to be back in coverage.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">I accidentally triggered an overdue alert</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -842,6 +990,7 @@
     <footer>
         <div class="footer-links">
             <a href="/privacypolicy">Privacy Policy</a>
+            <a href="/consumerhealth">Consumer Health Data</a>
             <a href="/termsofservice">Terms of Service</a>
             <a href="mailto:support@homeboundapp.com">Contact</a>
         </div>
