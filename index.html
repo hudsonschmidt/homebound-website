@@ -445,6 +445,23 @@
             line-height: 1.65;
             max-width: 480px;
         }
+        .announce-cta {
+            display: inline-flex;
+            align-items: center;
+            min-height: 44px;
+            box-sizing: border-box;
+            margin-top: 24px;
+            padding: 12px 24px;
+            border-radius: 14px;
+            background: var(--sun);
+            color: #16281a !important;
+            font-size: 0.95rem;
+            font-weight: 700;
+            letter-spacing: -0.005em;
+            text-decoration: none;
+            transition: transform 0.2s, background 0.2s;
+        }
+        .announce-cta:hover { transform: scale(1.03); background: #f2b64c; }
         .watch-mock {
             width: 170px;
             background: linear-gradient(160deg, #3a3d3a, #151715);
@@ -591,7 +608,7 @@
             <div class="ridge ridge-mid" aria-hidden="true"></div>
             <div class="ridge ridge-front" aria-hidden="true"></div>
             <div class="hero-phone">
-                <img src="assets/sm/01.png" alt="Homebound home screen showing an active trip with a countdown, Check In and I'm Safe buttons, and safety tips">
+                <img src="assets/sm/01.png" alt="Homebound home screen showing an active trip with a countdown to the return time, Check In, I'm Safe and Extend buttons, and an Emergency SOS bar">
             </div>
         </div>
     </section>
@@ -646,7 +663,7 @@
                     </ul>
                 </div>
                 <div class="phase-shot">
-                    <div class="phone-top"><img src="assets/sm/07.png" alt="Start a Trip screen with solo and group options plus one-tap Quick Trips"></div>
+                    <div class="phone-top"><img src="assets/sm/06.png" alt="Start a trip screen with one-tap Quick Trips and options to plan a solo or group trip"></div>
                 </div>
             </div>
             <div class="phase-card">
@@ -662,7 +679,7 @@
                     </ul>
                 </div>
                 <div class="phase-shot">
-                    <div class="phone-top"><img src="assets/sm/02.png" alt="Trip map showing friends' live locations and active trips"></div>
+                    <div class="phone-top"><img src="assets/sm/04.png" alt="Trip details screen with everyone's live locations on one map and location sharing turned on"></div>
                 </div>
             </div>
             <div class="phase-card">
@@ -678,7 +695,7 @@
                     </ul>
                 </div>
                 <div class="phase-shot">
-                    <div class="phone-top"><img src="assets/sm/09.png" alt="Trip history with adventure stats and a safety score of 97"></div>
+                    <div class="phone-top"><img src="assets/sm/09.png" alt="Trip history with adventure stats and a safety score of 100"></div>
                 </div>
             </div>
         </div>
@@ -748,12 +765,13 @@
     <section class="announce">
         <div class="announce-card">
             <div>
-                <div class="announce-kicker">Version 1.4 · August 8</div>
+                <div class="announce-kicker">Version 1.4 · Out now</div>
                 <h2>Check in from your wrist.</h2>
-                <p>The Apple Watch companion app arrives August 8, along with Siri &amp; Shortcuts trip starts, smarter Quick Trip ETAs, a refreshed design, and a referral program.</p>
+                <p>The Apple Watch companion app is here, along with Siri &amp; Shortcuts trip starts, smarter Quick Trip ETAs, a refreshed design, and a referral program.</p>
+                <a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989" class="announce-cta">Update on the App Store</a>
             </div>
             <div class="watch-mock">
-                <img src="assets/sm/watch.png" alt="Homebound on Apple Watch showing an active Morning Walk trip with an ETA countdown and Check In button">
+                <img src="assets/sm/watch.png" alt="Homebound on Apple Watch showing an active Yosemite Falls Trail trip with an ETA countdown and Check In button">
             </div>
         </div>
     </section>
