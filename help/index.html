@@ -338,7 +338,7 @@
         <div class="spark" style="top:180px;left:24%;font-size:9px" aria-hidden="true">✦</div>
         <div class="spark" style="top:200px;right:22%;font-size:10px" aria-hidden="true">✦</div>
         <h1>How can we help?</h1>
-        <p>Search <span id="totalCount">99</span> answers, or browse by topic.</p>
+        <p>Search <span id="totalCount">105</span> answers, or browse by topic.</p>
         <div class="search-wrap">
             <input type="search" id="faqSearch" placeholder='Try "grace period", "Apple Watch", or "Siri"…' aria-label="Search help answers">
             <span class="search-icon" aria-hidden="true">⌕</span>
@@ -348,6 +348,7 @@
             <button class="chip" data-term="Apple Watch">What can the watch do?</button>
             <button class="chip" data-term="SOS contact 911">Does SOS call 911?</button>
             <button class="chip" data-term="grace period">What's a grace period?</button>
+            <button class="chip" data-term="battery">Why is my battery draining?</button>
         </div>
     </section>
 
@@ -373,6 +374,13 @@
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What can I use Homebound for?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>Anything where someone should know where you're going and when you'll be back: hikes, walks home at night, kids' field trips, nights out, even grocery runs.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Should I create one long trip or a few shorter ones?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Usually a few shorter ones. A trip has a single expected return time, so one that covers a whole day only really checks on you once, at the very end. Splitting the day into legs — drive out, hike, drive home — gives your contacts a real signal at each step and lets you keep each grace period tight.</p>
+                            <p>It also helps your battery. Anything a trip is running, like live location, ends when that leg ends instead of running all day.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I create a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -435,6 +443,14 @@
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I set quiet hours so reminders don't wake me?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>Yes, per trip: turn on "notification hours" (default 8 AM–10 PM). Emergency alerts always come through.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why does Homebound keep asking if I've arrived?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>If your trip has a destination, Homebound notices when you get within about 150 metres of it and sends you an "Arrived at…?" notification suggesting you check out. It never checks you out on its own — "Not yet" dismisses it and the trip carries on.</p>
+                            <p>It comes back each time you leave that radius and return, so a destination set at or near where you're actually spending the trip can prompt you repeatedly. Either set the destination to where the trip really ends, or start the trip from your current location without one. Checking out stops the prompts for good.</p>
+                            <p>Arrival reminders need location access. With "Always" they arrive whenever you get there; with "While Using" they only fire while Homebound is open.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -599,7 +615,36 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Does live location drain my battery?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Live location sharing does use more battery than normal since it requires continuous GPS access. We recommend starting your trip with a full battery or bringing a portable charger for longer adventures. You can disable live location at any time to conserve battery.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>Yes, noticeably. While a trip with live sharing is running, Homebound holds the GPS at full accuracy and sends your position as often as every 30 seconds. That's what makes the dot on your friends' map move in real time, and it's the most power-hungry thing the app does.</p>
+                            <p>It stops the moment the trip ends or you turn sharing off. For a long day, start with a full battery or bring a charger. If nobody actually needs to watch a live map, leaving live location off is the single biggest thing you can do for battery.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I pause or turn off live location in the middle of a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Yes. There's no switch on the trip screen itself, but Settings &gt; Privacy &gt; "Allow Live Location" turns it off everywhere, including a trip that's already running. Your phone stops sending positions right away, and our servers stop storing them for you.</p>
+                            <p>The trip carries on exactly as before: your ETA, check-ins, overdue alerts, and SOS all work the same, and your contacts still get everything they normally would. Turn the switch back on and sharing resumes the next time the app refreshes your active trip.</p>
+                            <p>Circle sharing is separate. It isn't affected by this switch and has its own Stop button.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What does Homebound do with my location when live sharing is off?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>It asks for a single position at the moments that need one, then stops: when you check in, when you extend your ETA, and when you send an SOS. Nothing runs in between.</p>
+                            <p>If your trip has a destination, Homebound also watches for you arriving so it can remind you to check out. That uses the same low-power geofencing iOS uses for reminders, not continuous GPS.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I make a trip use less battery?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <ul>
+                                <li>Leave live location off unless someone genuinely needs the live map. Your check-ins still carry your position when you send them.</li>
+                                <li>Split a long day into a few shorter trips instead of one that runs from morning to night.</li>
+                                <li>Set the ETA you actually expect. A trip that outlives your day keeps running with it.</li>
+                                <li>Check out when you're done. Everything the trip was running stops there.</li>
+                            </ul>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How accurate is live location?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -940,6 +985,14 @@
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">My location isn't accurate</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>Location accuracy depends on GPS signal strength. Try moving to an area with clear sky view. Make sure Location Services are enabled for Homebound in Settings &gt; Privacy &amp; Security &gt; Location Services. If using live location, note that accuracy may vary in areas with poor GPS coverage like canyons or dense forests.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">I turned off location access in iPhone Settings. What stops working?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>The important part still works. Your trip keeps running and your contacts are still notified if you don't check out by your ETA plus grace period — that happens on our servers, not on your phone.</p>
+                            <p>What you give up: live location stops immediately, check-ins send without a position (so the map on your contacts' "Follow This Trip" page has nothing new to show), the overdue alert carries only the trip plan you set rather than where you actually were, arrival reminders stop, and place search can't centre on you.</p>
+                            <p>"While Using" keeps most of that working. Only background live location and background arrival reminders need "Always".</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use Homebound offline?</span><span class="chev" aria-hidden="true">▾</span></button>
