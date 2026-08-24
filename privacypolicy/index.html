@@ -25,7 +25,7 @@
 
     <main class="legal-document">
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last Updated: July 27, 2026</p>
+        <p class="last-updated">Last Updated: August 23, 2026</p>
 
         <p>Homebound LLC, a Utah limited liability company ("we," "us," or "our"), operates the Homebound mobile application (the "App"). This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you use our App.</p>
 
@@ -85,6 +85,7 @@
         </ul>
 
         <p><strong>Check-ins:</strong> When you check in during a trip, we record the time and, if available, your coordinates at check-in.</p>
+        <p><strong>Check-in photos:</strong> You can optionally attach a photo when you check in (or choose one taken during the trip), with an optional short caption. Like profile photos, every check-in photo is re-encoded on our servers before storage and <strong>all embedded metadata &mdash; including any GPS location saved in the photo file by your camera &mdash; is removed</strong>. Check-in photos are visible to you, the trip's participants, and your safety contacts on the trip's tracking page while it is active (and briefly after); if you publish the completed trip to the Activity Feed, they are also visible to your friends. Check-in photos are never shown to people outside your friends, even if the trip itself is published with global visibility. You can delete any photo you added at any time, and the trip owner can remove any photo from their trip.</p>
 
         <p><strong>SOS:</strong> If you trigger an SOS during an active trip, we collect the time it was triggered, your location coordinates at that moment, and any optional message you include (up to 500 characters).</p>
 
@@ -375,6 +376,11 @@
                 <td>App data you create; profile photos; real-time updates delivered to the App</td>
             </tr>
             <tr>
+                <td><strong>Cloudflare</strong></td>
+                <td>Network security/delivery for the App's connections, and storage and delivery of check-in photos (Cloudflare R2)</td>
+                <td>Traffic between the App and our servers; check-in photos (metadata-stripped)</td>
+            </tr>
+            <tr>
                 <td><strong>Tomorrow.io</strong></td>
                 <td>Weather conditions</td>
                 <td>Location coordinates only (no user identifiers)</td>
@@ -480,6 +486,10 @@
                 <td>Until you remove it or delete your account</td>
             </tr>
             <tr>
+                <td>Check-In Photos</td>
+                <td>Until you delete the photo, the trip, or your account (the trip owner can also remove a photo from their trip)</td>
+            </tr>
+            <tr>
                 <td>Trip Data</td>
                 <td>Until you delete the trip or your account</td>
             </tr>
@@ -579,7 +589,7 @@
 
         <ul>
             <li>Your account enters a <strong>30-day grace period</strong> during which you can cancel the deletion request</li>
-            <li>After 30 days, we permanently delete all your data, including your profile, profile photo, trips, contacts, devices, friendships, Circles, location history, achievements, referral records, Activity Feed comments and reactions, reports you filed, your blocked-user list, and Quick Trip presets; usage analytics events are detached from your account and retained only in de-identified form</li>
+            <li>After 30 days, we permanently delete all your data, including your profile, profile photo, check-in photos (yours everywhere, and everyone&rsquo;s on trips you owned), trips, contacts, devices, friendships, Circles, location history, achievements, referral records, Activity Feed comments and reactions, reports you filed, your blocked-user list, and Quick Trip presets; usage analytics events are detached from your account and retained only in de-identified form</li>
             <li>This deletion is irreversible after the grace period</li>
         </ul>
 
@@ -669,7 +679,7 @@
             <li><strong>Authorized Agents:</strong> You may use an authorized agent to submit a request. We will ask for proof of the agent's authority and, for access and deletion requests, for verification directly from you.</li>
         </ul>
 
-        <p><strong>Categories of personal information collected in the last 12 months</strong> (using CCPA categories): identifiers (name, email, Apple ID identifier, device and install identifiers); commercial information (subscription and referral records); internet or network activity (first-party usage events, app version); <strong>precise geolocation</strong>; audio/visual information (profile photos); and inferences drawn only for your own trip statistics. We collect these from you, from your device, and from Apple (subscription status). We disclose them for business purposes to the service providers in Section 3.3 and to the recipients you choose. We do not sell or share any category.</p>
+        <p><strong>Categories of personal information collected in the last 12 months</strong> (using CCPA categories): identifiers (name, email, Apple ID identifier, device and install identifiers); commercial information (subscription and referral records); internet or network activity (first-party usage events, app version); <strong>precise geolocation</strong>; audio/visual information (profile photos and check-in photos); and inferences drawn only for your own trip statistics. We collect these from you, from your device, and from Apple (subscription status). We disclose them for business purposes to the service providers in Section 3.3 and to the recipients you choose. We do not sell or share any category.</p>
 
         <p><strong>Shine the Light (Cal. Civ. Code § 1798.83):</strong> We do not disclose personal information to third parties for their own direct marketing purposes.</p>
 
@@ -894,6 +904,11 @@
                 <td>United States</td>
             </tr>
             <tr>
+                <td><strong>Cloudflare</strong></td>
+                <td>Network security/delivery and check-in photo storage (R2)</td>
+                <td>United States (global edge network)</td>
+            </tr>
+            <tr>
                 <td><strong>Resend</strong></td>
                 <td>Email delivery</td>
                 <td>United States</td>
@@ -940,7 +955,7 @@
             </tr>
         </table>
 
-        <p>The providers that process personal information on our behalf &mdash; <strong>Render, Supabase, Resend, Apple, and Canny</strong> &mdash; each handle it under their data processing terms, which require them to protect it in accordance with applicable data protection laws, to act only on our instructions and for the purposes we have specified, and not to use it for their own purposes. Where the law requires a data processing agreement, we have one in place.</p>
+        <p>The providers that process personal information on our behalf &mdash; <strong>Render, Supabase, Cloudflare, Resend, Apple, and Canny</strong> &mdash; each handle it under their data processing terms, which require them to protect it in accordance with applicable data protection laws, to act only on our instructions and for the purposes we have specified, and not to use it for their own purposes. Where the law requires a data processing agreement, we have one in place.</p>
 
         <p>The remaining providers in the table above are sent nothing that identifies you: the geocoding, weather, and place-search services receive location coordinates only, with no name, email, or account identifier, and several of them are public or government services that we query without any commercial relationship.</p>
 
