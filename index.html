@@ -24,7 +24,13 @@
             --moss: #4A7C52;
             --copper: #B87333;
             --copper-dark: #9c5f27;
-            --gold: #C9A227;
+            /* Gold comes in two weights, picked by the background behind it.
+               --gold is the dark-ground weight (5.3:1 on --pine); --gold-deep
+               is the light-ground weight (3.4:1 on cream). Using either on the
+               wrong ground fails contrast. Mirrors Color.hbGold's dark/light
+               pair in the iOS app. */
+            --gold: #E1B64C;
+            --gold-deep: #B07D18;
             --sun: #E9A83A;
             --muted: #5c554a;
             --faint: #8a8274;
@@ -103,6 +109,9 @@
             box-shadow: 0 0 60px rgba(233, 168, 58, 0.5);
         }
         .spark { position: absolute; color: var(--gold); }
+        /* Hero sparks sit on cream, so they take the light-ground weight.
+           The sparks inside .reviews are on --pine and keep --gold. */
+        .hero .spark { color: var(--gold-deep); }
         .hero-inner { position: relative; max-width: 760px; margin: 0 auto; padding: 0 24px; }
         .hero-badge {
             display: inline-flex;
@@ -117,7 +126,7 @@
             background: rgba(255, 255, 255, 0.5);
             margin-bottom: 26px;
         }
-        .hero-badge .stars { color: var(--gold); }
+        .hero-badge .stars { color: var(--gold-deep); }
         h1 {
             font-family: var(--display);
             font-size: clamp(3rem, 7vw, 4.9rem);

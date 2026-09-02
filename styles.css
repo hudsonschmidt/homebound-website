@@ -9,7 +9,11 @@
     --moss: #4A7C52;
     --copper: #B87333;
     --copper-dark: #9c5f27;
-    --gold: #C9A227;
+    /* Two gold weights, picked by background: --gold for dark grounds,
+       --gold-deep for light. Kept in sync with index.html and with
+       Color.hbGold's dark/light pair in the iOS app. */
+    --gold: #E1B64C;
+    --gold-deep: #B07D18;
     --muted: #5c554a;
     --faint: #8a8274;
     --card: #FDFBF5;

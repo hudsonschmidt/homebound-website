@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brand Colors - Homebound</title>
+    <meta name="description" content="The Homebound colour palette — hex and RGB values, usage notes, and logo colours.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../styles.css?v=20260901">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+    <style>
+        .brand-doc {
+            padding: 130px 24px 60px;
+            max-width: 860px;
+            margin: 0 auto;
+        }
+
+        .brand-doc h1 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4.4vw, 2.6rem);
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            margin-bottom: 8px;
+            color: var(--pine);
+            text-wrap: balance;
+        }
+
+        .brand-doc .lede {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 60ch;
+            margin-bottom: 6px;
+        }
+
+        .brand-doc .last-updated {
+            color: var(--faint);
+            font-size: 0.95rem;
+            margin-bottom: 56px;
+        }
+
+        .brand-doc h2 {
+            font-family: var(--display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-top: 64px;
+            margin-bottom: 10px;
+            color: var(--pine);
+        }
+
+        .brand-doc h2 + .section-note {
+            margin-top: 0;
+        }
+
+        .brand-doc .section-note {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 62ch;
+            margin-bottom: 28px;
+        }
+
+        .brand-doc p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 62ch;
+        }
+
+        .brand-doc strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        /* --- Swatch grid --- */
+        .swatch-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(232px, 1fr));
+            gap: 18px;
+        }
+
+        .swatch {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-md);
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .swatch-chip {
+            height: 116px;
+            /* Inset hairline so Cream and Paper don't dissolve into the page. */
+            box-shadow: inset 0 0 0 1px rgba(38, 34, 26, 0.10);
+        }
+
+        .swatch-body {
+            padding: 16px 18px 18px;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            flex: 1;
+        }
+
+        .swatch-name {
+            font-family: var(--display);
+            font-size: 1.06rem;
+            font-weight: 700;
+            letter-spacing: -0.012em;
+            color: var(--ink);
+        }
+
+        .swatch-values {
+            display: flex;
+            align-items: baseline;
+            flex-wrap: wrap;
+            gap: 4px 10px;
+        }
+
+        .copy-hex {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.86rem;
+            font-weight: 600;
+            letter-spacing: 0.01em;
+            color: var(--ink);
+            background: rgba(38, 34, 26, 0.05);
+            border: 1px solid var(--line);
+            border-radius: 7px;
+            padding: 3px 8px;
+            cursor: pointer;
+            transition: background 0.15s, color 0.15s;
+        }
+
+        .copy-hex:hover {
+            background: rgba(53, 107, 61, 0.12);
+            color: var(--pine);
+        }
+
+        .copy-hex:focus-visible {
+            outline: 2px solid var(--fern);
+            outline-offset: 2px;
+        }
+
+        .copy-hex.copied {
+            background: var(--fern);
+            border-color: var(--fern);
+            color: #fff;
+        }
+
+        .swatch-rgb {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+            font-variant-numeric: tabular-nums;
+            font-size: 0.79rem;
+            color: var(--faint);
+        }
+
+        .swatch-use {
+            font-size: 0.9rem;
+            line-height: 1.55;
+            color: var(--muted);
+            margin: 0;
+            max-width: none;
+        }
+
+        /* --- Two golds demo --- */
+        .gold-demo {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 18px;
+            margin-bottom: 24px;
+        }
+
+        .gold-panel {
+            border-radius: var(--radius-md);
+            padding: 26px 24px;
+            border: 1.5px solid var(--line);
+        }
+
+        .gold-panel.on-light {
+            background: var(--cream);
+        }
+
+        .gold-panel.on-dark {
+            background: var(--pine);
+            border-color: rgba(246, 241, 230, 0.16);
+        }
+
+        .gold-panel .stars {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            display: block;
+            margin-bottom: 12px;
+        }
+
+        .gold-panel.on-light .stars { color: var(--gold-deep); }
+        .gold-panel.on-dark .stars { color: #E1B64C; }
+
+        .gold-panel .panel-label {
+            font-size: 0.72rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            display: block;
+            margin-bottom: 6px;
+        }
+
+        .gold-panel.on-light .panel-label { color: var(--faint); }
+        .gold-panel.on-dark .panel-label { color: rgba(246, 241, 230, 0.55); }
+
+        .gold-panel .panel-name {
+            font-family: var(--display);
+            font-size: 1.05rem;
+            font-weight: 700;
+        }
+
+        .gold-panel.on-light .panel-name { color: var(--ink); }
+        .gold-panel.on-dark .panel-name { color: var(--cream); }
+
+        .gold-panel .panel-hex {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+            font-size: 0.82rem;
+            display: block;
+            margin-top: 3px;
+        }
+
+        .gold-panel.on-light .panel-hex { color: var(--muted); }
+        .gold-panel.on-dark .panel-hex { color: rgba(246, 241, 230, 0.7); }
+
+        /* --- Logo section --- */
+        .logo-block {
+            display: grid;
+            grid-template-columns: 190px 1fr;
+            gap: 28px;
+            align-items: start;
+        }
+
+        .logo-block img {
+            width: 100%;
+            height: auto;
+            border-radius: 26px;
+            border: 1.5px solid var(--line);
+        }
+
+        .logo-list {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .logo-row {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 9px 0;
+            border-bottom: 1px solid var(--line);
+        }
+
+        .logo-row:last-child { border-bottom: none; }
+
+        .logo-dot {
+            width: 26px;
+            height: 26px;
+            border-radius: 7px;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 0 1px rgba(38, 34, 26, 0.12);
+        }
+
+        .logo-row .label {
+            font-size: 0.92rem;
+            color: var(--ink);
+            flex: 1;
+        }
+
+        /* --- Reference table --- */
+        .table-scroll {
+            overflow-x: auto;
+            margin: 24px 0;
+        }
+
+        .brand-doc table {
+            width: 100%;
+            border-collapse: collapse;
+            border-radius: var(--radius-sm);
+            overflow: hidden;
+            border: 1.5px solid var(--line);
+            font-size: 0.92rem;
+        }
+
+        .brand-doc th,
+        .brand-doc td {
+            padding: 11px 15px;
+            text-align: left;
+            white-space: nowrap;
+        }
+
+        .brand-doc th {
+            background: var(--card);
+            font-weight: 650;
+            color: var(--ink);
+        }
+
+        .brand-doc td {
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+        }
+
+        .brand-doc td code {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+            font-size: 0.86rem;
+            color: var(--ink);
+        }
+
+        .brand-doc hr {
+            border: none;
+            border-top: 1px solid var(--line);
+            margin: 56px 0 0;
+        }
+
+        .brand-doc ul {
+            margin: 0 0 16px;
+            padding-left: 22px;
+        }
+
+        .brand-doc li {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 9px;
+            max-width: 60ch;
+        }
+
+        .copy-status {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 620px) {
+            .logo-block {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .logo-block img { max-width: 190px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .copy-hex { transition: none; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo"><img src="../logo.png" alt="">Homebound</a>
+            <ul class="nav-links">
+                <li><a href="/help">Help</a></li>
+                <li><a href="/privacypolicy">Privacy</a></li>
+                <li><a href="/termsofservice">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="brand-doc">
+        <h1>Brand Colors</h1>
+        <p class="lede">Homebound color palette, use for any Homebound material. Click any hex value to copy it.</p>
+        <p class="last-updated">Last updated: September 1, 2026</p>
+
+        <h2>Core palette</h2>
+        <p class="section-note">These are the five most used and most prominant colors.</p>
+
+        <div class="swatch-grid">
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#356B3D"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Forest Green</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#356B3D">#356B3D</button>
+                        <span class="swatch-rgb">53, 107, 61</span>
+                    </span>
+                    <p class="swatch-use">Primary brand color. Buttons, links, app tint, the main green in the logo. This is &ldquo;the Homebound green&rdquo;.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#4A7C52"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Moss</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#4A7C52">#4A7C52</button>
+                        <span class="swatch-rgb">74, 124, 82</span>
+                    </span>
+                    <p class="swatch-use">Always paired with Forest Green as the lighter end of a gradient. E.g. avatar rings, headers, call-to-action buttons, etc. Rarely used on its own.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#F6F1E6"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Cream</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#F6F1E6">#F6F1E6</button>
+                        <span class="swatch-rgb">246, 241, 230</span>
+                    </span>
+                    <p class="swatch-use">The default background. Homebound uses cream, not white.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#26221A"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Ink</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#26221A">#26221A</button>
+                        <span class="swatch-rgb">38, 34, 26</span>
+                    </span>
+                    <p class="swatch-use">Body text. A warm near-black, never pure black.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#B87333"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Copper</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#B87333">#B87333</button>
+                        <span class="swatch-rgb">184, 115, 51</span>
+                    </span>
+                    <p class="swatch-use">Warm accent. Comes from the cabin in the logo, and &ldquo;home&rdquo; markers on maps. It&rsquo;s a highlight, not a second brand color.</p>
+                </div>
+            </article>
+        </div>
+
+        <h2>Extended palette</h2>
+        <p class="section-note">Supporting colors for backgrounds, states, and secondary text.</p>
+
+        <div class="swatch-grid">
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#24492A"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Pine</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#24492A">#24492A</button>
+                        <span class="swatch-rgb">36, 73, 42</span>
+                    </span>
+                    <p class="swatch-use">Dark section backgrounds. The deep green band behind testimonials on the website.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#1E3323"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Deep Forest</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#1E3323">#1E3323</button>
+                        <span class="swatch-rgb">30, 51, 35</span>
+                    </span>
+                    <p class="swatch-use">The website footer. The darkest green in the system.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#FDFBF5"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Paper</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#FDFBF5">#FDFBF5</button>
+                        <span class="swatch-rgb">253, 251, 245</span>
+                    </span>
+                    <p class="swatch-use">Cards and panels sitting on top of Cream. A half-step lighter, still not white.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#9C5F27"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Copper Dark</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#9C5F27">#9C5F27</button>
+                        <span class="swatch-rgb">156, 95, 39</span>
+                    </span>
+                    <p class="swatch-use">Hover and pressed states for Copper elements.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#E9A83A"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Amber</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#E9A83A">#E9A83A</button>
+                        <span class="swatch-rgb">233, 168, 58</span>
+                    </span>
+                    <p class="swatch-use">Warm highlight used for small things. E.g. the sun in the website hero, announcement buttons, etc.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#5C554A"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Muted Text</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#5C554A">#5C554A</button>
+                        <span class="swatch-rgb">92, 85, 74</span>
+                    </span>
+                    <p class="swatch-use">Secondary and supporting copy.</p>
+                </div>
+            </article>
+
+            <article class="swatch">
+                <div class="swatch-chip" style="background:#8A8274"></div>
+                <div class="swatch-body">
+                    <span class="swatch-name">Faint Text</span>
+                    <span class="swatch-values">
+                        <button type="button" class="copy-hex" data-hex="#8A8274">#8A8274</button>
+                        <span class="swatch-rgb">138, 130, 116</span>
+                    </span>
+                    <p class="swatch-use">Captions, timestamps, fine print.</p>
+                </div>
+            </article>
+        </div>
+
+        <h2>The two golds</h2>
+        <p class="section-note">Gold changes depending on what&rsquo;s behind it</p>
+
+        <div class="gold-demo">
+            <div class="gold-panel on-light">
+                <span class="stars" aria-hidden="true">&#10022;&#10022;&#10022;&#10022;&#10022;</span>
+                <span class="panel-label">On light backgrounds</span>
+                <span class="panel-name">Antique Gold</span>
+                <span class="panel-hex">#B07D18 &middot; rgb(176, 125, 24)</span>
+            </div>
+            <div class="gold-panel on-dark">
+                <span class="stars" aria-hidden="true">&#10022;&#10022;&#10022;&#10022;&#10022;</span>
+                <span class="panel-label">On dark backgrounds</span>
+                <span class="panel-name">Warm Gold</span>
+                <span class="panel-hex">#E1B64C &middot; rgb(225, 182, 76)</span>
+            </div>
+        </div>
+
+        <p>Antique Gold on a dark background sinks into mud. Warm Gold on cream is too pale to read. They are the same brand color at two weights, not two different colors.</p>
+
+        <h2>Logo colors</h2>
+        <p class="section-note">The exact values inside the app icon artwork. These are close to, but <strong>not identical to</strong>, the palette above.</p>
+
+        <div class="logo-block">
+            <img src="../logo.png" alt="The Homebound app icon: a cabin below a mountain, with pine trees and a crescent moon.">
+            <div class="logo-list">
+                <div class="logo-row">
+                    <span class="logo-dot" style="background:#F7F1E5"></span>
+                    <span class="label">Sky / background</span>
+                    <button type="button" class="copy-hex" data-hex="#F7F1E5">#F7F1E5</button>
+                </div>
+                <div class="logo-row">
+                    <span class="logo-dot" style="background:#426A41"></span>
+                    <span class="label">Mountain</span>
+                    <button type="button" class="copy-hex" data-hex="#426A41">#426A41</button>
+                </div>
+                <div class="logo-row">
+                    <span class="logo-dot" style="background:#193C23"></span>
+                    <span class="label">Foreground trees &amp; hillside</span>
+                    <button type="button" class="copy-hex" data-hex="#193C23">#193C23</button>
+                </div>
+                <div class="logo-row">
+                    <span class="logo-dot" style="background:#AE632C"></span>
+                    <span class="label">Cabin</span>
+                    <button type="button" class="copy-hex" data-hex="#AE632C">#AE632C</button>
+                </div>
+                <div class="logo-row">
+                    <span class="logo-dot" style="background:#A25E2A"></span>
+                    <span class="label">Cabin roof shadow</span>
+                    <button type="button" class="copy-hex" data-hex="#A25E2A">#A25E2A</button>
+                </div>
+                <div class="logo-row">
+                    <span class="logo-dot" style="background:#E1A44B"></span>
+                    <span class="label">Moon, stars, cabin door</span>
+                    <button type="button" class="copy-hex" data-hex="#E1A44B">#E1A44B</button>
+                </div>
+            </div>
+        </div>
+
+        <p style="margin-top:24px"><strong>Don&rsquo;t color-pick the logo to get brand colors.</strong> The artwork values are tuned for flat illustration; the palette above is tuned for text and interfaces, which have legibility requirements the logo doesn&rsquo;t. Use this table only when working on the logo itself (recreating it, placing it on an unusual background, matching a print proof, etc).</p>
+
+        <h2>Usage guidance</h2>
+
+        <ul>
+            <li><strong>Backgrounds.</strong> Cream first, Paper for cards on top of it, Pine or Deep Forest when you want a dark section. White is not a brand background.</li>
+            <li><strong>Green on green.</strong> Forest Green on Cream is comfortable and legible. Forest Green on Pine is not. On dark green backgrounds, use Cream for text.</li>
+        </ul>
+
+        <!-- <h3 style="font-family:var(--display);font-size:1.1rem;font-weight:700;color:var(--ink);margin:28px 0 10px">Contrast, if you need the numbers</h3>
+        <p>Measured against Cream. Anything at 4.5:1 or above is safe for body copy. Copper and Antique Gold clear the bar for large text, headings, and icons, but shouldn&rsquo;t be used for small body text on a light background.</p>
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th>Color</th><th>On Cream</th><th>Safe for</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Ink</td><td>14.1:1</td><td>Any text size</td></tr>
+                    <tr><td>Pine</td><td>9.0:1</td><td>Any text size</td></tr>
+                    <tr><td>Forest Green</td><td>5.6:1</td><td>Any text size</td></tr>
+                    <tr><td>Moss</td><td>4.3:1</td><td>Large text and headings</td></tr>
+                    <tr><td>Copper</td><td>3.4:1</td><td>Large text, headings, icons</td></tr>
+                    <tr><td>Antique Gold</td><td>3.2:1</td><td>Large text, headings, icons</td></tr>
+                </tbody>
+            </table> -->
+        </div>
+    </main>
+
+    <p class="copy-status" role="status" aria-live="polite" id="copyStatus"></p>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/help">Help Center</a>
+                <a href="/privacypolicy">Privacy Policy</a>
+                <a href="/consumerhealth">Consumer Health Data</a>
+                <a href="/termsofservice">Terms of Service</a>
+                <a href="mailto:support@homeboundapp.com">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Homebound LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var status = document.getElementById('copyStatus');
+
+            function flash(button, hex) {
+                var original = button.textContent;
+                button.classList.add('copied');
+                button.textContent = 'Copied';
+                status.textContent = hex + ' copied to clipboard';
+                setTimeout(function () {
+                    button.classList.remove('copied');
+                    button.textContent = original;
+                }, 1100);
+            }
+
+            document.querySelectorAll('.copy-hex').forEach(function (button) {
+                button.addEventListener('click', function () {
+                    var hex = button.getAttribute('data-hex');
+                    if (navigator.clipboard && navigator.clipboard.writeText) {
+                        navigator.clipboard.writeText(hex).then(function () {
+                            flash(button, hex);
+                        }).catch(function () {
+                            status.textContent = 'Could not copy. Select the value and copy manually.';
+                        });
+                    } else {
+                        status.textContent = 'Could not copy. Select the value and copy manually.';
+                    }
+                });
+            });
+        }());
+    </script>
+</body>
+</html>
