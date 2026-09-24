@@ -412,16 +412,91 @@
             margin-bottom: 48px;
         }
         .reviews-sub .stars { color: var(--gold); }
-        .review-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; align-items: start; }
+        /* Reviews carousel. Adding a review is just one more .review card in
+           .review-track — arrow states, dot count and pagination are all
+           derived at run time. With JS off the controls stay hidden and the
+           track is still a swipeable/scrollable strip. */
+        .review-carousel { position: relative; }
+        .review-track {
+            position: relative; /* makes card.offsetLeft a scrollLeft target */
+            display: flex;
+            gap: 16px;
+            overflow-x: auto;
+            scroll-snap-type: x mandatory;
+            -webkit-overflow-scrolling: touch;
+            scrollbar-width: none;
+        }
+        .review-track::-webkit-scrollbar { display: none; }
         .review {
+            flex: 0 0 calc((100% - 32px) / 3);
+            display: flex;
+            flex-direction: column;
+            scroll-snap-align: start;
             background: rgba(246, 241, 230, 0.06);
             border: 1px solid rgba(246, 241, 230, 0.14);
             border-radius: 20px;
             padding: 28px;
         }
         .review .stars { color: var(--gold); letter-spacing: 2px; font-size: 0.85rem; margin-bottom: 14px; }
-        .review p { font-size: 0.98rem; line-height: 1.65; color: var(--cream); margin-bottom: 14px; }
-        .review cite { font-size: 0.8rem; color: rgba(246, 241, 230, 0.55); font-style: normal; }
+        .review p { font-size: 0.98rem; line-height: 1.65; color: var(--cream); margin-bottom: 18px; }
+        .review cite { margin-top: auto; font-size: 0.8rem; color: rgba(246, 241, 230, 0.55); font-style: normal; }
+
+        .review-controls {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-top: 28px;
+        }
+        .review-carousel.is-ready .review-controls { display: flex; }
+        .review-arrow {
+            width: 44px;
+            height: 44px;
+            border-radius: 50%;
+            background: transparent;
+            border: 1px solid rgba(246, 241, 230, 0.3);
+            color: var(--cream);
+            font-size: 1.1rem;
+            line-height: 1;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.2s, border-color 0.2s, opacity 0.2s;
+        }
+        .review-arrow:hover {
+            background: rgba(246, 241, 230, 0.12);
+            border-color: rgba(246, 241, 230, 0.55);
+        }
+        .review-dots { display: flex; gap: 2px; }
+        .review-dot {
+            position: relative;
+            width: 22px;
+            height: 44px;
+            padding: 0;
+            border: 0;
+            background: none;
+            cursor: pointer;
+        }
+        .review-dot::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: rgba(246, 241, 230, 0.3);
+            transition: background 0.2s;
+        }
+        .review-dot:hover::after { background: rgba(246, 241, 230, 0.6); }
+        .review-dot[aria-current="true"]::after { background: var(--gold); }
+        .review-track:focus-visible,
+        .review-arrow:focus-visible,
+        .review-dot:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+        .review-track:focus-visible { border-radius: 20px; }
+        .review-dot:focus-visible { border-radius: 11px; }
 
         .announce { max-width: 1080px; margin: 80px auto 0; padding: 0 24px; }
         .announce-card {
@@ -551,7 +626,7 @@
         @media (max-width: 900px) {
             .triptych { grid-template-columns: 1fr; }
             .everyday-grid { grid-template-columns: 1fr; gap: 36px; }
-            .review-grid { grid-template-columns: 1fr; }
+            .review { flex-basis: calc((100% - 16px) / 2); }
             .announce-card { grid-template-columns: 1fr; padding: 44px 32px; }
             .watch-mock { margin: 0 auto; }
         }
@@ -561,6 +636,10 @@
         }
         @media (max-width: 680px) {
             .hero > .hero-sun { width: 52px; height: 52px; top: 36px; right: 5%; }
+        }
+        @media (max-width: 640px) {
+            /* one card at a time, with the next one peeking to hint the swipe */
+            .review { flex-basis: 86%; }
         }
         @media (max-width: 560px) {
             .hero-stats { flex-wrap: wrap; gap: 18px; }
@@ -751,21 +830,41 @@
         <div class="reviews-inner">
             <h2>The reviews that matter most</h2>
             <p class="reviews-sub"><span class="stars">★★★★★</span> 5.0 on the App Store</p>
-            <div class="review-grid">
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>"This app gives me the ability to take adventures I didn't feel comfortable taking before. It keeps my mom and I at ease in the backcountry."</p>
-                    <cite>App Store review</cite>
+            <div class="review-carousel" data-review-carousel>
+                <!-- To add a review: paste one more .review card below, newest
+                     first. Nothing else needs updating — the arrows and dots
+                     are built from however many cards are here. -->
+                <div class="review-track" role="region" aria-label="Reviews from the App Store" tabindex="0">
+                    <div class="review">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"As a woman, this app makes my solo and group adventures feel safe. My mom, friends, and family are able to check in with me during road trips, hikes, nights out, and so many more things that help me and my loved ones feel better!"</p>
+                        <cite>App Store review</cite>
+                    </div>
+                    <div class="review">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"This app gives me the ability to take adventures I didn't feel comfortable taking before. It keeps my mom and I at ease in the backcountry."</p>
+                        <cite>App Store review</cite>
+                    </div>
+                    <div class="review">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"As a woman who has been hiking, camping, and backpacking most of her life with friends and family, this is a great app to help me feel comfortable solo adventuring! I have had no problems setting up a trip and my close friends and family have had no problems making sure I get back safely! Makes it fun to stay safe, whether the trip be downtown or cross country!"</p>
+                        <cite>App Store review</cite>
+                    </div>
+                    <div class="review">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"Such a great way to ease my girlfriend's worries while I'm gone. Simple, as to not distract from the activity — but engaging enough to make me actually want to use it."</p>
+                        <cite>App Store review</cite>
+                    </div>
+                    <div class="review">
+                        <div class="stars" aria-label="5 out of 5 stars">★★★★★</div>
+                        <p>"Super helpful for planning trips and keeping your loved ones informed. Very useful for a variety of activities, trips and groups!"</p>
+                        <cite>App Store review</cite>
+                    </div>
                 </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>"Such a great way to ease my girlfriend's worries while I'm gone. Simple, as to not distract from the activity — but engaging enough to make me actually want to use it."</p>
-                    <cite>App Store review</cite>
-                </div>
-                <div class="review">
-                    <div class="stars">★★★★★</div>
-                    <p>"Super helpful for planning trips and keeping your loved ones informed. Very useful for a variety of activities, trips and groups!"</p>
-                    <cite>App Store review</cite>
+                <div class="review-controls">
+                    <button type="button" class="review-arrow" data-review-prev aria-label="Previous reviews">&#8249;</button>
+                    <div class="review-dots"></div>
+                    <button type="button" class="review-arrow" data-review-next aria-label="Next reviews">&#8250;</button>
                 </div>
             </div>
         </div>
@@ -814,5 +913,91 @@
             </div>
         </div>
     </footer>
+
+    <script>
+    // Reviews carousel. Everything is measured from the DOM, so dropping another
+    // .review card into .review-track is the only edit needed to add a review.
+    (function () {
+        var root = document.querySelector('[data-review-carousel]');
+        if (!root) return;
+
+        var track = root.querySelector('.review-track');
+        var dotsWrap = root.querySelector('.review-dots');
+        var prev = root.querySelector('[data-review-prev]');
+        var next = root.querySelector('[data-review-next]');
+        var cards = Array.prototype.slice.call(track.querySelectorAll('.review'));
+        if (cards.length < 2) return;
+
+        var perView = 1, pages = 1, page = 0, ticking = false;
+
+        // One card's left edge to the next, gap included.
+        function step() { return cards[1].offsetLeft - cards[0].offsetLeft; }
+        function maxScroll() { return track.scrollWidth - track.clientWidth; }
+        function behavior() {
+            return window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth';
+        }
+
+        // Cyclical: page -1 lands on the last page, page `pages` on the first.
+        function goTo(p) {
+            var wrapped = ((p % pages) + pages) % pages;
+            var i = Math.min(cards.length - 1, Math.max(0, wrapped * perView));
+            var left = cards[i].offsetLeft;
+            // Once there are enough reviews, wrapping end-to-start is a long
+            // haul that smooth-scrolls as a blur. Cut to it instead; short
+            // hops still animate.
+            var far = Math.abs(left - track.scrollLeft) > track.clientWidth * 2;
+            track.scrollTo({ left: left, behavior: far ? 'auto' : behavior() });
+        }
+
+        function buildDots() {
+            dotsWrap.textContent = '';
+            for (var i = 0; i < pages; i++) {
+                var dot = document.createElement('button');
+                dot.type = 'button';
+                dot.className = 'review-dot';
+                dot.setAttribute('aria-label', 'Show reviews, page ' + (i + 1) + ' of ' + pages);
+                dot.dataset.page = i;
+                dot.addEventListener('click', function (e) { goTo(Number(e.currentTarget.dataset.page)); });
+                dotsWrap.appendChild(dot);
+            }
+        }
+
+        function syncState() {
+            var max = maxScroll();
+            var pageWidth = step() * perView;
+            page = pageWidth > 0 ? Math.round(track.scrollLeft / pageWidth) : 0;
+            if (track.scrollLeft >= max - 1) page = pages - 1;
+            page = Math.min(pages - 1, Math.max(0, page));
+
+            for (var i = 0; i < dotsWrap.children.length; i++) {
+                if (i === page) dotsWrap.children[i].setAttribute('aria-current', 'true');
+                else dotsWrap.children[i].removeAttribute('aria-current');
+            }
+        }
+
+        function measure() {
+            var s = step();
+            perView = s > 0 ? Math.max(1, Math.round(track.clientWidth / s)) : 1;
+            pages = Math.max(1, Math.ceil(cards.length / perView));
+            // Nothing to page through when every card already fits.
+            root.classList.toggle('is-ready', maxScroll() > 1 && pages > 1);
+            buildDots();
+            syncState();
+        }
+
+        prev.addEventListener('click', function () { goTo(page - 1); });
+        next.addEventListener('click', function () { goTo(page + 1); });
+        track.addEventListener('scroll', function () {
+            if (ticking) return;
+            ticking = true;
+            requestAnimationFrame(function () { ticking = false; syncState(); });
+        }, { passive: true });
+        window.addEventListener('resize', measure);
+
+        measure();
+        // The web font can reflow the cards after first paint.
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(measure);
+    })();
+    </script>
 </body>
 </html>
