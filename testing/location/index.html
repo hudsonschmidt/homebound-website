@@ -1,0 +1,806 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testing Live Location - Homebound</title>
+    <meta name="description" content="Steps for testing live location in the Homebound TestFlight build.">
+    <!-- Unlisted: reached only from /testing, kept out of search and llms.txt. -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../../styles.css?v=20260901">
+    <link rel="icon" type="image/png" href="../../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+    <style>
+        .test-doc {
+            padding: 130px 24px 60px;
+            max-width: 760px;
+            margin: 0 auto;
+        }
+
+        .crumb {
+            display: inline-block;
+            color: var(--fern);
+            font-size: 0.92rem;
+            font-weight: 600;
+            text-decoration: none;
+            margin-bottom: 18px;
+        }
+
+        .crumb:hover { color: var(--pine); }
+
+        .test-doc h1 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4.4vw, 2.6rem);
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            margin-bottom: 10px;
+            color: var(--pine);
+        }
+
+        .test-doc h2 {
+            font-family: var(--display);
+            font-size: 1.5rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-top: 56px;
+            margin-bottom: 12px;
+            color: var(--pine);
+            scroll-margin-top: 100px;
+        }
+
+        .test-doc p,
+        .test-doc li {
+            color: var(--muted);
+            line-height: 1.7;
+        }
+
+        .test-doc p { margin-bottom: 14px; }
+
+        .test-doc strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .test-doc a { color: var(--fern); }
+        .test-doc a:hover { color: var(--pine); }
+
+        .test-doc ol,
+        .test-doc ul {
+            padding-left: 22px;
+            margin-bottom: 16px;
+        }
+
+        .test-doc li { margin-bottom: 8px; }
+        .test-doc li ul { margin: 8px 0 0; }
+
+        .lede { max-width: 62ch; }
+
+        .chips {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin: 18px 0 8px;
+        }
+
+        .chips span {
+            font-size: 0.8rem;
+            font-weight: 550;
+            color: var(--fern);
+            background: rgba(53, 107, 61, 0.08);
+            border: 1px solid rgba(53, 107, 61, 0.18);
+            border-radius: 100px;
+            padding: 4px 10px;
+        }
+
+        .callout {
+            background: var(--card);
+            border: 1.5px solid rgba(184, 115, 51, 0.35);
+            border-radius: var(--radius-md);
+            padding: 18px 20px;
+            margin: 28px 0 0;
+        }
+
+        .callout p:last-child { margin-bottom: 0; }
+
+        /* --- Tests --- */
+        .progress {
+            font-weight: 600;
+            color: var(--fern);
+            margin-bottom: 20px;
+        }
+
+        .run-note {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 14px 18px;
+            margin-bottom: 24px;
+        }
+
+        .run-note p { margin-bottom: 6px; }
+        .run-note p:last-child { margin-bottom: 0; }
+
+        .test {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 22px 22px 18px;
+            margin-bottom: 18px;
+            scroll-margin-top: 100px;
+        }
+
+        .test[data-status="pass"] { border-color: rgba(53, 107, 61, 0.55); }
+        .test[data-status="fail"] { border-color: rgba(184, 76, 51, 0.6); }
+        .test[data-status="skip"] { border-style: dashed; }
+
+        .test-head {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            margin-bottom: 12px;
+        }
+
+        .test-num {
+            flex: 0 0 auto;
+            width: 34px;
+            height: 34px;
+            border-radius: 50%;
+            background: var(--pine);
+            color: var(--cream);
+            font-family: var(--display);
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .test h3 {
+            font-family: var(--display);
+            font-size: 1.2rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            color: var(--ink);
+            line-height: 1.3;
+        }
+
+        .badges {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-top: 6px;
+        }
+
+        .badge {
+            font-size: 0.72rem;
+            font-weight: 650;
+            border-radius: 100px;
+            padding: 3px 9px;
+            border: 1px solid transparent;
+        }
+
+        .badge.key { color: var(--copper-dark); background: rgba(184, 115, 51, 0.1); border-color: rgba(184, 115, 51, 0.25); }
+        .badge.hudson { color: var(--fern); background: rgba(53, 107, 61, 0.08); border-color: rgba(53, 107, 61, 0.2); }
+        .badge.time { color: var(--muted); background: transparent; border-color: var(--line); }
+
+        .test h4 {
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.06em;
+            text-transform: uppercase;
+            color: var(--faint);
+            margin: 14px 0 6px;
+        }
+
+        .result {
+            border-top: 1px solid var(--line);
+            margin-top: 14px;
+            padding-top: 14px;
+        }
+
+        .result-buttons {
+            display: flex;
+            gap: 8px;
+            margin-bottom: 10px;
+        }
+
+        .result-buttons button {
+            flex: 1;
+            min-height: 44px;
+            border-radius: var(--radius-sm);
+            border: 1.5px solid var(--line);
+            background: var(--cream);
+            color: var(--ink);
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .result-buttons button[aria-pressed="true"][data-status="pass"] { background: var(--fern); border-color: var(--fern); color: #fff; }
+        .result-buttons button[aria-pressed="true"][data-status="fail"] { background: #9c3f27; border-color: #9c3f27; color: #fff; }
+        .result-buttons button[aria-pressed="true"][data-status="skip"] { background: var(--muted); border-color: var(--muted); color: #fff; }
+
+        .result-buttons button:focus-visible,
+        .actions button:focus-visible,
+        textarea:focus-visible,
+        input:focus-visible {
+            outline: 3px solid var(--fern);
+            outline-offset: 2px;
+        }
+
+        label.field {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--ink);
+            margin-bottom: 6px;
+        }
+
+        textarea,
+        input[type="text"],
+        input[type="email"] {
+            width: 100%;
+            font: inherit;
+            font-size: 16px; /* keeps iOS from zooming in */
+            color: var(--ink);
+            background: #fff;
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 10px 12px;
+        }
+
+        textarea {
+            min-height: 72px;
+            resize: vertical;
+        }
+
+        /* --- Results --- */
+        .results {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 22px;
+        }
+
+        .field-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 14px;
+            margin-bottom: 16px;
+        }
+
+        .field-grid .wide { grid-column: 1 / -1; }
+
+        pre.summary {
+            white-space: pre-wrap;
+            word-break: break-word;
+            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+            font-size: 0.82rem;
+            line-height: 1.55;
+            color: var(--ink);
+            background: var(--cream);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 14px;
+            max-height: 320px;
+            overflow: auto;
+            margin: 6px 0 16px;
+        }
+
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .actions button {
+            min-height: 44px;
+            border-radius: 100px;
+            padding: 10px 20px;
+            font: inherit;
+            font-weight: 600;
+            cursor: pointer;
+            border: 1.5px solid var(--line);
+            background: var(--cream);
+            color: var(--ink);
+        }
+
+        .actions button.primary {
+            background: var(--copper);
+            border-color: var(--copper);
+            color: #fff;
+        }
+
+        .actions button.primary:hover { background: var(--copper-dark); border-color: var(--copper-dark); }
+
+        .actions button.danger { color: #9c3f27; }
+
+        .status-line {
+            min-height: 1.5em;
+            font-size: 0.9rem;
+            color: var(--fern);
+            margin-top: 10px;
+        }
+
+        @media (max-width: 768px) {
+            .test-doc { padding-top: 110px; }
+            .field-grid { grid-template-columns: 1fr; }
+            .test { padding: 18px 16px 14px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo"><img src="../../logo.png" alt="">Homebound</a>
+            <ul class="nav-links">
+                <li><a href="/help">Help</a></li>
+                <li><a href="/privacypolicy">Privacy</a></li>
+                <li><a href="/termsofservice">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="test-doc">
+        <a class="crumb" href="../">&larr; All tests</a>
+        <h1>Testing live location</h1>
+        <p class="lede">On a trip, Homebound shares where you are, so the people watching can find you if you're overdue. Real trips are hard on that: the phone is locked in a pocket, you stop for a long break, or iOS closes Homebound. These tests check how your iPhone handles each of those. You walk, the phone keeps a log, and Hudson reads the logs.</p>
+        <div class="chips" aria-label="At a glance">
+            <span>1 iPhone</span>
+            <span>Walking</span>
+            <span>8 tests</span>
+            <span>About 3 hours in total</span>
+            <span>Split it up however you like</span>
+        </div>
+
+        <div class="callout">
+            <p>Mark each test <strong>Done</strong>, <strong>Problem</strong> or <strong>Skipped</strong> and add notes as you go. Your answers save on this phone, and the <a href="#send">Send your results</a> section at the bottom puts them together for you.</p>
+        </div>
+
+        <h2 id="need">What you need</h2>
+        <ul>
+            <li><strong>An iPhone on iOS 26 or later.</strong> Any model.</li>
+            <li>The <strong>Homebound TestFlight build</strong>. Hudson sends the invite.</li>
+            <li><strong>Developer access</strong> on your Homebound account. Tell Hudson the email you sign in with, and he'll turn it on.</li>
+            <li>Somewhere to walk with mobile signal. Around your neighborhood is perfect.</li>
+            <li>Hudson reachable by text for <strong>tests 4, 7 and 8</strong>. He sends something to your phone from his computer.</li>
+        </ul>
+
+        <h2 id="setup">Set up your phone</h2>
+        <p>You only do this once.</p>
+        <ol>
+            <li>Install Homebound from TestFlight and sign in.</li>
+            <li>In the iPhone's Settings app:
+                <ul>
+                    <li><strong>General &rarr; Background App Refresh</strong>: on, and on for Homebound.</li>
+                    <li><strong>Battery &rarr; Low Power Mode</strong>: off. Keep the battery above 30% during tests so it doesn't turn itself on.</li>
+                    <li><strong>Apps &rarr; Homebound &rarr; Location</strong>: <strong>While Using the App</strong> for now, with <strong>Precise Location</strong> on.</li>
+                    <li><strong>Apps &rarr; Homebound &rarr; Notifications</strong>: allowed.</li>
+                </ul>
+            </li>
+            <li>In Homebound, go to <strong>Settings &rarr; Developer &rarr; Live Location Spike</strong>. If there's no Developer section, close Homebound and open it again. If it's still missing, text Hudson.</li>
+            <li>Check the <strong>Preflight</strong> list at the top. Every line needs a green tick. If one is red:
+                <ul>
+                    <li><strong>Server</strong>: in Homebound, go to <strong>Settings &rarr; Developer Tools &rarr; Server Environment</strong> and pick <strong>Production</strong>. Sign in again if it asks.</li>
+                    <li><strong>Active trip, circle share or Find session</strong>: end it first.</li>
+                    <li><strong>Background App Refresh</strong>, <strong>Low Power Mode</strong> or <strong>Reduced accuracy</strong>: fix it in the iPhone's Settings app (step 2).</li>
+                </ul>
+            </li>
+            <li>Scroll down to <strong>Push</strong>, tap <strong>Copy token</strong>, and text it to Hudson. He needs it for tests 4, 7 and 8.</li>
+        </ol>
+
+        <h2 id="how">How every test works</h2>
+        <ul>
+            <li><strong>Settings:</strong> each test says what to pick under <strong>Controls</strong>. Most use the defaults: Mode <strong>live</strong>, LiveConfiguration <strong>fitness</strong>, Upload fixes on, Upload interval <strong>60 s</strong>, and both Hold switches on.</li>
+            <li><strong>Start and Stop:</strong> tap <strong>Start</strong> to begin. Each Start makes a new log. Tap <strong>Stop</strong> at the end. While a test is running, the button says Stop; otherwise it says Start.</li>
+            <li><strong>Markers:</strong> when a step says to tap <strong>Walking</strong> or <strong>Stopped</strong>, unlock, tap it under <strong>Markers</strong>, and lock again right away. That's how Hudson finds each part in the log.</li>
+            <li><strong>Hands off:</strong> otherwise, keep the phone locked in your pocket and don't open Homebound. Each test says when to.</li>
+            <li><strong>Something unexpected?</strong> If you got in a car, took a call or opened Homebound by mistake, type it in the box next to <strong>Mark</strong>, tap Mark, and add it to your notes below.</li>
+            <li><strong>What the log holds:</strong> your location every few seconds during a test, since that's what's being tested, plus battery level and app timings. It stays on your phone until you send it to Hudson. During a test, Homebound also sends your location to its server, as it does on a trip. It isn't shared with anyone.</li>
+        </ul>
+
+        <h2 id="part1">Part 1: Location set to While Using</h2>
+        <div class="run-note">
+            <p><strong>Short on time?</strong> Tests marked <strong>Most important</strong> (1, 3 and 5) matter most. Do those first.</p>
+            <p>Tests 4, 7 and 8 need Hudson at his computer, so plan those with him.</p>
+        </div>
+        <p class="progress" id="progress" aria-live="polite"></p>
+
+        <section class="test" id="t1" data-test="1" data-run="R1" aria-labelledby="t1-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">1</span>
+                <div>
+                    <h3 id="t1-title">Locked walk</h3>
+                    <div class="badges"><span class="badge key">Most important</span><span class="badge time">40 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>The defaults: live, fitness, 60 s.</p>
+            <h4>Do</h4>
+            <ol>
+                <li>Tap <strong>Start</strong>, then <strong>Walking</strong>.</li>
+                <li>Lock the phone, put it in your pocket, and walk for 20 minutes.</li>
+                <li>Unlock, tap <strong>Stopped</strong>, and lock again. Stay in one place for 15 minutes. Sitting on a bench is perfect.</li>
+                <li>Unlock, tap <strong>Walking</strong>, lock again, and walk for 5 more minutes.</li>
+                <li>Tap <strong>Stop</strong>.</li>
+            </ol>
+        </section>
+
+        <section class="test" id="t2" data-test="2" data-run="R2" aria-labelledby="t2-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">2</span>
+                <div>
+                    <h3 id="t2-title">Older method</h3>
+                    <div class="badges"><span class="badge time">20 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>Mode <strong>legacyBG</strong> and Upload interval <strong>30 s</strong>. Leave the rest.</p>
+            <h4>Do</h4>
+            <ol>
+                <li>Tap <strong>Start</strong>, then <strong>Walking</strong>.</li>
+                <li>Lock the phone, put it in your pocket, and walk for 20 minutes.</li>
+                <li>Tap <strong>Stop</strong>.</li>
+                <li>Set Mode back to <strong>live</strong> and Upload interval back to <strong>60 s</strong>, ready for the next tests.</li>
+            </ol>
+        </section>
+
+        <section class="test" id="t3" data-test="3" data-run="R3" aria-labelledby="t3-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">3</span>
+                <div>
+                    <h3 id="t3-title">Closed by iOS</h3>
+                    <div class="badges"><span class="badge key">Most important</span><span class="badge time">15 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>The defaults: live, fitness, 60 s.</p>
+            <h4>Do</h4>
+            <ol>
+                <li>Tap <strong>Start</strong>, then <strong>Walking</strong>.</li>
+                <li>Scroll to the bottom and tap <strong>Crash now</strong>, then <strong>Crash now</strong> again to confirm. Homebound closes. That's the point: it acts as if iOS shut it down.</li>
+                <li>Don't open Homebound. Lock the phone and walk for 10 minutes.</li>
+                <li>Open Homebound, go back to <strong>Settings &rarr; Developer &rarr; Live Location Spike</strong>, and tap <strong>Stop</strong>.</li>
+            </ol>
+            <h4>What should happen</h4>
+            <p>Nothing to watch. The log shows whether Homebound came back by itself while you walked.</p>
+        </section>
+
+        <section class="test" id="t4" data-test="4" data-run="R7 (While Using)" aria-labelledby="t4-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">4</span>
+                <div>
+                    <h3 id="t4-title">Started by Hudson</h3>
+                    <div class="badges"><span class="badge hudson">Needs Hudson</span><span class="badge time">10 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>None. Don't tap Start for this one.</p>
+            <h4>Do</h4>
+            <ol>
+                <li>Make sure the screen shows <strong>Start</strong>, meaning no test is running.</li>
+                <li>Swipe up to go to the Home Screen. Don't swipe Homebound away.</li>
+                <li>Text Hudson "Ready for test 4".</li>
+                <li>When he says he's sent it, lock the phone and walk around for 5 minutes.</li>
+                <li>Open Homebound and go to <strong>Live Location Spike</strong>. If it shows <strong>Stop</strong>, tap it. If it shows Start, leave it.</li>
+            </ol>
+            <h4>Write down</h4>
+            <p>Whether it showed Stop or Start when you opened it.</p>
+        </section>
+
+        <h2 id="part2">Part 2: Location set to Always</h2>
+        <p>Before test 5, go to the iPhone's Settings app, then <strong>Apps &rarr; Homebound &rarr; Location</strong>, and pick <strong>Always</strong>. Keep Precise Location on. The first Preflight line should now say <strong>Location: Always &middot; Full accuracy</strong>.</p>
+
+        <section class="test" id="t5" data-test="5" data-run="R4" aria-labelledby="t5-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">5</span>
+                <div>
+                    <h3 id="t5-title">Closed by iOS, with Always</h3>
+                    <div class="badges"><span class="badge key">Most important</span><span class="badge time">15 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>The defaults: live, fitness, 60 s.</p>
+            <h4>Do</h4>
+            <p>The same steps as test 3:</p>
+            <ol>
+                <li>Tap <strong>Start</strong>, then <strong>Walking</strong>.</li>
+                <li>Tap <strong>Crash now</strong> at the bottom, and again to confirm.</li>
+                <li>Don't open Homebound. Lock the phone and walk for 10 minutes.</li>
+                <li>Open Homebound, go back to <strong>Live Location Spike</strong>, and tap <strong>Stop</strong>.</li>
+            </ol>
+        </section>
+
+        <section class="test" id="t6" data-test="6" data-run="R5" aria-labelledby="t6-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">6</span>
+                <div>
+                    <h3 id="t6-title">Swiped away</h3>
+                    <div class="badges"><span class="badge time">15 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>The defaults: live, fitness, 60 s.</p>
+            <h4>Do</h4>
+            <ol>
+                <li>Tap <strong>Start</strong>, then <strong>Walking</strong>.</li>
+                <li>Open the app switcher by swiping up from the bottom and pausing, then swipe Homebound away.</li>
+                <li>Lock the phone and walk for 10 minutes.</li>
+                <li>Open Homebound, go to <strong>Live Location Spike</strong>, and tap <strong>Stop</strong>.</li>
+            </ol>
+            <h4>Write down</h4>
+            <p>Whether a notification saying <strong>"Spike: Homebound was closed while sharing"</strong> showed up after you swiped it away: yes or no.</p>
+        </section>
+
+        <section class="test" id="t7" data-test="7" data-run="R6" aria-labelledby="t7-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">7</span>
+                <div>
+                    <h3 id="t7-title">Quiet pings</h3>
+                    <div class="badges"><span class="badge hudson">Needs Hudson</span><span class="badge time">45 min</span></div>
+                </div>
+            </div>
+            <p>Every 3 minutes, Hudson sends your phone a silent ping, and the log records how quickly each one arrives. You won't see or hear them.</p>
+            <h4>Settings</h4>
+            <p>The defaults: live, fitness, 60 s.</p>
+            <h4>Do</h4>
+            <ol>
+                <li>Tap <strong>Start</strong>, then <strong>Walking</strong>. Lock the phone.</li>
+                <li>Text Hudson "Ready for test 7". When he replies "go", note the time. The steps below use 2:00 as the example.</li>
+                <li>Walk until 2:16.</li>
+                <li>At 2:16, unlock, tap <strong>Stopped</strong>, and lock again. Stay in one place until 2:36.</li>
+                <li>At 2:36, open the app switcher and swipe Homebound away. Leave the phone locked.</li>
+                <li>At 2:45, open Homebound, go to <strong>Live Location Spike</strong>, and tap <strong>Stop</strong>.</li>
+            </ol>
+            <p>A minute either way is fine. The lock screen shows the time, so there's no need to unlock to check it.</p>
+        </section>
+
+        <section class="test" id="t8" data-test="8" data-run="R7 (Always)" aria-labelledby="t8-title">
+            <div class="test-head">
+                <span class="test-num" aria-hidden="true">8</span>
+                <div>
+                    <h3 id="t8-title">Started by Hudson, with Always</h3>
+                    <div class="badges"><span class="badge hudson">Needs Hudson</span><span class="badge time">10 min</span></div>
+                </div>
+            </div>
+            <h4>Settings</h4>
+            <p>None. Don't tap Start for this one.</p>
+            <h4>Do</h4>
+            <p>The same steps as test 4, texting "Ready for test 8":</p>
+            <ol>
+                <li>Make sure the screen shows <strong>Start</strong>, then swipe up to the Home Screen. Don't swipe Homebound away.</li>
+                <li>Text Hudson "Ready for test 8".</li>
+                <li>When he says he's sent it, lock the phone and walk around for 5 minutes.</li>
+                <li>Open Homebound and go to <strong>Live Location Spike</strong>. If it shows <strong>Stop</strong>, tap it.</li>
+            </ol>
+            <h4>Write down</h4>
+            <p>Whether it showed Stop or Start when you opened it.</p>
+        </section>
+
+        <h2 id="send">Send your results</h2>
+        <div class="results">
+            <div class="field-grid">
+                <div>
+                    <label class="field" for="meta-name">Your name</label>
+                    <input type="text" id="meta-name" data-meta="name" autocomplete="name">
+                </div>
+                <div>
+                    <label class="field" for="meta-phone">Your iPhone and iOS version</label>
+                    <input type="text" id="meta-phone" data-meta="phone" placeholder="iPhone 15, iOS 26.1">
+                </div>
+                <div class="wide">
+                    <label class="field" for="meta-account">The email you sign in to Homebound with</label>
+                    <input type="email" id="meta-account" data-meta="account" autocomplete="email">
+                </div>
+                <div class="wide">
+                    <label class="field" for="meta-other">Anything else</label>
+                    <textarea id="meta-other" data-meta="other"></textarea>
+                </div>
+            </div>
+
+            <label class="field" for="summary">Your results</label>
+            <pre class="summary" id="summary" tabindex="0"></pre>
+
+            <div class="actions">
+                <button type="button" class="primary" id="email-results">Email results</button>
+                <button type="button" id="copy-results">Copy results</button>
+                <button type="button" class="danger" id="clear-results">Clear my answers</button>
+            </div>
+            <p class="status-line" id="status-line" role="status"></p>
+            <p><strong>Then send the logs. They're the important part.</strong> In Homebound, go to <strong>Live Location Spike &rarr; Runs</strong> and tap <strong>Share all logs</strong>. AirDrop them to Hudson, or attach them to the results email.</p>
+            <p>Email results opens a message to <a href="mailto:support@homeboundapp.com">support@homeboundapp.com</a>.</p>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/help">Help Center</a>
+                <a href="/privacypolicy">Privacy Policy</a>
+                <a href="/consumerhealth">Consumer Health Data</a>
+                <a href="/termsofservice">Terms of Service</a>
+                <a href="mailto:support@homeboundapp.com">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Homebound LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+        (function () {
+            var KEY = 'homebound-testing-location-v1';
+            var EMAIL = 'support@homeboundapp.com';
+            var LABELS = { pass: 'Done', fail: 'Problem', skip: 'Skipped' };
+
+            // Answers live only in this browser. Storage can be unavailable
+            // (private browsing); the page still works, it just won't remember.
+            function load() {
+                try {
+                    var saved = JSON.parse(localStorage.getItem(KEY));
+                    if (saved && saved.tests && saved.meta) return saved;
+                } catch (e) { /* fall through */ }
+                return { tests: {}, meta: {} };
+            }
+
+            var state = load();
+
+            function save() {
+                try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* not remembered */ }
+                render();
+            }
+
+            var tests = Array.prototype.slice.call(document.querySelectorAll('.test'));
+
+            // Build the Done / Problem / Skipped row and the notes box for every test.
+            tests.forEach(function (section) {
+                var id = section.getAttribute('data-test');
+                var title = section.querySelector('h3').textContent;
+                var box = document.createElement('div');
+                box.className = 'result';
+
+                var group = document.createElement('div');
+                group.className = 'result-buttons';
+                group.setAttribute('role', 'group');
+                group.setAttribute('aria-label', 'Result for test ' + id + ', ' + title);
+
+                ['pass', 'fail', 'skip'].forEach(function (status) {
+                    var button = document.createElement('button');
+                    button.type = 'button';
+                    button.textContent = LABELS[status];
+                    button.setAttribute('data-status', status);
+                    button.setAttribute('aria-pressed', 'false');
+                    button.addEventListener('click', function () {
+                        var entry = state.tests[id] || {};
+                        entry.status = entry.status === status ? '' : status;
+                        state.tests[id] = entry;
+                        save();
+                    });
+                    group.appendChild(button);
+                });
+
+                var noteId = 'notes-' + id;
+                var label = document.createElement('label');
+                label.className = 'field';
+                label.setAttribute('for', noteId);
+                label.textContent = 'Notes';
+
+                var notes = document.createElement('textarea');
+                notes.id = noteId;
+                notes.value = (state.tests[id] && state.tests[id].notes) || '';
+                notes.addEventListener('input', function () {
+                    var entry = state.tests[id] || {};
+                    entry.notes = notes.value;
+                    state.tests[id] = entry;
+                    save();
+                });
+
+                box.appendChild(group);
+                box.appendChild(label);
+                box.appendChild(notes);
+                section.appendChild(box);
+            });
+
+            document.querySelectorAll('[data-meta]').forEach(function (field) {
+                var key = field.getAttribute('data-meta');
+                field.value = state.meta[key] || '';
+                var update = function () {
+                    state.meta[key] = field.value;
+                    save();
+                };
+                field.addEventListener('input', update);
+                field.addEventListener('change', update);
+            });
+
+            function summaryText() {
+                var meta = state.meta;
+                var lines = [
+                    'Homebound live location test results',
+                    'Name: ' + (meta.name || ''),
+                    'iPhone: ' + (meta.phone || ''),
+                    'Account: ' + (meta.account || ''),
+                    ''
+                ];
+                tests.forEach(function (section) {
+                    var id = section.getAttribute('data-test');
+                    var title = section.querySelector('h3').textContent;
+                    var run = section.getAttribute('data-run');
+                    var entry = state.tests[id] || {};
+                    lines.push(id + '. ' + title + ' [' + run + ']: ' + (LABELS[entry.status] || 'Not run'));
+                    if (entry.notes && entry.notes.trim()) {
+                        entry.notes.trim().split('\n').forEach(function (line) {
+                            lines.push('   ' + line);
+                        });
+                    }
+                });
+                if (meta.other && meta.other.trim()) {
+                    lines.push('', 'Anything else:', meta.other.trim());
+                }
+                return lines.join('\n');
+            }
+
+            var progress = document.getElementById('progress');
+            var summary = document.getElementById('summary');
+
+            function render() {
+                var done = 0;
+                tests.forEach(function (section) {
+                    var id = section.getAttribute('data-test');
+                    var status = (state.tests[id] && state.tests[id].status) || '';
+                    if (status) done += 1;
+                    section.setAttribute('data-status', status);
+                    section.querySelectorAll('.result-buttons button').forEach(function (button) {
+                        button.setAttribute('aria-pressed', String(button.getAttribute('data-status') === status));
+                    });
+                });
+                progress.textContent = done + ' of ' + tests.length + ' tests marked';
+                summary.textContent = summaryText();
+            }
+
+            var statusLine = document.getElementById('status-line');
+
+            document.getElementById('copy-results').addEventListener('click', function () {
+                var text = summaryText();
+                if (navigator.clipboard && navigator.clipboard.writeText) {
+                    navigator.clipboard.writeText(text).then(function () {
+                        statusLine.textContent = 'Copied. Paste it into a message to Hudson.';
+                    }).catch(function () {
+                        statusLine.textContent = 'Couldn’t copy. Select the results above and copy them by hand.';
+                    });
+                } else {
+                    statusLine.textContent = 'Couldn’t copy. Select the results above and copy them by hand.';
+                }
+            });
+
+            document.getElementById('email-results').addEventListener('click', function () {
+                var subject = 'Live location test results' + (state.meta.name ? ' from ' + state.meta.name : '');
+                window.location.href = 'mailto:' + EMAIL +
+                    '?subject=' + encodeURIComponent(subject) +
+                    '&body=' + encodeURIComponent(summaryText());
+            });
+
+            // Two taps to clear, so a stray tap can't wipe an afternoon of notes.
+            var clearButton = document.getElementById('clear-results');
+            var clearTimer = null;
+            clearButton.addEventListener('click', function () {
+                if (!clearTimer) {
+                    clearButton.textContent = 'Tap again to clear everything';
+                    clearTimer = setTimeout(function () {
+                        clearButton.textContent = 'Clear my answers';
+                        clearTimer = null;
+                    }, 4000);
+                    return;
+                }
+                clearTimeout(clearTimer);
+                clearTimer = null;
+                clearButton.textContent = 'Clear my answers';
+                state = { tests: {}, meta: {} };
+                document.querySelectorAll('.test textarea, [data-meta]').forEach(function (field) { field.value = ''; });
+                save();
+                statusLine.textContent = 'Cleared.';
+            });
+
+            render();
+        }());
+    </script>
+</body>
+</html>

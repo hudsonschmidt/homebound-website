@@ -13,7 +13,17 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
     <style>
+        /* The page is short, so the main area grows to keep the footer at the bottom. */
+        body {
+            min-height: 100vh;
+            min-height: 100dvh;
+            display: flex;
+            flex-direction: column;
+        }
+
         .testing-doc {
+            flex: 1 0 auto;
+            width: 100%;
             padding: 130px 24px 60px;
             max-width: 860px;
             margin: 0 auto;
@@ -181,6 +191,19 @@
                    
                 </div>
                 <h2>Find</h2>
+                <span class="card-go" aria-hidden="true">Open the steps &rarr;</span>
+            </a>
+
+            <a class="test-card" href="location/">
+                <div class="card-top">
+                    <span class="card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M12 21s-7-6.1-7-11a7 7 0 0 1 14 0c0 4.9-7 11-7 11z"></path>
+                            <circle cx="12" cy="10" r="2.5"></circle>
+                        </svg>
+                    </span>
+                </div>
+                <h2>Live location</h2>
                 <span class="card-go" aria-hidden="true">Open the steps &rarr;</span>
             </a>
         </div>
