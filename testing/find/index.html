@@ -104,19 +104,6 @@
         .callout p:last-child { margin-bottom: 0; }
 
         /* --- Tests --- */
-        .progress {
-            font-weight: 600;
-            color: var(--fern);
-            margin-bottom: 20px;
-        }
-
-        .run-note {
-            background: var(--card);
-            border: 1.5px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: 14px 18px;
-            margin-bottom: 24px;
-        }
 
         .run-note p { margin-bottom: 6px; }
         .run-note p:last-child { margin-bottom: 0; }
@@ -129,10 +116,6 @@
             margin-bottom: 18px;
             scroll-margin-top: 100px;
         }
-
-        .test[data-status="pass"] { border-color: rgba(53, 107, 61, 0.55); }
-        .test[data-status="fail"] { border-color: rgba(184, 76, 51, 0.6); }
-        .test[data-status="skip"] { border-style: dashed; }
 
         .test-head {
             display: flex;
@@ -198,95 +181,6 @@
             font-weight: 550;
         }
 
-        .result {
-            border-top: 1px solid var(--line);
-            margin-top: 14px;
-            padding-top: 14px;
-        }
-
-        .result-buttons {
-            display: flex;
-            gap: 8px;
-            margin-bottom: 10px;
-        }
-
-        .result-buttons button {
-            flex: 1;
-            min-height: 44px;
-            border-radius: var(--radius-sm);
-            border: 1.5px solid var(--line);
-            background: var(--cream);
-            color: var(--ink);
-            font: inherit;
-            font-weight: 600;
-            cursor: pointer;
-        }
-
-        .result-buttons button[aria-pressed="true"][data-status="pass"] { background: var(--fern); border-color: var(--fern); color: #fff; }
-        .result-buttons button[aria-pressed="true"][data-status="fail"] { background: #9c3f27; border-color: #9c3f27; color: #fff; }
-        .result-buttons button[aria-pressed="true"][data-status="skip"] { background: var(--muted); border-color: var(--muted); color: #fff; }
-
-        .result-buttons button:focus-visible,
-        .actions button:focus-visible,
-        textarea:focus-visible,
-        input:focus-visible,
-        select:focus-visible {
-            outline: 3px solid var(--fern);
-            outline-offset: 2px;
-        }
-
-        label.field {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--ink);
-            margin-bottom: 6px;
-        }
-
-        textarea,
-        input[type="text"],
-        select {
-            width: 100%;
-            font: inherit;
-            font-size: 16px; /* keeps iOS from zooming in */
-            color: var(--ink);
-            background: #fff;
-            border: 1.5px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: 10px 12px;
-        }
-
-        textarea {
-            min-height: 72px;
-            resize: vertical;
-        }
-
-        /* --- Lab panel glossary --- */
-        dl.glossary {
-            background: var(--card);
-            border: 1.5px solid var(--line);
-            border-radius: var(--radius-md);
-            padding: 8px 20px;
-        }
-
-        dl.glossary div {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--line);
-        }
-
-        dl.glossary div:last-child { border-bottom: none; }
-
-        dl.glossary dt {
-            font-weight: 650;
-            color: var(--ink);
-            margin-bottom: 2px;
-        }
-
-        dl.glossary dd {
-            color: var(--muted);
-            line-height: 1.6;
-        }
-
         /* --- Results --- */
         .results {
             background: var(--card);
@@ -295,69 +189,6 @@
             padding: 22px;
         }
 
-        .field-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 14px;
-            margin-bottom: 16px;
-        }
-
-        .field-grid .wide { grid-column: 1 / -1; }
-
-        pre.summary {
-            white-space: pre-wrap;
-            word-break: break-word;
-            font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-            font-size: 0.82rem;
-            line-height: 1.55;
-            color: var(--ink);
-            background: var(--cream);
-            border: 1.5px solid var(--line);
-            border-radius: var(--radius-sm);
-            padding: 14px;
-            max-height: 320px;
-            overflow: auto;
-            margin: 6px 0 16px;
-        }
-
-        .actions {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-
-        .actions button {
-            min-height: 44px;
-            border-radius: 100px;
-            padding: 10px 20px;
-            font: inherit;
-            font-weight: 600;
-            cursor: pointer;
-            border: 1.5px solid var(--line);
-            background: var(--cream);
-            color: var(--ink);
-        }
-
-        .actions button.primary {
-            background: var(--copper);
-            border-color: var(--copper);
-            color: #fff;
-        }
-
-        .actions button.primary:hover { background: var(--copper-dark); border-color: var(--copper-dark); }
-
-        .actions button.danger { color: #9c3f27; }
-
-        .status-line {
-            min-height: 1.5em;
-            font-size: 0.9rem;
-            color: var(--fern);
-            margin-top: 10px;
-        }
-
-        @media (max-width: 768px) {
-            .test-doc { padding-top: 110px; }
-            .field-grid { grid-template-columns: 1fr; }
             .test { padding: 18px 16px 14px; }
         }
     </style>
@@ -386,7 +217,7 @@
         </div>
 
         <div class="callout">
-            <p>Mark each test <strong>Pass</strong>, <strong>Fail</strong> or <strong>Skip</strong> and add notes as you go. Your answers save on this phone, and the <a href="#send">Send your results</a> section at the bottom puts them together for you.</p>
+            <p>The <strong>UWB lab</strong> in the app walks you through each test. Pick the test, tap Start, follow the steps on screen, and tap Stop. The app measures the result, suggests Pass or Fail where there's a right answer, and keeps your notes. This page has the setup and an overview of each test.</p>
         </div>
 
         <h2 id="need">What you need</h2>
@@ -413,25 +244,26 @@
             <li>On one phone, open the trip and tap <strong>Find &amp; Meet Up</strong>. Under <strong>Find someone</strong>, tap <strong>Find</strong> next to your partner.</li>
             <li>On the other phone, allow it when asked.</li>
             <li>The first time, each phone asks to find and measure the distance to nearby devices. Tap <strong>Allow</strong> on both. Later, Precise arrow asks for the camera. Allow that too.</li>
-            <li>The <strong>UWB lab</strong> panel shows under the arrow. It's how you'll read the numbers in the tests below.</li>
+            <li>The <strong>UWB lab</strong> card shows under the arrow.</li>
         </ol>
 
-        <h2 id="habits">While you test</h2>
-        <ul>
-            <li>Hold both phones upright, with the backs facing each other.</li>
-            <li>Before each test, type the test's name in the <strong>Mark</strong> box (for example "Test 5 round 2") and tap <strong>Mark</strong>. That's how Hudson finds each test in the log.</li>
-            <li>After each test, tap <strong>Export log</strong> on both phones and save or AirDrop the file. Hudson needs both phones' logs.</li>
-            <li>The log holds distances, angles, timings and battery level. It doesn't hold where you are.</li>
-        </ul>
+        <h2 id="lab">Using the UWB lab</h2>
+        <ol>
+            <li>Tap <strong>Tests</strong> and pick the test. The numbers match this page.</li>
+            <li>Tap <strong>Start</strong>, follow the steps on screen, and tap <strong>Stop</strong>. Each round sets up what it needs, so you don't have to change any settings.</li>
+            <li>Read what the app measured, tap <strong>Pass</strong>, <strong>Fail</strong> or <strong>Skip</strong>, and add a note about anything you saw.</li>
+            <li>Tap <strong>Next round</strong> or <strong>Next test</strong>.</li>
+        </ol>
+        <p>Hold both phones upright, with the backs facing each other. The top line of the card says what Ultra Wideband is doing, in plain words. The slider button opens the raw numbers, which you won't need for the tests.</p>
+        <p>The results and log hold distances, angles, timings and battery level. They don't hold where you are.</p>
 
         <h2 id="tests">The tests</h2>
         <div class="run-note">
             <p><strong>Same model of iPhone</strong> (two 17 Pros, say): do the <strong>full run</strong>, every test below.</p>
             <p><strong>Different models</strong> (a 17 Pro and a 16, say): do the <strong>quick run</strong>, just the tests marked Quick run.</p>
         </div>
-        <p class="progress" id="progress" aria-live="polite"></p>
 
-        <section class="test" id="t1" data-test="1" aria-labelledby="t1-title">
+        <section class="test" id="t1" aria-labelledby="t1-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">1</span>
                 <div>
@@ -441,19 +273,18 @@
             </div>
             <h4>Do</h4>
             <ol>
-                <li>Stand 2 to 3 meters apart.</li>
-                <li>Start a Find and open it on both phones.</li>
+                <li>Stand 2 to 3 meters apart, phones upright, backs facing.</li>
+                <li>Tap <strong>Start</strong>, then wait about 10 seconds.</li>
+                <li>Tap <strong>Stop</strong>.</li>
             </ol>
             <h4>What should happen</h4>
             <ul>
-                <li>In the lab panel, <strong>Caps me / peer</strong> shows <strong>PCE / PCE</strong>. If either side has a <strong>D</strong> in it, write that down: that phone can point without the camera.</li>
-                <li>Within about 5 seconds, <strong>Phase</strong> says ranging and <strong>Config</strong> says EDM on.</li>
-                <li>The Find screen shows an exact distance with <strong>Precise distance</strong> under it.</li>
-                <li>If the phone can't point by itself, the circle shows a <strong>Precise arrow</strong> button.</li>
+                <li>Both phones show P in their capabilities, and an exact distance appears within about 5 seconds.</li>
+                <li>If either phone shows a D, that phone can point without the camera. The app records it either way.</li>
             </ul>
         </section>
 
-        <section class="test" id="t2" data-test="2" aria-labelledby="t2-title">
+        <section class="test" id="t2" aria-labelledby="t2-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">2</span>
                 <div>
@@ -461,23 +292,21 @@
                     <div class="badges"><span class="badge full">Full run</span><span class="badge quick">Quick run</span><span class="badge time">5 min</span></div>
                 </div>
             </div>
+            <p class="warn">If the app says it's backwards on either phone, stop and tell Hudson before going on. It's a quick fix, and it changes what the other tests mean.</p>
             <h4>Do</h4>
             <ol>
-                <li>Tap <strong>Precise arrow</strong> and move your phone slowly side to side until the arrow shows up.</li>
-                <li>Have your partner stand about 3 meters to your <strong>right</strong>.</li>
-                <li>Then about 3 meters to your <strong>left</strong>.</li>
-                <li>Swap and do it on the other phone.</li>
-                <li>Quick run: if test 1 showed a D on a phone, also do this on that phone without tapping Precise arrow.</li>
+                <li>Tap <strong>Start</strong>, then open <strong>Precise arrow</strong> and sweep slowly until the arrow shows.</li>
+                <li>Partner stands 3 m to your right: tap <strong>Partner on my right</strong>.</li>
+                <li>Partner stands 3 m to your left: tap <strong>Partner on my left</strong>.</li>
+                <li>Tap <strong>Stop</strong>. Then do it on the other phone.</li>
             </ol>
             <h4>What should happen</h4>
             <ul>
-                <li>Partner on your right: the arrow points right, and <strong>Angle</strong> in the lab panel is a positive number.</li>
-                <li>Partner on your left: the arrow points left, and Angle is negative.</li>
+                <li>A positive angle with your partner on the right, negative on the left. The app checks the sign for you.</li>
             </ul>
-            <p class="warn">If it's backwards on either phone, stop and tell Hudson before going on. It's a quick fix, and it changes what the other tests mean.</p>
         </section>
 
-        <section class="test" id="t3" data-test="3" aria-labelledby="t3-title">
+        <section class="test" id="t3" aria-labelledby="t3-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">3</span>
                 <div>
@@ -487,20 +316,18 @@
             </div>
             <h4>Do</h4>
             <ol>
-                <li>Tap <strong>Precise arrow</strong> and time how long it takes for the arrow to appear. <strong>Convergence</strong> in the lab panel changes to converged at the same moment.</li>
-                <li>With the arrow up, have your partner walk a full circle around you, about 5 meters out, then stop behind you.</li>
-                <li>Try it once more somewhere dim.</li>
+                <li>Tap <strong>Start</strong>, then open <strong>Precise arrow</strong>. The app times how long the arrow takes.</li>
+                <li>Partner walks a full circle around you about 5 m out, then stops behind you.</li>
+                <li>Tap <strong>Stop</strong>. Note anything odd, like the arrow lagging.</li>
             </ol>
-            <h4>Write down</h4>
+            <h4>What should happen</h4>
             <ul>
-                <li>How many seconds until the first arrow.</li>
-                <li>Whether the arrow keeps up as they walk around you, and what it does when they're behind you.</li>
-                <li>Any tips that show at the top of the camera, like "Find more light".</li>
-                <li>If the camera picture goes black but the arrow still works, write that down. That's a backup mode, not a failure. If it says "Precise arrow couldn't start the camera", tap <strong>Try again</strong> once, and export the log either way.</li>
+                <li>An arrow within about 10 seconds of sweeping, and it keeps up as they move.</li>
+                <li>If the camera picture goes black but the arrow still works, write that in the note. That's a backup mode, not a failure. If it says "Precise arrow couldn't start the camera", tap <strong>Try again</strong> once.</li>
             </ul>
         </section>
 
-        <section class="test" id="t4" data-test="4" aria-labelledby="t4-title">
+        <section class="test" id="t4" aria-labelledby="t4-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">4</span>
                 <div>
@@ -510,17 +337,17 @@
             </div>
             <h4>Do</h4>
             <ol>
-                <li>Start about 10 meters apart.</li>
-                <li>Walk toward each other, watching the screen.</li>
+                <li>Start about 10 meters apart and tap <strong>Start</strong>.</li>
+                <li>Walk toward each other.</li>
+                <li>Tap <strong>Stop</strong> once both phones say Found each other, or when you're standing together.</li>
             </ol>
             <h4>What should happen</h4>
             <ul>
-                <li>Once you're within about 1.5 meters for 2 seconds, both phones switch to <strong>Found each other</strong> and buzz.</li>
-                <li>Write down if it happened too early, too late, or not at all.</li>
+                <li>Both phones switch to Found each other within about 1.5 m, and buzz.</li>
             </ul>
         </section>
 
-        <section class="test" id="t5" data-test="5" aria-labelledby="t5-title">
+        <section class="test" id="t5" aria-labelledby="t5-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">5</span>
                 <div>
@@ -528,26 +355,20 @@
                     <div class="badges"><span class="badge full">Full run</span><span class="badge quick">Quick run: round 1 only</span><span class="badge time">15 min</span></div>
                 </div>
             </div>
-            <p>One phone gets locked, and the other stays open. On the phone you'll lock, set <strong>Live Activity</strong> in the lab panel before each round:</p>
+            <p>Five rounds. Each one sets up how the lock screen activity behaves, so just follow the round shown in the app. Round 5 swipes home instead of locking.</p>
+            <h4>Do</h4>
             <ol>
-                <li>Round 1: <strong>Restart at NI start</strong></li>
-                <li>Round 2: <strong>Keep</strong></li>
-                <li>Round 3: <strong>Restart on background</strong></li>
-                <li>Round 4: <strong>None</strong></li>
+                <li>Start a new Find, 3 m apart. Tap <strong>Start</strong> on the phone you'll lock.</li>
+                <li>Lock it and pocket it for a full minute. Partner walks 6 m away and back.</li>
+                <li>Unlock and tap <strong>Stop</strong>.</li>
             </ol>
-            <h4>Do, for each round</h4>
-            <ol>
-                <li>Start a new Find, standing 3 meters apart with the distance showing.</li>
-                <li>On the phone you'll lock, Mark "Test 5 round 1 locking" (or whichever round).</li>
-                <li>Lock that phone and put it in a pocket for a full minute. While it's locked, the other person walks about 6 meters away and back.</li>
-                <li>Unlock, Mark "unlocked", then Export log.</li>
-            </ol>
-            <p>Once all four are done, repeat round 1 one more time, swiping home instead of locking.</p>
             <h4>What should happen</h4>
-            <p>Nothing to watch on screen. The logs show whether the phone kept measuring while it was locked.</p>
+            <ul>
+                <li>Nothing to judge. The app records whether the phone kept measuring while it was locked, like "Kept measuring while away: yes, 412 readings".</li>
+            </ul>
         </section>
 
-        <section class="test" id="t6" data-test="6" aria-labelledby="t6-title">
+        <section class="test" id="t6" aria-labelledby="t6-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">6</span>
                 <div>
@@ -555,45 +376,42 @@
                     <div class="badges"><span class="badge full">Full run</span><span class="badge time">15 min</span></div>
                 </div>
             </div>
-            <h4>Part A</h4>
+            <h4>Do</h4>
             <ol>
-                <li>With the distance showing, tap <strong>Restart NI in 10 s</strong> on one phone, then lock it right away.</li>
-                <li>Wait 30 seconds, unlock, and Export log.</li>
-            </ol>
-            <h4>Part B</h4>
-            <ol>
-                <li>Your partner opens the trip and turns on <strong>Let the group find me</strong>.</li>
-                <li>They lock their phone, put it in a pocket, and walk at least 150 meters away.</li>
-                <li>Start a Find on them and walk toward them.</li>
+                <li><strong>Part A:</strong> with the distance showing, tap <strong>Start</strong>, tap <strong>Restart NI in 10 s</strong>, and lock the phone right away. Wait 30 seconds, unlock, and tap <strong>Stop</strong>.</li>
+                <li><strong>Part B:</strong> on the phone going in the pocket, turn on <strong>Let the group find me</strong>, tap <strong>Start</strong>, lock it, and walk 150 m or more away.</li>
+                <li>The other phone starts a Find on them and walks toward them.</li>
+                <li>When you meet, unlock and tap <strong>Stop</strong>.</li>
             </ol>
             <h4>What should happen</h4>
             <ul>
-                <li>Within about 60 meters, their phone may start measuring on its own. Write down whether it did.</li>
-                <li>If it didn't, within about 15 seconds they get a notification: "[Your name] is close. Open Homebound to help them find you." Tapping it should bring up the exact distance.</li>
+                <li>Nothing to judge. The app records whether the locked phone started measuring on its own.</li>
+                <li>If it didn't, within about 15 seconds of the other phone getting close, they get a notification: "[Name] is close. Open Homebound to help them find you." Note whether it came.</li>
             </ul>
         </section>
 
-        <section class="test" id="t7" data-test="7" aria-labelledby="t7-title">
+        <section class="test" id="t7" aria-labelledby="t7-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">7</span>
                 <div>
                     <h3 id="t7-title">How far it reaches</h3>
-                    <div class="badges"><span class="badge full">Full run</span><span class="badge quick">Quick run: steps 1 to 3 only</span><span class="badge time">15 min</span></div>
+                    <div class="badges"><span class="badge full">Full run</span><span class="badge quick">Quick run: round 1 only</span><span class="badge time">15 min</span></div>
                 </div>
             </div>
+            <p>Five rounds: open field with extended range on, open field with it off, a busy indoor spot, one phone in a pocket, and one in a bag. The app switches extended range for you.</p>
             <h4>Do</h4>
             <ol>
-                <li>In an open field or park, start 2 meters apart.</li>
-                <li>Walk apart slowly, watching the distance. Write down the distance when <strong>Precise</strong> goes away.</li>
-                <li>Walk back and write down when it comes back.</li>
-                <li>Turn off <strong>Allow EDM</strong> in the lab panel on both phones and do it again.</li>
-                <li>Then one short try each: a busy indoor spot, one phone in a pocket, and one phone in a bag.</li>
+                <li>Start 2 m apart in the open and tap <strong>Start</strong>.</li>
+                <li>Walk apart slowly until Precise drops, then walk back until it returns.</li>
+                <li>Tap <strong>Stop</strong>.</li>
             </ol>
-            <h4>Write down</h4>
-            <p>For each try, the distance where Precise dropped and where it came back.</p>
+            <h4>What should happen</h4>
+            <ul>
+                <li>Nothing to judge. The app records where Precise dropped and came back, and the farthest Ultra Wideband reading.</li>
+            </ul>
         </section>
 
-        <section class="test" id="t8" data-test="8" aria-labelledby="t8-title">
+        <section class="test" id="t8" aria-labelledby="t8-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">8</span>
                 <div>
@@ -601,18 +419,19 @@
                     <div class="badges"><span class="badge full">Full run</span><span class="badge time">45 min</span></div>
                 </div>
             </div>
-            <p>Use the same phone for all three rounds, keep the Find screen open, and keep the brightness the same.</p>
             <h4>Do</h4>
             <ol>
-                <li>15 minutes with <strong>Gate</strong> set to <strong>off</strong> in the lab panel. That's GPS only.</li>
-                <li>15 minutes with Gate set to <strong>auto</strong>.</li>
-                <li>15 minutes with Gate on auto and <strong>Camera on</strong> in the lab panel.</li>
+                <li>Keep the Find screen open and the brightness the same each round.</li>
+                <li>Tap <strong>Start</strong> and leave it for 15 minutes.</li>
+                <li>Tap <strong>Stop</strong>.</li>
             </ol>
-            <h4>Write down</h4>
-            <p>The battery percentage at the start and end of each round.</p>
+            <h4>What should happen</h4>
+            <ul>
+                <li>Nothing to judge. The app records the battery used each round: GPS only, then Ultra Wideband, then Ultra Wideband with the camera. It sets each round up for you.</li>
+            </ul>
         </section>
 
-        <section class="test" id="t9" data-test="9" aria-labelledby="t9-title">
+        <section class="test" id="t9" aria-labelledby="t9-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">9</span>
                 <div>
@@ -622,9 +441,9 @@
             </div>
             <h4>Do</h4>
             <ol>
-                <li>Your partner turns on <strong>Let the group find me</strong>, then swipes Homebound away to close it.</li>
-                <li>Start a Find on them.</li>
-                <li>They tap <strong>Stop</strong> on their lock screen.</li>
+                <li>Partner turns on <strong>Let the group find me</strong>, then swipes Homebound away.</li>
+                <li>Tap <strong>Start</strong>, then start a Find on them.</li>
+                <li>They tap <strong>Stop</strong> on their lock screen. Tap <strong>Stop</strong> in the app.</li>
             </ol>
             <h4>What should happen</h4>
             <ul>
@@ -633,7 +452,7 @@
             </ul>
         </section>
 
-        <section class="test" id="t10" data-test="10" aria-labelledby="t10-title">
+        <section class="test" id="t10" aria-labelledby="t10-title">
             <div class="test-head">
                 <span class="test-num" aria-hidden="true">10</span>
                 <div>
@@ -642,83 +461,27 @@
                 </div>
             </div>
             <h4>Do</h4>
-            <p>During a Find, open Homebound on the watch.</p>
+            <ol>
+                <li>Tap <strong>Start</strong>, then open Homebound on the watch during the Find.</li>
+                <li>Check the row on the trip screen, the arrow, the taps under 50 m, and Stop.</li>
+                <li>Tap <strong>Stop</strong>.</li>
+            </ol>
             <h4>What should happen</h4>
             <ul>
                 <li>The trip screen shows a row like "Finding Jamie". Tapping it opens the arrow.</li>
-                <li>The arrow follows your wrist as you turn, and the taps speed up once you're within 50 meters.</li>
-                <li>With the phone's Find screen open and the distance precise, the watch shows Precise.</li>
+                <li>The arrow follows your wrist, and the taps speed up within 50 meters.</li>
                 <li>Stop on the watch ends the Find.</li>
             </ul>
         </section>
 
-        <h2 id="panel">Reading the UWB lab panel</h2>
-        <dl class="glossary">
-            <div>
-                <dt>Phase</dt>
-                <dd>What Ultra Wideband is doing. "ranging" means it's measuring.</dd>
-            </div>
-            <div>
-                <dt>Caps me / peer</dt>
-                <dd>What each phone can do. P is exact distance, D is pointing without the camera, C is the camera arrow, and E is extended range.</dd>
-            </div>
-            <div>
-                <dt>Config</dt>
-                <dd>Whether extended range (EDM) and the camera are in use right now.</dd>
-            </div>
-            <div>
-                <dt>Distance and Angle</dt>
-                <dd>The raw Ultra Wideband numbers. Angle is positive when your partner is to your right.</dd>
-            </div>
-            <div>
-                <dt>Convergence</dt>
-                <dd>How the camera arrow is doing. "converged" means it knows the direction.</dd>
-            </div>
-            <div>
-                <dt>Mark and Export log</dt>
-                <dd>Mark adds your note to the log. Export log shares the log file.</dd>
-            </div>
-        </dl>
-
         <h2 id="send">Send your results</h2>
         <div class="results">
-            <div class="field-grid">
-                <div>
-                    <label class="field" for="meta-name">Your name</label>
-                    <input type="text" id="meta-name" data-meta="name" autocomplete="name">
-                </div>
-                <div>
-                    <label class="field" for="meta-run">Which run</label>
-                    <select id="meta-run" data-meta="run">
-                        <option value="">Choose one</option>
-                        <option value="Full run">Full run</option>
-                        <option value="Quick run">Quick run</option>
-                    </select>
-                </div>
-                <div>
-                    <label class="field" for="meta-phone">Your iPhone and iOS version</label>
-                    <input type="text" id="meta-phone" data-meta="phone" placeholder="iPhone 17 Pro, iOS 26.1">
-                </div>
-                <div>
-                    <label class="field" for="meta-partner">Your partner's iPhone and iOS version</label>
-                    <input type="text" id="meta-partner" data-meta="partner" placeholder="iPhone 16, iOS 26.1">
-                </div>
-                <div class="wide">
-                    <label class="field" for="meta-other">Anything else</label>
-                    <textarea id="meta-other" data-meta="other"></textarea>
-                </div>
-            </div>
-
-            <label class="field" for="summary">Your results</label>
-            <pre class="summary" id="summary" tabindex="0"></pre>
-
-            <div class="actions">
-                <button type="button" class="primary" id="email-results">Email results</button>
-                <button type="button" id="copy-results">Copy results</button>
-                <button type="button" class="danger" id="clear-results">Clear my answers</button>
-            </div>
-            <p class="status-line" id="status-line" role="status"></p>
-            <p>Email results opens a message to <a href="mailto:support@homeboundapp.com">support@homeboundapp.com</a>. Attach the exported logs from both phones to it, or AirDrop them to Hudson.</p>
+            <ol>
+                <li>In the UWB lab, tap <strong>Results</strong>. Every round you marked is there, with what the app measured.</li>
+                <li>Tap <strong>Export</strong>. It shares a short summary and the full log.</li>
+                <li>Send both phones' exports to Hudson. AirDrop them, or email them to <a href="mailto:support@homeboundapp.com?subject=Find%20test%20results">support@homeboundapp.com</a>.</li>
+            </ol>
+            <p>To paste the results into a message instead, tap <strong>Copy summary</strong>.</p>
         </div>
     </main>
 
@@ -735,181 +498,5 @@
         </div>
     </footer>
 
-    <script>
-        (function () {
-            var KEY = 'homebound-testing-find-v1';
-            var EMAIL = 'support@homeboundapp.com';
-            var LABELS = { pass: 'Pass', fail: 'Fail', skip: 'Skip' };
-
-            // Answers live only in this browser. Storage can be unavailable
-            // (private browsing); the page still works, it just won't remember.
-            function load() {
-                try {
-                    var saved = JSON.parse(localStorage.getItem(KEY));
-                    if (saved && saved.tests && saved.meta) return saved;
-                } catch (e) { /* fall through */ }
-                return { tests: {}, meta: {} };
-            }
-
-            var state = load();
-
-            function save() {
-                try { localStorage.setItem(KEY, JSON.stringify(state)); } catch (e) { /* not remembered */ }
-                render();
-            }
-
-            var tests = Array.prototype.slice.call(document.querySelectorAll('.test'));
-
-            // Build the Pass / Fail / Skip row and the notes box for every test.
-            tests.forEach(function (section) {
-                var id = section.getAttribute('data-test');
-                var title = section.querySelector('h3').textContent;
-                var box = document.createElement('div');
-                box.className = 'result';
-
-                var group = document.createElement('div');
-                group.className = 'result-buttons';
-                group.setAttribute('role', 'group');
-                group.setAttribute('aria-label', 'Result for test ' + id + ', ' + title);
-
-                ['pass', 'fail', 'skip'].forEach(function (status) {
-                    var button = document.createElement('button');
-                    button.type = 'button';
-                    button.textContent = LABELS[status];
-                    button.setAttribute('data-status', status);
-                    button.setAttribute('aria-pressed', 'false');
-                    button.addEventListener('click', function () {
-                        var entry = state.tests[id] || {};
-                        entry.status = entry.status === status ? '' : status;
-                        state.tests[id] = entry;
-                        save();
-                    });
-                    group.appendChild(button);
-                });
-
-                var noteId = 'notes-' + id;
-                var label = document.createElement('label');
-                label.className = 'field';
-                label.setAttribute('for', noteId);
-                label.textContent = 'Notes and numbers';
-
-                var notes = document.createElement('textarea');
-                notes.id = noteId;
-                notes.value = (state.tests[id] && state.tests[id].notes) || '';
-                notes.addEventListener('input', function () {
-                    var entry = state.tests[id] || {};
-                    entry.notes = notes.value;
-                    state.tests[id] = entry;
-                    save();
-                });
-
-                box.appendChild(group);
-                box.appendChild(label);
-                box.appendChild(notes);
-                section.appendChild(box);
-            });
-
-            document.querySelectorAll('[data-meta]').forEach(function (field) {
-                var key = field.getAttribute('data-meta');
-                field.value = state.meta[key] || '';
-                var update = function () {
-                    state.meta[key] = field.value;
-                    save();
-                };
-                field.addEventListener('input', update);
-                field.addEventListener('change', update);
-            });
-
-            function summaryText() {
-                var meta = state.meta;
-                var lines = [
-                    'Homebound Find test results',
-                    'Name: ' + (meta.name || ''),
-                    'Run: ' + (meta.run || ''),
-                    'My iPhone: ' + (meta.phone || ''),
-                    'Partner iPhone: ' + (meta.partner || ''),
-                    ''
-                ];
-                tests.forEach(function (section) {
-                    var id = section.getAttribute('data-test');
-                    var title = section.querySelector('h3').textContent;
-                    var entry = state.tests[id] || {};
-                    lines.push(id + '. ' + title + ': ' + (LABELS[entry.status] || 'Not run'));
-                    if (entry.notes && entry.notes.trim()) {
-                        entry.notes.trim().split('\n').forEach(function (line) {
-                            lines.push('   ' + line);
-                        });
-                    }
-                });
-                if (meta.other && meta.other.trim()) {
-                    lines.push('', 'Anything else:', meta.other.trim());
-                }
-                return lines.join('\n');
-            }
-
-            var progress = document.getElementById('progress');
-            var summary = document.getElementById('summary');
-
-            function render() {
-                var done = 0;
-                tests.forEach(function (section) {
-                    var id = section.getAttribute('data-test');
-                    var status = (state.tests[id] && state.tests[id].status) || '';
-                    if (status) done += 1;
-                    section.setAttribute('data-status', status);
-                    section.querySelectorAll('.result-buttons button').forEach(function (button) {
-                        button.setAttribute('aria-pressed', String(button.getAttribute('data-status') === status));
-                    });
-                });
-                progress.textContent = done + ' of ' + tests.length + ' tests marked';
-                summary.textContent = summaryText();
-            }
-
-            var statusLine = document.getElementById('status-line');
-
-            document.getElementById('copy-results').addEventListener('click', function () {
-                var text = summaryText();
-                if (navigator.clipboard && navigator.clipboard.writeText) {
-                    navigator.clipboard.writeText(text).then(function () {
-                        statusLine.textContent = 'Copied. Paste it into a message to Hudson.';
-                    }).catch(function () {
-                        statusLine.textContent = 'Couldn’t copy. Select the results above and copy them by hand.';
-                    });
-                } else {
-                    statusLine.textContent = 'Couldn’t copy. Select the results above and copy them by hand.';
-                }
-            });
-
-            document.getElementById('email-results').addEventListener('click', function () {
-                var subject = 'Find test results' + (state.meta.name ? ' from ' + state.meta.name : '');
-                window.location.href = 'mailto:' + EMAIL +
-                    '?subject=' + encodeURIComponent(subject) +
-                    '&body=' + encodeURIComponent(summaryText());
-            });
-
-            // Two taps to clear, so a stray tap can't wipe an afternoon of notes.
-            var clearButton = document.getElementById('clear-results');
-            var clearTimer = null;
-            clearButton.addEventListener('click', function () {
-                if (!clearTimer) {
-                    clearButton.textContent = 'Tap again to clear everything';
-                    clearTimer = setTimeout(function () {
-                        clearButton.textContent = 'Clear my answers';
-                        clearTimer = null;
-                    }, 4000);
-                    return;
-                }
-                clearTimeout(clearTimer);
-                clearTimer = null;
-                clearButton.textContent = 'Clear my answers';
-                state = { tests: {}, meta: {} };
-                document.querySelectorAll('.test textarea, [data-meta]').forEach(function (field) { field.value = ''; });
-                save();
-                statusLine.textContent = 'Cleared.';
-            });
-
-            render();
-        }());
-    </script>
 </body>
 </html>
