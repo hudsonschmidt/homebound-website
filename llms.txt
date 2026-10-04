@@ -22,23 +22,27 @@ Homebound works as a dead man's switch for outdoor activities. Users create a tr
 - **Plan From Anywhere**: Create trips even without a signal—they activate automatically when you reconnect, with automatic time-zone detection
 - **Safety Contacts**: Add up to 2 contacts per trip (5 with Homebound+) who receive email notifications automatically
 - **Automatic Overdue Alerts**: If you don't check out by ETA + grace period, contacts get your trip details and last known location
-- **Alerts That Reach You**: Safety notifications break through Focus and Do Not Disturb and appear on CarPlay, so important alerts are never missed
+- **Alerts That Reach You**: Overdue and SOS alerts, check-in requests from friends, and check-in reminders on driving trips are Time Sensitive notifications, so they come through Focus and Do Not Disturb
 - **Group Trips**: Plan adventures with up to 20 participants; each person checks in and finishes individually (everyone is notified as each member gets home), people can be added after a trip starts, and watched members appear together on one live map
-- **Live Location Sharing**: Share real-time GPS position with safety contacts during active trips
+- **Find & Meet Up**: On a group trip, Find shows an arrow and the distance to another member for up to 15 minutes, using Ultra Wideband on supported iPhones and GPS with the compass otherwise. It works on Apple Watch and in a Live Activity. Any member can set a meetup pin that everyone gets an arrow to
+- **Check-In Photos & Trip Album**: Add a photo when you check in. Every trip has an album of up to 12 photos that you can add to after the trip, and you choose which photos appear in your feed post
+- **Emergency SOS**: Alert all your safety contacts at once. The alert goes out right away with your last known location and its age, followed by a fresh location if you've moved
+- **Activity Feed & Share Cards**: Photo-first feed posts with a map of each trip's route; share a finished trip as a card in seven designs
+- **Live Location Sharing**: Share your real-time position during active trips with friends who are your safety contacts and with group-trip members; shows how recent each position is, draws a trail, and stops when the trip ends
 - **Circles**: Share your live location with a chosen group of friends for a set duration—1 hour, 4 hours, 8 hours, a day, 3 days, or a week—independent of any trip, and stop anytime
 - **Live Map**: See the friends and trip participants who are sharing with you, live, on one map
-- **Apple Watch App**: Check in, extend your ETA, finish a trip, or send an SOS from your wrist—working directly over the watch's own connection when the phone is out of range. Watch face complications show a live countdown, and the watch schedules its own haptic ETA and grace-period alerts so they fire with no signal at all
-- **Live Activity & Dynamic Island**: See trip countdown on lock screen and Dynamic Island; check in without unlocking
+- **Apple Watch App**: Check in, extend your ETA, finish a trip, or send an SOS from your wrist—working directly over the watch's own connection when the phone is out of range. Watch face complications show a live countdown, and the watch schedules its own haptic ETA and grace-period alerts so they fire with no signal at all. The watch taps you when a trip starts, and on group trips it shows the Find arrow to a person or meetup spot.
+- **Live Activity & Dynamic Island**: See your trip countdown and last check-in on the Lock Screen and Dynamic Island, and check in without unlocking; follow a friend's trip there with Watch Live
 - **Siri & Shortcuts**: Start a Quick Trip by voice ("Start my walk home in Homebound") or from the Shortcuts app, a Home Screen button, or an automation
-- **Friends**: Connect with other Homebound users, see each other's active trips, request check-in updates
+- **Friends**: Connect with other Homebound users, see each other's active trips, check on a friend during their trip with a check-in request or a short message, and answer in one tap with "I'm okay" or a quick reply you can customize
 - **Profile Photos**: Add a photo from your camera or library; uploads are re-encoded and stripped of all metadata, including GPS coordinates
 - **Safety Score**: 0-100 score based on on-time rate, check-in rate, and contact coverage (computed on-device)
 - **Weekly Recap**: Summary of adventure hours, trip count, and safety habits
 - **Achievements**: 40 badges across five categories—total trips, adventure time, activities, locations, and time patterns
 - **Trip Map**: Interactive map of all past adventures
-- **Discover**: Find nearby places and activities with current conditions across ten activities, from trailheads and climbing spots to concerts (concert cards show date, time, price, and venue, and open the ticket page)
+- **Discover**: Find nearby places and activities with current conditions across ten activities, from trailheads and climbing spots to concerts (concert cards show date, time, price, and venue, and open the ticket page); activities ruled out by weather or season are grouped by reason, with a Show anyway option
 - **Trip History & Search**: Browse and search past trips (30 days free, unlimited with Homebound+)
-- **Widgets**: Home Screen and Lock Screen widgets showing trip status and countdown; the medium widget adds Check In and Check Out buttons
+- **Widgets**: Home Screen and Lock Screen widgets showing trip status and countdown; the medium widget adds Check In and Check Out buttons, with a confirm step before checking out
 - **Quick Trips**: One-tap presets for routine outings (5 free, 10 with Homebound+); destination presets can set their own return time from a live travel estimate
 - **Reporting & Blocking**: Report a post, comment, or person, and block anyone; blocked users are managed in Settings > Privacy
 - **Referrals (Give 7, Get 7)**: Invite a friend and you each get 7 days of Homebound+ once they finish their first trip
@@ -48,15 +52,17 @@ Homebound works as a dead man's switch for outdoor activities. Users create a tr
 
 ## Pricing
 
-The whole safety loop is free—trips, overdue alerts, SOS, group trips, Circles, live location, the Apple Watch app, Discover, widgets, Live Activity, Trip Map, achievements, safety score, and data export. Homebound+ raises limits and adds a few conveniences:
+The whole safety loop is free—trips, overdue alerts, SOS, group trips, trip photos, Find, Circles, live location, the Apple Watch app, Discover, widgets, Live Activity, Trip Map, achievements, safety score, and data export. Homebound+ raises limits and adds a few conveniences:
 
 - **Free**: 2 safety contacts per trip, 30 days of trip history, 5 Quick Trips, 1 pinned favorite activity, 2 adventure stats, preset check-in intervals (15/30/60/120 min)
 - **Homebound+**: 5 safety contacts per trip, unlimited trip history, 10 Quick Trips, 3 pinned favorite activities, all 8 adventure stats, any check-in interval, custom notification messages, contact groups, Family Sharing on the annual plan
 
 ## Privacy
 
-- Location is only collected when users explicitly choose to share it (setting trip location, checking in, or live sharing)
+- Location is only collected when users explicitly choose to share it (setting trip location, checking in, sending an SOS, live sharing, or using Find on a group trip)
 - No background location tracking unless you turn on live sharing—either during an active trip or while sharing with a Circle—and you can stop anytime
+- Trip photos are shown to the trip's safety contacts (latest photo), group members, and friends you post to, never publicly; location metadata is removed from every photo
+- Accounts under 18 can only post trips to friends, with the location generalized
 - Safety score and weekly recap are computed entirely on-device
 - No data sold to advertisers
 - Full account deletion available in settings
@@ -67,6 +73,7 @@ The whole safety loop is free—trips, overdue alerts, SOS, group trips, Circles
 - iPhone, plus a companion Apple Watch app
 - Actions taken offline—creating or starting a trip, checking in, extending, checking out, SOS—are queued locally and sent automatically once you reconnect; cached trip details are viewable without service
 - Contacts are only notified when a queued action actually sends, so an overdue alert can still fire if you check out in a dead zone and stay offline past your ETA plus grace period
+- Anything that can't sync after you reconnect is listed on a Sync Issues screen, where you can retry or dismiss it
 
 ## Important Note
 

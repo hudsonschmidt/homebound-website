@@ -340,9 +340,9 @@
         <div class="spark" style="top:180px;left:24%;font-size:9px" aria-hidden="true">✦</div>
         <div class="spark" style="top:200px;right:22%;font-size:10px" aria-hidden="true">✦</div>
         <h1>How can we help?</h1>
-        <p>Search <span id="totalCount">105</span> answers, or browse by topic.</p>
+        <p>Search <span id="totalCount">136</span> answers, or browse by topic.</p>
         <div class="search-wrap">
-            <input type="search" id="faqSearch" placeholder='Try "grace period", "Apple Watch", or "Siri"…' aria-label="Search help answers">
+            <input type="search" id="faqSearch" placeholder='Try "grace period", "Apple Watch", "Find", or "Siri"…' aria-label="Search help answers">
             <span class="search-icon" aria-hidden="true">⌕</span>
         </div>
         <div class="chips">
@@ -351,6 +351,7 @@
             <button class="chip" data-term="SOS contact 911">Does SOS call 911?</button>
             <button class="chip" data-term="grace period">What's a grace period?</button>
             <button class="chip" data-term="battery">Why is my battery draining?</button>
+            <button class="chip" data-term="photo">How do trip photos work?</button>
         </div>
     </section>
 
@@ -422,7 +423,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I add a profile photo?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes. Tap your avatar on your profile or in Settings &gt; Account, then take a photo or choose one from your library and crop it. Friends see it across the app. Homebound re-encodes every upload and strips all metadata first — including any GPS coordinates the original photo carried — and you can remove the photo from the same menu at any time.</p></div>
+                        <div class="faq-a" hidden><p>Yes. Tap your avatar on your profile or in Settings &gt; Account, then take a photo or choose one from your library and crop it. Friends see it across the app and can tap it on your profile to see it larger. Homebound re-encodes every upload and removes all metadata first, including any GPS coordinates the original photo carried. A photo you take with Homebound's camera is also saved to your photo library. You can remove your profile photo from the same menu at any time.</p></div>
                     </div>
                 </div>
             </section>
@@ -444,7 +445,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I set quiet hours so reminders don't wake me?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes, per trip: turn on "notification hours" (default 8 AM–10 PM). Emergency alerts always come through.</p></div>
+                        <div class="faq-a" hidden><p>Yes. When you plan a trip, turn on <strong>Quiet hours</strong> and choose when check-in reminders stop and start again, for example no reminders from 10 PM until 8 AM. To use quiet hours on every new trip, go to Settings &gt; Customization and turn on Quiet Hours under Trip Defaults. Emergency alerts always come through.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Why does Homebound keep asking if I've arrived?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -452,6 +453,75 @@
                             <p>If your trip has a destination, Homebound notices when you get within about 150 metres of it and sends you an "Arrived at…?" notification suggesting you check out. It never checks you out on its own — "Not yet" dismisses it and the trip carries on.</p>
                             <p>It comes back each time you leave that radius and return, so a destination set at or near where you're actually spending the trip can prompt you repeatedly. Either set the destination to where the trip really ends, or start the trip from your current location without one. Checking out stops the prompts for good.</p>
                             <p>Arrival reminders need location access. With "Always" they arrive whenever you get there; with "While Using" they only fire while Homebound is open.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">A friend is checking on me. How do I answer?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>When a friend who's a safety contact on your trip asks you to check in or sends you a message, you get a notification and it shows on your trip card on the Home tab. Tap <strong>I'm okay</strong> to answer in one tap. That also checks you in.</p>
+                            <p>To say more, tap <strong>Reply</strong> and pick a quick reply or write your own, up to 200 characters. Any check-in, extension, check-out, or SOS also answers an open request, so you don't need to do both.</p>
+                            <p>Requests, messages, and your replies all appear in the trip timeline in Trip Details. The <strong>Trip details</strong> button on your trip card shows a count when something is waiting.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <section class="faq-group" data-cat="Trip Photos">
+                <h2 class="group-label">Trip Photos</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I add a photo when I check in?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>On your trip card on the Home tab, tap the camera side of the <strong>Check In</strong> button. Take a photo, add a caption if you like (up to 80 characters), and tap <strong>Check In</strong>. That checks you in and adds the photo to your trip album.</p>
+                            <p>To use a photo you've already taken, close the camera and choose <strong>Photos from This Trip</strong>. It only shows photos taken since your trip started.</p>
+                            <p>Your check-in goes out first and the photo uploads right after, so a slow connection never holds up the check-in. If you're offline, the photo sends when you reconnect. Taking a photo doesn't check you in on its own. If you close the sheet without tapping Check In, nothing is sent.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the trip album?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Every trip has an album of the photos added to it. On a group trip, everyone's photos go in the same album.</p>
+                            <p>To open it, tap a photo in the <strong>Trip Album</strong> section of Trip Details, tap a photo in the trip timeline, or tap a photo on a feed post. Swipe left or right to move between photos. Each one shows its caption, who took it, and when.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I add photos after a trip ends?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Yes, at any time after the trip. Open the trip and tap <strong>Add</strong> in the Trip Album section, tap the add button in the album, or choose <strong>Add Photos</strong> from the "…" menu on your feed post. You can pick several at once. Only photos taken between the trip's start and finish are shown.</p>
+                            <p>Photos added later don't have captions and aren't tied to a check-in, so they don't appear at a check-in spot on the map. On a group trip, anyone on the trip can add photos. You can't add photos to a cancelled trip.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Who can see my trip photos?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Your safety contacts see your most recent check-in photo on the "Follow This Trip" page linked in their emails. Everyone on a group trip can open the whole album.</p>
+                            <p>Your friends only see trip photos after you post the trip to your feed, and only the photos you chose. People who aren't your friends never see your trip photos, even on a trip you share with Everyone.</p>
+                            <p>Before a photo is stored, Homebound removes the location and other details saved inside the file. On a feed post that shows the exact location, a check-in photo appears on the route map at the spot where you checked in.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I choose which photos go in my feed post?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Yes. When you post a trip, tap photos in the strip to leave them out or put them back, or tap <strong>Share All</strong>. If you leave every photo out, the post goes up without photos.</p>
+                            <p>To change it later, open the trip in Trip Details and tap <strong>Photos</strong> in the Activity Feed section. Choose <strong>Show All Photos</strong>, <strong>Choose Photos…</strong> to pick them one at a time, or <strong>Hide Photos</strong>. This only changes what your friends see on the post. Nothing is deleted, and people on the trip still see every photo.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I delete or report a photo?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Open the album, go to the photo, and tap the "…" button. Choose <strong>Delete Photo</strong> to remove it from the trip album for everyone. You can delete photos you took, and the trip owner can delete any photo on their trip.</p>
+                            <p>If a photo someone else took shouldn't be there, choose <strong>Report Photo</strong> from the same menu. To keep a photo off your feed post without deleting it, use <strong>Photos</strong> in the Activity Feed section of Trip Details instead.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How many photos can a trip have?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Up to 12 photos per trip. When the album is full, the add buttons turn off. Delete a photo to make room for another.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why are photos from Homebound in my photo library?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Photos you take with the camera in Homebound, for a check-in or your profile photo, are saved to your photo library as you take them, so they're yours to keep. That includes a shot you retake. Photos you pick from your library aren't copied again.</p>
+                            <p>If you don't allow Homebound to add photos to your library, it skips saving them and everything else still works. Share cards are only saved when you tap <strong>Save</strong>.</p>
                         </div>
                     </div>
                 </div>
@@ -474,15 +544,15 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What notifications do my contacts receive?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Emails when you start a trip, check in, finish, go overdue, are marked safe after being overdue, extend your ETA, send an SOS, or cancel. On group trips they're also told as each person gets home. Every email includes a "Follow This Trip" link that opens in any browser.</p></div>
+                        <div class="faq-a" hidden><p>Emails when you start a trip, check in, finish, go overdue, are marked safe after being overdue, extend your ETA, send an SOS, or cancel. If an SOS went out without a location, or you've moved more than 100 metres since, they also get a follow-up with your newer location. On group trips they're also told as each person gets home. Every email includes a "Follow This Trip" link that opens in any browser.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use friends as safety contacts?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes. Friends get the same notifications, plus in-app trip details and live location (if enabled).</p></div>
+                        <div class="faq-a" hidden><p>Yes. Friends get the same notifications, plus in-app trip details and live location if you share it. During a trip they can also check on you or send you a short message.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can my contacts follow my trip live without the app?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes. Every email includes a live web page: trip status, ETA countdown, last check-in on a map, and a timeline. It refreshes on its own.</p></div>
+                        <div class="faq-a" hidden><p>Yes. Every email includes a live web page with the trip status, ETA countdown, last check-in on a map, your most recent check-in photo, and a timeline. It refreshes on its own.</p></div>
                     </div>
                 </div>
             </section>
@@ -492,15 +562,18 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is the SOS button?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>A red one-tap button on every active trip that immediately alerts all your safety contacts, no waiting for your ETA. Free.</p></div>
+                        <div class="faq-a" hidden><p>The <strong>Emergency SOS</strong> button sits under your active trip card on the Home tab. It alerts all your safety contacts right away, without waiting for your ETA.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I send an SOS?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Open your active trip, tap SOS, confirm, and optionally add a message. The confirmation step prevents accidental triggers.</p></div>
+                        <div class="faq-a" hidden><p>On the Home tab, tap <strong>Emergency SOS</strong> under your active trip card. Add a message if you want, then tap <strong>Send SOS</strong>. The confirmation step prevents accidental alerts. You can also send an SOS from your Apple Watch.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What do my contacts receive when I send an SOS?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>An urgent alert with your name, your optional message, and your last known location. Friends get a push notification; email contacts get an email.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>An urgent alert with your name, your message if you added one, and your location. Friends get a push notification and email contacts get an email.</p>
+                            <p>The alert goes out straight away with the last location your phone has, and says how old that location is if it isn't current. Homebound then looks for a fresh position. If the first alert had no location, or you've moved more than 100 metres, your contacts get one follow-up with your newer location. The follow-up applies to an SOS sent from your iPhone.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Does SOS contact 911?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -545,8 +618,9 @@
                             <ul>
                                 <li>Check in</li>
                                 <li>Extend your ETA (30 minutes up to 4 hours)</li>
-                                <li>Finish the trip — or tap "I'm home" on a group trip that uses individual finish</li>
+                                <li>Finish the trip, or tap "I'm Home" on a group trip where each person finishes on their own</li>
                                 <li>Send an SOS</li>
+                                <li>Follow the Find arrow to someone on your group trip, or to a meetup pin</li>
                             </ul>
                             <p>It's a companion to the iPhone app rather than a standalone one: you sign in and create trips on your phone, and the watch handles what happens once a trip is running. An SOS sent from the watch goes out without a typed message.</p>
                         </div>
@@ -564,6 +638,10 @@
                         <div class="faq-a" hidden><p>Yes, and it works with no signal at all. When a trip syncs, the watch schedules its own haptic alerts for your ETA and for the end of your grace period, so they fire even deep in the backcountry. Checking in, extending, or finishing moves or clears them. The alerts include a "Check In" button so you can respond straight from the notification. They need notification permission for Homebound on the watch — if that's off, the app says so on the trip screen rather than letting a safety alert fail quietly.</p></div>
                     </div>
                     <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why does my watch tap me when a trip starts?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>When a trip starts, your Apple Watch shows a "Trip started" notification so you know you can check in, extend, or send an SOS from your wrist. It's skipped if the watch app is already open. Homebound also moves up in your Smart Stack when a trip starts, and again as your return time gets close.</p></div>
+                    </div>
+                    <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can the watch keep sharing my live location?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>If your phone is streaming live location on a trip and then goes out of range, the watch offers — once per trip — to carry the stream, sending a position on its background refresh cadence (roughly every 15 minutes, though watchOS decides the actual timing; a Homebound complication on your face helps). The phone stays in charge whenever it's reachable. Watch updates are less frequent than the phone's, and the trip screen shows when the last position actually landed rather than promising a schedule.</p></div>
                     </div>
@@ -575,15 +653,31 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I add friends?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Friends tab → "Add Friend": share your reusable invite link or have them scan your QR code.</p></div>
+                        <div class="faq-a" hidden><p>On the Friends tab, tap <strong>Invite</strong> to share your reusable invite link or show your QR code. To use a friend's code, tap the QR code button next to Invite and scan it.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What can my friends see?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>You control it item by item under Settings &gt; Friends: check-in locations, trip notes, and whether friends can request an update from you during a trip, plus which profile stats are visible (total trips, adventure time, favorite activity, achievements). Live location has its own switch under Settings &gt; Privacy.</p></div>
+                        <div class="faq-a" hidden><p>You control it under Settings &gt; Friends. For friends who are safety contacts on your trips, you choose whether they see your check-in locations and trip notes, and whether they can ask you for an update or send you messages. For your profile, you choose which stats friends can see: total trips, adventure time, favorite activity, and achievements. Live location has its own switch, <strong>Allow Live Location</strong>, under Settings &gt; Privacy.</p></div>
                     </div>
                     <div class="faq-item">
-                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can friends request updates from me?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>If enabled, friends can request a check-in during your active trip; you check in with one tap. They can also "Watch Live."</p></div>
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can friends check on me during a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes, if they're a safety contact on your trip. A friend watching your trip can ask you to check in or send you a short message. You decide whether they can with <strong>Allow update requests</strong> and <strong>Allow messages</strong> in Settings &gt; Friends. They can also tap <strong>Watch Live</strong> to follow your trip on their Lock Screen.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I check on a friend during their trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>If you're a safety contact on a friend's trip, their trip card appears on the Friends tab and on their profile. Tap <strong>Check on</strong> (it shows their name) to open your messages for that trip.</p>
+                            <p>From there you can ask them to check in, or send a short message using a quick message or your own words, up to 200 characters. You can ask again after 10 minutes. Their trip card shows when they answer or reply. If they've turned off update requests or messages, Homebound tells you when you try.</p>
+                            <p>This works for friends who use Homebound. Email-only contacts follow the trip from the link in their emails.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I write my own quick messages?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Yes. Go to Settings &gt; Friends &gt; Quick messages. There are two lists: Checking on a Friend, used when you check on someone, and Replying on Your Trip, used when you answer on your own trip.</p>
+                            <p>You can add up to 6 of your own to each list, up to 80 characters each, and edit, reorder, or delete them. You can delete the built-in messages too, except "I'm okay," which stays because it also checks you in. Tap <strong>Restore Built-in Messages</strong> to bring the built-in ones back.</p>
+                            <p>Quick messages are saved on your iPhone and cleared when you sign out. The buttons on a notification stay the same: "I'm okay" and Reply.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I remove a friend?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -591,15 +685,22 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is the activity feed?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Finished trips can appear in a shared feed with a map snapshot, duration, and stats. Optional and free.</p></div>
+                        <div class="faq-a" hidden><p>A feed of finished trips that you and your friends choose to post. Posts lead with trip photos when there are any, and show a map of the route or the general area, depending on how the person chose to show the location. Tap a photo to open the trip album. Posting is optional.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What gets shared when I finish a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Nothing, unless you choose to share it. A finished trip stays private until you open it and tap "Share with Friends" — there's no automatic publishing. Before you share you pick how the location appears (Show, Generalize, or Hide), and on a group trip whether to list the participants or show only a count. You can un-publish a shared trip at any time.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>By default, nothing, unless you choose to share it. When you finish a trip, Homebound asks whether to post it. <strong>Post to Feed</strong> lets you pick which photos to include, who can see it (Friends Only or Everyone), how the location appears (Show Location, Generalize, or Hide Location), and on a group trip whether to list everyone or show only a count. <strong>Not Now</strong> keeps the trip private.</p>
+                            <p>You can post a trip later from its Trip Details with <strong>Share with Friends</strong>, and take it down at any time with <strong>Remove from Feed</strong>. To change what happens after each trip, tap the gear on the Friends tab and set Share Trips to Automatic, Ask Each Time, or Never.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I comment on or react to friends' trips?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>Yes. On a feed post you can leave a comment, react with an emoji, and @mention friends. These features are free.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I open a friend's profile from the feed?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Tap their photo on a feed post, in the comments, or in the list of people who liked a post. On their profile, tap their photo to see it larger. This works for your friends only.</p></div>
                     </div>
                 </div>
             </section>
@@ -609,17 +710,20 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is live location sharing?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Live location sharing lets your friends and group-trip participants see your real-time position during an active trip, updated continuously on a map in their app. (Email contacts instead see your most recent check-in location through the "Follow This Trip" link.) It's completely optional and is enabled per trip.</p></div>
+                        <div class="faq-a" hidden><p>Live location sharing lets friends who are safety contacts on your trip, and people on your group trip, see where you are during an active trip on a map in their app. Email contacts instead see your most recent check-in location through the "Follow This Trip" link. It's optional and is turned on per trip.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I enable live location?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>When creating a trip, toggle "Share Live Location" to enable it for that specific trip. You can also set a default under Settings &gt; Privacy &gt; "Allow Live Location." Live location only activates once you start the trip (when it becomes active) — it won't run for a trip that's still scheduled for later.</p></div>
+                        <div class="faq-a" hidden>
+                            <p>Live location has a main switch and a per-trip choice. First turn on <strong>Allow Live Location</strong> in Settings &gt; Privacy. Then, when you plan a trip with a friend as a safety contact, turn on <strong>Live location for friends</strong>. For a Quick Trip, the option is called <strong>Share Live Location</strong>.</p>
+                            <p>Sharing only starts once the trip is active. It won't run for a trip that's still scheduled for later. If the main switch is off, the trip planner shows "Enable in Settings &gt; Privacy to share location" with an <strong>Enable</strong> button.</p>
+                        </div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Does live location drain my battery?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden>
-                            <p>Yes, noticeably. While a trip with live sharing is running, Homebound holds the GPS at full accuracy and sends your position as often as every 30 seconds. That's what makes the dot on your friends' map move in real time, and it's the most power-hungry thing the app does.</p>
-                            <p>It stops the moment the trip ends or you turn sharing off. For a long day, start with a full battery or bring a charger. If nobody actually needs to watch a live map, leaving live location off is the single biggest thing you can do for battery.</p>
+                            <p>Yes, more than anything else in Homebound. While a trip with live sharing is running, Homebound keeps GPS at full accuracy so your position on your friends' map stays accurate.</p>
+                            <p>It sends your position about once a minute. It sends more often while someone has your trip open on their map, once you're past your ETA, and after an SOS. In Low Power Mode it sends less often when no one is watching. Sharing stops the moment the trip ends or you turn it off. For a long day, start with a full battery or bring a charger. If nobody needs to watch a live map, leaving live location off is the biggest thing you can do for battery.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -652,6 +756,20 @@
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How accurate is live location?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden><p>Accuracy depends on your device's GPS capabilities and environmental conditions. In open areas with clear sky view, accuracy is typically within a few meters. In canyons, dense forests, or indoors, accuracy may be reduced. Live location should be treated as an approximate guide, not a precise tracking system.</p></div>
                     </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How can I tell how recent someone's live location is?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>A status line under each person on the map says how fresh their position is, for example "Moving · 40s ago," "Stopped here since 2:14 PM," or "Last seen 2:14 PM." If their phone has stopped sending, it gives the reason when it can, such as Homebound being closed or Low Power Mode being on. It also shows their phone's battery level.</p>
+                            <p>A pin only says "(Live)" when the position is current, and a line shows the trail they've covered. When the trip ends, sharing stops and the trail is deleted.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Who on a group trip can see my location?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>The trip owner can always see everyone on the trip. Other members see each other only if the owner turned on <strong>Share locations in the group</strong> when planning the trip, and each person turned on <strong>Share My Location with Group</strong> when they joined. A live position also needs that person's <strong>Allow Live Location</strong> switch on in Settings &gt; Privacy.</p>
+                            <p>Find is separate. It shares your location with one person for up to 15 minutes, and only with your permission.</p>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -668,7 +786,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I start and stop sharing to a Circle?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Open the Map tab and tap the people icon at the top right — that's where Circles lives. Create a Circle, name it, and add friends. Then pick how long to share for — 1 hour, 4 hours, 8 hours, 1 day, 3 days, or 1 week — and tap "Share My Location." While you're sharing, a bar with a "Stop" button sits above the tab bar wherever you are in the app, so you can end it at any time. You can also stop from inside the Circle itself.</p></div>
+                        <div class="faq-a" hidden><p>Open the Map tab and tap the people icon at the top left. That's where Circles live. Create a Circle, name it, and add friends. Then pick how long to share for (1 hour, 4 hours, 8 hours, 1 day, 3 days, or 1 week) and tap <strong>Share My Location</strong>. While you're sharing, a bar with a <strong>Stop</strong> button sits above the tab bar wherever you are in the app, so you can end it at any time. You can also tap <strong>Stop Sharing</strong> inside the Circle.</p></div>
                     </div>
                 </div>
             </section>
@@ -690,7 +808,11 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Why does it say "Nothing nearby"?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>If Homebound can't find good matches for an activity near you, it says "Nothing nearby" rather than show low-quality or irrelevant results. That usually just means there aren't strong options close by right now, or the activity is out of season. If the whole tab is empty, make sure location access is enabled.</p></div>
+                        <div class="faq-a" hidden><p>If Homebound searched for an activity and couldn't find good matches near you, it lists that activity under Nothing Nearby rather than show low-quality or irrelevant results. That usually means there aren't strong options close by right now. If the whole tab is empty, make sure location access is enabled.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why are some activities under "Too Hot" or "Out of Season"?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Discover checks the weather and the season before suggesting places. Activities that don't suit current conditions are grouped by the reason: Too Hot, Too Cold, Rain Likely, Too Windy, Out of Season, or Conditions Unavailable. Open a group and tap <strong>Show anyway</strong> next to an activity to search for spots regardless. Check the conditions yourself before you go.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Does Homebound show weather?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -762,7 +884,7 @@
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What are group trips?</span><span class="chev" aria-hidden="true">▾</span></button>
                         <div class="faq-a" hidden>
-                            <p>Group trips let you create a single trip with multiple participants — group hikes, ski trips, dive excursions. Everyone can check in, and each participant's location can be shared with the group.</p>
+                            <p>Group trips let you create a single trip with multiple participants, such as group hikes, ski trips, or dive excursions. Everyone can check in and add photos to the same trip album. Members can use Find to locate each other or set a meetup spot, and can see each other on the map if the trip's location settings allow it.</p>
                             <p>When you create the trip you choose who can end it:</p>
                             <ul>
                                 <li><strong>Anyone</strong> (the default) — any participant can end the trip for everyone.</li>
@@ -799,6 +921,64 @@
                 </div>
             </section>
 
+            <section class="faq-group" data-cat="Find &amp; Meet Up">
+                <h2 class="group-label">Find &amp; Meet Up</h2>
+                <div class="group-card">
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is Find?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Find helps people on the same group trip reach each other. It shows an arrow pointing to the other person and how far away they are, and you both see each other. A Find runs for up to 15 minutes. You can also set a meetup spot that everyone on the trip gets an arrow to. Find only works on group trips, while the trip is active.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I find someone on my group trip?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Tap <strong>Find &amp; Meet Up</strong> on your trip card on the Home tab, or in the Participants section of Trip Details. Under Find someone, tap <strong>Find</strong> next to the person. You can also tap their pin on the trip map in Trip Details.</p>
+                            <p>The arrow appears once they've allowed it, along with the distance and which way to go. When you're very close, the screen says "Look around" instead of pointing. Tap <strong>Found them</strong> when you meet up, or <strong>Stop sharing</strong> to end Find for both of you. <strong>Hide</strong> closes the screen but keeps Find running.</p>
+                            <p>If someone's row says "Needs an app update," they need the latest version of Homebound first.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Will they be asked before I can find them?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Yes, unless they've turned on <strong>Let the group find me</strong>. They get a notification asking to share their location with you for up to 15 minutes, with <strong>Allow</strong> and <strong>Not now</strong>. If they've turned it on, Find starts straight away and they're told you're finding them, with a <strong>Stop</strong> button.</p>
+                            <p>You can turn Let the group find me on when you plan a trip, when you accept a trip invite, or later in Trip Details. It starts off, and Homebound remembers your choice for your next trip.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why is the arrow more precise on some iPhones?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Find uses GPS and your compass to point the way, which works on any iPhone. When you're close and both iPhones have Ultra Wideband, Find switches to a precise reading and the screen says "Precise." If only one of you has Ultra Wideband, Find keeps using GPS and the compass.</p>
+                            <p>Some iPhones measure a precise distance but need the camera to work out direction. If you see a distance but no arrow, tap <strong>Precise arrow</strong> and hold your phone up while you move it slowly. The camera view pauses after 2 minutes to save battery. Tap <strong>Resume</strong> to keep going.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What permissions does Find need?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Location access, so the other person can see where you are, with Precise Location on. If Precise Location is off, the Find screen shows a <strong>Turn On</strong> button. If both iPhones have Ultra Wideband, iOS asks once for permission to interact with nearby devices. If you say no, Find still works with GPS. The camera is only used if you open Precise arrow, and its images stay on your phone.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I set a meetup spot?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Open <strong>Find &amp; Meet Up</strong>. Under Meetup, give the spot a name if you like, then tap <strong>Meet at my location</strong>. Or tap <strong>Pick a spot on the map</strong>, tap where you want to meet, and tap <strong>Set meetup here</strong>.</p>
+                            <p>Everyone else on the trip gets a notification and an arrow to the pin. Only the pin's location is shared. People can answer <strong>On my way</strong> or <strong>Can't make it</strong>, and tap <strong>I'm here</strong> when they arrive. Anyone except the person who set it is marked as here automatically within about 15 metres. The pin shows in orange on the trip map, along with who's coming.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How long does a meetup last?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>An hour. The person who set it can tap <strong>Add an hour</strong>, or <strong>Cancel meetup</strong> to remove the pin for everyone. A trip has one meetup at a time, so a new one replaces the old one. A meetup also ends when the trip ends.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I use Find on my Apple Watch or Lock Screen?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Yes. While a Find or meetup is running, a row appears at the top of the trip screen on your Apple Watch. Tap it to see the distance and an arrow that uses the watch's own compass. Raise your wrist to see the arrow. Your iPhone does the finding, so keep it with you. You can stop a Find from the watch. Meetups are view-only there.</p>
+                            <p>On your iPhone, a Find shows as a Live Activity on your Lock Screen with the distance, the time left, and a <strong>Stop</strong> button. On a group trip, your trip's Live Activity has a <strong>Find</strong> button and shows the meetup when one is set. Live Activities need to be on in Settings &gt; Customization.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What does Find share about me?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>During a Find, your precise location goes only to the one other person in it, for up to 15 minutes. Nothing is shared until you start a Find yourself, allow a request, or turn on Let the group find me. Find is separate from live location sharing, so it works even when live location is off for the trip. When the Find ends, the positions are deleted, and Homebound keeps only a record that it happened. A meetup shares the pin's location and people's replies, never where anyone is on the way there.</p></div>
+                    </div>
+                </div>
+            </section>
+
             <section class="faq-group" data-cat="Achievements & History">
                 <h2 class="group-label">Achievements &amp; History</h2>
                 <div class="group-card">
@@ -816,7 +996,14 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I share a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes. From a completed trip you can create a share card — a clean image summary you can post as a story or square, or send to friends. This is separate from the live "Follow This Trip" link your contacts receive during an active trip.</p></div>
+                        <div class="faq-a" hidden><p>Yes. Open a completed trip and tap the share button at the top of Trip Details, or tap <strong>Share as Card</strong> on the screen that appears when you finish a trip. Swipe the preview or tap a design below it to choose from seven designs, then pick Story, Portrait, or Square. <strong>Customize Card</strong> lets you choose how the location appears and which details to show. You can share the card, save it, or copy it. This is separate from the live "Follow This Trip" link your contacts receive during an active trip.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Why do some pins on the Map tab show a number?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>When several trips are close together, the Map tab groups their pins into one that shows how many there are. Tap it to zoom in until they separate. If the trips are at the same spot, you get a list of them instead.</p>
+                            <p>On a trip's own map in Trip Details, a line connects where you started, each check-in, and where you are now on an active trip.</p>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -826,11 +1013,15 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What widgets are available?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Home Screen widgets show your active trip's status and countdown, and the medium "Trip Control" widget adds Check In and Check Out buttons you can tap without opening the app. There are Lock Screen widgets too: Trip Status, Trip Countdown, and Trip Details. To add one, long-press your Home Screen or Lock Screen and look for Homebound. Trips are created in the app, not from a widget — though Siri and the Shortcuts app can start a Quick Trip for you.</p></div>
+                        <div class="faq-a" hidden><p>Home Screen widgets show your active trip's status and countdown. The medium Trip Control widget adds Check In and Check Out buttons you can tap without opening the app. Check Out asks first: the widget shows "End trip?" with <strong>End Trip</strong> and <strong>Keep</strong>, and goes back to normal after a few seconds if you don't choose. There are Lock Screen widgets too: Trip Status, Trip Countdown, and Trip Details. To add one, long-press your Home Screen or Lock Screen and look for Homebound. Trips are created in the app, not from a widget, though Siri and the Shortcuts app can start a Quick Trip for you.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What is Live Activity?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Live Activity shows your active trip status on your iPhone's lock screen and in the Dynamic Island. You can see your countdown timer, trip name, and quickly check in or mark yourself safe without unlocking your phone.</p></div>
+                        <div class="faq-a" hidden><p>Live Activity shows your active trip on your iPhone's Lock Screen and in the Dynamic Island: the trip name, the countdown, how many times you've checked in and how long ago, and a <strong>Check In</strong> button you can tap without unlocking. To finish the trip, use the app, your Apple Watch, or the Trip Control widget. On a group trip it also has a <strong>Find</strong> button, and shows the meetup when someone sets one. You can turn it on or off in Settings &gt; Customization.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Can I follow a friend's trip on my Lock Screen?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. When you're a safety contact on a friend's trip, tap <strong>Watch Live</strong> on their trip card on the Friends tab. Their trip appears as a Live Activity with its status and their latest check-in. Tap <strong>Watching</strong> to stop. Only one Live Activity runs at a time, so watching a friend replaces your own trip's Live Activity, and starting your own trip replaces theirs.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Are widgets and Live Activity free?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -868,13 +1059,16 @@
                                 <li>2 safety contacts per trip</li>
                                 <li>Automatic overdue alerts</li>
                                 <li>Emergency SOS</li>
+                                <li>Check-in photos and trip albums</li>
                                 <li>Group trips with up to 20 participants</li>
+                                <li>Find and meetup pins on group trips</li>
                                 <li>Live location sharing and the "Follow This Trip" link</li>
                                 <li>Circles (location sharing with friend groups)</li>
                                 <li>5 Quick Trips, plus Siri and Shortcuts</li>
                                 <li>The Apple Watch app and its complications</li>
                                 <li>The Discover tab</li>
                                 <li>Activity feed (comments and reactions)</li>
+                                <li>Checking on friends, messages, and quick messages</li>
                                 <li>Live Activity and Dynamic Island</li>
                                 <li>Trip Map, widgets, and achievements</li>
                                 <li>Safety score and weekly insights</li>
@@ -937,8 +1131,8 @@
                 <h2 class="group-label">Reporting &amp; Blocking</h2>
                 <div class="group-card">
                     <div class="faq-item">
-                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I report a post, a comment, or a person?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>On someone else's feed post, open the "…" menu and choose Report Post. On a comment, use the comment's menu and choose Report Comment. To report a person, open their profile from the Friends tab and choose Report. You pick a reason — spam, harassment or bullying, inappropriate content, impersonation, or something else — and can add details. Reports are reviewed within 24 hours.</p></div>
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">How do I report a post, a comment, a photo, or a person?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>On someone else's feed post, open the "…" menu and choose Report Post. On a comment, use the comment's menu and choose Report Comment. For a photo in a trip album, tap the "…" button on the photo and choose Report Photo. For a message on your trip, use the "…" menu on it in the trip timeline and choose Report Message. To report a person, open their profile from the Friends tab and choose Report. You pick a reason, such as spam, harassment or bullying, inappropriate content, or impersonation, and can add details. Reports are reviewed within 24 hours.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I block someone?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -956,11 +1150,11 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Does Homebound track my location continuously?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>No. We only collect location data when you explicitly choose to share it: setting a trip location, checking in with location enabled, sharing live location during an active trip, or sharing to a Circle. Outside of those, there's no background location tracking — and you can stop live sharing at any time.</p></div>
+                        <div class="faq-a" hidden><p>No. We only collect location data when you choose to share it: setting a trip location, checking in with location enabled, sending an SOS, sharing live location during an active trip, sharing to a Circle, or using Find on a group trip. Outside of those, there's no background location tracking, and you can stop live sharing at any time.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">What data does Homebound collect?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>We collect only what's necessary: your email, name, age, trip details, safety contacts, and location (when you choose to share it). If you use social features, we store your friend connections and visibility preferences. We don't sell your data or share it with advertisers. See our <a href="/privacypolicy">Privacy Policy</a> for complete details.</p></div>
+                        <div class="faq-a" hidden><p>We collect only what's necessary: your email, name, age, trip details, safety contacts, and location when you choose to share it. If you use social features, we store your friend connections, visibility preferences, the photos you add to trips, and the messages you send on a trip. We don't sell your data or share it with advertisers. See our <a href="/privacypolicy">Privacy Policy</a> for complete details.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I delete my account?</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -968,7 +1162,18 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Can I export my data?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Yes, all users can export their data. Go to Settings &gt; Privacy &gt; "Export My Data" to download a copy of your trips, contacts, and profile information.</p></div>
+                        <div class="faq-a" hidden><p>Yes, all users can. Go to Settings &gt; Privacy and tap <strong>Export My Data</strong> to download a JSON file with everything we hold about you: your profile, settings, trips, check-ins, photo links, contacts, friends, messages, and recent location history. You can save or share it from there. You can also use <strong>Request Data Export</strong> in the same screen. We prepare the file on our servers, and it stays available to download in the app for a limited time.</p></div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What do Restrict Processing and Withdraw Consent do?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>Both are in Settings &gt; Privacy. <strong>Restrict Processing</strong> is a pause, not a delete. We keep your data as it is and stop using it for anything that isn't essential to keeping you safe. Reminders, check-in nudges, and friend activity notifications stop, while overdue and SOS alerts to your safety contacts keep working. You can turn it off again whenever you like.</p>
+                            <p><strong>Withdraw Consent</strong> records that you've withdrawn consent and pauses non-essential processing. Your account stays active, and your contacts are still alerted if you go overdue, because that part isn't based on consent. Live location and Circle sharing have their own switches and aren't ended by it. To remove everything, use Delete My Account.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">Are there extra protections for younger users?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden><p>Yes. If you're under 18, trips you post to the feed are shown only to your friends, and their location appears as a general area rather than the exact spot. These limits apply even if you choose Everyone or Show Location. Trip photos are never shown to anyone outside your friends, whatever your age.</p></div>
                     </div>
                 </div>
             </section>
@@ -978,11 +1183,11 @@
                 <div class="group-card">
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">I'm not receiving notifications</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Make sure notifications are enabled for Homebound in your iPhone's Settings &gt; Notifications &gt; Homebound. In the app, check Settings &gt; Notifications to confirm "Trip Reminders" and "Check-in Alerts" are on. Also note that a trip's "notification hours" can quiet reminders outside its set window, and Do Not Disturb or Focus modes can block alerts — though emergency (overdue) alerts are designed to break through regardless. If your safety contacts aren't receiving emails, have them check their spam/junk folder.</p></div>
+                        <div class="faq-a" hidden><p>Make sure notifications are enabled for Homebound in your iPhone's Settings &gt; Notifications &gt; Homebound. In the app, check Settings &gt; Notifications to confirm Trip Reminders and Check-in Alerts are on. A trip's quiet hours also pause check-in reminders during the hours you set. Overdue alerts, SOS alerts, check-in requests from friends, and check-in reminders on driving trips are sent as Time Sensitive notifications, so they come through Focus and Do Not Disturb unless you've turned off Time Sensitive notifications for Homebound or for that Focus. If your safety contacts aren't receiving emails, have them check their spam or junk folder.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">Which notifications can I turn on or off?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>Open Settings &gt; Notifications in the app. You can toggle "Trip Reminders" (alerts before a trip starts and as you approach your ETA) and "Check-in Alerts" (reminders to check in during a trip). Emergency notifications — the critical alerts for when you're overdue — are always on and can't be turned off, so a safety alert is never missed.</p></div>
+                        <div class="faq-a" hidden><p>Open Settings &gt; Notifications in the app. You can turn Trip Reminders (alerts before a trip starts and as you approach your ETA), Check-in Alerts (reminders to check in during a trip), and Product Updates on or off. Emergency Notifications, the alerts for when you're overdue, stay on and can't be turned off in the app.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">My location isn't accurate</span><span class="chev" aria-hidden="true">▾</span></button>
@@ -1001,6 +1206,22 @@
                         <div class="faq-a" hidden>
                             <p>Mostly, yes. Trip details are cached on your device so you can view them with no service, and actions you take offline — creating a trip, starting it, checking in, extending your ETA, checking out, even an SOS — are queued and sent automatically the moment you're back online.</p>
                             <p>The catch is that your contacts only hear about something once it actually sends. If you check out in a dead zone and don't regain signal before your ETA plus grace period, the overdue alert still goes out; your contacts get the "marked safe" update when you reconnect. For trips into no-service areas, set your ETA for when you expect to be back in coverage.</p>
+                            <p>If something can't be sent once you're back online, for example because the trip ended in the meantime, it shows on the Sync Issues screen so you can try again or dismiss it.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What is the Sync Issues screen?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>If something you did can't reach our servers, Homebound lists it on the Sync Issues screen instead of dropping it quietly. A banner on the Home tab says how many changes didn't sync. Tap it to open the list. You can also open it any time from Settings &gt; Resources &gt; Sync Issues.</p>
+                            <p>Each item says what didn't save and what that means for your trip. Tap <strong>Try Again</strong> to send it again, or <strong>Dismiss</strong> to clear it. Dismissing doesn't send anything, so the change stays unsaved. An SOS or a new trip can't be retried from here. Send a fresh SOS or call 911, or create the trip again.</p>
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <button class="faq-q" aria-expanded="false"><span class="q-text">What do the offline banners mean?</span><span class="chev" aria-hidden="true">▾</span></button>
+                        <div class="faq-a" hidden>
+                            <p>"Offline Mode" means your phone has no connection. Homebound shows what's saved on your phone and sends anything you do when you reconnect.</p>
+                            <p>"Can't reach Homebound's servers" means your connection is working but our servers aren't answering. The app keeps trying, and you can tap <strong>Retry</strong>.</p>
+                            <p>In the History tab, "Offline: showing saved trips" means you're offline. "Couldn't refresh trips" means the last refresh didn't work, so you're seeing trips saved earlier while it tries again.</p>
                         </div>
                     </div>
                     <div class="faq-item">
@@ -1009,7 +1230,7 @@
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I extend my ETA during a trip?</span><span class="chev" aria-hidden="true">▾</span></button>
-                        <div class="faq-a" hidden><p>If your trip is taking longer than expected, open the active trip and tap "Extend ETA." You can add additional time (up to 4 hours) to your expected return. Your safety contacts will be notified of the updated ETA so they know not to worry.</p></div>
+                        <div class="faq-a" hidden><p>If your trip is taking longer than expected, tap <strong>Extend trip</strong> on your trip card on the Home tab and choose how much time to add, from 30 minutes up to 4 hours. Your safety contacts are told your new ETA so they know not to worry. You can also extend from your Apple Watch.</p></div>
                     </div>
                     <div class="faq-item">
                         <button class="faq-q" aria-expanded="false"><span class="q-text">How do I clear the app cache?</span><span class="chev" aria-hidden="true">▾</span></button>
