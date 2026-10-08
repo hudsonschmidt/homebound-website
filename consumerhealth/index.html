@@ -25,7 +25,7 @@
 
     <main class="legal-document">
         <h1>Consumer Health Data Privacy Policy</h1>
-        <p class="last-updated">Last Updated: July 27, 2026</p>
+        <p class="last-updated">Last Updated: October 9, 2026</p>
 
         <p>This is a separate notice required by the <strong>Washington My Health My Data Act</strong> (RCW 19.373) and by <strong>Nevada SB 370</strong> (2023), which added consumer health data provisions to NRS Chapter 603A. Those laws define "consumer health data" broadly, and precise location information can fall inside that definition &mdash; including when it is inferred from data that is not health data.</p>
 
@@ -61,7 +61,7 @@
 
         <p><strong>Precise location.</strong> Under the Washington My Health My Data Act, "consumer health data" includes precise location information that could reasonably indicate a consumer's attempt to acquire or receive health services or supplies. Homebound collects precise location for its safety features. A trip destination is almost always a trailhead, a peak, a crag, or a friend's house &mdash; but the definition is written broadly.</p>
 
-        <p><strong>Activity and duration.</strong> When you create a trip you pick an activity type (for example Run, Hike, or Climb), and we record when it started and ended and, optionally, a difficulty grade you choose. Read broadly, that is exercise information. We collect it because it is what the safety features run on &mdash; the activity sets the default grace period and the safety guidance shown to you, and the times are what the overdue check compares against. We do not measure your body, your performance, or your fitness, and we do not derive any health conclusion from it.</p>
+        <p><strong>Activity and duration.</strong> When you create a trip you pick an activity type (for example Run, Hike, or Climb), and we record when it started and ended and, optionally, a difficulty grade you choose. Read broadly, that is exercise information. We collect it because it is what the safety features run on &mdash; the activity sets the default grace period and the safety guidance shown to you, and the times are what the overdue check compares against. We do not measure your body, your performance, or your fitness, and we do not derive any health conclusion from it. While live location is on, we also total the elevation gained from the altitude in your location fixes, so the people who can see your live location can see it; it describes the route, not your body or fitness.</p>
 
         <p>So: to whatever extent either of these is treated as consumer health data, the rest of this notice tells you exactly what we do with it and what you can require of us.</p>
 
@@ -69,7 +69,7 @@
 
         <h2>3. Categories of Consumer Health Data We Collect, and Why</h2>
 
-        <p><strong>Precise location</strong> is the main category that could qualify. We collect it in four situations, each of which you control:</p>
+        <p><strong>Precise location</strong> is the main category that could qualify. We collect it in the situations below, each of which you control:</p>
 
         <table>
             <tr>
@@ -83,19 +83,39 @@
                 <td>So your emergency contacts know where to look for you</td>
             </tr>
             <tr>
-                <td>You check in during a trip</td>
-                <td>Your coordinates at that moment, if available</td>
+                <td>You check in during a trip, or extend it</td>
+                <td>Your coordinates at that moment, if available (an extension is recorded as a check-in)</td>
                 <td>To record that you were safe, and where</td>
             </tr>
             <tr>
                 <td>You turn on Trip Live Location Sharing</td>
-                <td>A temporary trail of coordinates, altitude, accuracy, speed, and timestamps while the trip is active</td>
-                <td>So your safety contacts can find you if you become overdue</td>
+                <td>A temporary trail of coordinates, altitude, accuracy, speed, and timestamps while the trip is active, plus whether you are moving or stopped, whether your location has stopped updating or sharing is paused and why, whether Precise Location is off, and your battery level and whether it is charging</td>
+                <td>So your safety contacts who are your Homebound friends, and the other members of a group trip, can see where you are, and so that, if you become overdue, your email-only contacts can too (Section 5)</td>
             </tr>
             <tr>
                 <td>You share with a Circle</td>
-                <td>Your most recent location only &mdash; no trail</td>
+                <td>Your most recent location only &mdash; no trail &mdash; with its accuracy and speed, whether you are moving, stopped or paused and why, and your battery level and whether it is charging</td>
                 <td>So the friends you picked can see where you are while the share lasts</td>
+            </tr>
+            <tr>
+                <td>You trigger an SOS</td>
+                <td>The most recent location your phone already has, and how old it is. If that location is a minute or more old, or there is none, the App tries for up to a minute to get a newer one, and sends it if it does. An SOS from Apple Watch uses the watch's own location and has no follow-up, unless the watch has no location and your iPhone sends the alert for it</td>
+                <td>So your contacts know where to look for you</td>
+            </tr>
+            <tr>
+                <td>You start Find on a group trip, or let another member find you</td>
+                <td>Your coordinates, accuracy, and the time of each fix, from when you ask until the session ends (an unanswered request expires after 15 minutes, and a session lasts at most 15 minutes), passed only to that member once the session starts, and erased when it ends</td>
+                <td>So the two of you can reach each other</td>
+            </tr>
+            <tr>
+                <td>You drop a meetup pin on a group trip, or answer one</td>
+                <td>The pin's location (your current location, or a point you pick on the map), its accuracy, an optional label, and each member's reply (On my way, Here, or Can't make it)</td>
+                <td>So the group knows where to meet, and who is on the way</td>
+            </tr>
+            <tr>
+                <td>You use Discover</td>
+                <td>Your current location coordinates, sent to our servers and from there to the place-search and weather services in Section 6</td>
+                <td>To find places and conditions near you; the results are not stored against your account</td>
             </tr>
         </table>
 
@@ -107,7 +127,15 @@
 
         <p>Washington's Act prohibits implementing a geofence around an in-person health care facility to identify or track consumers seeking care, to collect their consumer health data, or to send them messages or advertising. Nevada's law contains a comparable prohibition with a set distance around health care facilities.</p>
 
-        <p><strong>We maintain no list of health care facilities and we target no location we did not get from you.</strong> Homebound implements exactly one kind of boundary: a circle around <strong>the destination you entered in your own trip</strong>, evaluated on your own device, so the App can remind <em>you</em> to check out when you arrive. Your arrival is not reported to our servers.</p>
+        <p><strong>We maintain no list of health care facilities and we target no location we did not get from a user.</strong> Every boundary around a place that Homebound uses is evaluated on your own device, and each is drawn around a place a user chose or around your own position:</p>
+
+        <ul>
+            <li>a circle around <strong>the destination of the trip you're on</strong>, so the App can remind <em>you</em> to check out when you arrive. Your arrival is not reported to our servers.</li>
+            <li>on a group trip, a circle of about 15 meters (up to 40 meters when your phone's location is less precise) around <strong>a meetup pin a member dropped</strong>, so that while you are heading there in Find, the App can mark you "Here". That reply is shared with the trip's members.</li>
+            <li>while Trip Live Location Sharing is on, a circle of about 200 meters around <strong>your own current position</strong>, so iOS wakes the App to send an update once you move away. It moves with you and is removed when sharing stops.</li>
+        </ul>
+
+        <p>Separately, during a Find session on a group trip, our servers compare the two people's locations to tell them when they are close to each other. That is a distance between two people who agreed to find each other, not a boundary around a place.</p>
 
         <p>If you happen to set a medical address as your destination, the boundary exists because you asked for a reminder there &mdash; not because we sought that place out. We do not detect what kind of place a destination is, we do not use it to send you anything, and we do not share the fact of your arrival with anyone.</p>
 
@@ -116,8 +144,8 @@
         <p>These laws require your consent to collect consumer health data beyond what is necessary to provide a product or service you asked for, and separate consent to share it.</p>
 
         <ul>
-            <li><strong>Collection.</strong> Everything in the table above is collected to deliver the specific safety feature you turned on. We do not collect location for any purpose beyond that, so the necessity exception applies and no separate consent is required. If we ever wanted to collect it for another purpose, we would ask you first, separately, and you could say no.</li>
-            <li><strong>Sharing.</strong> The recipients in Section 5 are people <em>you</em> nominate &mdash; the safety contacts on a trip, the friends in a Circle you chose. You designate them in the App, and the act of designating them is your consent to share with them. You can withdraw it at any time by removing a contact, ending a share, or turning the feature off, and sharing stops going forward.</li>
+            <li><strong>Collection.</strong> Everything in the table above is collected to deliver the specific feature you turned on or used. We do not collect location for any purpose beyond that, so the necessity exception applies and no separate consent is required. If we ever wanted to collect it for another purpose, we would ask you first, separately, and you could say no.</li>
+            <li><strong>Sharing.</strong> The people who can view your location in Section 5 are people <em>you</em> designate &mdash; the safety contacts on a trip, the friends in a Circle you chose, the members of a group trip you joined, and the audience chosen for a trip you or another member publishes. You designate them in the App, and the act of designating them is your consent to share with them. You can withdraw it at any time by removing a contact, ending a share, or turning the feature off, and sharing stops going forward.</li>
             <li><strong>Sale.</strong> We do not sell consumer health data, so the separate signed authorization those laws require for a sale is not something we ever seek. See Section 6.</li>
         </ul>
 
@@ -126,7 +154,7 @@
         <h2>4. Categories of Sources</h2>
 
         <ul>
-            <li><strong>You</strong>, when you create a trip, choose a destination, check in, or turn on sharing.</li>
+            <li><strong>You</strong>, when you create a trip, choose a destination, check in or extend a trip, trigger an SOS, use Find, drop a meetup pin, use Discover, or turn on sharing.</li>
             <li><strong>Your device</strong>, when you have granted location permission and a feature you enabled is running.</li>
         </ul>
 
@@ -136,7 +164,7 @@
 
         <h2>5. Categories of Consumer Health Data We Share</h2>
 
-        <p>We share precise location only in the ways you have specifically asked us to:</p>
+        <p>The people you designate can view your precise location as follows, each because of something you set up or used:</p>
 
         <table>
             <tr>
@@ -146,22 +174,47 @@
             </tr>
             <tr>
                 <td>The safety contacts you assigned to a trip</td>
-                <td>Check-in locations, SOS location, live location if you enabled it, and a link to the trip's tracking page</td>
+                <td>Check-in locations, SOS location (and an updated one if the first was missing or you had moved more than about 100 meters from it), live location in the App if you enabled it and they are your Homebound friends, and a link to the trip's tracking page, which shows the location of the most recent check-in (or, before the first check-in or when the latest check-in has no location, the trip's destination); anyone they forward the link to can see that page too</td>
                 <td>Only for trips you added them to</td>
             </tr>
             <tr>
+                <td>Your email-only emergency contacts</td>
+                <td>Your last known location in the overdue email and, on a trip you own, your live location (with its accuracy and time), recent trail, battery level and charging, and moving, stopped, paused, or not-updating status on the tracking page</td>
+                <td>Only once the trip is overdue, only if it shares live location, only while your Allow Live Location setting is on, and, on a group trip you joined, only if your sharing choices for the trip include your contacts</td>
+            </tr>
+            <tr>
                 <td>Friends in a Circle you share with</td>
-                <td>Your current location only</td>
+                <td>Your current location only (no trail), with its accuracy and speed, whether you are moving, stopped or paused and why, and your battery level and whether it is charging</td>
                 <td>Only while a share you started is active, and only until it expires</td>
             </tr>
             <tr>
                 <td>Group-trip participants</td>
-                <td>Location, subject to each participant's own sharing choices</td>
+                <td>Location. The trip owner always sees every member's check-in locations; live location follows each participant's own sharing choices. If a group trip does not share locations between members, only the trip owner sees the members' locations. Every member sees your SOS location</td>
                 <td>Only within a group trip you joined</td>
+            </tr>
+            <tr>
+                <td>Other members' safety contacts on a group trip</td>
+                <td>Your SOS location (by email and push), and your latest check-in on the tracking page</td>
+                <td>Only on group trips you are on</td>
+            </tr>
+            <tr>
+                <td>A group-trip member you use Find with</td>
+                <td>Your current location, for up to 15 minutes</td>
+                <td>Only during a Find session you started or agreed to, including by turning on "Let the group find me" for that trip</td>
+            </tr>
+            <tr>
+                <td>Everyone on your group trip, except anyone in a block with you</td>
+                <td>The location of a meetup pin you drop</td>
+                <td>While the pin is active, and for up to 10 minutes after it ends</td>
+            </tr>
+            <tr>
+                <td>The audience chosen for a trip you or another member publishes</td>
+                <td>The trip's locations as its location setting allows: exact points, a general area, or none</td>
+                <td>Only for completed trips published to the Activity Feed</td>
             </tr>
         </table>
 
-        <p>Anyone who views your location in the app is recorded in an access log, which you can request a copy of (Section 7).</p>
+        <p>When a friend views your live location on a trip (including on the trip cards on their Friends tab), a member of a group trip you are on views your location, or a friend in a Circle you share with views your location, we record it in an access log, and we record each Find session when it starts. The trip's tracking page, a group member seeing your check-in points in the trip's member list or timeline, and Activity Feed posts are not logged. You can get a copy of the log (Section 7).</p>
 
         <h2>6. Third Parties and Affiliates</h2>
 
@@ -169,7 +222,7 @@
 
         <p><strong>We do not sell consumer health data.</strong> We have never sold it and we do not intend to. Both Washington and Nevada require a separate, signed authorization before any sale of consumer health data; we do not seek one, because there is nothing to authorize.</p>
 
-        <p>Third parties fall into two groups, and the difference matters.</p>
+        <p>Third parties fall into three groups, and the difference matters.</p>
 
         <p><strong>Service providers who process your data on our behalf.</strong> These hold information that identifies you, under contract, and act only on our instructions:</p>
 
@@ -190,18 +243,23 @@
                 <td>Stored location records</td>
             </tr>
             <tr>
+                <td><strong>Cloudflare</strong></td>
+                <td>Network security and delivery for the App's connections, and check-in photo storage</td>
+                <td>Traffic between the App and our servers, including location</td>
+            </tr>
+            <tr>
                 <td><strong>Resend</strong></td>
                 <td>Email delivery</td>
                 <td>Location included in the safety emails to your contacts</td>
             </tr>
             <tr>
                 <td><strong>Apple</strong></td>
-                <td>Push notifications, sign-in, subscriptions, maps</td>
-                <td>Notification content and device tokens, under the Apple Developer Program Agreement</td>
+                <td>Push notifications, sign-in, subscriptions, maps (MapKit search, route travel times, place names, and share-card maps), and connection and App Store update checks</td>
+                <td>Notification content and device tokens; for maps, your device location, map search text, the places looked up, and the map area shown on a share card; for the update check, your App Store country; under the Apple Developer Program Agreement</td>
             </tr>
         </table>
 
-        <p>Each of these handles your data under its data processing terms and is not permitted to use it for its own purposes.</p>
+        <p>Each of these handles your data under its data processing terms and is not permitted to use it for its own purposes. Render and Cloudflare keep request logs for a short time for security and reliability, and requests that carry your location can appear in them. We don't keep application access logs of those requests ourselves, and we don't write your coordinates to our own application logs.</p>
 
         <p><strong>Lookup services we query.</strong> These are asked a question about a <em>place</em> and answer it. They receive <strong>coordinates only</strong> &mdash; no name, no email, no account identifier, nothing that identifies you &mdash; and they get no ability to connect a location to a person:</p>
 
@@ -226,6 +284,33 @@
 
         <p>Several of these are public or government services that we query without any commercial relationship. We send them nothing that identifies you, and we do not send them your trip, your account, or anything about who you are.</p>
 
+        <p><strong>Services a viewer's browser contacts directly.</strong> We send these nothing ourselves. When someone opens a trip's tracking page or an invite page, or a map link in one of our emails, their browser or device contacts these services directly, which reveals that person's IP address:</p>
+
+        <table>
+            <tr>
+                <th>Service</th>
+                <th>What it does</th>
+            </tr>
+            <tr>
+                <td><strong>CARTO</strong></td>
+                <td>Map tiles on the tracking page; tile requests also reveal the map area being viewed</td>
+            </tr>
+            <tr>
+                <td><strong>unpkg</strong></td>
+                <td>Delivers the Leaflet map library the tracking page uses</td>
+            </tr>
+            <tr>
+                <td><strong>Google Fonts</strong></td>
+                <td>Fonts on the friend-invite page</td>
+            </tr>
+            <tr>
+                <td><strong>Google Maps</strong></td>
+                <td>Map links in our SOS and overdue emails open Google Maps at the coordinates in the link</td>
+            </tr>
+        </table>
+
+        <p>The tracking page and invite pages also load images directly from our own storage: the trip's latest photo from Cloudflare R2 (photos.homeboundapp.com) and the inviter's profile photo from Supabase Storage, so those providers see the viewer's IP address too.</p>
+
         <hr>
 
         <h2>7. Your Rights</h2>
@@ -233,10 +318,10 @@
         <p>If you are in Washington or Nevada &mdash; and, as a matter of our own policy, wherever you live &mdash; you may:</p>
 
         <ul>
-            <li><strong>Confirm</strong> whether we collect, share, or sell your consumer health data, and <strong>access</strong> it. Settings &gt; Privacy &gt; Export Data returns your complete record &mdash; including your recent location history and the log of who has viewed your location &mdash; as a file you can save. It is generated when you ask for it, so you do not have to wait for us. You can also ask us by email. Section 6.1 of our <a href="/privacypolicy">Privacy Policy</a> lists everything the file contains.</li>
+            <li><strong>Confirm</strong> whether we collect, share, or sell your consumer health data, and <strong>access</strong> it. Settings &gt; Privacy &gt; Export My Data returns your complete record &mdash; including your recent location history and the log of who has viewed your location &mdash; as a file you can save. It is generated when you ask for it, so you do not have to wait for us. You can also ask us by email. Section 6.1 of our <a href="/privacypolicy">Privacy Policy</a> lists everything the file contains. An entry stays in your log if the trip is later deleted, and if someone who viewed your location later deletes their account, the entry stays and shows a deleted account.</li>
             <li><strong>Get the list of recipients.</strong> A list of all third parties and affiliates with whom we have shared your consumer health data, with an active email address or other online contact for each. Section 6 is that list; ask us and we will confirm it in writing for your account specifically.</li>
-            <li><strong>Withdraw consent</strong> to collection and sharing. You can do this yourself at any time: turn off Trip Live Location Sharing, end a Circle share, remove a safety contact, or revoke location permission in your device's Settings. Withdrawal is not retroactive, but it stops collection and sharing going forward.</li>
-            <li><strong>Delete</strong> your consumer health data. Settings &gt; Account &gt; Delete Account removes everything. You can also ask us to delete location data specifically, without closing your account. On a verified deletion request we delete the data from our live systems and direct our processors to do the same, and we will tell you when it is done.</li>
+            <li><strong>Withdraw consent</strong> to collection and sharing. You can do this yourself at any time: turn off Trip Live Location Sharing, end a Circle share, remove a safety contact, end a Find session, turn off "Let the group find me", cancel a meetup pin you dropped, or revoke location permission in your device's Settings. Withdrawal is not retroactive, but it stops collection and sharing going forward.</li>
+            <li><strong>Delete</strong> your consumer health data. Settings &gt; your name &gt; Delete Account deletes your account and its data immediately, and Settings &gt; Privacy &gt; Data Requests &gt; Delete My Account does the same after a 30-day grace period in which you can cancel. A few records held by other people are not deleted with your account, as Section 5 of our <a href="/privacypolicy">Privacy Policy</a> explains: an SOS you triggered on someone else's trip stays with that trip, no longer linked to you; other people's location-access logs keep their records of your views for up to 90 days; and our notification log keeps notifications to other people that name you or contain your messages for up to 30 days (a record of an overdue or SOS alert that could not be delivered, for up to 90 days). You can also ask us to delete location data specifically, without closing your account. On a verified deletion request we delete the data from our live systems and direct our processors to do the same, and we will tell you when it is done.</li>
         </ul>
 
         <p><strong>How to ask:</strong> email <strong><a href="mailto:privacy@homeboundapp.com">privacy@homeboundapp.com</a></strong>, or write to the address in Section 9. Say what you want in your own words &mdash; there is no form.</p>
@@ -266,11 +351,11 @@
             </tr>
             <tr>
                 <td>Live location trail</td>
-                <td>Deleted about 24 hours after the trip completes, and within 7 days of collection in all cases</td>
+                <td>Deleted when the trip ends (or when you finish or leave a group trip); in all cases within about 24 hours of completion and 7 days of collection</td>
             </tr>
             <tr>
                 <td>Circle / current location</td>
-                <td>Most recent point only; deleted about 24 hours after your last update or when you stop sharing</td>
+                <td>Most recent point only; no longer visible once you stop sharing, and deleted about 24 hours after your last update</td>
             </tr>
             <tr>
                 <td>Location access log (who viewed you)</td>
@@ -278,11 +363,19 @@
             </tr>
             <tr>
                 <td>SOS location</td>
-                <td>Until you delete the trip or your account</td>
+                <td>Until the trip or your account is deleted. An SOS you triggered on a trip someone else owns stays with that trip, no longer linked to your account, until that trip is deleted</td>
+            </tr>
+            <tr>
+                <td>Find sessions</td>
+                <td>Locations kept from when you ask until the session ends (an unanswered request expires after 15 minutes, and a session lasts at most 15 minutes), then erased; the session record is deleted about an hour later</td>
+            </tr>
+            <tr>
+                <td>Meetup pins and replies</td>
+                <td>Deleted about an hour after the pin ends. A pin ends after an hour (the person who dropped it can extend it an hour at a time, up to 3 hours ahead), when it is cancelled or replaced, when the person who dropped it leaves the trip, or when the trip ends</td>
             </tr>
         </table>
 
-        <p>Location is encrypted in transit, access requires authentication, every read by another user is logged, and access is restricted to what a feature needs to function. Section 4 of our <a href="/privacypolicy">Privacy Policy</a> has the details, including what we do if there is a security incident.</p>
+        <p>Location is encrypted in transit, our servers check who you are before returning it through our API, the views by other users described in Section 5 are logged, and we limit each feature to the data it needs. Some real-time updates the App receives are not yet limited to each user's own data; we are rolling out per-user checks for them. Section 4 of our <a href="/privacypolicy">Privacy Policy</a> has the details, including what we do if there is a security incident.</p>
 
         <hr>
 
@@ -296,7 +389,7 @@
 
         <hr>
 
-        <p><em>This Consumer Health Data Privacy Policy is effective as of July 27, 2026.</em></p>
+        <p><em>This Consumer Health Data Privacy Policy is effective as of October 9, 2026.</em></p>
     </main>
 
     <footer>
