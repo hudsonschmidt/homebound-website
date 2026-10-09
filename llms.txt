@@ -23,18 +23,18 @@ Homebound works as a dead man's switch for outdoor activities. Users create a tr
 - **Safety Contacts**: Add up to 2 contacts per trip (5 with Homebound+) who receive email notifications automatically
 - **Automatic Overdue Alerts**: If you don't check out by ETA + grace period, contacts get your trip details and last known location
 - **Alerts That Reach You**: Overdue and SOS alerts, check-in requests from friends, and check-in reminders on driving trips are Time Sensitive notifications, so they come through Focus and Do Not Disturb
-- **Group Trips**: Plan adventures with up to 20 participants; each person checks in and finishes individually (everyone is notified as each member gets home), people can be added after a trip starts, and watched members appear together on one live map
-- **Find & Meet Up**: On a group trip, Find shows an arrow and the distance to another member for up to 15 minutes, using Ultra Wideband on supported iPhones and GPS with the compass otherwise. It works on Apple Watch and in a Live Activity. Any member can set a meetup pin that everyone gets an arrow to
+- **Group Trips**: Plan adventures with up to 20 participants; each person checks in, the trip can optionally let each member finish individually with "I'm home" (everyone is notified as each member gets home), people can be added after a trip starts, and watched members appear together on one live map
+- **Find & Meet Up**: On a group trip, Find on iPhone shows an arrow and the distance to another member for up to 15 minutes, using Ultra Wideband on supported iPhones and GPS with the compass otherwise. The arrow also shows on Apple Watch (which can't start a Find) and in a Live Activity. Any member can set a meetup pin that everyone gets an arrow to
 - **Check-In Photos & Trip Album**: Add a photo when you check in. Every trip has an album of up to 12 photos that you can add to after the trip, and you choose which photos appear in your feed post
 - **Emergency SOS**: Alert all your safety contacts at once. The alert goes out right away with your last known location and its age, followed by a fresh location if you've moved
 - **Activity Feed & Share Cards**: Photo-first feed posts with a map of each trip's route; share a finished trip as a card in seven designs
-- **Live Location Sharing**: Share your real-time position during active trips with friends who are your safety contacts and with group-trip members; shows how recent each position is, draws a trail, and stops when the trip ends
+- **Live Location Sharing**: Share your real-time position during active trips with friends who are your safety contacts and with group-trip members; shows how recent each position is, draws a trail, and stops when the trip ends. If the trip goes overdue, email-only contacts also get your last known location, and the trip's tracking page shows the owner's live position
 - **Circles**: Share your live location with a chosen group of friends for a set duration—1 hour, 4 hours, 8 hours, a day, 3 days, or a week—independent of any trip, and stop anytime
 - **Live Map**: See the friends and trip participants who are sharing with you, live, on one map
 - **Apple Watch App**: Check in, extend your ETA, finish a trip, or send an SOS from your wrist—working directly over the watch's own connection when the phone is out of range. Watch face complications show a live countdown, and the watch schedules its own haptic ETA and grace-period alerts so they fire with no signal at all. The watch taps you when a trip starts, and on group trips it shows the Find arrow to a person or meetup spot.
 - **Live Activity & Dynamic Island**: See your trip countdown and last check-in on the Lock Screen and Dynamic Island, and check in without unlocking; follow a friend's trip there with Watch Live
 - **Siri & Shortcuts**: Start a Quick Trip by voice ("Start my walk home in Homebound") or from the Shortcuts app, a Home Screen button, or an automation
-- **Friends**: Connect with other Homebound users, see each other's active trips, check on a friend during their trip with a check-in request or a short message, and answer in one tap with "I'm okay" or a quick reply you can customize
+- **Friends**: Connect with other Homebound users, see the active trips of friends who've made you their safety contact, check on a friend during their trip with a check-in request or a short message, and answer in one tap with "I'm okay" or a quick reply you can customize
 - **Profile Photos**: Add a photo from your camera or library; uploads are re-encoded and stripped of all metadata, including GPS coordinates
 - **Safety Score**: 0-100 score based on on-time rate, check-in rate, and contact coverage (computed on-device)
 - **Weekly Recap**: Summary of adventure hours, trip count, and safety habits
@@ -59,9 +59,9 @@ The whole safety loop is free—trips, overdue alerts, SOS, group trips, trip ph
 
 ## Privacy
 
-- Location is only collected when users explicitly choose to share it (setting trip location, checking in, sending an SOS, live sharing, or using Find on a group trip)
-- No background location tracking unless you turn on live sharing—either during an active trip or while sharing with a Circle—and you can stop anytime
-- Trip photos are shown to the trip's safety contacts (latest photo), group members, and friends you post to, never publicly; location metadata is removed from every photo
+- Location is only collected when users use a feature that needs it (setting trip location, checking in or extending a trip, sending an SOS, live sharing, Circles, Find and meetup pins on group trips, or Discover)
+- Background location is used only while live sharing (on a trip or with a Circle), a Find, or a destination arrival reminder is running, plus a single reading for a check-in, extension, or SOS sent from the Lock Screen, a notification, or Apple Watch; you can stop sharing anytime
+- Trip photos are shown to group members and, on the feed, only to the trip owner's friends, even on Everyone posts (on a group trip, that includes photos other members added); the trip's latest photo is also on its tracking page, which anyone with the link from a safety contact's email can open; location metadata is removed from every photo
 - Accounts under 18 can only post trips to friends, with the location generalized
 - Safety score and weekly recap are computed entirely on-device
 - No data sold to advertisers
