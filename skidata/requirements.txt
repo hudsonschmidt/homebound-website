@@ -1,0 +1,6 @@
+# Pinned for the weekly build (.github/workflows/ski-bundles.yml, Python 3.12).
+# Tests also need pytest:  pip install -r skidata/requirements.txt pytest
+shapely==2.2.0
+pyogrio==0.13.0
+numpy==2.5.4
+boto3==1.44.3

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ski Trail Data - Homebound</title>
+    <meta name="description" content="How Homebound builds its ski trail bundles from OpenSkiData and OpenStreetMap: the method, the data source, the ODbL licence and the file format.">
+    <link rel="stylesheet" href="../styles.css?v=20260721">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+    <style>
+        .legal-document code { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 0.88em; color: var(--ink); background: var(--card); border: 1px solid var(--line); border-radius: 5px; padding: 0 4px; overflow-wrap: anywhere; }
+        .legal-document pre { background: var(--card); border: 1.5px solid var(--line); border-radius: var(--radius-sm); padding: 14px 16px; margin: 0 0 16px; overflow-x: auto; line-height: 1.45; }
+        .legal-document pre code { background: none; border: 0; padding: 0; font-size: 0.82rem; overflow-wrap: normal; }
+        .legal-document .table-scroll { overflow-x: auto; margin: 24px 0; }
+        .legal-document .table-scroll table { margin: 0; }
+        .legal-document td, .legal-document th { vertical-align: top; }
+        .legal-document [id] { scroll-margin-top: 96px; }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo"><img src="../logo.png" alt="">Homebound</a>
+            <ul class="nav-links">
+                <li><a href="/help">Help</a></li>
+                <li><a href="/privacypolicy">Privacy</a></li>
+                <li><a href="/termsofservice">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="legal-document">
+        <h1>Ski Trail Data</h1>
+        <p class="last-updated">Last Updated: November 13, 2026</p>
+
+        <p>Homebound's ski mode names the runs and lifts you ride and draws the resort's trail map under your route. It does this with small per-resort files ("bundles") built from <a href="https://openskidata.org">OpenSkiData</a>, the processed OpenStreetMap ski data behind <a href="https://openskimap.org">OpenSkiMap.org</a>. This page and the script it links to are the complete method that builds them.</p>
+
+        <ul>
+            <li><strong>Bundles:</strong> <code>https://ski.homeboundapp.com/v1/&hellip;</code> (see <a href="#files">Files</a>)</li>
+            <li><strong>Script:</strong> <a href="build_bundles.py"><code>build_bundles.py</code></a> (also on <a href="https://github.com/hudsonschmidt/homebound-website/tree/main/skidata">GitHub</a>, with its tests and the weekly workflow)</li>
+            <li><strong>This page as Markdown:</strong> <a href="https://github.com/hudsonschmidt/homebound-website/blob/main/skidata/README.md"><code>README.md</code></a></li>
+        </ul>
+
+        <h2 id="licence">Licence and attribution</h2>
+
+        <p>The bundles are a <strong>Derivative Database</strong> of OpenSkiData, which is derived from OpenStreetMap. They are made available under the <a href="https://opendatacommons.org/licenses/odbl/1-0/">Open Database License 1.0</a> (ODbL-1.0). Every file says so in its <code>license</code> and <code>attribution</code> fields:</p>
+
+        <pre><code>© OpenStreetMap contributors, OpenSkiData</code></pre>
+
+        <p>This page and <code>build_bundles.py</code> are the method used to make the derivative database (ODbL &sect;4.6). The bundles contain no Homebound user data.</p>
+
+        <p>Sources and credits:</p>
+        <ul>
+            <li>Map data &copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap contributors</a> (ODbL) and <a href="https://openskimap.org">OpenSkiMap.org</a> / OpenSkiData.</li>
+            <li>Ski area records from <a href="https://skimap.org">Skimap.org</a>, via OpenSkiData (the <code>sm-</code> areas, and the names and websites of many others).</li>
+            <li>Elevations &copy; <a href="https://mapterhorn.com/attribution">Mapterhorn</a>, via OpenSkiData (lift <code>bottom_alt</code> / <code>top_alt</code>, area <code>min_alt</code> / <code>max_alt</code>).</li>
+        </ul>
+
+        <p>To fix a run or lift, edit OpenStreetMap: the change reaches OpenSkiData within a few days and the bundles the following Monday.</p>
+
+        <h2 id="method">Method</h2>
+
+        <p>Every Monday at 09:00 UTC (and when run by hand):</p>
+        <ol>
+            <li><strong>Check.</strong> Fetch <a href="https://tiles.openskimap.org/metadata.json"><code>metadata.json</code></a>. The OpenSkiData build id is its <code>run.finishedAt</code>. If it equals <code>osd_build</code> in the published <code>v1/build.json</code> <strong>and</strong> <code>builder</code> there equals the script's <code>BUILDER_VERSION</code>, stop: nothing changed.</li>
+            <li><strong>Download</strong> <a href="https://tiles.openskimap.org/openskidata.gpkg"><code>openskidata.gpkg</code></a> (about 412 MB) once. OpenSkiData allows automated downloads at most once a day; this runs once a week.</li>
+            <li><strong>Check the format.</strong> OpenSkiData says its format is not stable, so the script checks every layer, column and geometry type it reads and stops with an error if any is missing. It also refuses to publish fewer than 1,000 areas, or an index more than 20% smaller than the published one.</li>
+            <li><strong>Select:</strong>
+                <ul>
+                    <li><strong>Ski areas</strong> whose <code>status</code> is <code>operating</code> and whose <code>activities</code> include <code>downhill</code>. Areas with no runs, no lifts and no polygon are skipped.</li>
+                    <li><strong>Runs</strong> from <code>runs_linestring</code> whose <code>uses</code> include <code>downhill</code> (so <code>downhill,nordic</code> counts), in a selected area. Nordic, ski touring, sled, connection and snow-park-only runs are left out, and so are runs mapped only as areas (<code>runs_multipolygon</code>).</li>
+                    <li><strong>Lifts</strong> whose <code>status</code> is <code>operating</code> (not proposed, planned, under construction, disused or abandoned), in a selected area.</li>
+                    <li>A run or lift in several areas goes into each of their bundles.</li>
+                </ul>
+            </li>
+            <li><strong>Simplify.</strong> Each run and lift is simplified with Ramer&ndash;Douglas&ndash;Peucker at <strong>5 m</strong>, in a local metric projection, then encoded as a polyline (below). Consecutive points that round to the same 0.00001&deg; are dropped.</li>
+            <li><strong>Orient lifts.</strong> OpenStreetMap draws lifts in the direction of travel. If a lift's first point is at least 5 m higher than its last, the line is reversed, so <code>geom</code> runs bottom &rarr; top.</li>
+            <li><strong>Hull.</strong> Each area gets an outline used to detect which resort a route is in:
+                <ul>
+                    <li>its own polygon from OpenSkiData, when that polygon holds at least 90% of the area's run and lift vertices;</li>
+                    <li>that polygon <strong>joined with</strong> the convex hull of its runs and lifts buffered 300 m, when the polygon holds less (375 of 2,816 polygons in the 2026-11-13 build: many outline only a base area or one sector, and Ylläs's held 1% of its runs);</li>
+                    <li>the convex hull of its runs and lifts buffered 300 m, when it has no polygon.</li>
+                </ul>
+                The bundle's hull is simplified at 5 m and the index's at 50 m.</li>
+            <li><strong>Key</strong> each area with a stable id (below). OpenSkiData's own <code>feature_id</code>s are content hashes that change every build, so they never appear in the output.</li>
+            <li><strong>Write</strong> <code>v1/areas/{key}.json</code> for each area whose content hash changed (or that is missing), then <code>v1/index.json</code>, then <code>v1/build.json</code> last. A run that fails halfway leaves the old <code>build.json</code>, so the next run retries everything.</li>
+        </ol>
+
+        <h2 id="files">Files</h2>
+
+        <div class="table-scroll"><table>
+            <tr><th>URL</th><th>What</th></tr>
+            <tr><td><code>https://ski.homeboundapp.com/v1/index.json</code></td><td>every area: key, name, outline, size, hash</td></tr>
+            <tr><td><code>https://ski.homeboundapp.com/v1/areas/{key}.json</code></td><td>one area's runs and lifts</td></tr>
+            <tr><td><code>https://ski.homeboundapp.com/v1/build.json</code></td><td>when and from what the files were built</td></tr>
+        </table></div>
+
+        <p>Every object is stored <strong>gzip-compressed</strong> and served with:</p>
+        <pre><code>Content-Type: application/json
+Content-Encoding: gzip
+Cache-Control: public, max-age=3600</code></pre>
+
+        <p><code>URLSession</code>, <code>httpx</code> and <code>requests</code> decompress it transparently. Python's <code>urllib</code> does not: if a body starts with the bytes <code>1f 8b</code>, gunzip it first. The JSON is UTF-8, compact (no whitespace), and keys appear in the order documented below.</p>
+
+        <p>Size of the 2026-11-13 build: 5,448 areas, 98,396 runs, 27,140 lifts. Bundles total 20.6 MB (6.9 MB gzipped); the median bundle is 0.7 KB gzipped and the largest, Dolomiti Superski, is 92 KB. The index is 1.28 MB (0.61 MB gzipped). Park City Mountain Resort (<code>wd-Q3821979</code>) is 67 KB (17.5 KB gzipped).</p>
+
+        <h2 id="format">Format (version 1)</h2>
+
+        <h3>Conventions</h3>
+        <ul>
+            <li><strong>Coordinates</strong> are <code>[lat, lon]</code> in degrees (WGS 84), rounded to 5 decimals.</li>
+            <li><strong><code>bbox</code></strong> is <code>[min_lat, min_lon, max_lat, max_lon]</code> (the same order as the Homebound backend's route <code>bbox</code>).</li>
+            <li><strong>Polylines</strong> use the <a href="https://developers.google.com/maps/documentation/utilities/polylinealgorithm">Google encoded polyline algorithm</a> with precision 5, latitude first, rounding half up (<code>floor(v &times; 1e5 + 0.5)</code>). The encoder is byte-for-byte the Homebound backend's <code>route_stats.encode_line</code>, so the backend's <code>route_stats.decode_line</code> and the app's <code>RoutePolyline</code> read them as they are. Example: <code>_p~iF~ps|U_ulLnnqC_mqNvxq`@</code> is <code>(38.5, -120.2), (40.7, -120.95), (43.252, -126.453)</code>.</li>
+            <li><strong>Hulls</strong> are a list of polylines, one per ring. Rings are implicitly closed (the last point does not repeat the first) and have at least 3 points. A hull can have several rings: separate parts of a multipolygon, and holes. A point is inside the hull when it is inside an <strong>odd</strong> number of rings (even&ndash;odd rule), which handles parts and holes alike.</li>
+            <li><strong>Nullable</strong> fields are marked <code>?</code>. Absent data is <code>null</code>, never an empty string.</li>
+            <li><strong>Forward compatibility:</strong> new fields may be added to version 1. Readers must ignore fields and enum values they don't know (treat an unknown <code>difficulty</code> as unknown, an unknown <code>color</code> as <code>grey</code>, an unknown lift <code>type</code> as a generic lift). A breaking change gets a new <code>v2/</code> prefix while <code>v1/</code> stays up.</li>
+        </ul>
+
+        <h3 id="keys">Area keys</h3>
+        <div class="table-scroll"><table>
+            <tr><th>Form</th><th>From</th><th>Example</th></tr>
+            <tr><td><code>wd-{Qid}</code></td><td>the area's Wikidata id</td><td><code>wd-Q3821979</code> (Park City Mountain Resort)</td></tr>
+            <tr><td><code>osm-{r|w|n}{id}</code></td><td>the area's own OpenStreetMap relation, way or node</td><td><code>osm-r3545276</code> (Les Trois Vallées)</td></tr>
+            <tr><td><code>sm-{id}</code></td><td>its Skimap.org id, when it has no OSM object</td><td><code>sm-1024</code> (Hurricane Ridge)</td></tr>
+            <tr><td><code>gen-{r|w|n}{id}</code></td><td>an area OpenSkiData generated around runs that no mapped area claims: the lowest OSM id among its runs and lifts, preferring one that is in no other area. These have no name</td><td><code>gen-r10978224</code></td></tr>
+        </table></div>
+
+        <p>The first that applies wins, in that order. Keys match <code>^[a-z]+-[A-Za-z0-9]+$</code>. A key is stable across OpenSkiData builds; it changes only if the identity it comes from does (for example, someone adds a Wikidata tag, so <code>osm-w&hellip;</code> becomes <code>wd-Q&hellip;</code>). A reader that stored a key should handle a later 404 by detecting the area again from the index.</p>
+
+        <p>Areas <strong>overlap</strong>. Ski-pass groupings (Dolomiti Superski, Ski amadé, Les Trois Vallées) contain resorts that also have bundles of their own, and about 9,300 runs are in more than one bundle. When several hulls hold a route, the reader decides (for example, the area holding the most points, then the smaller hull).</p>
+
+        <h3 id="index"><code>v1/index.json</code></h3>
+        <pre><code>{
+  "v": 1,
+  "osd_build": "2026-11-13T01:41:53.171Z",
+  "areas": [
+    {
+      "key": "wd-Q3821979",
+      "name": "Park City Mountain Resort",
+      "centroid": [40.6569, -111.53786],
+      "bbox": [40.60878, -111.60016, 40.69961, -111.49823],
+      "hull": ["&lt;polyline ring&gt;"],
+      "bytes": 17466,
+      "hash": "604270e2212d17b4"
+    }
+  ],
+  "license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors, OpenSkiData"
+}</code></pre>
+
+        <div class="table-scroll"><table>
+            <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+            <tr><td><code>v</code></td><td>int</td><td>Format version: <code>1</code>.</td></tr>
+            <tr><td><code>osd_build</code></td><td>string</td><td>The OpenSkiData build these files came from (<code>metadata.json</code> <code>run.finishedAt</code>).</td></tr>
+            <tr><td><code>areas</code></td><td>array</td><td>Every area, sorted by <code>key</code>.</td></tr>
+            <tr><td><code>areas[].key</code></td><td>string</td><td>The area key (above).</td></tr>
+            <tr><td><code>areas[].name</code></td><td>string?</td><td>Its name. About 17% of areas have none (every <code>gen-</code> area, and some small ones).</td></tr>
+            <tr><td><code>areas[].centroid</code></td><td><code>[lat, lon]</code></td><td>OpenSkiData's point for the area. Usually, not always, inside the hull.</td></tr>
+            <tr><td><code>areas[].bbox</code></td><td>bbox</td><td>Same as the bundle's <code>bbox</code>.</td></tr>
+            <tr><td><code>areas[].hull</code></td><td>string[]</td><td>The hull, simplified at 50 m.</td></tr>
+            <tr><td><code>areas[].bytes</code></td><td>int</td><td>Size of the bundle object as stored and transferred (gzip).</td></tr>
+            <tr><td><code>areas[].hash</code></td><td>string</td><td>First 16 hex characters of the SHA-256 of the bundle's <strong>uncompressed</strong> JSON. It changes exactly when the bundle's content does: re-download a cached bundle when this differs.</td></tr>
+            <tr><td><code>license</code>, <code>attribution</code></td><td>string</td><td>As in every file.</td></tr>
+        </table></div>
+
+        <h3 id="bundle"><code>v1/areas/{key}.json</code></h3>
+        <pre><code>{
+  "v": 1,
+  "key": "wd-Q3821979",
+  "name": "Park City Mountain Resort",
+  "website": "https://parkcitymountain.com/",
+  "convention": "north_america",
+  "bbox": [40.60878, -111.60016, 40.69961, -111.49823],
+  "hull": ["&lt;polyline ring&gt;"],
+  "min_alt": 2101.2,
+  "max_alt": 3040.9,
+  "runs": [
+    {"osm_id": "w260786241", "name": "Fright Gully", "ref": null, "difficulty": "expert",
+     "color": "black", "oneway": false, "geom": "&lt;polyline&gt;"}
+  ],
+  "lifts": [
+    {"osm_id": "w10159691", "name": "Town Lift", "type": "chair_lift", "geom": "&lt;polyline&gt;",
+     "bottom_alt": 2131.2, "top_alt": 2489.9}
+  ],
+  "license": "ODbL-1.0",
+  "attribution": "© OpenStreetMap contributors, OpenSkiData"
+}</code></pre>
+
+        <div class="table-scroll"><table>
+            <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+            <tr><td><code>v</code></td><td>int</td><td>Format version: <code>1</code>.</td></tr>
+            <tr><td><code>key</code></td><td>string</td><td>The area key; equals the file name.</td></tr>
+            <tr><td><code>name</code></td><td>string?</td><td>The area's name.</td></tr>
+            <tr><td><code>website</code></td><td>string?</td><td>Its first listed website.</td></tr>
+            <tr><td><code>convention</code></td><td>string?</td><td>The difficulty colour convention: <code>europe</code>, <code>north_america</code> or <code>japan</code>.</td></tr>
+            <tr><td><code>bbox</code></td><td>bbox</td><td>Bounds of the hull and of every run and lift.</td></tr>
+            <tr><td><code>hull</code></td><td>string[]</td><td>The hull, simplified at 5 m.</td></tr>
+            <tr><td><code>min_alt</code>, <code>max_alt</code></td><td>number?</td><td>The area's lowest and highest elevation, metres.</td></tr>
+            <tr><td><code>runs</code></td><td>array</td><td>Downhill runs, sorted by <code>osm_id</code> (relations, then ways, then nodes; then by number).</td></tr>
+            <tr><td><code>lifts</code></td><td>array</td><td>Operating lifts, sorted the same way.</td></tr>
+            <tr><td><code>license</code></td><td>string</td><td><code>"ODbL-1.0"</code></td></tr>
+            <tr><td><code>attribution</code></td><td>string</td><td><code>"© OpenStreetMap contributors, OpenSkiData"</code></td></tr>
+        </table></div>
+
+        <p><strong><code>runs[]</code></strong></p>
+        <div class="table-scroll"><table>
+            <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+            <tr><td><code>osm_id</code></td><td>string</td><td>The run's OpenStreetMap id: a type letter (<code>r</code>, <code>w</code>, <code>n</code>) and number, e.g. <code>w260786241</code>. OpenSkiData merges ways into one run; this is the lowest of them, so it stays put unless that way is deleted. <strong>Not unique:</strong> OpenSkiData can put one way in two run features (a way that is both its own piste and part of a named route). Features that share an <code>osm_id</code> overlap on the ground; treat them as the same piste when comparing runs across days.</td></tr>
+            <tr><td><code>name</code></td><td>string?</td><td>The run's name.</td></tr>
+            <tr><td><code>ref</code></td><td>string?</td><td>Its piste number or reference, e.g. <code>"3"</code> (common in Europe).</td></tr>
+            <tr><td><code>difficulty</code></td><td>string?</td><td><code>novice</code>, <code>easy</code>, <code>intermediate</code>, <code>advanced</code>, <code>expert</code>, <code>freeride</code> or <code>extreme</code>, from OSM <code>piste:difficulty</code>.</td></tr>
+            <tr><td><code>color</code></td><td>string</td><td><code>green</code>, <code>blue</code>, <code>red</code>, <code>black</code>, <code>orange</code> or <code>grey</code>: the colour OpenSkiMap uses for this difficulty under the area's convention (table below). <code>grey</code> means the difficulty is unknown.</td></tr>
+            <tr><td><code>oneway</code></td><td>bool</td><td><code>true</code> when OSM marks the run one-way; <code>false</code> otherwise, including when it isn't tagged.</td></tr>
+            <tr><td><code>geom</code></td><td>string</td><td>The run as a polyline, simplified at 5 m, in the direction OSM draws it (normally downhill).</td></tr>
+        </table></div>
+
+        <p><code>color</code> is OpenSkiData's <code>getRunColorName(convention, difficulty)</code> (<a href="https://github.com/russellporter/openskidata-format/blob/master/src/Run.ts">openskidata-format <code>Run.ts</code></a>). The GeoPackage doesn't carry it, so the script computes it the same way:</p>
+        <div class="table-scroll"><table>
+            <tr><th><code>difficulty</code></th><th><code>north_america</code></th><th><code>europe</code></th><th><code>japan</code></th></tr>
+            <tr><td><code>novice</code></td><td>green</td><td>green</td><td>green</td></tr>
+            <tr><td><code>easy</code></td><td>green</td><td>blue</td><td>green</td></tr>
+            <tr><td><code>intermediate</code></td><td>blue</td><td>red</td><td>red</td></tr>
+            <tr><td><code>advanced</code></td><td>black</td><td>black</td><td>black</td></tr>
+            <tr><td><code>expert</code></td><td>black</td><td>black</td><td>black</td></tr>
+            <tr><td><code>freeride</code>, <code>extreme</code></td><td>orange</td><td>orange</td><td>orange</td></tr>
+            <tr><td><code>null</code></td><td>grey</td><td>grey</td><td>grey</td></tr>
+        </table></div>
+        <p>In North America <code>expert</code> is the double black diamond; tell it apart from <code>advanced</code> by <code>difficulty</code>, not by <code>color</code>.</p>
+
+        <p><strong><code>lifts[]</code></strong></p>
+        <div class="table-scroll"><table>
+            <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+            <tr><td><code>osm_id</code></td><td>string</td><td>The lift's OpenStreetMap id, e.g. <code>w10159691</code>. Unique within a bundle.</td></tr>
+            <tr><td><code>name</code></td><td>string?</td><td>The lift's name.</td></tr>
+            <tr><td><code>type</code></td><td>string?</td><td><code>cable_car</code>, <code>gondola</code>, <code>chair_lift</code>, <code>mixed_lift</code>, <code>drag_lift</code>, <code>t-bar</code>, <code>j-bar</code>, <code>platter</code>, <code>rope_tow</code>, <code>magic_carpet</code>, <code>funicular</code> or <code>railway</code>.</td></tr>
+            <tr><td><code>geom</code></td><td>string</td><td>The lift as a polyline, simplified at 5 m, running <strong>bottom &rarr; top</strong> (see Method, step 6).</td></tr>
+            <tr><td><code>bottom_alt</code></td><td>number?</td><td>Elevation of <code>geom</code>'s first point, metres.</td></tr>
+            <tr><td><code>top_alt</code></td><td>number?</td><td>Elevation of <code>geom</code>'s last point, metres. On a nearly flat lift (a magic carpet) it can be a little lower than <code>bottom_alt</code>, because a difference under 5 m doesn't reverse the line.</td></tr>
+        </table></div>
+
+        <h3 id="build"><code>v1/build.json</code></h3>
+        <div class="table-scroll"><table>
+            <tr><th>Field</th><th>Type</th><th>Meaning</th></tr>
+            <tr><td><code>v</code></td><td>int</td><td>Format version: <code>1</code>.</td></tr>
+            <tr><td><code>osd_build</code></td><td>string</td><td>OpenSkiData's build id (<code>run.finishedAt</code>).</td></tr>
+            <tr><td><code>osd_format</code></td><td>string?</td><td>OpenSkiData's <code>formatVersion</code>, e.g. <code>"16.0.0"</code>.</td></tr>
+            <tr><td><code>osm_data_at</code></td><td>string?</td><td>The OpenStreetMap data timestamp in that build.</td></tr>
+            <tr><td><code>builder</code></td><td>int</td><td>The script's <code>BUILDER_VERSION</code>.</td></tr>
+            <tr><td><code>built_at</code></td><td>string</td><td>When this build finished, UTC, <code>YYYY-MM-DDTHH:MM:SSZ</code>.</td></tr>
+            <tr><td><code>areas</code>, <code>runs</code>, <code>lifts</code></td><td>int</td><td>Counts in this build.</td></tr>
+            <tr><td><code>index_hash</code></td><td>string</td><td>16 hex characters of the SHA-256 of <code>index.json</code>'s uncompressed JSON.</td></tr>
+            <tr><td><code>index_bytes</code></td><td>int</td><td><code>index.json</code>'s gzip size.</td></tr>
+            <tr><td><code>changed</code></td><td>int</td><td>How many bundles this build wrote.</td></tr>
+            <tr><td><code>license</code>, <code>attribution</code></td><td>string</td><td>As in every file.</td></tr>
+        </table></div>
+
+        <h2 id="running">Running it</h2>
+
+        <p>Python 3.12:</p>
+        <pre><code>python -m venv .venv &amp;&amp; . .venv/bin/activate
+pip install -r skidata/requirements.txt
+
+# Build everything into a folder (uncompressed JSON at the object keys):
+python skidata/build_bundles.py --out /tmp/ski-bundles
+
+# Reuse a GeoPackage you already downloaded, and look at one area:
+python skidata/build_bundles.py --gpkg openskidata.gpkg --only wd-Q3821979 --out /tmp/ski
+
+# Upload to R2 (what the workflow runs):
+R2_ACCOUNT_ID=… R2_SKI_ACCESS_KEY_ID=… R2_SKI_SECRET_ACCESS_KEY=… R2_SKI_BUCKET=homebound-ski \
+  python skidata/build_bundles.py --upload</code></pre>
+
+        <div class="table-scroll"><table>
+            <tr><th>Flag</th><th>Does</th></tr>
+            <tr><td><code>--out DIR</code></td><td>Writes the objects under <code>DIR</code> as plain JSON (serve it with any static server to test a client).</td></tr>
+            <tr><td><code>--upload</code></td><td>Uploads to R2 at <code>https://{R2_ACCOUNT_ID}.r2.cloudflarestorage.com</code>, bucket <code>R2_SKI_BUCKET</code>, with the keys <code>R2_SKI_ACCESS_KEY_ID</code> / <code>R2_SKI_SECRET_ACCESS_KEY</code>.</td></tr>
+            <tr><td><code>--gpkg PATH</code></td><td>Uses a local <code>openskidata.gpkg</code> instead of downloading one.</td></tr>
+            <tr><td><code>--metadata PATH</code></td><td>Uses a local <code>metadata.json</code> instead of fetching it.</td></tr>
+            <tr><td><code>--only KEY</code></td><td>Builds one area and prints its counts; no index. Can't be combined with <code>--upload</code>.</td></tr>
+            <tr><td><code>--force</code></td><td>Builds even when OpenSkiData's build hasn't changed.</td></tr>
+            <tr><td><code>--allow-shrink</code></td><td>Publishes even when the index would lose more than 20% of its areas.</td></tr>
+        </table></div>
+
+        <p><code>--out</code> and <code>--upload</code> can be combined. Exit codes: <code>0</code> done (or nothing to do), <code>1</code> an unexpected error (including missing R2 variables), <code>2</code> the GeoPackage isn't shaped as expected, <code>3</code> a publish check refused.</p>
+
+        <p>Tests run on a small GeoPackage the tests write themselves, with no network:</p>
+        <pre><code>pip install -r skidata/requirements.txt pytest
+python -m pytest skidata/tests -q</code></pre>
+
+        <h2 id="changes">Changing the format</h2>
+        <ul>
+            <li>Bump <code>BUILDER_VERSION</code> in <code>build_bundles.py</code> with any change to what's built. The next run then rebuilds even if OpenSkiData hasn't changed.</li>
+            <li>Additive changes (a new field) stay in <code>v1/</code>. Update this page and the README, and tell the readers: the Homebound backend (<code>src/services/ski_resorts.py</code>) and app (<code>SkiResortStore</code>).</li>
+            <li>A breaking change goes to <code>v2/</code>, and <code>v1/</code> keeps being published until no supported app version reads it.</li>
+        </ul>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/help">Help Center</a>
+                <a href="/privacypolicy">Privacy Policy</a>
+                <a href="/consumerhealth">Consumer Health Data</a>
+                <a href="/termsofservice">Terms of Service</a>
+                <a href="mailto:support@homeboundapp.com">Contact</a>
+            </div>
+            <div class="footer-social">
+                <a href="https://instagram.com/homebound.app" target="_blank" rel="noopener" aria-label="Homebound on Instagram" title="Instagram"><svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a>
+                <a href="https://www.threads.net/@homebound.app" target="_blank" rel="noopener" aria-label="Homebound on Threads" title="Threads"><svg aria-hidden="true" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a>
+                <a href="https://www.linkedin.com/company/130883897" target="_blank" rel="noopener" aria-label="Homebound on LinkedIn" title="LinkedIn"><svg aria-hidden="true" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a>
+            </div>
+            <p class="copyright">&copy; 2026 Homebound LLC. All rights reserved.</p>
+        </div>
+    </footer>
+</body>
+</html>
