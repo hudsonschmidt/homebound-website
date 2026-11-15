@@ -16,9 +16,12 @@ them. It is published at <https://www.homeboundapp.com/skidata/>.
 The bundles are a **Derivative Database** of OpenSkiData, which is derived from
 OpenStreetMap. They are made available under the
 [Open Database License 1.0](https://opendatacommons.org/licenses/odbl/1-0/) (ODbL-1.0).
-Every file says so in its `license` and `attribution` fields:
+Every file says so in its `license` and `attribution` fields. The attribution is
+OpenSkiData's required credit, in full:
 
-    © OpenStreetMap contributors, OpenSkiData
+    Data from OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), Skimap.org, Who's On First, © Mapterhorn
+
+Show it wherever the data is shown (on a map it may collapse behind an ⓘ).
 
 This README and `build_bundles.py` are the method used to make the derivative database
 (ODbL §4.6). The bundles contain no Homebound user data.
@@ -31,9 +34,26 @@ Sources and credits:
   and the names and websites of many others).
 - Elevations © [Mapterhorn](https://mapterhorn.com/attribution), via OpenSkiData (lift
   `bottom_alt` / `top_alt`, area `min_alt` / `max_alt`).
+- Places from [Who's On First](https://whosonfirst.org), which OpenSkiData uses to
+  locate ski areas.
 
 To fix a run or lift, edit OpenStreetMap: the change reaches OpenSkiData within a few days
 and the bundles the following Monday.
+
+### Display names
+
+A few areas are published under a name other than their OpenStreetMap `name`, when that
+name is one people wouldn't recognise. The table lives in `build_bundles.py`
+(`DISPLAY_NAMES`) and applies to the bundle's `name` and its index entry's `name`:
+
+| Area key | OpenStreetMap name | Published as | Why |
+|---|---|---|---|
+| `wd-Q3821979` | Park City Mountain Resort | Park City Mountain | The resort's own name since 2015 (parkcitymountain.com) |
+
+The better fix is upstream: edit the area's `name` in OpenStreetMap (for Park City, way
+[918681867](https://www.openstreetmap.org/way/918681867), the area tagged
+`wikidata=Q3821979`; keep the old name as `old_name`). Once OpenSkiData carries the new
+name, remove the entry here.
 
 ## Method
 
@@ -73,7 +93,8 @@ Every Monday at 09:00 UTC (and when run by hand):
 
    The bundle's hull is simplified at 5 m and the index's at 50 m.
 8. **Key** each area with a stable id (below). OpenSkiData's own `feature_id`s are content
-   hashes that change every build, so they never appear in the output.
+   hashes that change every build, so they never appear in the output. An area listed
+   under [Display names](#display-names) takes its display name.
 9. **Write** `v1/areas/{key}.json` for each area whose content hash changed (or that is
    missing), then `v1/index.json`, then `v1/build.json` last. A run that fails halfway
    leaves the old `build.json`, so the next run retries everything.
@@ -98,7 +119,7 @@ not: if a body starts with the bytes `1f 8b`, gunzip it first. The JSON is UTF-8
 
 Size of the 2026-11-13 build: 5,448 areas, 98,396 runs, 27,140 lifts. Bundles total
 20.6 MB (6.9 MB gzipped); the median bundle is 0.7 KB gzipped and the largest, Dolomiti
-Superski, is 92 KB. The index is 1.28 MB (0.61 MB gzipped). Park City Mountain Resort
+Superski, is 92 KB. The index is 1.28 MB (0.61 MB gzipped). Park City Mountain
 (`wd-Q3821979`) is 67 KB (17.5 KB gzipped).
 
 ## Format (version 1)
@@ -128,7 +149,7 @@ Superski, is 92 KB. The index is 1.28 MB (0.61 MB gzipped). Park City Mountain R
 
 | Form | From | Example |
 |---|---|---|
-| `wd-{Qid}` | the area's Wikidata id | `wd-Q3821979` (Park City Mountain Resort) |
+| `wd-{Qid}` | the area's Wikidata id | `wd-Q3821979` (Park City Mountain) |
 | `osm-{r\|w\|n}{id}` | the area's own OpenStreetMap relation, way or node | `osm-r3545276` (Les Trois Vallées) |
 | `sm-{id}` | its Skimap.org id, when it has no OSM object | `sm-1024` (Hurricane Ridge) |
 | `gen-{r\|w\|n}{id}` | an area OpenSkiData generated around runs that no mapped area claims: the lowest OSM id among its runs and lifts, preferring one that is in no other area. These have no name | `gen-r10978224` |
@@ -152,7 +173,7 @@ area holding the most points, then the smaller hull).
   "areas": [
     {
       "key": "wd-Q3821979",
-      "name": "Park City Mountain Resort",
+      "name": "Park City Mountain",
       "centroid": [40.6569, -111.53786],
       "bbox": [40.60878, -111.60016, 40.69961, -111.49823],
       "hull": ["<polyline ring>"],
@@ -161,7 +182,7 @@ area holding the most points, then the smaller hull).
     }
   ],
   "license": "ODbL-1.0",
-  "attribution": "© OpenStreetMap contributors, OpenSkiData"
+  "attribution": "Data from OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), Skimap.org, Who's On First, © Mapterhorn"
 }
 ```
 
@@ -171,7 +192,7 @@ area holding the most points, then the smaller hull).
 | `osd_build` | string | The OpenSkiData build these files came from (`metadata.json` `run.finishedAt`). |
 | `areas` | array | Every area, sorted by `key`. |
 | `areas[].key` | string | The area key (above). |
-| `areas[].name` | string? | Its name. About 17% of areas have none (every `gen-` area, and some small ones). |
+| `areas[].name` | string? | Its name ([display name](#display-names) if it has one). About 17% of areas have none (every `gen-` area, and some small ones). |
 | `areas[].centroid` | `[lat, lon]` | OpenSkiData's point for the area. Usually, not always, inside the hull. |
 | `areas[].bbox` | bbox | Same as the bundle's `bbox`. |
 | `areas[].hull` | string[] | The hull, simplified at 50 m. |
@@ -185,7 +206,7 @@ area holding the most points, then the smaller hull).
 {
   "v": 1,
   "key": "wd-Q3821979",
-  "name": "Park City Mountain Resort",
+  "name": "Park City Mountain",
   "website": "https://parkcitymountain.com/",
   "convention": "north_america",
   "bbox": [40.60878, -111.60016, 40.69961, -111.49823],
@@ -201,7 +222,7 @@ area holding the most points, then the smaller hull).
      "bottom_alt": 2131.2, "top_alt": 2489.9}
   ],
   "license": "ODbL-1.0",
-  "attribution": "© OpenStreetMap contributors, OpenSkiData"
+  "attribution": "Data from OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), Skimap.org, Who's On First, © Mapterhorn"
 }
 ```
 
@@ -209,7 +230,7 @@ area holding the most points, then the smaller hull).
 |---|---|---|
 | `v` | int | Format version: `1`. |
 | `key` | string | The area key; equals the file name. |
-| `name` | string? | The area's name. |
+| `name` | string? | The area's name ([display name](#display-names) if it has one). |
 | `website` | string? | Its first listed website. |
 | `convention` | string? | The difficulty colour convention: `europe`, `north_america` or `japan`. |
 | `bbox` | bbox | Bounds of the hull and of every run and lift. |
@@ -218,7 +239,7 @@ area holding the most points, then the smaller hull).
 | `runs` | array | Downhill runs, sorted by `osm_id` (relations, then ways, then nodes; then by number). |
 | `lifts` | array | Operating lifts, sorted the same way. |
 | `license` | string | `"ODbL-1.0"` |
-| `attribution` | string | `"© OpenStreetMap contributors, OpenSkiData"` |
+| `attribution` | string | `"Data from OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), Skimap.org, Who's On First, © Mapterhorn"` |
 
 **`runs[]`**
 

@@ -60,7 +60,8 @@ USER_AGENT = "HomeboundSkiBundles/1 (+https://www.homeboundapp.com/skidata/)"
 
 #: Bumped whenever the bundle format or the build rules change. A new value forces a full
 #: rebuild even when OpenSkiData hasn't published a new build.
-BUILDER_VERSION = 1
+#: 2 (2026-11-15): OpenSkiData's full required credit in `attribution`; DISPLAY_NAMES.
+BUILDER_VERSION = 2
 #: The schema version inside every JSON object ("v"). Object keys live under v1/.
 SCHEMA_VERSION = 1
 #: The OpenSkiData format major version this script was written against. A different one
@@ -68,7 +69,18 @@ SCHEMA_VERSION = 1
 TESTED_FORMAT_MAJOR = 16
 
 LICENSE = "ODbL-1.0"
-ATTRIBUTION = "© OpenStreetMap contributors, OpenSkiData"
+#: OpenSkiData's required credit, in full (its licence asks for every source it draws on).
+ATTRIBUTION = ("Data from OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), "
+               "Skimap.org, Who's On First, © Mapterhorn")
+
+#: Display names that replace the source name of an area, by area key, in its bundle and
+#: its index entry. Only for names people would not recognise; the better fix is an
+#: OpenStreetMap edit (see README "Display names"), after which the entry can go.
+DISPLAY_NAMES: dict[str, str] = {
+    # OSM's `name` is the pre-2015 "Park City Mountain Resort"; the resort calls itself
+    # "Park City Mountain" (parkcitymountain.com).
+    "wd-Q3821979": "Park City Mountain",
+}
 
 PREFIX = "v1"
 BUILD_KEY = f"{PREFIX}/build.json"
@@ -571,6 +583,11 @@ def _simplified_rings(local: shapely.Geometry, tolerance_m: float, lon0: float, 
     return rings
 
 
+def display_name(key: str, source_name: str | None) -> str | None:
+    """The name an area is published under: its DISPLAY_NAMES entry, else the source's."""
+    return DISPLAY_NAMES.get(key, source_name)
+
+
 def build(source: Source, only: str | None = None, min_areas: int | None = None) -> BuildResult:
     t0 = time.monotonic()
     min_areas = MIN_AREAS if min_areas is None else min_areas
@@ -738,7 +755,7 @@ def build(source: Source, only: str | None = None, min_areas: int | None = None)
         bundle = {
             "v": SCHEMA_VERSION,
             "key": key,
-            "name": _str_or_none(A["name"][i]),
+            "name": display_name(key, _str_or_none(A["name"][i])),
             "website": _str_or_none(websites[0]) if websites else None,
             "convention": _str_or_none(A["run_convention"][i]),
             "bbox": bbox,

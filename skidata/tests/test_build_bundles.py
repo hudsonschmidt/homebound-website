@@ -21,6 +21,11 @@ from conftest import (
 )
 
 
+# OpenSkiData's required credit, word for word (its licence lists every source).
+FULL_CREDIT = ("Data from OpenSkiData / OpenSkiMap.org, © OpenStreetMap contributors (ODbL), "
+               "Skimap.org, Who's On First, © Mapterhorn")
+
+
 def build_fixture(gpkg: Path, only: str | None = None) -> bb.BuildResult:
     return bb.build(bb.load_source(gpkg), only=only)
 
@@ -93,7 +98,7 @@ def test_bundle_schema_and_filters(gpkg: Path) -> None:
     assert b["website"] == "https://alpha.example/"
     assert b["convention"] == "north_america"
     assert b["license"] == "ODbL-1.0"
-    assert b["attribution"] == "© OpenStreetMap contributors, OpenSkiData"
+    assert b["attribution"] == FULL_CREDIT
     assert (b["min_alt"], b["max_alt"]) == (2100.0, 2600.0)
     s, w, n, e = b["bbox"]
     assert s < n and w < e
@@ -142,6 +147,40 @@ def test_index_entries_describe_each_bundle(gpkg: Path) -> None:
         assert entry["bytes"] == len(gzip.compress(out.raw, compresslevel=9, mtime=0))
         assert entry["bbox"] == json.loads(out.raw)["bbox"]
         assert len(entry["hull"]) >= 1
+
+
+def test_every_file_carries_the_full_credit(gpkg: Path, tmp_path: Path) -> None:
+    assert bb.ATTRIBUTION == FULL_CREDIT
+    result = build_fixture(gpkg)
+    assert {bundle(result, k)["attribution"] for k in result.areas} == {FULL_CREDIT}
+    assert json.loads(bb.build_index(result, "osd-build-1"))["attribution"] == FULL_CREDIT
+    readme = (Path(bb.__file__).parent / "README.md").read_text()
+    page = (Path(bb.__file__).parent / "index.html").read_text()
+    assert FULL_CREDIT in readme
+    assert FULL_CREDIT.replace("'", "&rsquo;").replace("©", "&copy;") in page or FULL_CREDIT in page
+    # The old short line is gone from what we publish.
+    assert "© OpenStreetMap contributors, OpenSkiData\"" not in readme
+
+
+def test_display_names_override_bundle_and_index(gpkg: Path, monkeypatch: pytest.MonkeyPatch) -> None:
+    assert bb.DISPLAY_NAMES["wd-Q3821979"] == "Park City Mountain"
+    assert bb.display_name("wd-Q3821979", "Park City Mountain Resort") == "Park City Mountain"
+    assert bb.display_name("osm-r200", "Beta Hill") == "Beta Hill"
+    assert bb.display_name("gen-w1", None) is None
+    monkeypatch.setitem(bb.DISPLAY_NAMES, "wd-Q42", "Alpha")
+    result = build_fixture(gpkg)
+    assert bundle(result, "wd-Q42")["name"] == "Alpha"
+    assert result.areas["wd-Q42"].name == "Alpha"
+    entry = next(a for a in json.loads(bb.build_index(result, "b"))["areas"] if a["key"] == "wd-Q42")
+    assert entry["name"] == "Alpha"
+    assert bundle(result, "osm-r200")["name"] == "Beta Hill"   # no entry: the source name
+    # Every override is documented on the published page and in the README.
+    readme = (Path(bb.__file__).parent / "README.md").read_text()
+    page = (Path(bb.__file__).parent / "index.html").read_text()
+    for key, name in bb.DISPLAY_NAMES.items():
+        if key == "wd-Q42":
+            continue
+        assert key in readme and name in readme and key in page and name in page
 
 
 @pytest.mark.parametrize(("convention", "difficulty", "color"), [
