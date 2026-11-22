@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /skidata/tests/
+
+Sitemap: https://www.homeboundapp.com/sitemap.xml

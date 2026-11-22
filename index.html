@@ -3,15 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Homebound | Go far. Come home.</title>
-    <meta name="description" content="Homebound is a free personal safety app. Tell someone where you're going and when you'll be back. If you're not back on time, the people you trust automatically get your trip plan and last known location.">
-    <meta property="og:title" content="Homebound | Go far. Come home.">
-    <meta property="og:description" content="Tell someone where you're going and when you'll be back. If you're not back on time, the people you trust get everything they need to help. Free on iPhone.">
+    <title>Homebound: Trip Safety Check-In App for Hikers &amp; Skiers</title>
+    <meta name="description" content="Plan a trip with a return time. If you're not back by then plus your grace period, your contacts get your plan and last location. Free on iPhone.">
+    <link rel="canonical" href="https://www.homeboundapp.com/">
+    <meta name="apple-itunes-app" content="app-id=6754800989">
+    <meta property="og:site_name" content="Homebound">
+    <meta property="og:title" content="Homebound: Trip Safety Check-In App for Hikers &amp; Skiers">
+    <meta property="og:description" content="Plan a trip with a return time. If you're not back by then plus your grace period, your contacts get your plan and last location. Free on iPhone.">
     <meta property="og:image" content="https://www.homeboundapp.com/logo.png">
     <meta property="og:url" content="https://www.homeboundapp.com/">
     <meta property="og:type" content="website">
     <meta name="twitter:card" content="summary">
-    <link rel="icon" type="image/png" href="favicon.png">
+    <link rel="icon" type="image/png" href="/favicon-48.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <script type="application/ld+json">
+    {"@context":"https://schema.org","@graph":[
+    {"@type":"Organization","@id":"https://www.homeboundapp.com/#org","name":"Homebound","legalName":"Homebound LLC","url":"https://www.homeboundapp.com/","logo":"https://www.homeboundapp.com/logo.png","email":"support@homeboundapp.com","founder":{"@type":"Person","name":"Hudson Schmidt"},"address":{"@type":"PostalAddress","addressLocality":"Park City","addressRegion":"UT","addressCountry":"US"},"sameAs":["https://instagram.com/homebound.app","https://www.threads.net/@homebound.app","https://www.linkedin.com/company/130883897"]},
+    {"@type":"WebSite","@id":"https://www.homeboundapp.com/#website","name":"Homebound","alternateName":"Homebound Check-In","url":"https://www.homeboundapp.com/","publisher":{"@id":"https://www.homeboundapp.com/#org"}},
+    {"@type":"MobileApplication","name":"Homebound Check-In","alternateName":"Homebound","description":"Plan a trip with a return time. If you don't check out by then plus your grace period, your safety contacts get your trip plan and last known location.","operatingSystem":"iOS 26 or later","applicationCategory":"TravelApplication","installUrl":"https://apps.apple.com/us/app/homebound-check-in/id6754800989","sameAs":"https://apps.apple.com/us/app/homebound-check-in/id6754800989","screenshot":"https://www.homeboundapp.com/assets/sm/01.png","publisher":{"@id":"https://www.homeboundapp.com/#org"},"offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}}]}
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
@@ -209,6 +219,7 @@
         .hero-phone img {
             display: block;
             width: 100%;
+            height: auto;
             border-radius: 44px;
             border: 1px solid rgba(255, 255, 255, 0.14);
         }
@@ -349,6 +360,7 @@
         .phone-top img {
             display: block;
             width: 100%;
+            height: auto;
             border-radius: 34px 34px 0 0;
             border: 1px solid rgba(255, 255, 255, 0.15);
             border-bottom: 0;
@@ -659,14 +671,14 @@
 <body>
     <nav>
         <a href="/" class="nav-brand">
-            <img src="logo.png" alt="">
+            <img src="/assets/logo-64.png" alt="" width="30" height="30">
             <span>Homebound</span>
         </a>
         <div class="nav-links">
             <a href="#how" class="nav-anchor">How it works</a>
             <a href="#everyday" class="nav-anchor">Beyond the trail</a>
             <a href="#reviews" class="nav-anchor">Reviews</a>
-            <a href="/help">Help</a>
+            <a href="/help/">Help</a>
             <a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989" class="nav-cta">Get the app</a>
         </div>
     </nav>
@@ -700,7 +712,7 @@
             <div class="ridge ridge-mid" aria-hidden="true"></div>
             <div class="ridge ridge-front" aria-hidden="true"></div>
             <div class="hero-phone">
-                <img src="assets/sm/01.png" alt="Homebound home screen showing an active trip with a countdown to the return time, a Check In button with a camera button beside it, I'm Safe, Extend trip and Trip details, and an Emergency SOS bar">
+                <img src="assets/sm/01.png" width="644" height="1399" fetchpriority="high" alt="Homebound home screen showing an active trip with a countdown to the return time, a Check In button with a camera button beside it, I'm Safe, Extend trip and Trip details, and an Emergency SOS bar">
             </div>
         </div>
     </section>
@@ -744,7 +756,7 @@
         <div class="triptych">
             <div class="phase-card">
                 <div class="phase-body">
-                    <div class="phase-title">Before you go</div>
+                    <h3 class="phase-title">Before you go</h3>
                     <div class="phase-sub">Make the plan in under a minute.</div>
                     <ul class="phase-list">
                         <li>Pick from 25+ activities with tailored safety tips</li>
@@ -755,12 +767,12 @@
                     </ul>
                 </div>
                 <div class="phase-shot">
-                    <div class="phone-top"><img src="assets/sm/06.png" alt="Start a trip screen with one-tap Quick Trips and options to plan a solo or group trip"></div>
+                    <div class="phone-top"><img src="assets/sm/06.png" width="460" height="999" loading="lazy" alt="Start a trip screen with one-tap Quick Trips and options to plan a solo or group trip"></div>
                 </div>
             </div>
             <div class="phase-card">
                 <div class="phase-body">
-                    <div class="phase-title">While you're out</div>
+                    <h3 class="phase-title">While you're out</h3>
                     <div class="phase-sub">Stay visible to the people who care.</div>
                     <ul class="phase-list">
                         <li>Live location and trails on one combined map</li>
@@ -771,12 +783,12 @@
                     </ul>
                 </div>
                 <div class="phase-shot">
-                    <div class="phone-top"><img src="assets/sm/04.png" alt="Trip details screen with everyone's live locations and trails on one map, a meetup spot, check-in pins, and location sharing turned on"></div>
+                    <div class="phone-top"><img src="assets/sm/04.png" width="460" height="999" loading="lazy" alt="Trip details screen with everyone's live locations and trails on one map, a meetup spot, check-in pins, and location sharing turned on"></div>
                 </div>
             </div>
             <div class="phase-card">
                 <div class="phase-body">
-                    <div class="phase-title">When you're back</div>
+                    <h3 class="phase-title">When you're back</h3>
                     <div class="phase-sub">One tap ends the worry.</div>
                     <ul class="phase-list">
                         <li>Tap "I'm Safe" and everyone knows you're home</li>
@@ -787,11 +799,11 @@
                     </ul>
                 </div>
                 <div class="phase-shot">
-                    <div class="phone-top"><img src="assets/sm/09.png" alt="Trip history with adventure stats and a safety score of 100"></div>
+                    <div class="phone-top"><img src="assets/sm/09.png" width="460" height="999" loading="lazy" alt="Trip history with adventure stats and a safety score of 100"></div>
                 </div>
             </div>
         </div>
-        <p class="how-note">…and if you're ever overdue, your contacts automatically get your location, notes, and activity. <strong>Alerts break through Do Not Disturb.</strong></p>
+        <p class="how-note">…and if you're ever overdue, your safety contacts (the emergency contacts you choose) automatically get your location, notes, and activity. <strong>Alerts break through Do Not Disturb.</strong></p>
     </section>
 
     <section class="everyday" id="everyday">
@@ -811,7 +823,7 @@
                 <div class="scenario sand">
                     <div class="icon">🍻</div>
                     <h3>The night out</h3>
-                    <p>Heading out with friends? Share live location with your circle until you're home.</p>
+                    <p>Heading out with friends? Share your live location with a Circle, and stop when you're home.</p>
                 </div>
                 <div class="scenario sage">
                     <div class="icon">🏃</div>
@@ -892,7 +904,7 @@
     <section class="final-cta">
         <div class="hero-sun" aria-hidden="true"></div>
         <h2>Tell someone.<br>Then go.</h2>
-        <p>Free on the App Store. Your contacts never need to install anything.</p>
+        <p>Homebound Check-In is free on the App Store. Your contacts never need to install anything.</p>
         <a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989" class="appstore-btn">
             <span class="pre">Download on the</span>
             <span class="big">App Store</span>
@@ -903,14 +915,18 @@
     <footer>
         <div class="footer-inner">
             <div class="footer-brand">
-                <img src="logo.png" alt="">
+                <img src="/assets/logo-64.png" alt="" width="22" height="22" loading="lazy">
                 © 2026 Homebound LLC · Park City, UT
             </div>
             <div class="footer-links">
-                <a href="/help">Help Center</a>
-                <a href="/privacypolicy">Privacy</a>
-                <a href="/consumerhealth">Consumer Health Data</a>
-                <a href="/termsofservice">Terms</a>
+                <a href="/help/">Help Center</a>
+                <a href="/ski/">Ski</a>
+                <a href="/contacts/">For safety contacts</a>
+                <a href="/solo-hiking/">Solo hiking</a>
+                <a href="/walk-home/">Walking home</a>
+                <a href="/privacypolicy/">Privacy</a>
+                <a href="/consumerhealth/">Consumer Health Data</a>
+                <a href="/termsofservice/">Terms</a>
                 <a href="mailto:support@homeboundapp.com">Contact</a>
                 <a href="https://instagram.com/homebound.app" target="_blank" rel="noopener">Instagram</a>
                 <a href="https://www.threads.net/@homebound.app" target="_blank" rel="noopener">Threads</a>
