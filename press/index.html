@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Press Kit | Homebound</title>
+    <meta name="description" content="Fact sheet, photos, screenshots, and the story behind Homebound. Version 1.6, out December 16, adds ski and snowboard tracking on iPhone and Apple Watch.">
+    <link rel="canonical" href="https://www.homeboundapp.com/press/">
+    <meta name="apple-itunes-app" content="app-id=6754800989, app-argument=https://api.homeboundapp.com/e/ski">
+    <meta property="og:site_name" content="Homebound">
+    <meta property="og:title" content="Homebound Press Kit">
+    <meta property="og:description" content="Fact sheet, photos, screenshots, and the story behind Homebound. Version 1.6, out December 16, adds ski and snowboard tracking on iPhone and Apple Watch.">
+    <meta property="og:image" content="https://www.homeboundapp.com/assets/share/homebound.jpg">
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:alt" content="An orange tent in a wildflower meadow below red cliffs">
+    <meta property="og:url" content="https://www.homeboundapp.com/press/">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="/favicon-48.png">
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/assets/landing.css">
+    <link rel="stylesheet" href="/assets/footer.css">
+    <style>
+        /* /press/ only: the fact sheet, the quote, the founder photo and the download tiles.
+           Everything else comes from landing.css, like /ski/. */
+        .card { scroll-margin-top: 80px; }
+        .facts { margin: 6px 0 16px; border-top: 1px solid var(--line); }
+        .facts > div {
+            display: grid;
+            grid-template-columns: 150px minmax(0, 1fr);
+            align-items: baseline;
+            gap: 2px 16px;
+            padding: 11px 0;
+            border-bottom: 1px solid var(--line);
+        }
+        .facts dt { font-weight: 650; color: var(--ink); font-size: 0.93rem; line-height: 1.65; }
+        .facts dd { color: var(--muted); line-height: 1.65; }
+        .facts dd p { margin-bottom: 0.35rem; }
+
+        .quote { margin: 18px 0; padding: 2px 0 2px 18px; border-left: 3px solid var(--copper); }
+        .quote blockquote p {
+            font-family: var(--display);
+            font-size: clamp(1.1rem, 2.4vw, 1.28rem);
+            font-weight: 600;
+            line-height: 1.45;
+            letter-spacing: -0.01em;
+            color: var(--pine);
+            margin-bottom: 8px;
+        }
+        .quote figcaption { font-size: 0.9rem; color: var(--faint); }
+
+        .founder { margin: 4px 0 22px; }
+        .founder img { display: block; width: 100%; height: auto; border-radius: 16px; }
+        .founder figcaption { margin-top: 8px; font-size: 0.88rem; color: var(--faint); }
+
+        .kit-row {
+            display: flex;
+            align-items: center;
+            gap: 14px 20px;
+            flex-wrap: wrap;
+            padding: 18px 20px;
+            margin-bottom: 18px;
+            border-radius: 16px;
+            background: rgba(53, 107, 61, 0.07);
+        }
+        .kit-row p { flex: 1 1 260px; margin: 0; font-size: 0.93rem; }
+        .kit-btn {
+            display: inline-flex;
+            flex-direction: column;
+            align-items: flex-start;
+            background: var(--copper);
+            color: #fff !important;
+            padding: 11px 22px;
+            border-radius: 12px;
+            text-decoration: none;
+            line-height: 1.2;
+            transition: background 0.2s;
+        }
+        .kit-btn:hover { background: var(--copper-dark); }
+        .kit-btn .big { font-size: 1.02rem; font-weight: 700; }
+        .kit-btn .pre { font-size: 0.75rem; font-weight: 500; opacity: 0.9; }
+
+        .card ul.downloads {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 14px;
+        }
+        .card ul.downloads li { margin: 0; }
+        .dl {
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+            text-decoration: none;
+            color: var(--ink);
+            background: var(--cream);
+            border: 1.5px solid var(--line);
+            border-radius: 16px;
+            overflow: hidden;
+            transition: border-color 0.2s;
+        }
+        .dl:hover { border-color: var(--moss); color: var(--ink); }
+        .dl:focus-visible { outline: 2px solid var(--fern); outline-offset: 2px; }
+        .dl-thumb {
+            height: 170px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px;
+        }
+        .dl-thumb img {
+            display: block;
+            max-width: 100%;
+            max-height: 100%;
+            width: auto;
+            height: auto;
+            border-radius: 8px;
+        }
+        .dl-thumb img.icon { border-radius: 22%; }
+        .dl-text { padding: 10px 14px 13px; border-top: 1px solid var(--line); }
+        .dl-text strong { display: block; font-size: 0.92rem; font-weight: 650; line-height: 1.35; }
+        .dl-text span { display: block; font-size: 0.8rem; color: var(--faint); margin-top: 2px; }
+        .dl-text span + span { margin-top: 0; }
+        .dl-text .dl-credit { color: var(--muted); margin-top: 5px; }
+        .dl-use { font-size: 0.9rem; margin-bottom: 14px; }
+
+        .contact-line { font-size: 1.05rem; }
+        .contact-line a { font-weight: 650; }
+
+        @media (max-width: 640px) {
+            .card ul.downloads { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; }
+            .dl-thumb { height: 150px; padding: 12px; }
+        }
+        @media (max-width: 560px) {
+            .facts > div { grid-template-columns: minmax(0, 1fr); }
+            .kit-row { padding: 16px; }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="/" class="nav-brand">
+            <img src="/assets/logo-64.png" alt="" width="30" height="30">
+            <span>Homebound</span>
+        </a>
+        <div class="nav-links">
+            <a href="/" class="nav-hide-sm">Home</a>
+            <a href="/help/">Help</a>
+            <a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989?ppid=a73a2136-6998-4003-b69d-8ac092916e1d&amp;pt=128265068&amp;ct=web-press&amp;mt=8" class="nav-cta">Get the app</a>
+        </div>
+    </nav>
+
+    <main>
+    <section class="hero">
+        <div class="hero-sun" aria-hidden="true"></div>
+        <div class="spark" style="top:120px;left:14%;font-size:13px" aria-hidden="true">✦</div>
+        <div class="spark" style="top:70px;left:24%;font-size:9px" aria-hidden="true">✦</div>
+        <div class="spark" style="top:190px;right:22%;font-size:10px" aria-hidden="true">✦</div>
+        <div class="hero-inner">
+            <div class="kicker">Press</div>
+            <h1>Homebound press kit</h1>
+            <p class="hero-sub">Facts, photos, and the story behind Homebound, for anyone writing about it.</p>
+            <div class="cta-row">
+                <a href="/assets/press/homebound-press-kit.zip" class="appstore-btn" download>
+                    <span class="pre">Download the</span>
+                    <span class="big">Press kit</span>
+                </a>
+                <div class="cta-note">Zip, 14.2 MB.<br>Screenshots, logos, and photos.</div>
+            </div>
+        </div>
+    </section>
+
+    <div class="content">
+        <section class="card" id="short-version" aria-labelledby="short-version-title">
+            <h2 id="short-version-title">The short version</h2>
+            <p>Homebound is a free safety app for iPhone and Apple Watch: you set a return time and pick your safety contacts before you head out. If you're not back by then, plus your grace period, they get your trip plan and last known location. Version 1.6, out December 16, adds ski and snowboard tracking, with runs, vertical, and top speed on your iPhone and Apple Watch.</p>
+        </section>
+
+        <section class="card" id="facts" aria-labelledby="facts-title">
+            <h2 id="facts-title">Fact sheet</h2>
+            <dl class="facts">
+                <div>
+                    <dt>Launch</dt>
+                    <dd>Version 1.6, December 16, 2026</dd>
+                </div>
+                <div>
+                    <dt>Platforms</dt>
+                    <dd>iPhone with iOS 26 or later, and Apple Watch with watchOS 26 or later</dd>
+                </div>
+                <div>
+                    <dt>Price</dt>
+                    <dd>
+                        <p>Free on the App Store, with an optional Homebound+ subscription.</p>
+                        <p>Homebound+ adds resort trail maps with run and lift names, ski day replays, bigger trip photo albums, more safety contacts per trip, and unlimited trip history. Trips, alerts, SOS, and ski tracking are free.</p>
+                    </dd>
+                </div>
+                <div>
+                    <dt>Availability</dt>
+                    <dd>The US, Canada, Australia, and New Zealand</dd>
+                </div>
+                <div>
+                    <dt>Made in</dt>
+                    <dd>Park City, Utah, by Hudson Schmidt</dd>
+                </div>
+                <div>
+                    <dt>First released</dt>
+                    <dd>January 2026</dd>
+                </div>
+                <div>
+                    <dt>Links</dt>
+                    <dd><a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989?ppid=a73a2136-6998-4003-b69d-8ac092916e1d&amp;pt=128265068&amp;ct=web-press&amp;mt=8">App Store</a> · <a href="/">homeboundapp.com</a> · <a href="/ski/">homeboundapp.com/ski</a></dd>
+                </div>
+            </dl>
+            <p class="note">Homebound is not an emergency service. It alerts the people you choose.</p>
+        </section>
+
+        <section class="card" id="whats-new" aria-labelledby="whats-new-title">
+            <h2 id="whats-new-title">What's new in 1.6</h2>
+            <ul>
+                <li>Start a ski or snowboard trip, and Homebound counts your runs, vertical, and top speed as you go, on your iPhone and Apple Watch, then saves the whole day, run by run.</li>
+                <li>History shows your season, with your best days and all-time totals. With Homebound+, the resort's trails show on your ski maps, and you can replay your day.</li>
+                <li>Friends who share their location with you show up on your live ski card when they're at the same resort.</li>
+                <li>Circles let family and friends see each other on the map. Joining is always a choice, and anyone can pause or leave at any time.</li>
+                <li>Turn on Record my route, and Homebound keeps your trip's path, with distance, elevation, and moving time. Only you see it unless you post it.</li>
+                <li>Homebound has a refreshed look, with new colors in Light and Dark Mode and a sky on Home that follows the time of day.</li>
+            </ul>
+        </section>
+
+        <section class="card" id="story" aria-labelledby="story-title">
+            <h2 id="story-title">The story</h2>
+            <p>Hudson Schmidt grew up in Park City, Utah. He built Homebound after a five-day backpacking trip in Idaho's Sawtooth Mountains, out of cell service, while his mom worried back home.</p>
+            <figure class="quote">
+                <blockquote>
+                    <p>&ldquo;This app came from a desire to help put my mom's mind at ease when I'm out doing outdoor things. Then it's kind of just blossomed into so much more.&rdquo;</p>
+                </blockquote>
+                <figcaption>Hudson Schmidt, to TownLift</figcaption>
+            </figure>
+            <p>Homebound is built for everyone who loves being outside, and for the people waiting for them to come home.</p>
+            <p>Earlier coverage: <a href="https://townlift.com/2026/07/park-city-native-launches-homebound-a-safety-app-built-for-the-people-who-head-outside/" rel="noopener">Park City native launches Homebound, a safety app built for the people who head outside</a>, TownLift, July 2, 2026.</p>
+        </section>
+
+        <section class="card" id="downloads" aria-labelledby="downloads-title">
+            <h2 id="downloads-title">Photos and downloads</h2>
+            <figure class="founder">
+                <img src="/assets/press/hudson-schmidt-trail-1600.jpg" srcset="/assets/press/hudson-schmidt-trail-800.jpg 800w, /assets/press/hudson-schmidt-trail-1600.jpg 1600w" sizes="(max-width: 560px) calc(100vw - 92px), (max-width: 820px) calc(100vw - 122px), 700px" width="1600" height="1067" alt="Hudson Schmidt smiling on a forest trail, carrying a backpacking pack and a camera" loading="lazy" decoding="async">
+                <figcaption>Hudson Schmidt, founder of Homebound. Photo: Chase McClelland</figcaption>
+            </figure>
+            <div class="kit-row">
+                <a href="/assets/press/homebound-press-kit.zip" class="kit-btn" download>
+                    <span class="big">Download the press kit</span>
+                    <span class="pre">Zip, 14.2 MB</span>
+                </a>
+                <p>Ten iPhone screenshots and six from Apple Watch, the app icon and logos, photos of Hudson and a ski day, plus a README with the fact sheet.</p>
+            </div>
+            <p class="dl-use">Photos and screenshots may be used in coverage of Homebound.</p>
+            <ul class="downloads">
+                <li>
+                    <a class="dl" href="/assets/press/hudson-schmidt-trail.jpg" download>
+                        <span class="dl-thumb"><img src="/assets/press/hudson-schmidt-trail-800.jpg" alt="" width="800" height="533" loading="lazy" decoding="async"></span>
+                        <span class="dl-text"><strong>Founder photo</strong><span>JPEG, 1.4&nbsp;MB</span><span>3000&nbsp;×&nbsp;2000 px</span><span class="dl-credit">Photo: Chase McClelland</span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dl" href="/assets/press/hudson-schmidt-portrait.jpg" download>
+                        <span class="dl-thumb"><img src="/assets/press/thumbs/hudson-schmidt-portrait.jpg" alt="" width="480" height="600" loading="lazy" decoding="async"></span>
+                        <span class="dl-text"><strong>Founder portrait</strong><span>JPEG, 0.3&nbsp;MB</span><span>1600&nbsp;×&nbsp;2000 px</span><span class="dl-credit">Photo: Chase McClelland</span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dl" href="/assets/press/hudson-schmidt-headshot.jpg" download>
+                        <span class="dl-thumb"><img src="/assets/press/thumbs/hudson-schmidt-headshot.jpg" alt="" width="480" height="642" loading="lazy" decoding="async"></span>
+                        <span class="dl-text"><strong>Founder headshot</strong><span>JPEG, 0.5&nbsp;MB</span><span>874&nbsp;×&nbsp;1169 px</span><span class="dl-credit">Photo: Joy Conneally</span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dl" href="/assets/press/homebound-app-icon.png" download>
+                        <span class="dl-thumb"><img class="icon" src="/assets/press/thumbs/homebound-app-icon.png" alt="" width="240" height="240" loading="lazy" decoding="async"></span>
+                        <span class="dl-text"><strong>App icon</strong><span>PNG, 0.3&nbsp;MB</span><span>1024&nbsp;×&nbsp;1024 px</span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dl" href="/assets/press/homebound-iphone-home.png" download>
+                        <span class="dl-thumb"><img src="/assets/press/thumbs/homebound-iphone-home.jpg" alt="" width="360" height="779" loading="lazy" decoding="async"></span>
+                        <span class="dl-text"><strong>Screenshot: Home</strong><span>PNG, 0.9&nbsp;MB</span><span>1284&nbsp;×&nbsp;2778 px</span></span>
+                    </a>
+                </li>
+                <li>
+                    <a class="dl" href="/assets/press/homebound-iphone-ski-day.png" download>
+                        <span class="dl-thumb"><img src="/assets/press/thumbs/homebound-iphone-ski-day.jpg" alt="" width="360" height="779" loading="lazy" decoding="async"></span>
+                        <span class="dl-text"><strong>Screenshot: ski day</strong><span>PNG, 1.2&nbsp;MB</span><span>1284&nbsp;×&nbsp;2778 px</span></span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <section class="final-cta" id="contact" aria-labelledby="contact-title">
+        <h2 id="contact-title">Contact</h2>
+        <p class="contact-line">Hudson Schmidt, founder<br><a href="mailto:press@homeboundapp.com">press@homeboundapp.com</a></p>
+        <a href="https://apps.apple.com/us/app/homebound-check-in/id6754800989?ppid=a73a2136-6998-4003-b69d-8ac092916e1d&amp;pt=128265068&amp;ct=web-press&amp;mt=8" class="appstore-btn">
+            <span class="pre">Download on the</span>
+            <span class="big">App Store</span>
+        </a>
+        <p class="more-links">More from Homebound: <a href="/ski/">ski and snowboard tracking</a> and <a href="/contacts/">what safety contacts get</a>.</p>
+    </section>
+    </main>
+
+    <div class="footer-ridge" aria-hidden="true"><div></div></div>
+    <footer class="site-footer">
+        <div class="sf-inner">
+            <div class="sf-brand">
+                <p class="sf-copy"><img src="/assets/logo-64.png" alt="" width="22" height="22" loading="lazy">&copy; 2026 Homebound LLC · Park City, UT</p>
+                <ul class="sf-social">
+                    <li><a href="https://instagram.com/homebound.app" target="_blank" rel="noopener" aria-label="Homebound on Instagram"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M7.0301.084c-1.2768.0602-2.1487.264-2.911.5634-.7888.3075-1.4575.72-2.1228 1.3877-.6652.6677-1.075 1.3368-1.3802 2.127-.2954.7638-.4956 1.6365-.552 2.914-.0564 1.2775-.0689 1.6882-.0626 4.947.0062 3.2586.0206 3.6671.0825 4.9473.061 1.2765.264 2.1482.5635 2.9107.308.7889.72 1.4573 1.388 2.1228.6679.6655 1.3365 1.0743 2.1285 1.38.7632.295 1.6361.4961 2.9134.552 1.2773.056 1.6884.069 4.9462.0627 3.2578-.0062 3.668-.0207 4.9478-.0814 1.28-.0607 2.147-.2652 2.9098-.5633.7889-.3086 1.4578-.72 2.1228-1.3881.665-.6682 1.0745-1.3378 1.3795-2.1284.2957-.7632.4966-1.636.552-2.9124.056-1.2809.0692-1.6898.063-4.948-.0063-3.2583-.021-3.6668-.0817-4.9465-.0607-1.2797-.264-2.1487-.5633-2.9117-.3084-.7889-.72-1.4568-1.3876-2.1228C21.2982 1.33 20.628.9208 19.8378.6165 19.074.321 18.2017.1197 16.9244.0645 15.6471.0093 15.236-.005 11.977.0014 8.718.0076 8.31.0215 7.0301.0839m.1402 21.6932c-1.17-.0509-1.8053-.2453-2.2287-.408-.5606-.216-.96-.4771-1.3819-.895-.422-.4178-.6811-.8186-.9-1.378-.1644-.4234-.3624-1.058-.4171-2.228-.0595-1.2645-.072-1.6442-.079-4.848-.007-3.2037.0053-3.583.0607-4.848.05-1.169.2456-1.805.408-2.2282.216-.5613.4762-.96.895-1.3816.4188-.4217.8184-.6814 1.3783-.9003.423-.1651 1.0575-.3614 2.227-.4171 1.2655-.06 1.6447-.072 4.848-.079 3.2033-.007 3.5835.005 4.8495.0608 1.169.0508 1.8053.2445 2.228.408.5608.216.96.4754 1.3816.895.4217.4194.6816.8176.9005 1.3787.1653.4217.3617 1.056.4169 2.2263.0602 1.2655.0739 1.645.0796 4.848.0058 3.203-.0055 3.5834-.061 4.848-.051 1.17-.245 1.8055-.408 2.2294-.216.5604-.4763.96-.8954 1.3814-.419.4215-.8181.6811-1.3783.9-.4224.1649-1.0577.3617-2.2262.4174-1.2656.0595-1.6448.072-4.8493.079-3.2045.007-3.5825-.006-4.848-.0608M16.953 5.5864A1.44 1.44 0 1 0 18.39 4.144a1.44 1.44 0 0 0-1.437 1.4424M5.8385 12.012c.0067 3.4032 2.7706 6.1557 6.173 6.1493 3.4026-.0065 6.157-2.7701 6.1506-6.1733-.0065-3.4032-2.771-6.1565-6.174-6.1498-3.403.0067-6.156 2.771-6.1496 6.1738M8 12.0077a4 4 0 1 1 4.008 3.9921A3.9996 3.9996 0 0 1 8 12.0077"/></svg></a></li>
+                    <li><a href="https://www.threads.net/@homebound.app" target="_blank" rel="noopener" aria-label="Homebound on Threads"><svg aria-hidden="true" width="20" height="20" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12.186 24h-.007c-3.581-.024-6.334-1.205-8.184-3.509C2.35 18.44 1.5 15.586 1.472 12.01v-.017c.03-3.579.879-6.43 2.525-8.482C5.845 1.205 8.6.024 12.18 0h.014c2.746.02 5.043.725 6.826 2.098 1.677 1.29 2.858 3.13 3.509 5.467l-2.04.569c-1.104-3.96-3.898-5.984-8.304-6.015-2.91.022-5.11.936-6.54 2.717C4.307 6.504 3.616 8.914 3.589 12c.027 3.086.718 5.496 2.057 7.164 1.43 1.783 3.631 2.698 6.54 2.717 2.623-.02 4.358-.631 5.8-2.045 1.647-1.613 1.618-3.593 1.09-4.798-.31-.71-.873-1.3-1.634-1.75-.192 1.352-.622 2.446-1.284 3.272-.886 1.102-2.14 1.704-3.73 1.79-1.202.065-2.361-.218-3.259-.801-1.063-.689-1.685-1.74-1.752-2.964-.065-1.19.408-2.285 1.33-3.082.88-.76 2.119-1.207 3.583-1.291a13.853 13.853 0 0 1 3.02.142c-.126-.742-.375-1.332-.75-1.757-.513-.586-1.308-.883-2.359-.89h-.029c-.844 0-1.992.232-2.721 1.32L7.734 7.847c.98-1.454 2.568-2.256 4.478-2.256h.044c3.194.02 5.097 1.975 5.287 5.388.108.046.216.094.321.142 1.49.7 2.58 1.761 3.154 3.07.797 1.82.871 4.79-1.548 7.158-1.85 1.81-4.094 2.628-7.277 2.65Zm1.003-11.69c-.242 0-.487.007-.739.021-1.836.103-2.98.946-2.916 2.143.067 1.256 1.452 1.839 2.784 1.767 1.224-.065 2.818-.543 3.086-3.71a10.5 10.5 0 0 0-2.215-.221z"/></svg></a></li>
+                    <li><a href="https://www.linkedin.com/company/130883897" target="_blank" rel="noopener" aria-label="Homebound on LinkedIn"><svg aria-hidden="true" width="20" height="20" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"/></svg></a></li>
+                </ul>
+            </div>
+            <nav class="sf-nav" aria-label="Footer">
+                <div class="sf-col">
+                    <h2 class="sf-head">Explore</h2>
+                    <ul class="sf-list">
+                        <li><a href="/ski/">Ski</a></li>
+                        <li><a href="/solo-hiking/">Solo hiking</a></li>
+                        <li><a href="/walk-home/">Walking home</a></li>
+                        <li><a href="/contacts/">For safety contacts</a></li>
+                    </ul>
+                </div>
+                <div class="sf-col">
+                    <h2 class="sf-head">Support</h2>
+                    <ul class="sf-list">
+                        <li><a href="/help/">Help Center</a></li>
+                        <li><a href="mailto:support@homeboundapp.com">Contact</a></li>
+                        <li><a href="/press/">Press</a></li>
+                    </ul>
+                </div>
+                <div class="sf-col">
+                    <h2 class="sf-head">Legal</h2>
+                    <ul class="sf-list">
+                        <li><a href="/privacypolicy/">Privacy</a></li>
+                        <li><a href="/termsofservice/">Terms</a></li>
+                        <li><a href="/consumerhealth/">Consumer Health Data</a></li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+    </footer>
+</body>
+</html>
