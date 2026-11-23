@@ -1,0 +1,1780 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Landscape Art Brief - Homebound</title>
+    <meta name="description" content="Everything an artist needs to paint the Homebound Home screen landscape and the group trip banner.">
+    <!-- Unlisted (2026-11-22): not in the nav, the footer, sitemap.xml, llms.txt or search results.
+         Sent directly to the artist. Every size, position and color on this page comes from the app:
+         homebound/ios/Homebound/Homebound/Views/Home/Sky/ (HomeSky.swift, HomeSkyView.swift,
+         HomeSkyHeader.swift), Views/Home/MainTabView.swift (Home header + BigNewTripCard) and
+         Views/Trip/Wizard/TripCoverView.swift (group trip banner). If those change, update this page. -->
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="stylesheet" href="../styles.css?v=20260901">
+    <link rel="icon" type="image/png" href="../favicon.png">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,400..800&display=swap" rel="stylesheet">
+    <style>
+        .brief {
+            padding: 130px 24px 60px;
+            max-width: 940px;
+            margin: 0 auto;
+        }
+
+        .brief h1 {
+            font-family: var(--display);
+            font-size: clamp(2rem, 4.4vw, 2.6rem);
+            font-weight: 750;
+            letter-spacing: -0.025em;
+            margin-bottom: 10px;
+            color: var(--pine);
+            text-wrap: balance;
+        }
+
+        .brief .lede {
+            color: var(--muted);
+            line-height: 1.7;
+            max-width: 64ch;
+            margin-bottom: 8px;
+            font-size: 1.05rem;
+        }
+
+        .brief .last-updated {
+            color: var(--faint);
+            font-size: 0.95rem;
+            margin-bottom: 40px;
+        }
+
+        .brief h2 {
+            font-family: var(--display);
+            font-size: 1.55rem;
+            font-weight: 700;
+            letter-spacing: -0.015em;
+            margin-top: 72px;
+            margin-bottom: 12px;
+            color: var(--pine);
+            scroll-margin-top: 100px;
+        }
+
+        .brief h3 {
+            font-family: var(--display);
+            font-size: 1.15rem;
+            font-weight: 700;
+            letter-spacing: -0.01em;
+            margin-top: 36px;
+            margin-bottom: 10px;
+            color: var(--ink);
+            scroll-margin-top: 100px;
+        }
+
+        .brief p {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 16px;
+            max-width: 66ch;
+        }
+
+        .brief strong {
+            color: var(--ink);
+            font-weight: 600;
+        }
+
+        .brief a {
+            color: var(--fern);
+        }
+
+        .brief ul, .brief ol {
+            margin: 0 0 18px;
+            padding-left: 22px;
+        }
+
+        .brief li {
+            color: var(--muted);
+            line-height: 1.7;
+            margin-bottom: 8px;
+            max-width: 64ch;
+        }
+
+        .brief code {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+            font-size: 0.86em;
+            color: var(--ink);
+            background: rgba(38, 34, 26, 0.05);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 1px 6px;
+            white-space: nowrap;
+        }
+
+        /* --- Contents --- */
+        .toc {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-md);
+            padding: 20px 24px;
+            margin-bottom: 8px;
+        }
+
+        .toc p {
+            margin: 0 0 8px;
+            font-weight: 650;
+            color: var(--ink);
+        }
+
+        .toc ol {
+            margin: 0;
+            columns: 2 240px;
+            column-gap: 32px;
+        }
+
+        .toc li {
+            margin-bottom: 4px;
+        }
+
+        /* --- At a glance --- */
+        .glance {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+            gap: 14px;
+            margin: 20px 0 8px;
+        }
+
+        .glance div {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+        }
+
+        .glance dt {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            color: var(--faint);
+            margin-bottom: 4px;
+        }
+
+        .glance dd {
+            color: var(--ink);
+            line-height: 1.55;
+            font-size: 0.96rem;
+        }
+
+        /* --- To be agreed tag --- */
+        .tbd {
+            display: inline-block;
+            font-size: 0.78rem;
+            font-weight: 700;
+            letter-spacing: 0.04em;
+            text-transform: uppercase;
+            color: #7a4a10;
+            background: #f6e3bf;
+            border: 1px solid #e7c98f;
+            border-radius: 999px;
+            padding: 1px 10px;
+            vertical-align: 2px;
+            white-space: nowrap;
+        }
+
+        /* --- Callout for the artist --- */
+        .ask {
+            background: #fbf4e3;
+            border: 1.5px solid #ead7a8;
+            border-left: 5px solid var(--gold);
+            border-radius: var(--radius-sm);
+            padding: 20px 24px 6px;
+            margin: 26px 0;
+        }
+
+        .ask h3 {
+            margin-top: 0;
+            color: #6b4a0e;
+        }
+
+        .ask p, .ask li {
+            color: #4f4433;
+        }
+
+        .note {
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 16px 20px 2px;
+            margin: 20px 0;
+        }
+
+        /* --- Viewer controls --- */
+        .controls {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 22px 0 18px;
+        }
+
+        .control-row {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .control-row .row-label {
+            font-size: 0.78rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.08em;
+            color: var(--faint);
+            width: 92px;
+            flex-shrink: 0;
+        }
+
+        .chip {
+            font: inherit;
+            font-size: 0.9rem;
+            font-weight: 550;
+            color: var(--ink);
+            background: var(--card);
+            border: 1.5px solid rgba(38, 34, 26, 0.14);
+            border-radius: 999px;
+            padding: 6px 14px;
+            min-height: 36px;
+            cursor: pointer;
+        }
+
+        .chip:hover {
+            border-color: var(--fern);
+        }
+
+        .chip[aria-pressed="true"] {
+            background: var(--pine);
+            border-color: var(--pine);
+            color: var(--cream);
+        }
+
+        .chip:focus-visible, .thumb:focus-visible {
+            outline: 2px solid var(--fern);
+            outline-offset: 2px;
+        }
+
+        /* --- Viewer --- */
+        .viewer {
+            display: grid;
+            grid-template-columns: minmax(0, 390px) minmax(0, 440px);
+            gap: 32px;
+            align-items: start;
+            justify-content: center;
+        }
+
+        .viewer figure {
+            margin: 0;
+        }
+
+        .viewer figcaption {
+            font-size: 0.88rem;
+            color: var(--muted);
+            line-height: 1.55;
+            margin-top: 12px;
+        }
+
+        .viewer figcaption strong {
+            display: block;
+            color: var(--ink);
+        }
+
+        .phone {
+            position: relative;
+            aspect-ratio: 390 / 490;
+            background: #E9E5DA;
+            border: 10px solid #22261f;
+            border-bottom: 0;
+            border-radius: 58px 58px 0 0;
+            overflow: hidden;
+        }
+
+        .phone canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            aspect-ratio: 390 / 330;
+            display: block;
+        }
+
+        .phone svg, .artboard svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .artboard {
+            position: relative;
+            aspect-ratio: 440 / 500;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1.5px var(--line);
+        }
+
+        .artboard canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        /* --- Tables --- */
+        .table-scroll {
+            overflow-x: auto;
+            margin: 20px 0 24px;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .brief table {
+            width: 100%;
+            border-collapse: collapse;
+            border: 1.5px solid var(--line);
+            font-size: 0.92rem;
+            background: var(--card);
+        }
+
+        .brief th, .brief td {
+            padding: 11px 14px;
+            text-align: left;
+            vertical-align: top;
+            line-height: 1.55;
+        }
+
+        .brief th {
+            font-weight: 650;
+            color: var(--ink);
+            background: #f6f2e8;
+        }
+
+        .brief td {
+            color: var(--muted);
+            border-top: 1px solid var(--line);
+        }
+
+        .brief td:first-child {
+            color: var(--ink);
+            font-weight: 600;
+            white-space: nowrap;
+        }
+
+        .nowrap {
+            white-space: nowrap;
+        }
+
+        .swatches {
+            display: flex;
+            gap: 3px;
+        }
+
+        .swatches span {
+            width: 20px;
+            height: 20px;
+            border-radius: 5px;
+            box-shadow: inset 0 0 0 1px rgba(38, 34, 26, 0.14);
+            flex-shrink: 0;
+        }
+
+        /* --- Thumbnails --- */
+        .thumbs {
+            display: grid;
+            grid-template-columns: 96px repeat(6, minmax(118px, 1fr));
+            gap: 10px 10px;
+            min-width: 860px;
+            align-items: start;
+        }
+
+        .thumbs .col-head, .thumbs .row-head {
+            font-size: 0.8rem;
+            font-weight: 700;
+            color: var(--ink);
+        }
+
+        .thumbs .row-head {
+            padding-top: 26px;
+        }
+
+        .thumb {
+            font: inherit;
+            background: none;
+            border: 0;
+            padding: 0;
+            cursor: pointer;
+            text-align: left;
+            border-radius: 8px;
+        }
+
+        .thumb canvas {
+            width: 100%;
+            aspect-ratio: 390 / 330;
+            display: block;
+            border-radius: 8px;
+            box-shadow: 0 0 0 1px var(--line);
+        }
+
+        .thumb code {
+            display: block;
+            margin-top: 5px;
+            font-size: 0.68rem;
+            padding: 0;
+            border: 0;
+            background: none;
+            color: var(--muted);
+            white-space: normal;
+            overflow-wrap: anywhere;
+        }
+
+        /* --- Contrast checker --- */
+        .checker {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 10px 14px;
+            background: var(--card);
+            border: 1.5px solid var(--line);
+            border-radius: var(--radius-sm);
+            padding: 16px 18px;
+            margin: 18px 0 8px;
+        }
+
+        .checker label {
+            font-weight: 600;
+            color: var(--ink);
+            font-size: 0.94rem;
+        }
+
+        .checker input[type="color"] {
+            width: 44px;
+            height: 44px;
+            border: 1.5px solid var(--line);
+            border-radius: 10px;
+            padding: 2px;
+            background: #fff;
+            cursor: pointer;
+        }
+
+        .checker input[type="text"] {
+            font-family: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
+            font-size: 0.95rem;
+            width: 110px;
+            min-height: 44px;
+            padding: 6px 10px;
+            border: 1.5px solid rgba(38, 34, 26, 0.18);
+            border-radius: 10px;
+            background: #fff;
+            color: var(--ink);
+        }
+
+        .checker output {
+            flex-basis: 100%;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+            gap: 8px;
+        }
+
+        .result {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            border-radius: 10px;
+            padding: 10px 12px;
+            font-size: 0.9rem;
+            line-height: 1.45;
+            color: var(--muted);
+            background: #f6f2e8;
+            border: 1px solid var(--line);
+        }
+
+        .result b {
+            font-family: var(--display);
+            font-size: 1.1rem;
+            display: block;
+            color: var(--ink);
+        }
+
+        .result .sample {
+            width: 54px;
+            height: 44px;
+            border-radius: 8px;
+            display: grid;
+            place-items: center;
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: 1.25rem;
+            flex-shrink: 0;
+            box-shadow: inset 0 0 0 1px rgba(38, 34, 26, 0.14);
+        }
+
+        /* --- Group trip banner demos --- */
+        .banner-demos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 22px;
+            margin: 22px 0;
+        }
+
+        .demo-panel {
+            border-radius: var(--radius-md);
+            padding: 20px;
+            border: 1.5px solid var(--line);
+        }
+
+        .demo-panel.light {
+            background: #EEEBE3;
+        }
+
+        .demo-panel.dark {
+            background: #111512;
+            border-color: rgba(246, 241, 230, 0.12);
+        }
+
+        .demo-panel .panel-label {
+            font-size: 0.74rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.09em;
+            margin-bottom: 12px;
+            color: var(--faint);
+        }
+
+        .demo-panel.dark .panel-label {
+            color: rgba(246, 241, 230, 0.6);
+        }
+
+        .invite-card {
+            border-radius: 16px;
+            overflow: hidden;
+            background: #FDFBF5;
+            box-shadow: 0 1px 3px rgba(38, 34, 26, 0.12);
+            max-width: 360px;
+        }
+
+        .dark .invite-card {
+            background: #1E2420;
+            box-shadow: none;
+        }
+
+        .invite-cover {
+            position: relative;
+            margin-bottom: 23px;
+        }
+
+        .invite-cover canvas {
+            display: block;
+            width: 100%;
+            aspect-ratio: 343 / 88;
+            border-radius: 16px 16px 0 0;
+        }
+
+        .emoji-tile {
+            position: absolute;
+            left: 14px;
+            bottom: -23px;
+            width: 46px;
+            height: 46px;
+            border-radius: 14px;
+            background: #FFFFFF;
+            border: 0.5px solid rgba(60, 60, 67, 0.25);
+            display: grid;
+            place-items: center;
+            font-size: 26px;
+            line-height: 1;
+        }
+
+        .dark .emoji-tile {
+            background: #2A312C;
+            border-color: rgba(235, 235, 245, 0.2);
+        }
+
+        .invite-text {
+            padding: 10px 16px 16px;
+        }
+
+        .invite-text .t1 {
+            font-family: var(--display);
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--ink);
+        }
+
+        .invite-text .t2 {
+            font-size: 0.86rem;
+            color: var(--muted);
+        }
+
+        .dark .invite-text .t1 {
+            color: #F2F2F2;
+        }
+
+        .dark .invite-text .t2 {
+            color: rgba(235, 235, 245, 0.6);
+        }
+
+        .square-row {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            margin-top: 18px;
+        }
+
+        .square {
+            position: relative;
+            width: 56px;
+            height: 56px;
+            flex-shrink: 0;
+        }
+
+        .square canvas {
+            width: 56px;
+            height: 56px;
+            border-radius: 14px;
+            display: block;
+        }
+
+        .square span {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            place-items: center;
+            font-size: 24px;
+        }
+
+        .square-row p {
+            margin: 0;
+            font-size: 0.88rem;
+            line-height: 1.45;
+        }
+
+        .dark .square-row p {
+            color: rgba(235, 235, 245, 0.7);
+        }
+
+        .dark .square-row p strong {
+            color: #F2F2F2;
+        }
+
+        .banner-board {
+            position: relative;
+            aspect-ratio: 440 / 100;
+            border-radius: 6px;
+            overflow: hidden;
+            box-shadow: 0 0 0 1.5px var(--line);
+            margin: 8px 0 10px;
+        }
+
+        .banner-board canvas {
+            width: 100%;
+            height: 100%;
+            display: block;
+        }
+
+        .banner-board svg {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .copy-status {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            overflow: hidden;
+            clip: rect(0 0 0 0);
+            white-space: nowrap;
+        }
+
+        @media (max-width: 900px) {
+            .viewer {
+                grid-template-columns: minmax(0, 420px);
+            }
+        }
+
+        @media (max-width: 620px) {
+            .brief {
+                padding: 110px 16px 48px;
+            }
+
+            .control-row .row-label {
+                width: 100%;
+            }
+
+            .phone {
+                border-width: 7px;
+                border-radius: 44px 44px 0 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="/" class="logo"><img src="../logo.png" alt="">Homebound</a>
+            <ul class="nav-links">
+                <li><a href="/help">Help</a></li>
+                <li><a href="/privacypolicy">Privacy</a></li>
+                <li><a href="/termsofservice">Terms</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="brief">
+        <h1>Landscape art brief</h1>
+        <p class="lede">Homebound is a free iPhone app for people heading outside. You plan a trip, choose who should know, and they hear from Homebound if you aren't back on time.</p>
+        <p class="lede">I'm looking for an artist to create the mountain landscape at the top of the app's Home screen, plus a small scene for group trips. Home is the first screen people see every time they open the app. This page has everything you need to make both.</p>
+        <p class="last-updated">Brief written November 23, 2026</p>
+
+        <div class="toc" role="navigation" aria-label="On this page">
+            <p>On this page</p>
+            <ol>
+                <li><a href="#glance">At a glance</a></li>
+                <li><a href="#today">What it looks like today</a></li>
+                <li><a href="#versions">One landscape, 30 versions</a></li>
+                <li><a href="#split">What you create, what the app adds</a></li>
+                <li><a href="#size">Size and layout</a></li>
+                <li><a href="#text">Keeping the greeting readable</a></li>
+                <li><a href="#style">Style</a></li>
+                <li><a href="#files">The files</a></li>
+                <li><a href="#group">Group trip banner</a></li>
+                <li><a href="#process">How we'll work</a></li>
+                <li><a href="#rights">Rights</a></li>
+                <li><a href="#questions">Questions for you</a></li>
+            </ol>
+        </div>
+
+        <!-- ============================================================ -->
+        <h2 id="glance">At a glance</h2>
+        <dl class="glance">
+            <div>
+                <dt>Home landscape</dt>
+                <dd>One mountain scene, done in 30 versions: 5 times of day, each in 6 kinds of weather. Plus a lightning layer.</dd>
+            </div>
+            <div>
+                <dt>Group trip banner</dt>
+                <dd>A separate small scene in the same style, in a light and a dark version.</dd>
+            </div>
+            <div>
+                <dt>Style</dt>
+                <dd>Textured flat, like a national park poster.</dd>
+            </div>
+            <div>
+                <dt>Place</dt>
+                <dd>Generic Mountain West. Rocky peaks and conifers, not a real skyline.</dd>
+            </div>
+            <div>
+                <dt>Canvas</dt>
+                <dd>Home: 1320 × 1500 px. Banner: 1320 × 300 px, plus a 600 × 600 px square.</dd>
+            </div>
+            <div>
+                <dt>Where it shows</dt>
+                <dd>iPhone, held upright. Screens 375 to 440 points wide.</dd>
+            </div>
+        </dl>
+
+        <!-- ============================================================ -->
+        <h2 id="today">What it looks like today</h2>
+        <p>Today the Home sky is drawn by the app out of simple flat shapes: a sky gradient, two ridges and a row of trees. It follows the real sunrise and sunset where the phone is, and the weather there. Your art replaces the sky, the mountains and the trees. The greeting, the two buttons and the cards stay on top of it.</p>
+        <p>Pick a time of day and a weather to see each version. On the left is the phone as people see it. On the right is your canvas at its real proportions, with the zones explained under <a href="#size">Size and layout</a>.</p>
+
+        <div class="controls" id="controls">
+            <div class="control-row" role="group" aria-label="Time of day">
+                <span class="row-label" aria-hidden="true">Time</span>
+                <button type="button" class="chip" data-phase="dawn" aria-pressed="false">Dawn</button>
+                <button type="button" class="chip" data-phase="day" aria-pressed="true">Day</button>
+                <button type="button" class="chip" data-phase="golden" aria-pressed="false">Golden hour</button>
+                <button type="button" class="chip" data-phase="twilight" aria-pressed="false">Twilight</button>
+                <button type="button" class="chip" data-phase="night" aria-pressed="false">Night</button>
+            </div>
+            <div class="control-row" role="group" aria-label="Weather">
+                <span class="row-label" aria-hidden="true">Weather</span>
+                <button type="button" class="chip" data-weather="clear" aria-pressed="true">Clear</button>
+                <button type="button" class="chip" data-weather="clouds" aria-pressed="false">Clouds</button>
+                <button type="button" class="chip" data-weather="fog" aria-pressed="false">Fog</button>
+                <button type="button" class="chip" data-weather="rain" aria-pressed="false">Rain</button>
+                <button type="button" class="chip" data-weather="snow" aria-pressed="false">Snow</button>
+                <button type="button" class="chip" data-weather="storm" aria-pressed="false">Storm</button>
+                <button type="button" class="chip" data-weather="lightning" aria-pressed="false">Storm + lightning</button>
+                <button type="button" class="chip" data-weather="calm" aria-pressed="false">Overdue (calm)</button>
+            </div>
+            <div class="control-row" role="group" aria-label="Show">
+                <span class="row-label" aria-hidden="true">Show</span>
+                <button type="button" class="chip" id="toggleApp" aria-pressed="true">What the app adds</button>
+                <button type="button" class="chip" id="toggleZones" aria-pressed="true">Zones</button>
+                <button type="button" class="chip" id="toggleMotion" aria-pressed="true">Motion</button>
+            </div>
+        </div>
+
+        <div class="viewer">
+            <figure>
+                <div class="phone">
+                    <canvas id="phoneSky" aria-hidden="true"></canvas>
+                    <svg id="phoneUI" viewBox="0 0 390 490" role="img" aria-label="The top of the Home screen: the sky with the greeting, two round buttons and the Start a New Trip card overlapping the bottom of the sky."></svg>
+                </div>
+                <figcaption><strong>In the app</strong>A 390-point-wide iPhone at the default text size. The green card overlaps the bottom of the sky.</figcaption>
+            </figure>
+            <figure>
+                <div class="artboard">
+                    <canvas id="artSky" aria-hidden="true"></canvas>
+                    <svg id="artZones" viewBox="0 0 440 500" role="img" aria-label="Your 1320 by 1500 pixel canvas with its zones marked: under the first card, mountains and trees, sun, moon and clouds, greeting and buttons, status bar, and extra sky."></svg>
+                </div>
+                <figcaption><strong>Your canvas</strong>1320 × 1500 px (440 × 500 points). Dashed side lines show what a 375-point phone sees. The dashed circle is where the app puts the sun or moon at this time of day.</figcaption>
+            </figure>
+        </div>
+        <p style="margin-top: 18px;">This is a close copy of the app drawn in your browser from the app's own numbers, so sizes, positions and colors match. Turn off <strong>What the app adds</strong> to see only the parts you'd create.</p>
+
+        <!-- ============================================================ -->
+        <h2 id="versions">One landscape, 30 versions</h2>
+        <p>Create one landscape. The mountains, the trees, and the layout stay the same in every version; only the light and the weather change. Moving from one version to the next should feel like the same place at a different hour.</p>
+        <p>When the time of day changes, the app fades from one image to the next over about a second. A change in the weather swaps the image straight away.</p>
+
+        <h3>Five times of day</h3>
+        <p>The app works these out from the real sunrise and sunset where the phone is. Without the phone's location it uses fixed hours: dawn 6 to 9 am, day 9 am to 5 pm, golden hour 5 to 7 pm, twilight 7 to 8 pm, night the rest.</p>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th>Time</th><th>When it shows</th><th>Light and mood</th><th class="nowrap">Text on top</th><th>Today's colors</th></tr>
+                </thead>
+                <tbody id="phaseTable"></tbody>
+            </table>
+        </div>
+        <p>Today's colors are only a starting point: sky top, middle and bottom, far ridge, near ridge and trees. Pick your own, as long as the text rules under <a href="#text">Keeping the greeting readable</a> hold.</p>
+
+        <h3>Six kinds of weather</h3>
+        <p>Each time of day needs all six. The weather comes from Apple's forecast for where the phone is.</p>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th>Weather</th><th>What you create</th><th>What the app adds on top</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Clear</td><td>The base scene.</td><td>The sun or moon. Stars at twilight and night.</td></tr>
+                    <tr><td>Clouds</td><td>A few soft clouds low in the sky, between the text and the peaks. The sky a little grayer.</td><td>The sun or moon, dimmed. Half the stars.</td></tr>
+                    <tr><td>Fog</td><td>Low mist lying between the ridges and over the trees. A softer, paler sky.</td><td>The sun or moon, dimmed.</td></tr>
+                    <tr><td>Rain</td><td>A gray, heavier sky and duller, darker greens. No sun or moon. On dawn, day and golden hour the sky behind the text must still be light (see the text rules).</td><td>Falling rain.</td></tr>
+                    <tr><td>Snow</td><td>Snow on the peaks and a soft, pale sky.</td><td>The sun or moon, dimmed. Falling snow.</td></tr>
+                    <tr><td>Storm</td><td>A dark slate sky, dark enough for light text even at midday, and darker ridges. No sun or moon.</td><td>Falling rain.</td></tr>
+                    <tr><td>Lightning</td><td>Not its own version. One still bolt striking a far peak, on a separate transparent layer. The app shows it over the storm scene when the forecast has lightning. It never flashes.</td><td>Nothing.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>When it snows, the app also piles a little snow on the cards below the sky. You don't need to do anything for that.</p>
+
+        <h3>The overdue sky</h3>
+        <p>When someone's trip is overdue or they press SOS, Home calms the sky down so the red warning card stands out. The app does this itself by washing your clear scene out toward the page color, with no sun, moon, stars or weather. You don't need to create anything for it, but at those times your art will show very faded. Pick <strong>Overdue (calm)</strong> above to see how much.</p>
+
+        <!-- ============================================================ -->
+        <h2 id="split">What you create, what the app adds</h2>
+        <p>My plan is that you create the scenery and the app keeps drawing a few small things on top.</p>
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th>You create</th><th>The app draws on top</th></tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td style="white-space: normal; font-weight: 400; color: var(--muted);">
+                            The sky's color and light for each time of day.<br>
+                            The mountains, trees and ground.<br>
+                            Clouds, fog, the rainy and stormy skies, and snow on the peaks.<br>
+                            The lightning bolt, on its own layer.
+                        </td>
+                        <td>
+                            The sun and the moon. The moon shows its real phase each night, from a thin crescent to full.<br>
+                            The stars. A few of them twinkle slowly.<br>
+                            Falling snow and rain, slow and light.
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <p>Why: the moon's phase and the motion only work if the app draws them live. It also keeps the image files smaller. All the motion stops when someone turns on Reduce Motion or Low Power Mode on their phone.</p>
+        <p>So please leave the sun, moon, stars and falling snow and rain out of your images, but light the scene as if they're there. Today the sun and moon sit 132 points (396 px) above the bottom of the sky, at these spots across the width: dawn 16%, day 56%, golden hour 80%, twilight 76%, night 84%. I can move them to suit your composition. Mark where you'd like them.</p>
+
+        <div class="ask">
+            <h3>I'd like your opinion</h3>
+            <p>Is this the right split? Here are the other ways I've thought about. Tell me which you'd pick and why.</p>
+            <ul>
+                <li><strong>You design the sun and moon into each scene.</strong> They'd match your style better, but the moon would look the same every night. The app would still add the stars, snow and rain.</li>
+                <li><strong>You design the sun, moon, stars, snowflakes and raindrops as separate pieces in your style.</strong> The app places and moves them, and shapes your moon to the real phase. Everything matches and the motion still works, but it's more to make.</li>
+                <li><strong>You create everything as still images</strong>, falling snow and rain included. Nothing moves and the app only swaps pictures.</li>
+            </ul>
+            <p>If your style needs something I haven't thought of, say so.</p>
+        </div>
+
+        <!-- ============================================================ -->
+        <h2 id="size">Size and layout</h2>
+        <p>Home is shown on iPhones held upright, from 375 to 440 points wide. iPhones use 3 pixels per point, so design at 3×. Your canvas is <strong>1320 × 1500 px</strong>, which is 440 × 500 points.</p>
+        <p>The bottom of your canvas is the bottom of the sky. The app shows the image at full size, lined up on that bottom edge. On narrower phones the sides are cut off evenly, so keep anything that matters within the middle 1125 px (375 points). At the default text size, the bottom 990 px (330 points) of your canvas is on screen.</p>
+
+        <div class="table-scroll">
+            <table>
+                <thead>
+                    <tr><th>Zone</th><th>Height from the bottom</th><th>What goes there</th></tr>
+                </thead>
+                <tbody>
+                    <tr><td>Under the first card</td><td class="nowrap">0 to 96 px<br>(0 to 32 pt)</td><td>Hidden by the first card on Home, a forest green card with rounded corners. Ground and trees are fine here. Nothing that matters.</td></tr>
+                    <tr><td>Mountains and trees</td><td class="nowrap">96 to about 300 px<br>(32 to 100 pt)</td><td>The heart of the landscape. Peaks can rise higher, up to about 450 px (150 pt), as long as they stay clear of the sun and moon spots.</td></tr>
+                    <tr><td>Sun, moon and clouds</td><td class="nowrap">300 to 480 px<br>(100 to 160 pt)</td><td>Open sky between the peaks and the text. The sun or moon is centred 396 px up and is 96 to 156 px across. Clouds sit here too.</td></tr>
+                    <tr><td>Greeting and buttons</td><td class="nowrap">480 to 780 px<br>(160 to 260 pt)</td><td>"Good evening, Sam" in large type, with a short line under it, on the left. Two round 44-point buttons on the right. Keep this area calm and even. With larger text sizes the greeting grows upward from 480 px.</td></tr>
+                    <tr><td>Status bar</td><td class="nowrap">780 to 990 px<br>(260 to 330 pt)</td><td>The phone's clock and battery, and the camera cut-out. Keep it calm.</td></tr>
+                    <tr><td>Extra sky</td><td class="nowrap">990 to 1500 px<br>(330 to 500 pt)</td><td>Only seen with larger text sizes, or when someone pulls the screen down to refresh. Plain sky that fades to one flat color at the very top edge, so the app can carry that color on upward.</td></tr>
+                </tbody>
+            </table>
+        </div>
+        <p>The phone's own status bar text follows the same light or dark choice as the greeting.</p>
+
+        <!-- ============================================================ -->
+        <h2 id="text">Keeping the greeting readable</h2>
+        <p>This is the one firm rule. The greeting and the line under it have to be easy to read on every version, for everyone, including people with low vision. That means a contrast ratio of at least 4.5 to 1 between the text and the sky right behind it, in the zone from 480 to 990 px.</p>
+        <ul>
+            <li><strong>Dawn, day and golden hour</strong>, in every weather except storm, use dark text: <code>#1E3323</code> for the greeting and <code>#4B5348</code> for the line under it. The sky behind them must be at least as light as a <code>#C3C3C3</code> gray. Lighter is safer.</li>
+            <li><strong>Twilight, night and every storm</strong> use light text, <code>#F6F1E6</code>. The sky behind it must be at least as dark as a <code>#6E6E6E</code> gray. Darker is safer.</li>
+            <li>Keep texture, grain and detail low in that zone, so the letters don't fight the background.</li>
+        </ul>
+        <div class="checker">
+            <label for="ckColor">Check a color from your sky</label>
+            <input type="color" id="ckColor" value="#bcdaea">
+            <input type="text" id="ckHex" value="#BCDAEA" maxlength="7" spellcheck="false" aria-label="Hex color">
+            <output id="ckOut" for="ckColor ckHex" aria-live="polite"></output>
+        </div>
+        <p>If a sky you love fails, tell us. We can sometimes adjust the text color instead.</p>
+
+        <!-- ============================================================ -->
+        <h2 id="style">Style</h2>
+        <p><strong>Textured flat, like a national park poster.</strong> Layered flat shapes, soft gradients in the sky, a fine grain and a little hand-made texture, and a limited palette. Depth comes from ridges that get lighter and bluer with distance. It should be richer than what's there today, but still simple enough to read at a glance behind text.</p>
+        <p><strong>Generic Mountain West.</strong> Rocky peaks, conifers, perhaps some aspens and a valley floor. It should feel like the Rockies or the Wasatch without being anyone's exact skyline.</p>
+        <p><strong>Keep it quiet.</strong> No text or logos, and nothing that pulls the eye away from the greeting. People see this every time they open the app, so it should be lovely on the hundredth look, not only the first.</p>
+        <p><strong>Sit well with the brand.</strong> The landscape should feel at home next to Homebound's colors, especially the forest green card that overlaps its bottom edge. The full palette is on the <a href="/brandcolors/">brand colors page</a>.</p>
+        <div class="swatches" style="gap: 8px; flex-wrap: wrap; margin: 10px 0 8px;" id="brandSwatches"></div>
+
+        <!-- ============================================================ -->
+        <h2 id="files">The files</h2>
+        <ul>
+            <li><strong>30 Home scenes</strong> as PNG, 1320 × 1500 px, sRGB, no transparency. Name them <code>sky-&lt;time&gt;-&lt;weather&gt;.png</code>, as in the grid below.</li>
+            <li><strong>The lightning layer</strong> as one transparent PNG, 1320 × 1500 px, with the bolt where it should sit, named <code>sky-lightning.png</code>. If it needs to look different at night, send one for each time of day (<code>sky-lightning-night.png</code> and so on).</li>
+            <li><strong>Your layered source file</strong> (Photoshop, Procreate, Illustrator, Affinity or similar), with the sky, each ridge, the trees, clouds, fog, snow and texture on separate layers.</li>
+            <li><strong>Texture on its own layer.</strong> Grain makes image files much bigger, and the app has to carry all 30. Please send each scene with and without the grain, plus the grain on its own as a seamless transparent tile (for example 512 × 512 px). Then the app can add it once over the top if that keeps the app smaller.</li>
+            <li><strong>Where the sun and moon go</strong> for each time of day, as a marked layer in the source file or a short note.</li>
+            <li><strong>The group trip banner files</strong>, listed under <a href="#group">Group trip banner</a>.</li>
+        </ul>
+        <h3>All 30 Home files</h3>
+        <p>Shown as they look today. Select one to see it in the viewer above.</p>
+        <div class="table-scroll">
+            <div class="thumbs" id="thumbs"></div>
+        </div>
+
+        <!-- ============================================================ -->
+        <h2 id="group">Group trip banner</h2>
+        <p>Group trips get a small banner of their own: a separate mountain scene in the same style as Home. It shows at the top of a group trip invitation, on the crew step when someone plans a group trip, and as a small square tile when someone opens a link to join a trip. On top of it sits the trip's activity, shown as an emoji on a small rounded tile.</p>
+        <p>It doesn't change with the time of day or the weather, and nothing on it moves. It needs two versions: <strong>light</strong> for phones in Light Mode, and <strong>dark</strong> for Dark Mode. Today the light one is a pale morning and the dark one is dusk.</p>
+
+        <div class="banner-demos">
+            <div class="demo-panel light">
+                <div class="panel-label">Today, Light Mode</div>
+                <div class="invite-card">
+                    <div class="invite-cover">
+                        <canvas class="cover-canvas" data-mode="light" data-w="343" data-h="88" aria-hidden="true"></canvas>
+                        <div class="emoji-tile" aria-hidden="true">🥾</div>
+                    </div>
+                    <div class="invite-text">
+                        <div class="t1">Saturday hike</div>
+                        <div class="t2">Sam invited you</div>
+                    </div>
+                </div>
+                <div class="square-row">
+                    <div class="square" aria-hidden="true"><canvas class="cover-canvas" data-mode="light" data-w="56" data-h="56"></canvas><span>🥾</span></div>
+                    <p><strong>The square tile</strong>, 56 × 56 points, on the join screen.</p>
+                </div>
+            </div>
+            <div class="demo-panel dark">
+                <div class="panel-label">Today, Dark Mode</div>
+                <div class="invite-card">
+                    <div class="invite-cover">
+                        <canvas class="cover-canvas" data-mode="dark" data-w="343" data-h="88" aria-hidden="true"></canvas>
+                        <div class="emoji-tile" aria-hidden="true">🥾</div>
+                    </div>
+                    <div class="invite-text">
+                        <div class="t1">Saturday hike</div>
+                        <div class="t2">Sam invited you</div>
+                    </div>
+                </div>
+                <div class="square-row">
+                    <div class="square" aria-hidden="true"><canvas class="cover-canvas" data-mode="dark" data-w="56" data-h="56"></canvas><span>🥾</span></div>
+                    <p><strong>The square tile</strong>, 56 × 56 points, on the join screen.</p>
+                </div>
+            </div>
+        </div>
+
+        <h3>Banner size and layout</h3>
+        <div class="banner-board">
+            <canvas class="cover-canvas" data-mode="light" data-w="440" data-h="100" aria-hidden="true"></canvas>
+            <svg viewBox="0 0 440 100" role="img" aria-label="The 1320 by 300 pixel banner canvas. Dashed lines mark the middle area that every card shows. A box marks the bottom-left corner covered by the activity tile.">
+                <line x1="36.7" y1="0" x2="36.7" y2="100" stroke="#fff" stroke-width="1.4" stroke-dasharray="4 3"/>
+                <line x1="403.3" y1="0" x2="403.3" y2="100" stroke="#fff" stroke-width="1.4" stroke-dasharray="4 3"/>
+                <line x1="36.7" y1="0" x2="36.7" y2="100" stroke="#1E3323" stroke-width="0.6" stroke-dasharray="4 3"/>
+                <line x1="403.3" y1="0" x2="403.3" y2="100" stroke="#1E3323" stroke-width="0.6" stroke-dasharray="4 3"/>
+                <rect x="1" y="70" width="70" height="29" fill="rgba(30,51,35,0.55)" stroke="#fff" stroke-width="1" stroke-dasharray="3 2"/>
+                <text x="36" y="89" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="-apple-system, system-ui, sans-serif">Activity tile</text>
+            </svg>
+        </div>
+        <ul>
+            <li><strong>Wide banner:</strong> canvas <strong>1320 × 300 px</strong> (440 × 100 points). On cards it shows 88 to 96 points tall across a card 343 to 408 points wide, with the top corners rounded (16 points). The image is scaled to fill, so the sides get cut. Keep the main peaks inside the middle 1100 px, between the dashed lines.</li>
+            <li><strong>The activity tile</strong> covers the bottom-left corner: a 46 to 52 point tile, 14 points in from the left, half hanging below the banner. Keep the bottom-left 210 × 90 px simple.</li>
+            <li><strong>Square tile:</strong> canvas <strong>600 × 600 px</strong>. It shows at 56 × 56 points with rounded corners (14 points) and the activity emoji right in the middle, so keep the centre calm. It still has to read as mountains at that small size. A reframe of the wide scene is fine.</li>
+        </ul>
+        <p>Files: <code>group-light.png</code> and <code>group-dark.png</code> at 1320 × 300 px, <code>group-square-light.png</code> and <code>group-square-dark.png</code> at 600 × 600 px, and the layered source.</p>
+
+        <!-- ============================================================ -->
+        <h2 id="process">How we'll work</h2>
+        <ol>
+            <li><strong>Rough sketches.</strong> Two or three compositions for the Home landscape. Rough is fine. <span class="tbd">Date to be agreed</span></li>
+            <li><strong>One finished scene: day, clear.</strong> We put it in the app and check it on real phones before you go further. <span class="tbd">Date to be agreed</span></li>
+            <li><strong>The other four times of day</strong>, clear. <span class="tbd">Date to be agreed</span></li>
+            <li><strong>The weather versions</strong> and the lightning layer. <span class="tbd">Date to be agreed</span></li>
+            <li><strong>The group trip banner</strong>: light and dark, wide and square. <span class="tbd">Date to be agreed</span></li>
+        </ol>
+        <p>Send questions as they come up. For files, send a shared folder link (Google Drive, Dropbox or similar) rather than email attachments, so the full-size images aren't compressed.</p>
+        <p><strong>Contact:</strong> hudsonschmidt08@gmail.com | (435) 901-8118</p>
+
+        <!-- ============================================================ -->
+        <h2 id="rights">Rights</h2>
+        <p>Homebound LLC owns the finished art, every version of it and the source files. Homebound can use and adapt them anywhere: in the app, on the website, on the App Store and in marketing. You're welcome to show the work in your portfolio and I will give you credit in the app with a link to a portfolio or instagram.</p>
+
+        <!-- ============================================================ -->
+        <h2 id="questions">Questions for you</h2>
+        <ol>
+            <li>Which way would you split the work between your art and the app? See <a href="#split">What you design, what the app adds</a>.</li>
+            <li>Where would you put the sun and the moon at each time of day?</li>
+            <li>Is anything in this brief getting in the way of good art? The sizes and the text rule are firm. Everything else is open to your ideas.</li>
+        </ol>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="/help">Help Center</a>
+                <a href="/privacypolicy">Privacy Policy</a>
+                <a href="/consumerhealth">Consumer Health Data</a>
+                <a href="/termsofservice">Terms of Service</a>
+                <a href="mailto:support@homeboundapp.com">Contact</a>
+            </div>
+            <p class="copyright">&copy; 2026 Homebound LLC. All rights reserved.</p>
+        </div>
+    </footer>
+
+    <script>
+    (function () {
+        'use strict';
+
+        // ---------------------------------------------------------------
+        // colors and helpers. Ported from HomeSky.swift (SkyPalette, light
+        // palettes: Home always shows these since 2026-11-21).
+        // ---------------------------------------------------------------
+        function rgb(c, a) {
+            var r = (c >> 16) & 255, g = (c >> 8) & 255, b = c & 255;
+            return a === undefined || a === 1 ? 'rgb(' + r + ',' + g + ',' + b + ')'
+                : 'rgba(' + r + ',' + g + ',' + b + ',' + a + ')';
+        }
+        function hexStr(c) {
+            return '#' + ('000000' + c.toString(16).toUpperCase()).slice(-6);
+        }
+        function mix(a, b, t) {
+            function blend(s) {
+                return Math.round(((a >> s) & 255) * (1 - t) + ((b >> s) & 255) * t);
+            }
+            return (blend(16) << 16) | (blend(8) << 8) | blend(0);
+        }
+
+        var PHASES = ['dawn', 'day', 'golden', 'twilight', 'night'];
+        var PHASE_NAMES = { dawn: 'Dawn', day: 'Day', golden: 'Golden hour', twilight: 'Twilight', night: 'Night' };
+        var WEATHERS = ['clear', 'clouds', 'fog', 'rain', 'snow', 'storm'];
+        var WEATHER_NAMES = { clear: 'Clear', clouds: 'Clouds', fog: 'Fog', rain: 'Rain', snow: 'Snow', storm: 'Storm' };
+
+        var BASE = {
+            dawn: { top: 0xE6E1EE, mid: 0xF4D9D3, bottom: 0xF8E5C8, far: 0x7C9A82, near: 0x3F6B49, trees: 0x24492A,
+                    body: 0xF2B35E, moon: false, x: 0.16, size: 40, glow: 0.55, stars: 0, light: false },
+            day: { top: 0xBCDAEA, mid: 0xD9EAEE, bottom: 0xEFF0E2, far: 0x6F9579, near: 0x2C5B39, trees: 0x1C4129,
+                   body: 0xFFEDB0, moon: false, x: 0.56, size: 36, glow: 0.7, stars: 0, light: false },
+            golden: { top: 0xF7EEDC, mid: 0xF5E4C2, bottom: 0xF2D3A0, far: 0x557F5B, near: 0x2C5B39, trees: 0x1C4129,
+                      body: 0xE1B64C, moon: false, x: 0.80, size: 52, glow: 0.5, stars: 0, light: false },
+            twilight: { top: 0x2C3B5B, mid: 0x5E5577, bottom: 0xD59A6E, far: 0x3E5A55, near: 0x284238, trees: 0x182C22,
+                        body: 0xF4EDDD, moon: true, x: 0.76, size: 32, glow: 0.35, stars: 6, light: true },
+            night: { top: 0x14223B, mid: 0x1D2F4E, bottom: 0x2D4468, far: 0x34504F, near: 0x22382F, trees: 0x14261D,
+                     body: 0xF4EDDD, moon: true, x: 0.84, size: 34, glow: 0.35, stars: 26, light: true }
+        };
+
+        function isNight(p) { return p === 'twilight' || p === 'night'; }
+        function isStorm(w) { return w === 'storm' || w === 'lightning'; }
+
+        function palette(phase, weather) {
+            var s = Object.assign({}, BASE[phase]);
+            if (weather === 'calm') {
+                var page = 0xE9E5DA;
+                s.top = mix(s.top, page, 0.9); s.mid = mix(s.mid, page, 0.9); s.bottom = mix(s.bottom, page, 0.9);
+                s.far = mix(s.far, page, 0.45); s.near = mix(s.near, page, 0.35);
+                s.glow = 0; s.stars = 0; s.size = 0; s.light = false;
+                return s;
+            }
+            var amount = { clear: 0, clouds: 0.35, snow: 0.35, fog: 0.3, rain: 0.5, storm: 0.86, lightning: 0.86 }[weather];
+            if (!amount) return s;
+            var gray = isStorm(weather) ? 0x3E4752 : (isNight(phase) ? 0x3A4452 : 0xCDD2D6);
+            s.top = mix(s.top, gray, amount); s.mid = mix(s.mid, gray, amount); s.bottom = mix(s.bottom, gray, amount);
+            s.glow *= 1 - amount;
+            s.stars = weather === 'clouds' ? Math.floor(s.stars / 2) : 0;
+            if (weather === 'rain' || isStorm(weather)) {
+                s.size = 0;
+                var k = isStorm(weather) ? 0.42 : 0.18, slate = 0x2A353B;
+                s.far = mix(s.far, slate, k); s.near = mix(s.near, slate, k);
+                s.trees = mix(s.trees, slate, k * 0.6);
+            }
+            if (isStorm(weather)) s.light = true;
+            return s;
+        }
+
+        // Deterministic noise, matching the app's generators so stars, flakes
+        // and trees land where they do on the phone.
+        var MASK = (BigInt(1) << BigInt(64)) - BigInt(1);
+        var MUL = BigInt('6364136223846793005');
+        var INC = BigInt('1442695040888963407');
+        function skyRandom(seed, n) {             // SkyRandom (HomeSkyView.swift)
+            var s = (BigInt(seed) * BigInt('0x9E3779B97F4A7C15')) & MASK, out = [];
+            for (var i = 0; i < n; i++) {
+                s = (s * MUL + INC) & MASK;
+                out.push(Number((s >> BigInt(33)) & BigInt(0xFFFFFF)) / 0xFFFFFF);
+            }
+            return out;
+        }
+        function seededRandom(seed, n) {          // SeededRandom (ShareCardPrimitives.swift)
+            var s = (BigInt(seed) * MUL + BigInt(1)) & MASK, out = [];
+            for (var i = 0; i < n; i++) {
+                s = (s * MUL + INC) & MASK;
+                out.push(Number(s >> BigInt(11)) / 9007199254740992);
+            }
+            return out;
+        }
+        var SKY_RNG = skyRandom(7, 600);
+        var TREE_RNG = seededRandom(4, 18);
+
+        function moonPhaseNow() {
+            var age = (Date.now() / 1000 - 947182440) / 86400 / 29.530588853;
+            return age - Math.floor(age);
+        }
+        var MOON = moonPhaseNow();
+
+        // ---------------------------------------------------------------
+        // Drawing the Home sky (HomeSkyView.swift). Coordinates are points;
+        // VH is how much of the sky's bottom is drawn (330 in the phone,
+        // 500 for the canvas). The full sky is 790 points tall.
+        // ---------------------------------------------------------------
+        var FAR = [[0, 0.82], [0.27, 0.17], [0.47, 0.60], [0.68, 0.09], [1, 0.75]];
+        var MID = [[0, 1], [0.16, 0.57], [0.37, 0.91], [0.59, 0.44], [0.82, 0.86], [1, 0.65]];
+        var BOLT = [[0.62, 0], [0.44, 0.20], [0.58, 0.33], [0.36, 0.55], [0.55, 0.68], [0.42, 0.84], [0.50, 1.00]];
+
+        function ridgePath(ctx, pts, top, w, h) {
+            ctx.beginPath();
+            ctx.moveTo(0, top + h);
+            pts.forEach(function (p) { ctx.lineTo(p[0] * w, top + p[1] * h); });
+            ctx.lineTo(w, top + h);
+            ctx.closePath();
+        }
+
+        function treeLine(ctx, w, top, h) {
+            var count = 9, slot = w / count, k = 0;
+            ctx.beginPath();
+            for (var i = 0; i < count; i++) {
+                var cx = slot * (i + 0.5);
+                var half = slot * (0.28 + TREE_RNG[k++] * 0.18);
+                var th = h * (0.55 + TREE_RNG[k++] * 0.45);
+                ctx.moveTo(cx - half, top + h);
+                ctx.lineTo(cx, top + h - th);
+                ctx.lineTo(cx + half, top + h);
+                ctx.closePath();
+            }
+            ctx.rect(0, top + h - h * 0.12, w, h * 0.12);
+        }
+
+        function fogBand(ctx, w, top, h) {
+            var g = ctx.createLinearGradient(0, top, 0, top + h);
+            g.addColorStop(0, 'rgba(255,255,255,0)');
+            g.addColorStop(0.5, 'rgba(255,255,255,0.62)');
+            g.addColorStop(1, 'rgba(255,255,255,0)');
+            ctx.fillStyle = g;
+            ctx.fillRect(0, top, w, h);
+        }
+
+        function moonPath(ctx, cx, cy, r, phase) {
+            var lit = (1 - Math.cos(2 * Math.PI * phase)) / 2;
+            var side = phase < 0.5 ? 1 : -1;
+            var term = r * (1 - 2 * lit);
+            ctx.beginPath();
+            for (var i = 0; i <= 48; i++) {
+                var a = -Math.PI / 2 + Math.PI * i / 48;
+                var x = cx + side * r * Math.cos(a), y = cy + r * Math.sin(a);
+                if (i === 0) ctx.moveTo(x, y); else ctx.lineTo(x, y);
+            }
+            for (var j = 0; j <= 48; j++) {
+                var b = Math.PI / 2 - Math.PI * j / 48;
+                ctx.lineTo(cx + side * term * Math.cos(b), cy + r * Math.sin(b));
+            }
+            ctx.closePath();
+        }
+
+        function drawBody(ctx, p, cx, cy, shown, scale) {
+            var r = p.size / 2;
+            ctx.save();
+            if (p.moon) {
+                ctx.fillStyle = rgb(p.body, 0.10);
+                ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill();
+                ctx.shadowColor = rgb(p.body, p.glow);
+                ctx.shadowBlur = 14 * scale;
+                moonPath(ctx, cx, cy, r, MOON);
+                ctx.fillStyle = rgb(p.body);
+                ctx.fill();
+            } else {
+                ctx.globalAlpha = (shown === 'clouds' || shown === 'fog' || shown === 'snow') ? 0.6 : 1;
+                ctx.shadowColor = rgb(p.body, p.glow);
+                ctx.shadowBlur = 22 * scale;
+                ctx.fillStyle = rgb(p.body);
+                ctx.beginPath(); ctx.arc(cx, cy, r, 0, 2 * Math.PI); ctx.fill();
+            }
+            ctx.restore();
+        }
+
+        function drawClouds(ctx, w, top, night) {
+            var color = night ? 0x8F9AA6 : 0xFFFFFF;
+            var alpha = night ? 0.30 : 0.88;
+            [[w * 0.50, 34, 150, 44, 1], [w * 0.84, 44, 104, 32, 0.9], [w * 0.15, 50, 92, 28, 0.85]].forEach(function (c) {
+                var cw = c[2], ch = c[3], left = c[0] - cw / 2, ctop = top + c[1] - ch / 2;
+                ctx.beginPath();
+                var capH = ch * 0.55, capR = capH / 2, capTop = ctop + ch - capH;
+                ctx.moveTo(left + capR, capTop);
+                ctx.lineTo(left + cw - capR, capTop);
+                ctx.arc(left + cw - capR, capTop + capR, capR, -Math.PI / 2, Math.PI / 2);
+                ctx.lineTo(left + capR, capTop + capH);
+                ctx.arc(left + capR, capTop + capR, capR, Math.PI / 2, 3 * Math.PI / 2);
+                ctx.closePath();
+                ctx.moveTo(left + 0.32 * cw + ch * 0.45, ctop + 0.37 * ch);
+                ctx.arc(left + 0.32 * cw, ctop + 0.37 * ch, ch * 0.45, 0, 2 * Math.PI);
+                ctx.moveTo(left + 0.58 * cw + ch * 0.55, ctop + 0.19 * ch);
+                ctx.arc(left + 0.58 * cw, ctop + 0.19 * ch, ch * 0.55, 0, 2 * Math.PI);
+                ctx.fillStyle = rgb(color, alpha * c[4]);
+                ctx.fill('nonzero');
+            });
+        }
+
+        function drawMotion(ctx, w, top, h, stars, weather, onDark, t) {
+            var k = 0;
+            function R() { return SKY_RNG[k++]; }
+            for (var i = 0; i < stars; i++) {
+                var x = R() * w, y = R() * h * 0.55;
+                var big = i % 5 === 0;
+                var period = 3 + 2 * R();
+                var base = big ? 0.9 : 0.55;
+                var op = i % 3 === 0 ? base * (0.8 + 0.2 * Math.sin(2 * Math.PI * t / period + i)) : base;
+                var d = big ? 2.6 : 1.6;
+                ctx.fillStyle = 'rgba(255,255,255,' + op + ')';
+                ctx.beginPath(); ctx.arc(x + d / 2, top + y + d / 2, d / 2, 0, 2 * Math.PI); ctx.fill();
+            }
+            if (weather === 'snow') {
+                for (var s = 0; s < 58; s++) {
+                    var x0 = R() * w, y0 = R(), crossing = 4 + 4 * R();
+                    var fy = (y0 + t / crossing) % 1;
+                    var sx = x0 + 8 * Math.sin(2 * Math.PI * (t / 6 + s * 0.37));
+                    var sd = s % 4 === 0 ? 5 : 3.4;
+                    ctx.beginPath(); ctx.arc(sx + sd / 2, top + fy * h + sd / 2, sd / 2, 0, 2 * Math.PI);
+                    ctx.fillStyle = 'rgba(255,255,255,' + (onDark ? 0.85 : 0.95) + ')';
+                    ctx.fill();
+                    if (!onDark) {
+                        ctx.strokeStyle = 'rgba(126,147,163,0.8)';
+                        ctx.lineWidth = 0.8;
+                        ctx.stroke();
+                    }
+                }
+            } else if (weather === 'rain' || isStorm(weather)) {
+                var count = isStorm(weather) ? 46 : 32;
+                ctx.strokeStyle = onDark ? 'rgba(255,255,255,0.35)' : 'rgba(81,103,122,0.55)';
+                ctx.lineWidth = 1.2;
+                for (var q = 0; q < count; q++) {
+                    var rx0 = R() * w, ry0 = R(), rc = 4 + 2 * R();
+                    var rfy = (ry0 + t / rc) % 1;
+                    var ry = top + rfy * h, rx = rx0 - rfy * 30;
+                    ctx.beginPath(); ctx.moveTo(rx, ry); ctx.lineTo(rx - 3, ry + 13); ctx.stroke();
+                }
+            }
+        }
+
+        function boltPath(ctx, cx, cy) {
+            var w = 44, h = 92, x0 = cx - w / 2, y0 = cy - h / 2;
+            ctx.beginPath();
+            BOLT.forEach(function (q, i) {
+                var X = x0 + q[0] * w, Y = y0 + q[1] * h;
+                if (i === 0) ctx.moveTo(X, Y); else ctx.lineTo(X, Y);
+            });
+            ctx.moveTo(x0 + 0.58 * w, y0 + 0.33 * h);
+            ctx.lineTo(x0 + 0.80 * w, y0 + 0.47 * h);
+            ctx.lineTo(x0 + 0.74 * w, y0 + 0.60 * h);
+        }
+
+        function drawBolt(ctx, cx, cy, scale) {
+            ctx.save();
+            ctx.lineCap = 'round';
+            ctx.lineJoin = 'round';
+            ctx.shadowColor = 'rgba(255,246,216,0.6)';
+            ctx.shadowBlur = 8 * scale;
+            ctx.strokeStyle = 'rgba(255,246,216,0.35)';
+            ctx.lineWidth = 7;
+            boltPath(ctx, cx, cy); ctx.stroke();
+            ctx.shadowBlur = 0;
+            ctx.strokeStyle = '#FFFBEA';
+            ctx.lineWidth = 1.8;
+            boltPath(ctx, cx, cy); ctx.stroke();
+            ctx.restore();
+        }
+
+        function drawSky(ctx, o) {
+            var W = o.W, VH = o.VH, p = palette(o.phase, o.weather);
+            var shown = o.weather === 'calm' ? 'clear' : o.weather;
+            var g = ctx.createLinearGradient(0, VH - 790, 0, VH);
+            g.addColorStop(0, rgb(p.top)); g.addColorStop(0.52, rgb(p.top));
+            g.addColorStop(0.76, rgb(p.mid)); g.addColorStop(1, rgb(p.bottom));
+            ctx.fillStyle = g;
+            ctx.fillRect(0, 0, W, VH);
+
+            if (o.appLayers && p.size > 0) drawBody(ctx, p, W * p.x, VH - 132, shown, o.scale);
+            if (shown === 'clouds') drawClouds(ctx, W, VH - 168, isNight(o.phase));
+
+            var farTop = VH - 118;
+            ctx.fillStyle = rgb(p.far); ridgePath(ctx, FAR, farTop, W, 118); ctx.fill();
+            if (shown === 'snow') {
+                ctx.save();
+                ctx.beginPath(); ctx.rect(0, farTop, W, 118 * 0.36); ctx.clip();
+                ctx.fillStyle = 'rgba(255,255,255,0.92)';
+                ridgePath(ctx, FAR, farTop, W, 118); ctx.fill();
+                ctx.restore();
+            }
+            if (shown === 'fog') fogBand(ctx, W, VH - 110, 60);
+            ctx.fillStyle = rgb(p.near); ridgePath(ctx, MID, VH - 84, W, 84); ctx.fill();
+            ctx.fillStyle = rgb(p.trees); treeLine(ctx, W, VH - 40, 40); ctx.fill();
+            if (shown === 'fog') fogBand(ctx, W, VH - 54, 48);
+
+            if (o.appLayers && (p.stars > 0 || shown === 'snow' || shown === 'rain' || isStorm(shown))) {
+                drawMotion(ctx, W, VH - 330, 330, p.stars, shown, isNight(o.phase) || isStorm(shown), o.t);
+            }
+            if (shown === 'lightning') drawBolt(ctx, W * 0.68 - 2, VH - 153, o.scale);
+            return p;
+        }
+
+        function hasMotion(phase, weather) {
+            if (weather === 'calm') return false;
+            var p = palette(phase, weather);
+            return p.stars > 0 || weather === 'snow' || weather === 'rain' || isStorm(weather);
+        }
+
+        // Size a canvas's backing store to its CSS size and return a context
+        // drawing in logical points.
+        function prep(canvas, W, H) {
+            var css = canvas.getBoundingClientRect().width || W;
+            var dpr = window.devicePixelRatio || 1;
+            var scale = css / W * dpr;
+            var bw = Math.max(1, Math.round(W * scale)), bh = Math.max(1, Math.round(H * scale));
+            if (canvas.width !== bw || canvas.height !== bh) { canvas.width = bw; canvas.height = bh; }
+            var ctx = canvas.getContext('2d');
+            ctx.setTransform(scale, 0, 0, scale, 0, 0);
+            ctx.clearRect(0, 0, W, H);
+            return { ctx: ctx, scale: scale };
+        }
+
+        // ---------------------------------------------------------------
+        // State and the viewer
+        // ---------------------------------------------------------------
+        var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+        var state = { phase: 'day', weather: 'clear', appLayers: true, zones: true, motion: !reduceMotion.matches };
+        var phoneCanvas = document.getElementById('phoneSky');
+        var artCanvas = document.getElementById('artSky');
+        var phoneUI = document.getElementById('phoneUI');
+        var artZones = document.getElementById('artZones');
+        var motionBtn = document.getElementById('toggleMotion');
+        motionBtn.setAttribute('aria-pressed', String(state.motion));
+
+        function greetingFor(phase) {
+            return phase === 'dawn' ? 'Good morning,' : phase === 'day' ? 'Good afternoon,' : 'Good evening,';
+        }
+
+        function renderPhoneUI(p) {
+            var light = p.light;
+            var status = light ? '#FFFFFF' : '#000000';
+            var greet = light ? '#F6F1E6' : '#1E3323';
+            var sub = light ? '#F6F1E6' : '#4B5348';
+            var trophyFill = light ? 'rgba(233,168,58,0.22)' : 'rgba(255,149,0,0.15)';
+            var trophyGlyph = light ? '#E9A83A' : '#9C4900';
+            var gearFill = light ? '#356B3D' : 'url(#gearGrad)';
+            var teeth = '';
+            for (var i = 0; i < 8; i++) {
+                teeth += '<rect x="-1.7" y="-10" width="3.4" height="4.5" rx="0.8" transform="rotate(' + (i * 45) + ')"/>';
+            }
+            phoneUI.innerHTML =
+                '<defs>' +
+                '<linearGradient id="gearGrad" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#356B3D"/><stop offset="1" stop-color="#4A7C52"/></linearGradient>' +
+                '<linearGradient id="cardGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#2C5B39"/><stop offset="1" stop-color="#1E3323"/></linearGradient>' +
+                '<linearGradient id="fadeGrad" x1="0" y1="0" x2="0" y2="1"><stop offset="0" stop-color="#E9E5DA" stop-opacity="0"/><stop offset="1" stop-color="#E9E5DA"/></linearGradient>' +
+                '<clipPath id="logoClip"><circle cx="195" cy="368" r="43"/></clipPath>' +
+                '<clipPath id="cardClip"><rect x="16" y="298" width="358" height="240" rx="26"/></clipPath>' +
+                '</defs>' +
+                // Dynamic Island and status bar
+                '<rect x="132" y="11" width="126" height="37" rx="18.5" fill="#000"/>' +
+                '<text x="54" y="35" font-size="17" font-weight="600" fill="' + status + '" font-family="-apple-system, system-ui, sans-serif" text-anchor="middle">9:41</text>' +
+                '<g fill="' + status + '">' +
+                '<rect x="290" y="28" width="3" height="5" rx="1"/><rect x="295" y="25.5" width="3" height="7.5" rx="1"/>' +
+                '<rect x="300" y="23" width="3" height="10" rx="1"/><rect x="305" y="20.5" width="3" height="12.5" rx="1"/>' +
+                '<rect x="341.5" y="21.5" width="24" height="12" rx="3.6" fill="none" stroke="' + status + '" stroke-opacity="0.4" stroke-width="1"/>' +
+                '<rect x="343.5" y="23.5" width="17" height="8" rx="2"/><rect x="366.5" y="25.5" width="1.6" height="4" rx="0.8" fill-opacity="0.4"/>' +
+                '</g>' +
+                '<g fill="none" stroke="' + status + '" stroke-width="1.9" stroke-linecap="round">' +
+                '<path d="M314.5 25.2 a10 10 0 0 1 14 0"/><path d="M317 28 a6.4 6.4 0 0 1 9 0"/>' +
+                '</g><circle cx="321.5" cy="31.3" r="1.6" fill="' + status + '"/>' +
+                // Greeting
+                '<text font-family="\'Bricolage Grotesque\', -apple-system, system-ui, sans-serif" font-size="30" font-weight="700" fill="' + greet + '">' +
+                '<tspan x="16" y="101">' + greetingFor(state.phase) + '</tspan><tspan x="16" y="137">Sam</tspan></text>' +
+                '<text x="16" y="162" font-family="-apple-system, system-ui, sans-serif" font-size="15" fill="' + sub + '">Ready for your next adventure?</text>' +
+                // Trophy button
+                '<circle cx="296" cy="118" r="22" fill="' + trophyFill + '"/>' +
+                '<g transform="translate(296 118)" fill="' + trophyGlyph + '" stroke="' + trophyGlyph + '">' +
+                '<path d="M-6 -8 H6 V-2.5 A6 6 0 0 1 -6 -2.5 Z" stroke="none"/>' +
+                '<path d="M-6 -6 H-9.2 V-4.2 A3.2 3.2 0 0 0 -5.6 -1" fill="none" stroke-width="1.7"/>' +
+                '<path d="M6 -6 H9.2 V-4.2 A3.2 3.2 0 0 1 5.6 -1" fill="none" stroke-width="1.7"/>' +
+                '<rect x="-1.5" y="3" width="3" height="3.6" stroke="none"/>' +
+                '<rect x="-5.2" y="6.4" width="10.4" height="2.6" rx="1" stroke="none"/></g>' +
+                // Gear button
+                '<circle cx="352" cy="118" r="22" fill="' + gearFill + '"/>' +
+                '<g transform="translate(352 118)" fill="#FFFFFF">' + teeth +
+                '<circle r="7.4"/><circle r="2.9" fill="#356B3D"/></g>' +
+                // Start a New Trip card, overlapping the sky by 32 points
+                '<g clip-path="url(#cardClip)">' +
+                '<rect x="16" y="298" width="358" height="240" rx="26" fill="url(#cardGrad)"/>' +
+                '<path d="M16 420 L16 370 L112 330 L184 384 L260 324 L374 375 L374 420 Z" fill="#FFFFFF" fill-opacity="0.06"/>' +
+                '<path d="M16 420 L16 400 L73 380 L148 413 L227 377 L310 411 L374 392 L374 420 Z" fill="#000000" fill-opacity="0.12"/>' +
+                '</g>' +
+                '<circle cx="195" cy="368" r="43" fill="#1E3323"/>' +
+                '<image href="../logo.png" x="152" y="325" width="86" height="86" clip-path="url(#logoClip)" preserveAspectRatio="xMidYMid slice"/>' +
+                '<circle cx="195" cy="368" r="44.5" fill="none" stroke="#F6F1E6" stroke-opacity="0.9" stroke-width="3"/>' +
+                '<text x="195" y="463" text-anchor="middle" font-family="\'Bricolage Grotesque\', -apple-system, system-ui, sans-serif" font-size="26" font-weight="700" fill="#F6F1E6">Start a New Trip</text>' +
+                '<rect x="0" y="440" width="390" height="50" fill="url(#fadeGrad)"/>';
+        }
+
+        function pill(x, y, label, anchor) {
+            var w = label.length * 5.7 + 14;
+            var rx = anchor === 'end' ? x - w : x;
+            return '<rect x="' + rx + '" y="' + (y - 9) + '" width="' + w + '" height="16" rx="8" fill="rgba(20,26,21,0.74)"/>' +
+                '<text x="' + (rx + 7) + '" y="' + (y + 2.6) + '" font-size="10" font-weight="600" fill="#FFFFFF" font-family="-apple-system, system-ui, sans-serif">' + label + '</text>';
+        }
+
+        function renderZones(p) {
+            if (!state.zones) { artZones.innerHTML = ''; return; }
+            var VH = 500, W = 440;
+            function y(pt) { return VH - pt; }
+            var out = '';
+            // Shaded: under the card, and the extra sky.
+            out += '<rect x="0" y="' + y(32) + '" width="' + W + '" height="32" fill="rgba(30,51,35,0.62)"/>';
+            out += '<rect x="0" y="0" width="' + W + '" height="' + y(330) + '" fill="rgba(255,255,255,0.28)"/>';
+            // Lines between zones.
+            [32, 100, 160, 260, 330].forEach(function (pt) {
+                out += '<line x1="0" x2="' + W + '" y1="' + y(pt) + '" y2="' + y(pt) + '" stroke="#FFFFFF" stroke-width="1.4" stroke-dasharray="5 4"/>';
+                out += '<line x1="0" x2="' + W + '" y1="' + y(pt) + '" y2="' + y(pt) + '" stroke="#1E3323" stroke-opacity="0.55" stroke-width="0.6" stroke-dasharray="5 4"/>';
+            });
+            // A 375-point phone's view.
+            [32.5, 407.5].forEach(function (x) {
+                out += '<line x1="' + x + '" x2="' + x + '" y1="0" y2="' + VH + '" stroke="#FFFFFF" stroke-width="1.2" stroke-dasharray="3 4"/>';
+                out += '<line x1="' + x + '" x2="' + x + '" y1="0" y2="' + VH + '" stroke="#1E3323" stroke-opacity="0.5" stroke-width="0.5" stroke-dasharray="3 4"/>';
+            });
+            // Sun or moon spot for this time of day.
+            var base = BASE[state.phase];
+            out += '<circle cx="' + (W * base.x) + '" cy="' + y(132) + '" r="' + (base.size / 2 + 5) + '" fill="none" stroke="#FFFFFF" stroke-width="1.6" stroke-dasharray="4 3"/>';
+            out += '<circle cx="' + (W * base.x) + '" cy="' + y(132) + '" r="' + (base.size / 2 + 5) + '" fill="none" stroke="#1E3323" stroke-opacity="0.6" stroke-width="0.6" stroke-dasharray="4 3"/>';
+            // Labels.
+            out += pill(40, y(16), 'Under the first card', 'start');
+            out += pill(40, y(66), 'Mountains and trees', 'start');
+            out += pill(base.x < 0.3 ? 150 : 40, y(130), base.moon ? 'Moon, clouds' : 'Sun, clouds', 'start');
+            out += pill(40, y(210), 'Greeting and buttons', 'start');
+            out += pill(40, y(295), 'Status bar', 'start');
+            out += pill(40, y(415), 'Extra sky: large text, pull to refresh', 'start');
+            artZones.innerHTML = out;
+        }
+
+        function draw(t) {
+            var a = prep(phoneCanvas, 390, 330);
+            var p = drawSky(a.ctx, { W: 390, VH: 330, phase: state.phase, weather: state.weather, appLayers: state.appLayers, t: t, scale: a.scale });
+            var b = prep(artCanvas, 440, 500);
+            drawSky(b.ctx, { W: 440, VH: 500, phase: state.phase, weather: state.weather, appLayers: state.appLayers, t: t, scale: b.scale });
+            return p;
+        }
+
+        function render() {
+            var p = draw(state.motion ? performance.now() / 1000 : 0);
+            renderPhoneUI(p);
+            renderZones(p);
+            loop();
+        }
+
+        // Motion: stars twinkle, snow and rain fall. Paused when Motion is off,
+        // when the visitor prefers reduced motion, and when the tab is hidden.
+        var raf = 0, last = 0;
+        function loop() {
+            cancelAnimationFrame(raf);
+            if (!state.motion || !state.appLayers || !hasMotion(state.phase, state.weather)) return;
+            raf = requestAnimationFrame(function tick(now) {
+                if (now - last > 33) { last = now; draw(now / 1000); }
+                raf = requestAnimationFrame(tick);
+            });
+        }
+        document.addEventListener('visibilitychange', function () {
+            if (document.hidden) cancelAnimationFrame(raf); else loop();
+        });
+        reduceMotion.addEventListener && reduceMotion.addEventListener('change', function (e) {
+            state.motion = !e.matches;
+            motionBtn.setAttribute('aria-pressed', String(state.motion));
+            render();
+        });
+
+        function press(selector, attr, value) {
+            document.querySelectorAll(selector).forEach(function (b) {
+                b.setAttribute('aria-pressed', String(b.getAttribute(attr) === value));
+            });
+        }
+        function select(phase, weather) {
+            state.phase = phase;
+            state.weather = weather;
+            press('[data-phase]', 'data-phase', phase);
+            press('[data-weather]', 'data-weather', weather);
+            render();
+        }
+        document.querySelectorAll('[data-phase]').forEach(function (b) {
+            b.addEventListener('click', function () { select(b.getAttribute('data-phase'), state.weather); });
+        });
+        document.querySelectorAll('[data-weather]').forEach(function (b) {
+            b.addEventListener('click', function () { select(state.phase, b.getAttribute('data-weather')); });
+        });
+        function toggle(id, key) {
+            var b = document.getElementById(id);
+            b.addEventListener('click', function () {
+                state[key] = !state[key];
+                b.setAttribute('aria-pressed', String(state[key]));
+                render();
+            });
+        }
+        toggle('toggleApp', 'appLayers');
+        toggle('toggleZones', 'zones');
+        toggle('toggleMotion', 'motion');
+
+        // ---------------------------------------------------------------
+        // Time-of-day table
+        // ---------------------------------------------------------------
+        var PHASE_ROWS = {
+            dawn: ['From 45 minutes before sunrise to 90 minutes after', 'First light. Lavender up high, peach and rose near the peaks, cool shadows on the slopes. The sun just up on the left.', 'Dark'],
+            day: ['From 90 minutes after sunrise to an hour before sunset', 'Clear and fresh. A pale blue sky with the sun high near the middle. The greens at their richest.', 'Dark'],
+            golden: ['The hour before sunset', 'Late, warm light. A cream and gold sky, long warm light across the slopes, the sun low on the right.', 'Dark'],
+            twilight: ['The 50 minutes after sunset', 'Deep blue overhead fading to a warm glow behind the peaks. Mountains in silhouette, the moon and the first few stars.', 'Light'],
+            night: ['From the end of twilight until dawn', 'A navy sky full of stars. The mountains as dark shapes under the moon.', 'Light']
+        };
+        var tbody = document.getElementById('phaseTable');
+        PHASES.forEach(function (ph) {
+            var b = BASE[ph], row = PHASE_ROWS[ph];
+            var sw = [b.top, b.mid, b.bottom, b.far, b.near, b.trees].map(function (c) {
+                return '<span style="background:' + hexStr(c) + '" title="' + hexStr(c) + '"></span>';
+            }).join('');
+            var tr = document.createElement('tr');
+            tr.innerHTML = '<td>' + PHASE_NAMES[ph] + '</td><td>' + row[0] + '</td><td style="min-width: 260px;">' + row[1] + '</td><td>' + row[2] + '</td>' +
+                '<td><div class="swatches" role="img" aria-label="Six colors: ' + [b.top, b.mid, b.bottom, b.far, b.near, b.trees].map(hexStr).join(', ') + '">' + sw + '</div></td>';
+            tbody.appendChild(tr);
+        });
+
+        // Brand swatches (brandcolors page)
+        var BRAND = [['Pine', 0x24492A], ['Forest', 0x356B3D], ['Moss', 0x4A7C52], ['Deep forest', 0x1E3323], ['Cream', 0xF6F1E6], ['Gold', 0xE1B64C], ['Amber', 0xE9A83A], ['Copper', 0xB87333]];
+        document.getElementById('brandSwatches').innerHTML = BRAND.map(function (c) {
+            return '<span style="width:auto;height:auto;display:inline-flex;align-items:center;gap:6px;padding:4px 10px 4px 4px;border-radius:999px;background:var(--card);font-size:0.82rem;color:var(--ink);">' +
+                '<span style="width:20px;height:20px;border-radius:999px;background:' + hexStr(c[1]) + ';box-shadow:inset 0 0 0 1px rgba(38,34,26,0.14);"></span>' +
+                c[0] + ' <code style="border:0;background:none;padding:0;">' + hexStr(c[1]) + '</code></span>';
+        }).join('');
+
+        // ---------------------------------------------------------------
+        // The 30 files grid
+        // ---------------------------------------------------------------
+        var thumbs = document.getElementById('thumbs');
+        var thumbCanvases = [];
+        thumbs.appendChild(document.createElement('div'));
+        WEATHERS.forEach(function (w) {
+            var h = document.createElement('div');
+            h.className = 'col-head';
+            h.textContent = WEATHER_NAMES[w];
+            thumbs.appendChild(h);
+        });
+        PHASES.forEach(function (ph) {
+            var rh = document.createElement('div');
+            rh.className = 'row-head';
+            rh.textContent = PHASE_NAMES[ph];
+            thumbs.appendChild(rh);
+            WEATHERS.forEach(function (w) {
+                var name = 'sky-' + ph + '-' + w + '.png';
+                var btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'thumb';
+                btn.setAttribute('aria-label', PHASE_NAMES[ph] + ', ' + WEATHER_NAMES[w].toLowerCase() + ': ' + name + '. Show in the viewer.');
+                var c = document.createElement('canvas');
+                c.setAttribute('aria-hidden', 'true');
+                var code = document.createElement('code');
+                code.textContent = name;
+                btn.appendChild(c);
+                btn.appendChild(code);
+                btn.addEventListener('click', function () {
+                    select(ph, w);
+                    document.getElementById('today').scrollIntoView({ behavior: reduceMotion.matches ? 'auto' : 'smooth' });
+                });
+                thumbs.appendChild(btn);
+                thumbCanvases.push({ c: c, ph: ph, w: w });
+            });
+        });
+        function drawThumbs() {
+            thumbCanvases.forEach(function (o) {
+                var a = prep(o.c, 390, 330);
+                drawSky(a.ctx, { W: 390, VH: 330, phase: o.ph, weather: o.w, appLayers: true, t: 0, scale: a.scale });
+            });
+        }
+
+        // ---------------------------------------------------------------
+        // Group trip banner today (TripCoverView.swift, DefaultMountainsCover)
+        // ---------------------------------------------------------------
+        var COVER = {
+            light: { top: 0xD9EFEA, bottom: 0xF4F1E4, sun: 0xF6D58A, sunA: 1, far: 0x9CC9C4, mid: 0x5E9A6E, near: 0x356B3D, snow: 0xFFFFFF, pines: 0x24502D, farSnow: 0.9, midSnow: 0.75 },
+            dark: { top: 0x0E2A2E, bottom: 0x1F4A45, sun: 0xE8E2C8, sunA: 0.85, far: 0x2C5E63, mid: 0x1F4D3A, near: 0x163826, snow: 0xC9D6D3, pines: 0x0F2A1C, farSnow: 0.55, midSnow: 0.4 }
+        };
+        var CFAR = [[0, 0.62], [0.14, 0.46], [0.27, 0.56], [0.42, 0.30], [0.55, 0.50], [0.68, 0.40], [0.84, 0.55], [1, 0.44]];
+        var CMID = [[0, 0.70], [0.12, 0.58], [0.24, 0.66], [0.36, 0.52], [0.50, 0.68], [0.63, 0.55], [0.78, 0.66], [0.90, 0.57], [1, 0.63]];
+        var CNEAR = [[0, 0.84], [0.18, 0.76], [0.38, 0.82], [0.58, 0.74], [0.80, 0.81], [1, 0.75]];
+        var PINES = [[0.06, 0.86, 0.10], [0.11, 0.85, 0.13], [0.16, 0.84, 0.09], [0.70, 0.84, 0.11], [0.75, 0.83, 0.14], [0.80, 0.84, 0.10], [0.92, 0.82, 0.12]];
+
+        function coverRidge(ctx, pts, w, h) {
+            ctx.beginPath();
+            ctx.moveTo(0, h);
+            pts.forEach(function (p) { ctx.lineTo(p[0] * w, p[1] * h); });
+            ctx.lineTo(w, h);
+            ctx.closePath();
+        }
+        function snowCap(ctx, pts, idx, depth, w, h) {
+            var peak = { x: pts[idx][0] * w, y: pts[idx][1] * h };
+            var prev = { x: pts[idx - 1][0] * w, y: pts[idx - 1][1] * h };
+            var next = { x: pts[idx + 1][0] * w, y: pts[idx + 1][1] * h };
+            var baseY = peak.y + depth * h;
+            function onSlope(to, yy) {
+                var t = (yy - peak.y) / (to.y - peak.y);
+                return { x: peak.x + (to.x - peak.x) * t, y: yy };
+            }
+            var left = onSlope(prev, baseY), right = onSlope(next, baseY);
+            function surfaceY(x) {
+                return x <= peak.x
+                    ? peak.y + (baseY - peak.y) * (peak.x - x) / Math.max(peak.x - left.x, 0.001)
+                    : peak.y + (baseY - peak.y) * (x - peak.x) / Math.max(right.x - peak.x, 0.001);
+            }
+            ctx.beginPath();
+            ctx.moveTo(left.x, left.y);
+            ctx.lineTo(peak.x, peak.y);
+            ctx.lineTo(right.x, right.y);
+            var capH = baseY - peak.y;
+            [[0.82, 0.2], [0.66, 0.04], [0.5, 0.25], [0.34, 0.05], [0.18, 0.2]].forEach(function (s) {
+                var x = left.x + (right.x - left.x) * s[0];
+                var top = surfaceY(x);
+                ctx.lineTo(x, Math.max(baseY - capH * s[1], top + (baseY - top) * 0.55));
+            });
+            ctx.closePath();
+        }
+        function drawCover(ctx, w, h, mode) {
+            var c = COVER[mode];
+            var g = ctx.createLinearGradient(0, 0, 0, h);
+            g.addColorStop(0, rgb(c.top)); g.addColorStop(1, rgb(c.bottom));
+            ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
+            ctx.fillStyle = rgb(c.sun, c.sunA);
+            ctx.beginPath(); ctx.arc(w * 0.76, h * 0.30, h * 0.13, 0, 2 * Math.PI); ctx.fill();
+            ctx.fillStyle = rgb(c.far); coverRidge(ctx, CFAR, w, h); ctx.fill();
+            ctx.fillStyle = rgb(c.snow, c.farSnow); snowCap(ctx, CFAR, 3, 0.075, w, h); ctx.fill();
+            ctx.fillStyle = rgb(c.mid); coverRidge(ctx, CMID, w, h); ctx.fill();
+            ctx.fillStyle = rgb(c.snow, c.midSnow);
+            snowCap(ctx, CMID, 3, 0.065, w, h); ctx.fill();
+            snowCap(ctx, CMID, 5, 0.058, w, h); ctx.fill();
+            ctx.fillStyle = rgb(c.near); coverRidge(ctx, CNEAR, w, h); ctx.fill();
+            ctx.fillStyle = rgb(c.pines);
+            ctx.beginPath();
+            PINES.forEach(function (t) {
+                var base = t[1] * h, top = base - t[2] * h, half = t[2] * h * 0.32;
+                ctx.moveTo(t[0] * w, top); ctx.lineTo(t[0] * w + half, base); ctx.lineTo(t[0] * w - half, base); ctx.closePath();
+            });
+            ctx.rect(0, 0.86 * h, w, 0.14 * h);
+            ctx.fill();
+        }
+        function drawCovers() {
+            document.querySelectorAll('.cover-canvas').forEach(function (c) {
+                var w = +c.getAttribute('data-w'), h = +c.getAttribute('data-h');
+                var a = prep(c, w, h);
+                drawCover(a.ctx, w, h, c.getAttribute('data-mode'));
+            });
+        }
+
+        // ---------------------------------------------------------------
+        // Contrast checker (WCAG 2 relative luminance)
+        // ---------------------------------------------------------------
+        function lum(c) {
+            return [16, 8, 0].map(function (s, i) {
+                var v = ((c >> s) & 255) / 255;
+                v = v <= 0.04045 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+                return v * [0.2126, 0.7152, 0.0722][i];
+            }).reduce(function (a, b) { return a + b; });
+        }
+        function ratio(a, b) {
+            var la = lum(a), lb = lum(b);
+            return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+        }
+        var ckColor = document.getElementById('ckColor');
+        var ckHex = document.getElementById('ckHex');
+        var ckOut = document.getElementById('ckOut');
+        function check(value) {
+            var m = /^#?([0-9a-f]{6})$/i.exec(value.trim());
+            if (!m) {
+                ckOut.innerHTML = '<div class="result">Type a color as six hex digits, like #BCDAEA.</div>';
+                return;
+            }
+            var c = parseInt(m[1], 16);
+            ckColor.value = '#' + m[1].toLowerCase();
+            function result(textHex, label) {
+                var r = ratio(c, textHex), ok = r >= 4.5;
+                return '<div class="result"><span class="sample" aria-hidden="true" style="background:' + hexStr(c) + ';color:' + hexStr(textHex) + ';">Aa</span>' +
+                    '<span><b>' + r.toFixed(1) + ' to 1 · ' + (ok ? 'Passes' : 'Too low') + '</b>' + label + '</span></div>';
+            }
+            ckOut.innerHTML = result(0x4B5348, 'Dark text (#4B5348): dawn, day, golden hour') +
+                result(0xF6F1E6, 'Light text (#F6F1E6): twilight, night, storms');
+        }
+        ckColor.addEventListener('input', function () { ckHex.value = ckColor.value.toUpperCase(); check(ckColor.value); });
+        ckHex.addEventListener('input', function () { check(ckHex.value); });
+        check(ckHex.value);
+
+        // ---------------------------------------------------------------
+        // First draw, and redraw on resize (canvases follow their CSS size).
+        // ---------------------------------------------------------------
+        function drawAll() {
+            render();
+            drawThumbs();
+            drawCovers();
+        }
+        var resizeTimer = 0;
+        window.addEventListener('resize', function () {
+            clearTimeout(resizeTimer);
+            resizeTimer = setTimeout(drawAll, 120);
+        });
+        drawAll();
+        if (document.fonts && document.fonts.ready) document.fonts.ready.then(function () { render(); });
+    }());
+    </script>
+</body>
+</html>
