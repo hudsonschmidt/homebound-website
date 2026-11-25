@@ -4,12 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Landscape Art Brief - Homebound</title>
-    <meta name="description" content="Everything an artist needs to paint the Homebound Home screen landscape and the group trip banner.">
+    <meta name="description" content="Everything an artist needs to paint the Homebound Home screen landscape.">
     <!-- Unlisted (2026-11-22): not in the nav, the footer, sitemap.xml, llms.txt or search results.
          Sent directly to the artist. Every size, position and color on this page comes from the app:
          homebound/ios/Homebound/Homebound/Views/Home/Sky/ (HomeSky.swift, HomeSkyView.swift,
-         HomeSkyHeader.swift), Views/Home/MainTabView.swift (Home header + BigNewTripCard) and
-         Views/Trip/Wizard/TripCoverView.swift (group trip banner). If those change, update this page. -->
+         HomeSkyHeader.swift) and Views/Home/MainTabView.swift (Home header + BigNewTripCard).
+         If those change, update this page. The group trip banner brief moved to /artbrief/group/
+         on 2026-11-25 (a different artist makes it). -->
     <meta name="robots" content="noindex, nofollow">
     <link rel="stylesheet" href="../styles.css?v=20260901">
     <link rel="icon" type="image/png" href="../favicon.png">
@@ -511,185 +512,6 @@
             box-shadow: inset 0 0 0 1px rgba(38, 34, 26, 0.14);
         }
 
-        /* --- Group trip banner demos --- */
-        .banner-demos {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 22px;
-            margin: 22px 0;
-        }
-
-        .demo-panel {
-            border-radius: var(--radius-md);
-            padding: 20px;
-            border: 1.5px solid var(--line);
-        }
-
-        .demo-panel.light {
-            background: #EEEBE3;
-        }
-
-        .demo-panel.dark {
-            background: #111512;
-            border-color: rgba(246, 241, 230, 0.12);
-        }
-
-        .demo-panel .panel-label {
-            font-size: 0.74rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 0.09em;
-            margin-bottom: 12px;
-            color: var(--faint);
-        }
-
-        .demo-panel.dark .panel-label {
-            color: rgba(246, 241, 230, 0.6);
-        }
-
-        .invite-card {
-            border-radius: 16px;
-            overflow: hidden;
-            background: #FDFBF5;
-            box-shadow: 0 1px 3px rgba(38, 34, 26, 0.12);
-            max-width: 360px;
-        }
-
-        .dark .invite-card {
-            background: #1E2420;
-            box-shadow: none;
-        }
-
-        .invite-cover {
-            position: relative;
-            margin-bottom: 23px;
-        }
-
-        .invite-cover canvas {
-            display: block;
-            width: 100%;
-            aspect-ratio: 343 / 88;
-            border-radius: 16px 16px 0 0;
-        }
-
-        .emoji-tile {
-            position: absolute;
-            left: 14px;
-            bottom: -23px;
-            width: 46px;
-            height: 46px;
-            border-radius: 14px;
-            background: #FFFFFF;
-            border: 0.5px solid rgba(60, 60, 67, 0.25);
-            display: grid;
-            place-items: center;
-            font-size: 26px;
-            line-height: 1;
-        }
-
-        .dark .emoji-tile {
-            background: #2A312C;
-            border-color: rgba(235, 235, 245, 0.2);
-        }
-
-        .invite-text {
-            padding: 10px 16px 16px;
-        }
-
-        .invite-text .t1 {
-            font-family: var(--display);
-            font-weight: 700;
-            font-size: 1.05rem;
-            color: var(--ink);
-        }
-
-        .invite-text .t2 {
-            font-size: 0.86rem;
-            color: var(--muted);
-        }
-
-        .dark .invite-text .t1 {
-            color: #F2F2F2;
-        }
-
-        .dark .invite-text .t2 {
-            color: rgba(235, 235, 245, 0.6);
-        }
-
-        .square-row {
-            display: flex;
-            align-items: center;
-            gap: 14px;
-            margin-top: 18px;
-        }
-
-        .square {
-            position: relative;
-            width: 56px;
-            height: 56px;
-            flex-shrink: 0;
-        }
-
-        .square canvas {
-            width: 56px;
-            height: 56px;
-            border-radius: 14px;
-            display: block;
-        }
-
-        .square span {
-            position: absolute;
-            inset: 0;
-            display: grid;
-            place-items: center;
-            font-size: 24px;
-        }
-
-        .square-row p {
-            margin: 0;
-            font-size: 0.88rem;
-            line-height: 1.45;
-        }
-
-        .dark .square-row p {
-            color: rgba(235, 235, 245, 0.7);
-        }
-
-        .dark .square-row p strong {
-            color: #F2F2F2;
-        }
-
-        .banner-board {
-            position: relative;
-            aspect-ratio: 440 / 100;
-            border-radius: 6px;
-            overflow: hidden;
-            box-shadow: 0 0 0 1.5px var(--line);
-            margin: 8px 0 10px;
-        }
-
-        .banner-board canvas {
-            width: 100%;
-            height: 100%;
-            display: block;
-        }
-
-        .banner-board svg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-        }
-
-        .copy-status {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            overflow: hidden;
-            clip: rect(0 0 0 0);
-            white-space: nowrap;
-        }
-
         @media (max-width: 900px) {
             .viewer {
                 grid-template-columns: minmax(0, 420px);
@@ -727,7 +549,7 @@
     <main class="brief">
         <h1>Landscape art brief</h1>
         <p class="lede">Homebound is a free iPhone app for people heading outside. You plan a trip, choose who should know, and they hear from Homebound if you aren't back on time.</p>
-        <p class="lede">I'm looking for an artist to create the mountain landscape at the top of the app's Home screen, plus a small scene for group trips. Home is the first screen people see every time they open the app. This page has everything you need to make both.</p>
+        <p class="lede">I'm looking for an artist to create the mountain landscape at the top of the app's Home screen. Home is the first screen people see every time they open the app. This page has everything you need to make it.</p>
         <p class="last-updated">Brief written November 23, 2026</p>
 
         <div class="toc" role="navigation" aria-label="On this page">
@@ -741,7 +563,6 @@
                 <li><a href="#text">Keeping the greeting readable</a></li>
                 <li><a href="#style">Style</a></li>
                 <li><a href="#files">The files</a></li>
-                <li><a href="#group">Group trip banner</a></li>
                 <li><a href="#process">How we'll work</a></li>
                 <li><a href="#rights">Rights</a></li>
                 <li><a href="#questions">Questions for you</a></li>
@@ -756,10 +577,6 @@
                 <dd>One mountain scene, done in 30 versions: 5 times of day, each in 6 kinds of weather. Plus a lightning layer.</dd>
             </div>
             <div>
-                <dt>Group trip banner</dt>
-                <dd>A separate small scene in the same style, in a light and a dark version.</dd>
-            </div>
-            <div>
                 <dt>Style</dt>
                 <dd>Textured flat, like a national park poster.</dd>
             </div>
@@ -769,7 +586,7 @@
             </div>
             <div>
                 <dt>Canvas</dt>
-                <dd>Home: 1320 × 1500 px. Banner: 1320 × 300 px, plus a 600 × 600 px square.</dd>
+                <dd>1320 × 1500 px.</dd>
             </div>
             <div>
                 <dt>Where it shows</dt>
@@ -961,7 +778,6 @@
             <li><strong>Your layered source file</strong> (Photoshop, Procreate, Illustrator, Affinity or similar), with the sky, each ridge, the trees, clouds, fog, snow and texture on separate layers.</li>
             <li><strong>Texture on its own layer.</strong> Grain makes image files much bigger, and the app has to carry all 30. Please send each scene with and without the grain, plus the grain on its own as a seamless transparent tile (for example 512 × 512 px). Then the app can add it once over the top if that keeps the app smaller.</li>
             <li><strong>Where the sun and moon go</strong> for each time of day, as a marked layer in the source file or a short note.</li>
-            <li><strong>The group trip banner files</strong>, listed under <a href="#group">Group trip banner</a>.</li>
         </ul>
         <h3>All 30 Home files</h3>
         <p>Shown as they look today. Select one to see it in the viewer above.</p>
@@ -970,74 +786,12 @@
         </div>
 
         <!-- ============================================================ -->
-        <h2 id="group">Group trip banner</h2>
-        <p>Group trips get a small banner of their own: a separate mountain scene in the same style as Home. It shows at the top of a group trip invitation, on the crew step when someone plans a group trip, and as a small square tile when someone opens a link to join a trip. On top of it sits the trip's activity, shown as an emoji on a small rounded tile.</p>
-        <p>It doesn't change with the time of day or the weather, and nothing on it moves. It needs two versions: <strong>light</strong> for phones in Light Mode, and <strong>dark</strong> for Dark Mode. Today the light one is a pale morning and the dark one is dusk.</p>
-
-        <div class="banner-demos">
-            <div class="demo-panel light">
-                <div class="panel-label">Today, Light Mode</div>
-                <div class="invite-card">
-                    <div class="invite-cover">
-                        <canvas class="cover-canvas" data-mode="light" data-w="343" data-h="88" aria-hidden="true"></canvas>
-                        <div class="emoji-tile" aria-hidden="true">🥾</div>
-                    </div>
-                    <div class="invite-text">
-                        <div class="t1">Saturday hike</div>
-                        <div class="t2">Sam invited you</div>
-                    </div>
-                </div>
-                <div class="square-row">
-                    <div class="square" aria-hidden="true"><canvas class="cover-canvas" data-mode="light" data-w="56" data-h="56"></canvas><span>🥾</span></div>
-                    <p><strong>The square tile</strong>, 56 × 56 points, on the join screen.</p>
-                </div>
-            </div>
-            <div class="demo-panel dark">
-                <div class="panel-label">Today, Dark Mode</div>
-                <div class="invite-card">
-                    <div class="invite-cover">
-                        <canvas class="cover-canvas" data-mode="dark" data-w="343" data-h="88" aria-hidden="true"></canvas>
-                        <div class="emoji-tile" aria-hidden="true">🥾</div>
-                    </div>
-                    <div class="invite-text">
-                        <div class="t1">Saturday hike</div>
-                        <div class="t2">Sam invited you</div>
-                    </div>
-                </div>
-                <div class="square-row">
-                    <div class="square" aria-hidden="true"><canvas class="cover-canvas" data-mode="dark" data-w="56" data-h="56"></canvas><span>🥾</span></div>
-                    <p><strong>The square tile</strong>, 56 × 56 points, on the join screen.</p>
-                </div>
-            </div>
-        </div>
-
-        <h3>Banner size and layout</h3>
-        <div class="banner-board">
-            <canvas class="cover-canvas" data-mode="light" data-w="440" data-h="100" aria-hidden="true"></canvas>
-            <svg viewBox="0 0 440 100" role="img" aria-label="The 1320 by 300 pixel banner canvas. Dashed lines mark the middle area that every card shows. A box marks the bottom-left corner covered by the activity tile.">
-                <line x1="36.7" y1="0" x2="36.7" y2="100" stroke="#fff" stroke-width="1.4" stroke-dasharray="4 3"/>
-                <line x1="403.3" y1="0" x2="403.3" y2="100" stroke="#fff" stroke-width="1.4" stroke-dasharray="4 3"/>
-                <line x1="36.7" y1="0" x2="36.7" y2="100" stroke="#1E3323" stroke-width="0.6" stroke-dasharray="4 3"/>
-                <line x1="403.3" y1="0" x2="403.3" y2="100" stroke="#1E3323" stroke-width="0.6" stroke-dasharray="4 3"/>
-                <rect x="1" y="70" width="70" height="29" fill="rgba(30,51,35,0.55)" stroke="#fff" stroke-width="1" stroke-dasharray="3 2"/>
-                <text x="36" y="89" text-anchor="middle" font-size="8.5" font-weight="700" fill="#fff" font-family="-apple-system, system-ui, sans-serif">Activity tile</text>
-            </svg>
-        </div>
-        <ul>
-            <li><strong>Wide banner:</strong> canvas <strong>1320 × 300 px</strong> (440 × 100 points). On cards it shows 88 to 96 points tall across a card 343 to 408 points wide, with the top corners rounded (16 points). The image is scaled to fill, so the sides get cut. Keep the main peaks inside the middle 1100 px, between the dashed lines.</li>
-            <li><strong>The activity tile</strong> covers the bottom-left corner: a 46 to 52 point tile, 14 points in from the left, half hanging below the banner. Keep the bottom-left 210 × 90 px simple.</li>
-            <li><strong>Square tile:</strong> canvas <strong>600 × 600 px</strong>. It shows at 56 × 56 points with rounded corners (14 points) and the activity emoji right in the middle, so keep the centre calm. It still has to read as mountains at that small size. A reframe of the wide scene is fine.</li>
-        </ul>
-        <p>Files: <code>group-light.png</code> and <code>group-dark.png</code> at 1320 × 300 px, <code>group-square-light.png</code> and <code>group-square-dark.png</code> at 600 × 600 px, and the layered source.</p>
-
-        <!-- ============================================================ -->
         <h2 id="process">How we'll work</h2>
         <ol>
             <li><strong>Rough sketches.</strong> Two or three compositions for the Home landscape. Rough is fine. <span class="tbd">Date to be agreed</span></li>
             <li><strong>One finished scene: day, clear.</strong> We put it in the app and check it on real phones before you go further. <span class="tbd">Date to be agreed</span></li>
             <li><strong>The other four times of day</strong>, clear. <span class="tbd">Date to be agreed</span></li>
             <li><strong>The weather versions</strong> and the lightning layer. <span class="tbd">Date to be agreed</span></li>
-            <li><strong>The group trip banner</strong>: light and dark, wide and square. <span class="tbd">Date to be agreed</span></li>
         </ol>
         <p>Send questions as they come up. For files, send a shared folder link (Google Drive, Dropbox or similar) rather than email attachments, so the full-size images aren't compressed.</p>
         <p><strong>Contact:</strong> hudsonschmidt08@gmail.com | (435) 901-8118</p>
@@ -1049,7 +803,7 @@
         <!-- ============================================================ -->
         <h2 id="questions">Questions for you</h2>
         <ol>
-            <li>Which way would you split the work between your art and the app? See <a href="#split">What you design, what the app adds</a>.</li>
+            <li>Which way would you split the work between your art and the app? See <a href="#split">What you create, what the app adds</a>.</li>
             <li>Where would you put the sun and the moon at each time of day?</li>
             <li>Is anything in this brief getting in the way of good art? The sizes and the text rule are firm. Everything else is open to your ideas.</li>
         </ol>
@@ -1646,83 +1400,6 @@
         }
 
         // ---------------------------------------------------------------
-        // Group trip banner today (TripCoverView.swift, DefaultMountainsCover)
-        // ---------------------------------------------------------------
-        var COVER = {
-            light: { top: 0xD9EFEA, bottom: 0xF4F1E4, sun: 0xF6D58A, sunA: 1, far: 0x9CC9C4, mid: 0x5E9A6E, near: 0x356B3D, snow: 0xFFFFFF, pines: 0x24502D, farSnow: 0.9, midSnow: 0.75 },
-            dark: { top: 0x0E2A2E, bottom: 0x1F4A45, sun: 0xE8E2C8, sunA: 0.85, far: 0x2C5E63, mid: 0x1F4D3A, near: 0x163826, snow: 0xC9D6D3, pines: 0x0F2A1C, farSnow: 0.55, midSnow: 0.4 }
-        };
-        var CFAR = [[0, 0.62], [0.14, 0.46], [0.27, 0.56], [0.42, 0.30], [0.55, 0.50], [0.68, 0.40], [0.84, 0.55], [1, 0.44]];
-        var CMID = [[0, 0.70], [0.12, 0.58], [0.24, 0.66], [0.36, 0.52], [0.50, 0.68], [0.63, 0.55], [0.78, 0.66], [0.90, 0.57], [1, 0.63]];
-        var CNEAR = [[0, 0.84], [0.18, 0.76], [0.38, 0.82], [0.58, 0.74], [0.80, 0.81], [1, 0.75]];
-        var PINES = [[0.06, 0.86, 0.10], [0.11, 0.85, 0.13], [0.16, 0.84, 0.09], [0.70, 0.84, 0.11], [0.75, 0.83, 0.14], [0.80, 0.84, 0.10], [0.92, 0.82, 0.12]];
-
-        function coverRidge(ctx, pts, w, h) {
-            ctx.beginPath();
-            ctx.moveTo(0, h);
-            pts.forEach(function (p) { ctx.lineTo(p[0] * w, p[1] * h); });
-            ctx.lineTo(w, h);
-            ctx.closePath();
-        }
-        function snowCap(ctx, pts, idx, depth, w, h) {
-            var peak = { x: pts[idx][0] * w, y: pts[idx][1] * h };
-            var prev = { x: pts[idx - 1][0] * w, y: pts[idx - 1][1] * h };
-            var next = { x: pts[idx + 1][0] * w, y: pts[idx + 1][1] * h };
-            var baseY = peak.y + depth * h;
-            function onSlope(to, yy) {
-                var t = (yy - peak.y) / (to.y - peak.y);
-                return { x: peak.x + (to.x - peak.x) * t, y: yy };
-            }
-            var left = onSlope(prev, baseY), right = onSlope(next, baseY);
-            function surfaceY(x) {
-                return x <= peak.x
-                    ? peak.y + (baseY - peak.y) * (peak.x - x) / Math.max(peak.x - left.x, 0.001)
-                    : peak.y + (baseY - peak.y) * (x - peak.x) / Math.max(right.x - peak.x, 0.001);
-            }
-            ctx.beginPath();
-            ctx.moveTo(left.x, left.y);
-            ctx.lineTo(peak.x, peak.y);
-            ctx.lineTo(right.x, right.y);
-            var capH = baseY - peak.y;
-            [[0.82, 0.2], [0.66, 0.04], [0.5, 0.25], [0.34, 0.05], [0.18, 0.2]].forEach(function (s) {
-                var x = left.x + (right.x - left.x) * s[0];
-                var top = surfaceY(x);
-                ctx.lineTo(x, Math.max(baseY - capH * s[1], top + (baseY - top) * 0.55));
-            });
-            ctx.closePath();
-        }
-        function drawCover(ctx, w, h, mode) {
-            var c = COVER[mode];
-            var g = ctx.createLinearGradient(0, 0, 0, h);
-            g.addColorStop(0, rgb(c.top)); g.addColorStop(1, rgb(c.bottom));
-            ctx.fillStyle = g; ctx.fillRect(0, 0, w, h);
-            ctx.fillStyle = rgb(c.sun, c.sunA);
-            ctx.beginPath(); ctx.arc(w * 0.76, h * 0.30, h * 0.13, 0, 2 * Math.PI); ctx.fill();
-            ctx.fillStyle = rgb(c.far); coverRidge(ctx, CFAR, w, h); ctx.fill();
-            ctx.fillStyle = rgb(c.snow, c.farSnow); snowCap(ctx, CFAR, 3, 0.075, w, h); ctx.fill();
-            ctx.fillStyle = rgb(c.mid); coverRidge(ctx, CMID, w, h); ctx.fill();
-            ctx.fillStyle = rgb(c.snow, c.midSnow);
-            snowCap(ctx, CMID, 3, 0.065, w, h); ctx.fill();
-            snowCap(ctx, CMID, 5, 0.058, w, h); ctx.fill();
-            ctx.fillStyle = rgb(c.near); coverRidge(ctx, CNEAR, w, h); ctx.fill();
-            ctx.fillStyle = rgb(c.pines);
-            ctx.beginPath();
-            PINES.forEach(function (t) {
-                var base = t[1] * h, top = base - t[2] * h, half = t[2] * h * 0.32;
-                ctx.moveTo(t[0] * w, top); ctx.lineTo(t[0] * w + half, base); ctx.lineTo(t[0] * w - half, base); ctx.closePath();
-            });
-            ctx.rect(0, 0.86 * h, w, 0.14 * h);
-            ctx.fill();
-        }
-        function drawCovers() {
-            document.querySelectorAll('.cover-canvas').forEach(function (c) {
-                var w = +c.getAttribute('data-w'), h = +c.getAttribute('data-h');
-                var a = prep(c, w, h);
-                drawCover(a.ctx, w, h, c.getAttribute('data-mode'));
-            });
-        }
-
-        // ---------------------------------------------------------------
         // Contrast checker (WCAG 2 relative luminance)
         // ---------------------------------------------------------------
         function lum(c) {
@@ -1765,7 +1442,6 @@
         function drawAll() {
             render();
             drawThumbs();
-            drawCovers();
         }
         var resizeTimer = 0;
         window.addEventListener('resize', function () {
